@@ -34,7 +34,22 @@
 						</li>
 					</ul>
 				</li>	
+
 				<!-- Modul 4 -->
+
+
+				
+				<li>
+					<a href="#"><i class="fa fa-edit"></i><span>Technology Master</span><span class="pull-right-container"> </span></a>
+					<ul class="treeview-menu">
+					<li>
+							<a href="${contextName}/technology.html" class="menu-item"><i class="fa fa-book"></i>Technology</a>
+						</li>
+					</ul>
+				</li>	
+				
+
+
 				<li>
 					<a href="#"><i class="fa fa-microchip"></i><span>Modul 4</span><span class="pull-right-container"> </span></a>
 					<ul class="treeview-menu">

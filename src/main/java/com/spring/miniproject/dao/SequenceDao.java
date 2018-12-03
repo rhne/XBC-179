@@ -4,5 +4,7 @@ public interface SequenceDao {
 	
 	public Integer nextIdAkun();
 	public Integer nextIdRole();
+	public Integer nextIdTechnology();
+	public Integer nextIdTrainer();
 
 }
