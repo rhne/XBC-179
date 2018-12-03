@@ -46,6 +46,7 @@
 				<value>com.spring.miniproject.model.AkunModel</value>
 				<value>com.spring.miniproject.model.RoleModel</value>
 				<value>com.spring.miniproject.model.QuestionModel</value>
+				<value>com.spring.miniproject.model.OfficeModel</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

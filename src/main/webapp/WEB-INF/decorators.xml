@@ -10,6 +10,7 @@
 		<pattern>/user/*</pattern>
 		<pattern>/role/*</pattern>
 		<pattern>/question/*</pattern>
+		<pattern>/office/*</pattern>
 	</excludes>
 
 	<decorator name="login" page="login.jsp">
