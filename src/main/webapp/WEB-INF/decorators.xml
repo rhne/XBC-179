@@ -9,6 +9,7 @@
 		<!-- New link -->
 		<pattern>/user/*</pattern>
 		<pattern>/role/*</pattern>
+		<pattern>/office/*</pattern>
 	</excludes>
 
 	<decorator name="login" page="login.jsp">
