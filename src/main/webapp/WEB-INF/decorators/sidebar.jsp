@@ -52,6 +52,15 @@
 					</ul>
 				</li>	
 				
+				<li>
+					<a href="#"><i class="fa fa-edit"></i><span>Technology Master</span><span class="pull-right-container"> </span></a>
+					<ul class="treeview-menu">
+					<li>
+							<a href="${contextName}/technology.html" class="menu-item"><i class="fa fa-book"></i>Technology</a>
+						</li>
+					</ul>
+				</li>	
+				
 				<%-- <li>
 					<a href="#"><i class="fa fa-calculator"></i> <span>Transaksi</span><span class="pull-right"></span></a>
 					<ul class="treeview-menu">
