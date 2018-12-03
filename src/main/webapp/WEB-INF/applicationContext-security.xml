@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- - Application context containing authentication, channel - security 
+	and web URI beans. - - Only used by "filter" artifact. - -->
+
+<b:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:b="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+
+	<http auto-config="true" use-expressions="true">
+	    <!-- permitAll artinya tidak perlu login -->
+		<intercept-url pattern="/" access="permitAll()" />
+		<intercept-url pattern="/index.jsp" access="permitAll()" />
+		<intercept-url pattern="/assets/**" access="permitAll()" />
+		<intercept-url pattern="/login.html" access="permitAll()" />
+		
+		<!-- isAuthenticated artinya harus login, url selain yg disebutkan pada baris 16-19 itu ketika mengakses harus login dulu -->
+		<intercept-url pattern="/**" access="isAuthenticated()" />
+
+		<!-- access denied page -->
+		<access-denied-handler error-page="/403" />
+
+		<form-login
+		    login-page="/login.html"
+		    default-target-url="/index.html"
+			username-parameter="username"
+			password-parameter="password"
+			login-processing-url="/j_spring_security_check"
+			authentication-failure-url="/login.html?error" />
+		<logout logout-url="/j_spring_security_logout"
+			logout-success-url="/login.html" />
+
+		<remember-me remember-me-parameter="_spring_security_remember_me"
+			remember-me-cookie="SPRING_SECURITY_REMEMBER_ME_COOKIE" />
+
+		<!-- enable csrf protection -->
+		<csrf disabled="false" />
+	</http>
+
+	
+	<!--
+	Perhatikan pada bagian berikut,
+	users-by-username-query: adalah query yg digunakan spring security mengecek user saat login,
+	urutan field dari query tersebut adalah userid,password,enabled (jangan salah).
+	
+	authorities-by-username-query: adalah query yg digunakan oleh spring security untuk mendapatkan informasi role dari user yg sedang login,
+	urutannya juga jangan salah yaitu userid,role
+	 -->
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service
+			    data-source-ref="dataSource"
+				users-by-username-query="SELECT USERNAME, PASSWORD, ACTIVE FROM MST_USER WHERE USERNAME=?"
+				authorities-by-username-query="SELECT u1.USERNAME, u2.NAME FROM  MST_USER u1, MST_ROLE u2 WHERE u1.ROLE_ID = u2.ID and u1.USERNAME=?" />
+		</authentication-provider>
+	</authentication-manager>
+</b:beans>
