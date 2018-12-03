@@ -5,7 +5,7 @@
 		<section class="sidebar">
 			<ul class="sidebar-menu">
 				<li class="header"><h5>XBC 179</h5></li>
-					
+				<!-- Modul 1 -->	
 				<li>
 					<a href="#"><i class="fa fa-edit"></i><span>UserRole Master</span><span class="pull-right-container"> </span></a>
 					<ul class="treeview-menu">
@@ -16,7 +16,25 @@
 							<a href="${contextName}/role.html" class="menu-item"><i class="fa fa-book"></i>Role</a>
 						</li>
 					</ul>
+				</li>
+				<!-- Modul 2 -->	
+				
+				<!-- Modul 3 -->
+				<li>
+					<a href="#"><i class="fa fa-edit"></i><span>Module 3</span><span class="pull-right-container"> </span></a>
+					<ul class="treeview-menu">
+						<li>
+							<a href="${contextName}/biodata.html" class="menu-item"><i class="fa fa-male"></i>Biodata</a>
+						</li>
+						<li>
+							<a href="${contextName}/monitoring.html" class="menu-item"><i class="fa fa-desktop"></i>Monitoring</a>
+						</li>
+						<li>
+							<a href="${contextName}/assignment.html" class="menu-item"><i class="fa fa-briefcase"></i>Assignment</a>
+						</li>
+					</ul>
 				</li>	
+				<!-- Modul 4 -->
 				<li>
 					<a href="#"><i class="fa fa-microchip"></i><span>Modul 4</span><span class="pull-right-container"> </span></a>
 					<ul class="treeview-menu">
@@ -33,8 +51,8 @@
 							<a href="${contextName}/idle_news.html" class="menu-item"><i class="fa fa-compass"></i>Idle News</a>
 						</li>
 					</ul>
-				</li>	
-
+				</li>
+				<!-- Modul 5 -->
 			</ul> 
 		</section>
 		<!-- /.sidebar -->
