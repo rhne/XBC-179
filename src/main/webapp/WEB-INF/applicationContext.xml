@@ -45,13 +45,15 @@
 				<value>com.spring.miniproject.model.SequenceModel</value>
 				<value>com.spring.miniproject.model.AkunModel</value>
 				<value>com.spring.miniproject.model.RoleModel</value>
+				<value>com.spring.miniproject.model.QuestionModel</value>
+				<value>com.spring.miniproject.model.OfficeModel</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property>
 	</bean>
