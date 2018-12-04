@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.IdleNewsModel;
 import com.spring.miniproject.service.CategoryService;
@@ -66,5 +67,15 @@ public class IdleNewsController {
 		List<CategoryModel> categoryModelList = new ArrayList<CategoryModel>();
 		categoryModelList = this.categoryService.select();
 		model.addAttribute("categoryModelList", categoryModelList);
+	}
+	
+	@RequestMapping(value="idle_news/search/name")
+	public String SearchName(HttpServletRequest request, Model model) {
+		String name = request.getParameter("nameCari");
+		List<IdleNewsModel> idlenewsModelList = new ArrayList<IdleNewsModel>();
+		idlenewsModelList = this.idlenewsService.searchByLikeName(name);
+		model.addAttribute("idlenewsModelList", idlenewsModelList);
+		String jsp = "idle_news/list";
+		return jsp;
 	}
 }

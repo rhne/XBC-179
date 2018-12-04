@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.miniproject.dao.IdleNewsDao;
+import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.IdleNewsModel;
 import com.spring.miniproject.service.IdleNewsService;
 
@@ -29,5 +30,9 @@ public class IdleNewsServiceImpl implements IdleNewsService{
 		return this.idlenewsDao.searchAll();
 	}
 
-
+	@Override
+	public List<IdleNewsModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		return this.idlenewsDao.searchByLikeName(name);
+	}
 }

@@ -29,5 +29,19 @@ public class OfficeServiceImpl implements OfficeService{
 		return this.officeDao.searchAll();
 	}
 
-
+	@Override
+	public List<OfficeModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		return this.officeDao.searchByLikeName(name);
+	}
+	
+	@Override
+	public OfficeModel searchById(Long id) {
+		return this.officeDao.searchById(id);
+	}
+	
+	@Override
+	public void delete(OfficeModel officeModel) {
+		this.officeDao.delete(officeModel);
+	}
 }

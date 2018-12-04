@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.RoleModel;
 import com.spring.miniproject.service.CategoryService;
@@ -91,5 +92,13 @@ public class CategoryController {
 		
 		return codeAuto;
 	}
-	
+	@RequestMapping(value="category/search/name")
+	public String SearchName(HttpServletRequest request, Model model) {
+		String name = request.getParameter("nameCari");
+		List<CategoryModel> categoryModelList = new ArrayList<CategoryModel>();
+		categoryModelList = this.categoryService.searchByLikeName(name);
+		model.addAttribute("categoryModelList", categoryModelList);
+		String jsp = "category/list";
+		return jsp;
+	}
 }
