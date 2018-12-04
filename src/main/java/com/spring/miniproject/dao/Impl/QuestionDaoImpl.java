@@ -1,5 +1,6 @@
 package com.spring.miniproject.dao.Impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -19,7 +20,37 @@ public class QuestionDaoImpl implements QuestionDao {
 	@Override
 	public List<QuestionModel> searchAll() {
 		Session session = this.sessionFactory.getCurrentSession();
-		return session.createQuery("from QuestionModel").list();
+		return session.createQuery("from QuestionModel where isDelete=0").list();
+	}
+
+	@Override
+	public void create(QuestionModel questionModel) {
+		Session session = this.sessionFactory.getCurrentSession();
+		questionModel.setCreatedOn(new Date());
+		session.save(questionModel);
+	}
+
+	@Override
+	public QuestionModel searchById(Long id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return (QuestionModel) session.createQuery("from QuestionModel where id=" + id).getSingleResult();
+	}
+
+	@Override
+	public void update(QuestionModel questionModel) {
+		questionModel.setModifiedOn(new Date());
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(questionModel);
+	}
+	
+	@Override
+	public void delete(QuestionModel questionModel) {
+		questionModel.setIsDelete(1);
+		questionModel.setDeletedOn(new Date());
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(questionModel);
 	}
 
 }
