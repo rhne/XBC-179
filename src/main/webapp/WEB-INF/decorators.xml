@@ -9,10 +9,19 @@
 		<!-- New link -->
 		<pattern>/user/*</pattern>
 		<pattern>/role/*</pattern>
+
+		<pattern>/biodata/*</pattern>
+		<pattern>/monitoring/*</pattern>
+		<pattern>/assignment/*</pattern>
+
+		<pattern>/bootcamp_test_type/*</pattern>
+		<pattern>/category/*</pattern>
+		<pattern>/idle_news/*</pattern>
 		<pattern>/technology/*</pattern>
 		<pattern>/question/*</pattern>
 		<pattern>/office/*</pattern>
 		<pattern>/trainer/*</pattern>
+
 	</excludes>
 
 	<decorator name="login" page="login.jsp">

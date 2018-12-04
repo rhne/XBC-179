@@ -11,4 +11,5 @@ public interface RoleService {
 	public RoleModel searchById(Integer id);
 	public void delete(RoleModel roleModel);
 	public void update(RoleModel roleModel);
+	public List<RoleModel> searchByLikeName(String name);
 }

@@ -5,8 +5,6 @@
 		<td>${officeModel.name}</td>
 		<td>${officeModel.phone}</td>
 		<td>${officeModel.email}</td>
-		<td>${officeModel.address}</td>
-		<td>${officeModel.notes}</td>
 		<td>${officeModel.isActive}</td>	
 		<td></td>
 	</tr>

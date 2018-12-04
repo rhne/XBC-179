@@ -47,6 +47,18 @@
        	</div>
 	</div>
 </div>
+
+<div class="modal fade" id="modal-alert-delete">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
+            Are you sure you want to delete?
+            <div class="modal-body">
+			
+			</div>
+       	</div>
+	</div>
+</div>
 </div>
 
 <script>
@@ -79,18 +91,47 @@
 		$("#modal-input").on("submit", "#form-question-tambah", function(){
 			$.ajax({
 				url: "question/create.json",
-				type: "get",
+				type: "post",
 				dataType: "json",
 				data: $(this).serialize(),
 				success: function(result){
 					$("#modal-alert1").find(".modal-title");  
 					$("#modal-alert1").modal("show");
 					$("#modal-input").modal("hide");
-					listDataAkun();
+					listData();
 				}
 			});
 			return false;
 		});
+
+		$("#list-data").on("click", ".btn-delete", function() {
+			var questionId = $(this).prop('id');
+			$.ajax({
+				url: "question/delete",
+				type: "get",
+				dataType: "html",
+				data: {
+					id: questionId
+				},
+				success: function (result) {
+					$("#modal-alert-delete").find(".modal-body").html(result);
+					$("#modal-alert-delete").modal("show");
+				}
+			});
+		});
 		
+		$("#modal-alert-delete").on("submit", "#form-confirm-delete", function() {
+			$.ajax({
+				url: "question/delete/save.json",
+				type: "post",
+				dataType: "json",
+				data: $(this).serialize(),
+				success: function (result) {
+					$("#modal-alert-delete").modal("hide");
+					listData();
+				}
+			});
+			return false;
+		});
 	});
 </script>

@@ -1,6 +1,6 @@
 package com.spring.miniproject.controller;
 
-import java.util.ArrayList;     
+import java.util.ArrayList;      
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,11 +42,13 @@ public class AkunController {
 	@RequestMapping(value="user/create")
 	public String create(HttpServletRequest request, Model model) throws Exception{
 		
-		Integer idRole = Integer.valueOf(request.getParameter("idRole"));
+		Long idRole = Long.valueOf(request.getParameter("idRole"));
 		
 		AkunModel akunModel = new AkunModel();
 		akunModel.setName(request.getParameter("name"));		
 		akunModel.setPassword(request.getParameter("password"));
+		akunModel.setMobileFlag(0);
+		akunModel.setIsActive(1);
 		akunModel.setIdRole(idRole);
 		
 		this.akunService.create(akunModel);
@@ -60,6 +62,38 @@ public class AkunController {
 	public String listakun(Model model) {
 		List<AkunModel> akunModelList = new ArrayList<AkunModel>();
 		akunModelList = this.akunService.searchAll();
+		model.addAttribute("akunModelList", akunModelList);
+		String jsp = "user/list";
+		return jsp;
+	}
+	
+	@RequestMapping(value="user/edit/save")
+	public String roleEditSave(HttpServletRequest request, Model model) {
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		
+		String nama = request.getParameter("name");
+		String password = request.getParameter("password");
+		Long idRole = Long.valueOf(request.getParameter("idRole"));
+		
+		AkunModel akunModelDB = new AkunModel();
+		akunModelDB = this.akunService.searchById(id);
+		
+		akunModelDB.setName(nama);
+		akunModelDB.setPassword(password);
+		akunModelDB.setIdRole(idRole);
+		
+		this.akunService.update(akunModelDB);
+		model.addAttribute("akunModelDB", akunModelDB);
+		
+		String jsp = "user/user";
+		return jsp;
+	}
+	
+	@RequestMapping(value="user/search/name")
+	public String userSearchName(HttpServletRequest request, Model model) {
+		String name = request.getParameter("nameCari");
+		List<AkunModel> akunModelList = new ArrayList<AkunModel>();
+		akunModelList = this.akunService.searchByLikeName(name);
 		model.addAttribute("akunModelList", akunModelList);
 		String jsp = "user/list";
 		return jsp;

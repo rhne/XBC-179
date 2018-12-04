@@ -1,6 +1,6 @@
 package com.spring.miniproject.controller;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;  
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +50,7 @@ public class RoleController {
 		roleModel.setKode(kode);
 		roleModel.setName(nama);
 		roleModel.setDescription(desc);
+		roleModel.setIsActive(1);
 		
 		this.roleService.create(roleModel);;
 		model.addAttribute("roleModel", roleModel);
@@ -76,28 +77,6 @@ public class RoleController {
 		model.addAttribute("roleModel", roleModel);
 		
 		String jsp = "role/detail";
-		return jsp;
-	}
-	
-	@RequestMapping(value="role/delete")
-	public String roleDelete(HttpServletRequest request,Model model) {
-		Integer id = Integer.valueOf(request.getParameter("id"));
-		RoleModel roleModel = new RoleModel();
-		roleModel = this.roleService.searchById(id);
-		model.addAttribute("roleModel", roleModel);
-		
-		String jsp = "role/delete";
-		return jsp;
-	}
-	
-	@RequestMapping(value="role/delete/save")
-	public String roleDeleteSave(HttpServletRequest request,Model model) {
-		Integer id = Integer.valueOf(request.getParameter("id"));
-		RoleModel roleModel = new RoleModel();
-		roleModel = this.roleService.searchById(id);
-		this.roleService.delete(roleModel);
-		
-		String jsp = "role/role";
 		return jsp;
 	}
 	
@@ -152,6 +131,16 @@ public class RoleController {
 		}
 		
 		return roleAuto;
+	}
+	
+	@RequestMapping(value="role/search/name")
+	public String roleSearchName(HttpServletRequest request, Model model) {
+		String name = request.getParameter("nameCari");
+		List<RoleModel> roleModelList = new ArrayList<RoleModel>();
+		roleModelList = this.roleService.searchByLikeName(name);
+		model.addAttribute("roleModelList", roleModelList);
+		String jsp = "role/list";
+		return jsp;
 	}
 	
 }

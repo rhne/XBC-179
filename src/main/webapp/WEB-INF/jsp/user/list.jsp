@@ -4,6 +4,21 @@
 	<tr>
 		<td>${akunModel.name}</td>
 		<td>${akunModel.roleModel.name}</td>
-		<td>${akunModel.isActive}</td>
+		<td>Active</td>
+		<td>
+			<ul class="sidebar-menu">
+				<li>
+				<a href="#"><i class="fa fa-list"></i><span class="pull-right-container"> </span></a>
+					<ul class="treeview-menu">
+						<li>
+							<a href="${contextName}/user.html" class="menu-item"><i class="fa fa-book"></i>User</a>
+						</li>
+						<li>
+							<a href="${contextName}/role.html" class="menu-item"><i class="fa fa-book"></i>Role</a>
+						</li>
+					</ul>
+				</li>	
+			</ul> 
+		</td>
 	</tr>
 </c:forEach>

@@ -8,9 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.miniproject.dao.AkunDao;
 import com.spring.miniproject.dao.OfficeDao;
-import com.spring.miniproject.model.AkunModel;
 import com.spring.miniproject.model.OfficeModel;
 
 @Repository
@@ -24,7 +22,7 @@ public class OfficeDaoImpl implements OfficeDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<OfficeModel> officeModelList = new ArrayList<OfficeModel>();
-		officeModelList = session.createQuery(" from OfficeModel ").list();
+		officeModelList = session.createQuery(" from OfficeModel where isActive =1 ").list();
 		return officeModelList;
 	}
 

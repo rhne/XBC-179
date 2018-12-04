@@ -1,5 +1,6 @@
 package com.spring.miniproject.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;  
@@ -12,13 +13,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.spring.miniproject.model.RoleModel;
 
 @Entity
 @Table(name="T_OFFICE")
 public class OfficeModel {
 
-	private Integer id;
+	private Long id;
 	private String name;
 	private String phone;
 	private String email;
@@ -28,13 +32,13 @@ public class OfficeModel {
 	//AuditTrail////////////////////
 		private Integer isActive;
 			
-		private Integer createdBy;
+		private Long createdBy;
 		private OfficeModel createdByUser;
-		private Date createdOn;
+		private LocalDateTime createdOn;
 				
-		private Integer modifiedBy;
+		private Long modifiedBy;
 		private OfficeModel modifiedByUser;
-		private Date modifiedOn;
+		private LocalDateTime modifiedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
@@ -43,10 +47,10 @@ public class OfficeModel {
 	@TableGenerator(name="T_OFFICE", table="S_SEQUENCE",
 			pkColumnName="SEQUENCE_NAME", pkColumnValue="T_OFFICE_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize =1, initialValue=0)
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -95,10 +99,10 @@ public class OfficeModel {
 	}
 	
 	@Column(name="CREATED_BY")
-	public Integer getcreatedBy() {
+	public Long getcreatedBy() {
 		return createdBy;
 	}
-	public void setCreatedBy(Integer createdBy) {
+	public void setCreatedBy(Long createdBy) {
 		this.createdBy = createdBy;
 	}
 	
@@ -111,19 +115,20 @@ public class OfficeModel {
 		this.createdByUser = createdByUser;
 	}
 	
+	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	public Date getCreatedOn() {
+	public LocalDateTime getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(Date createdOn) {
+	public void setCreatedOn(LocalDateTime createdOn) {
 		this.createdOn = createdOn;
 	}
 	
 	@Column(name="MODIFIED_BY")
-	public Integer getModifiedBy() {
+	public Long getModifiedBy() {
 		return modifiedBy;
 	}
-	public void setModifiedBy(Integer modifiedBy) {
+	public void setModifiedBy(Long modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 	
@@ -136,11 +141,12 @@ public class OfficeModel {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
+	@UpdateTimestamp
 	@Column(name="MODIFIED_ON")
-	public Date getModifiedOn() {
+	public LocalDateTime getModifiedOn() {
 		return modifiedOn;
 	}
-	public void setModifiedOn(Date modifiedOn) {
+	public void setModifiedOn(LocalDateTime modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
 }

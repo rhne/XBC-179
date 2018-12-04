@@ -1,6 +1,6 @@
 package com.spring.miniproject.dao.Impl;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;  
 import java.util.List;
 
 import org.hibernate.Session;
@@ -29,7 +29,7 @@ public class RoleDaoImpl implements RoleDao {
 	public List<RoleModel> select() {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		String query = "select r from RoleModel r";
+		String query = "select r from RoleModel r where r.isActive=1";
 		
 		List<RoleModel> roleModelList = new ArrayList<RoleModel>();
 		roleModelList = session.createQuery(query).list();
@@ -50,17 +50,30 @@ public class RoleDaoImpl implements RoleDao {
 	}
 
 	@Override
-	public void delete(RoleModel roleModel) {
-		// TODO Auto-generated method stub
-		Session session = this.sessionFactory.getCurrentSession();
-		session.delete(roleModel);
-	}
-
-	@Override
 	public void update(RoleModel roleModel) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(roleModel);
+	}
+
+	@Override
+	public void delete(RoleModel roleModel) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<RoleModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String query = " select r from RoleModel r "
+					 + " where r.name like '%"+name+"%' ";
+		
+		List<RoleModel> roleModelList = new ArrayList<RoleModel>();
+		roleModelList = session.createQuery(query).list();
+		
+		return roleModelList;
 	}
 	
 }

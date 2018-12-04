@@ -16,8 +16,6 @@
 				<th>Office Name</th>
 				<th>Phone</th>
 				<th>Email</th>
-				<th>Address</th>
-				<th>Notes</th>
 				<th>Status</th>
 			</tr>
 			</thead>
@@ -103,7 +101,7 @@
 					$("#modal-alert1").find(".modal-title");  
 					$("#modal-alert1").modal("show");
 					$("#modal-input").modal("hide");
-					listDataAkun();
+					listDataOffice();
 				}
 			});
 			return false;
