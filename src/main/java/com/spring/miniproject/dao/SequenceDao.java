@@ -13,6 +13,7 @@ public interface SequenceDao {
 	public Integer nextIdCategory();
 
 	public Integer nextIdBiodata();
+	public Integer nextIdMonitoring();
 
 
 }

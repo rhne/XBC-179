@@ -1,6 +1,6 @@
 <div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title">Question Data</h3>
+		<h3 class="box-title">Version Data</h3>
 		<div class="box-tools">
 				<div class="input-group input-group-sm" style="width: 200px;">
 				<div class="input-group-btn">
@@ -14,7 +14,7 @@
 			<thead>
 			<tr>
 				<th>No.</th>
-				<th>Question</th>
+				<th>Version</th>
 				<th>Created On</th>
 				<th>Is Delete</th>
 			</tr>
@@ -66,7 +66,7 @@
 
 	function listData() {
 		$.ajax({
-			url:"question/list.html",
+			url:"version/list.html",
 			type:"get",
 			dataType:"html",
 			success:function(result){

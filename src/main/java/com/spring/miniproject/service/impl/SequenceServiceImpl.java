@@ -66,4 +66,10 @@ public class SequenceServiceImpl implements SequenceService {
 		return this.sequenceDao.nextIdBiodata();
 
 	}
+
+	@Override
+	public Integer nextIdMonitoring() {
+		// TODO Auto-generated method stub
+		return this.sequenceDao.nextIdMonitoring();
+	}
 }
