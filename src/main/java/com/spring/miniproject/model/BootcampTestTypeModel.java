@@ -19,33 +19,30 @@ import org.hibernate.annotations.UpdateTimestamp;
 import com.spring.miniproject.model.RoleModel;
 
 @Entity
-@Table(name="T_OFFICE")
-public class OfficeModel {
+@Table(name="T_BOOTCAMP_TEST_TYPE")
+public class BootcampTestTypeModel {
 
 	private Long id;
 	private String name;
-	private String phone;
-	private String email;
-	private String address;
 	private String notes;
 	
 	//AuditTrail////////////////////
 		private Integer isActive;
 			
 		private Long createdBy;
-		private OfficeModel createdByUser;
+		private BootcampTestTypeModel createdByUser;
 		private LocalDateTime createdOn;
 				
 		private Long modifiedBy;
-		private OfficeModel modifiedByUser;
+		private BootcampTestTypeModel modifiedByUser;
 		private LocalDateTime modifiedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
 	@Column(name="ID")
-	@GeneratedValue(strategy=GenerationType.TABLE, generator="T_OFFICE")
-	@TableGenerator(name="T_OFFICE", table="S_SEQUENCE",
-			pkColumnName="SEQUENCE_NAME", pkColumnValue="T_OFFICE_ID",
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="T_BOOTCAMP_TEST_TYPE")
+	@TableGenerator(name="T_BOOTCAMP_TEST_TYPE", table="S_SEQUENCE",
+			pkColumnName="SEQUENCE_NAME", pkColumnValue="T_BOOTCAMP_TEST_TYPE_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize =1, initialValue=0)
 	public Long getId() {
 		return id;
@@ -60,27 +57,6 @@ public class OfficeModel {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	@Column(name="PHONE")
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	@Column(name="EMAIL")
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	@Column(name="ADDRESS")
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
 	}
 	@Column(name="NOTES")
 	public String getNotes() {
@@ -108,10 +84,10 @@ public class OfficeModel {
 	
 	@ManyToOne
 	@JoinColumn(name="CREATED_BY",nullable=true, updatable=false, insertable=false)
-	public OfficeModel getCreatedByUser() {
+	public BootcampTestTypeModel getCreatedByUser() {
 		return createdByUser;
 	}
-	public void setCreatedByUser(OfficeModel createdByUser) {
+	public void setCreatedByUser(BootcampTestTypeModel createdByUser) {
 		this.createdByUser = createdByUser;
 	}
 	
@@ -134,10 +110,10 @@ public class OfficeModel {
 	
 	@ManyToOne
 	@JoinColumn(name="MODIFIED_BY",nullable=true, updatable=false, insertable=false)
-	public OfficeModel getModifiedByUser() {
+	public BootcampTestTypeModel getModifiedByUser() {
 		return modifiedByUser;
 	}
-	public void setModifiedByUser(OfficeModel modifiedByUser) {
+	public void setModifiedByUser(BootcampTestTypeModel modifiedByUser) {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
