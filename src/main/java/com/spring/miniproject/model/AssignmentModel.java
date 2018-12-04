@@ -1,7 +1,6 @@
 package com.spring.miniproject.model;
 
 import java.time.LocalDate;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,37 +16,43 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
-@Table(name = "M_MONITORING")
-public class MonitoringModel {
+@Table(name = "A_ASSIGNMENT")
+public class AssignmentModel {
 	
 	@Id
 	@Column(name="ID")
-	@GeneratedValue(strategy=GenerationType.TABLE, generator="M_MONITORING")
-	@TableGenerator(name="M_MONITORING", table="S_SEQUENCE",
-			pkColumnName="SEQUENCE_NAME", pkColumnValue="M_MONITORING_ID",
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="A_ASSIGNMENT")
+	@TableGenerator(name="A_ASSIGNMENT", table="S_SEQUENCE",
+			pkColumnName="SEQUENCE_NAME", pkColumnValue="A_ASSIGNMENT_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize=1, initialValue=0)
 	private Long id;
 	
 	@Column(name="BIODATA_ID")
 	private Long testId;
 	
-	@Column(name="IDLE_DATE")
-	private LocalDate idleDate;
+	@Column(name="TITLE")
+	private String title;
 	
-	@Column(name="LAST_PROJECT")
-	private String lastProject;
+	@Column(name="START_DATE")
+	private LocalDate startDate;
 	
-	@Column(name="IDLE_REASON")
-	private String idleReason;
+	@Column(name="END_DATE")
+	private LocalDate endDate;
 	
-	@Column(name="PLACEMENT_DATE")
-	private LocalDate placementDate;
+	@Column(name="DESCRIPTION")
+	private String description;
 	
-	@Column(name="PLACEMENT_AT")
-	private String placementAt;
+	@Column(name="REALIZATION_DATE")
+	private LocalDate realizationDate;
 	
 	@Column(name="NOTES")
 	private String notes;
+	
+	@Column(name="IS_HOLD")
+	private Integer isHold;
+	
+	@Column(name="IS_DONE")
+	private Integer isDone;
 	
 	// AuditTrail////////////////////
 		@CreatedBy
@@ -88,52 +93,52 @@ public class MonitoringModel {
 			this.id = id;
 		}
 
-		public Long getBiodataId() {
+		public Long getTestId() {
 			return testId;
 		}
 
-		public void setBiodataId(Long testId) {
+		public void setTestId(Long testId) {
 			this.testId = testId;
 		}
 
-		public LocalDate getIdleDate() {
-			return idleDate;
+		public String getTitle() {
+			return title;
 		}
 
-		public void setIdleDate(LocalDate idleDate) {
-			this.idleDate = idleDate;
+		public void setTitle(String title) {
+			this.title = title;
 		}
 
-		public String getLastProject() {
-			return lastProject;
+		public LocalDate getStartDate() {
+			return startDate;
 		}
 
-		public void setLastProject(String lastProject) {
-			this.lastProject = lastProject;
+		public void setStartDate(LocalDate startDate) {
+			this.startDate = startDate;
 		}
 
-		public String getIdleReason() {
-			return idleReason;
+		public LocalDate getEndDate() {
+			return endDate;
 		}
 
-		public void setIdleReason(String idleReason) {
-			this.idleReason = idleReason;
+		public void setEndDate(LocalDate endDate) {
+			this.endDate = endDate;
 		}
 
-		public LocalDate getPlacementDate() {
-			return placementDate;
+		public String getDescription() {
+			return description;
 		}
 
-		public void setPlacementDate(LocalDate placementDate) {
-			this.placementDate = placementDate;
+		public void setDescription(String description) {
+			this.description = description;
 		}
 
-		public String getPlacementAt() {
-			return placementAt;
+		public LocalDate getRealizationDate() {
+			return realizationDate;
 		}
 
-		public void setPlacementAt(String placementAt) {
-			this.placementAt = placementAt;
+		public void setRealizationDate(LocalDate realizationDate) {
+			this.realizationDate = realizationDate;
 		}
 
 		public String getNotes() {
@@ -142,6 +147,22 @@ public class MonitoringModel {
 
 		public void setNotes(String notes) {
 			this.notes = notes;
+		}
+
+		public Integer getIsHold() {
+			return isHold;
+		}
+
+		public void setIsHold(Integer isHold) {
+			this.isHold = isHold;
+		}
+
+		public Integer getIsDone() {
+			return isDone;
+		}
+
+		public void setIsDone(Integer isDone) {
+			this.isDone = isDone;
 		}
 
 		public Long getCreatedBy() {
@@ -201,6 +222,4 @@ public class MonitoringModel {
 		}
 		
 		
-	
-	
 }
