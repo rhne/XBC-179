@@ -86,7 +86,7 @@
 					$("#modal-alert").find(".modal-title");  
 					$("#modal-alert").modal("show");
 					$("#modal-input").modal("hide");
-					listDataAkun();
+					listDataCategory();
 				}
 			});
 			return false;

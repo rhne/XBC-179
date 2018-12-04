@@ -101,7 +101,7 @@
 					$("#modal-alert1").find(".modal-title");  
 					$("#modal-alert1").modal("show");
 					$("#modal-input").modal("hide");
-					listDataAkun();
+					listDataOffice();
 				}
 			});
 			return false;

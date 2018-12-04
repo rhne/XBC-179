@@ -1,7 +1,6 @@
 package com.spring.miniproject.model;
 
 import java.time.LocalDate;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

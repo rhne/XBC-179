@@ -22,7 +22,7 @@ public class BootcampTestTypeDaoImpl implements BootcampTestTypeDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<BootcampTestTypeModel> bootcamptesttypeModelList = new ArrayList<BootcampTestTypeModel>();
-		bootcamptesttypeModelList = session.createQuery(" from BootcampTestTypeModel ").list();
+		bootcamptesttypeModelList = session.createQuery(" from BootcampTestTypeModel where isActive =1").list();
 		return bootcamptesttypeModelList;
 	}
 

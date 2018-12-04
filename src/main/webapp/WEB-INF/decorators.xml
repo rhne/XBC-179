@@ -16,6 +16,7 @@
 
 		<pattern>/bootcamp_test_type/*</pattern>
 		<pattern>/category/*</pattern>
+		<pattern>/idle_news/*</pattern>
 		<pattern>/technology/*</pattern>
 		<pattern>/question/*</pattern>
 		<pattern>/version/*</pattern>
