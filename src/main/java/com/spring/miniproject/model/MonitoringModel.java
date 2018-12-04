@@ -1,6 +1,6 @@
 package com.spring.miniproject.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +31,7 @@ public class MonitoringModel {
 	private Long testId;
 	
 	@Column(name="IDLE_DATE")
-	private LocalDate idleDate;
+	private Date idleDate;
 	
 	@Column(name="LAST_PROJECT")
 	private String lastProject;
@@ -40,7 +40,7 @@ public class MonitoringModel {
 	private String idleReason;
 	
 	@Column(name="PLACEMENT_DATE")
-	private LocalDate placementDate;
+	private Date placementDate;
 	
 	@Column(name="PLACEMENT_AT")
 	private String placementAt;
@@ -55,7 +55,7 @@ public class MonitoringModel {
 		
 		@CreatedDate
 		@Column(name="CREATED_ON")
-		private LocalDate createdOn;
+		private Date createdOn;
 		
 		@LastModifiedBy
 		@Column(name="MODIFIED_BY")
@@ -63,18 +63,17 @@ public class MonitoringModel {
 		
 		@LastModifiedDate
 		@Column(name="MODIFIED_ON")
-		private LocalDate modifiedOn;
+		private Date modifiedOn;
 		
 		
 		@Column(name="DELETED_BY")
 		private Long deletedBy;
 		
 		@Column(name="DELETED_ON")
-		private LocalDate deletedOn;
+		private Date deletedOn;
 		
 		@Column(name="IS_DELETE")
-		private Integer isDelete;
-		
+		private Integer isDelete;		
 		/*private AkunModel createdByUser;
 		private AkunModel modifiedByUser;*/
 		// AuditTrail/////////////////////
@@ -87,19 +86,19 @@ public class MonitoringModel {
 			this.id = id;
 		}
 
-		public Long getBiodataId() {
+		public Long getTestId() {
 			return testId;
 		}
 
-		public void setBiodataId(Long testId) {
+		public void setTestId(Long testId) {
 			this.testId = testId;
 		}
 
-		public LocalDate getIdleDate() {
+		public Date getIdleDate() {
 			return idleDate;
 		}
 
-		public void setIdleDate(LocalDate idleDate) {
+		public void setIdleDate(Date idleDate) {
 			this.idleDate = idleDate;
 		}
 
@@ -119,11 +118,11 @@ public class MonitoringModel {
 			this.idleReason = idleReason;
 		}
 
-		public LocalDate getPlacementDate() {
+		public Date getPlacementDate() {
 			return placementDate;
 		}
 
-		public void setPlacementDate(LocalDate placementDate) {
+		public void setPlacementDate(Date placementDate) {
 			this.placementDate = placementDate;
 		}
 
@@ -151,11 +150,11 @@ public class MonitoringModel {
 			this.createdBy = createdBy;
 		}
 
-		public LocalDate getCreatedOn() {
+		public Date getCreatedOn() {
 			return createdOn;
 		}
 
-		public void setCreatedOn(LocalDate createdOn) {
+		public void setCreatedOn(Date createdOn) {
 			this.createdOn = createdOn;
 		}
 
@@ -167,11 +166,11 @@ public class MonitoringModel {
 			this.modifiedBy = modifiedBy;
 		}
 
-		public LocalDate getModifiedOn() {
+		public Date getModifiedOn() {
 			return modifiedOn;
 		}
 
-		public void setModifiedOn(LocalDate modifiedOn) {
+		public void setModifiedOn(Date modifiedOn) {
 			this.modifiedOn = modifiedOn;
 		}
 
@@ -183,11 +182,11 @@ public class MonitoringModel {
 			this.deletedBy = deletedBy;
 		}
 
-		public LocalDate getDeletedOn() {
+		public Date getDeletedOn() {
 			return deletedOn;
 		}
 
-		public void setDeletedOn(LocalDate deletedOn) {
+		public void setDeletedOn(Date deletedOn) {
 			this.deletedOn = deletedOn;
 		}
 
@@ -200,6 +199,4 @@ public class MonitoringModel {
 		}
 		
 		
-	
-	
 }

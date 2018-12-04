@@ -2,7 +2,7 @@
 
 <form id="form-question-tambah" class="form-horizontal" onsubmit="return validasi_input();">
 <div class="form-group" style="padding: 20px;">
-	<label>Question</label>
+	<label>Version</label>
 	<textarea id="question" name="question" class="form-control" style="resize:vertical" rows="3"></textarea>
 	
 	<div class="modal-footer">

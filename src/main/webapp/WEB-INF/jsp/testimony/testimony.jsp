@@ -1,9 +1,9 @@
 <div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title">TECHNOLOGY</h3>
+		<h3 class="box-title">TESTIMONY</h3>
 		<div class="box-tools">
 			<div class="input-group input-group-sm" style="width: 200px;'">
-				<input type="text" id="txt-search" name="text" class="form-control pull-right" placeholder="Search by Name">
+				<input type="text" id="txt-search" name="search-box" class="form-control pull-right" placeholder="Search by Title">
 				<div class="input-group-btn">
 					<button type="button" id="btn-search" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="search"><i class="fa fa-search"></i></button>
 					<button type="button" id="btn-add" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="add new"><i class="fa fa-plus"></i></button>
@@ -12,17 +12,15 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<table class="table" id="tech-table">
+		<table class="table" id="testimony-table">
 			<thead>
 				<tr>
-					<td>NAME</td>
-					<td>CREATED BY</td>
-					<td>STATUS</td>
+					<td>TITLE</td>
 					<td></td>
 				</tr>
 			</thead>
 			
-			<tbody id="list-data-technology"></tbody>
+			<tbody id="list-data-testimony"></tbody>
 		</table>
 	</div>
 </div>
@@ -39,62 +37,43 @@
 </div>
 
 <script>
-
-	listDataTechnology();
-	function listDataTechnology(){
+	listDatatestimony();
+	function listDataTestimony(){
 		$.ajax({
-			url : "technology/listTechnology.html",
-			type: "get",
-			dataType: "html",
-			success: function(result){
-				$("#list-data-technology").html(result);
+			url : "testimony/listTestimony.html",
+			type : "get",
+			dataType : "html",
+			success : function(result){
+				$("#list-data-testimony").html(result);
 			}
-		});	
+		});
 	}
-
+	
 	$("#btn-add").on("click", function() {
 		$.ajax({
-			url:"technology/addTechnology.html",
+			url:"testimony/addTestimony.html",
 			type: "get",
 			dataType: "html",
 			success: function(result){
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
-				$("#modal-input").bPopup({
-					modalClose : false
-				});
 			}
 		});
 	});
-		
-	$("#modal-input").on("submit", "#form-add-technology", function(){
-			$.ajax({
-				url:"technology/addTechnology/save.json",
-				type : "get",
-				dataType : "json",
-				data: $(this).serialize(),
-				success : function(result){
-					$("#modal-input").modal("hide");
-					alert("Data succesfully added!");
-					listDataTechnology();
-				}
-			});
-			return false;
-		});
 	
-	$("#btn-search").click(function(){
-		var text = document.getElementById("txt-search").val();
+	$("#modal-input").on("submit", "#form-add-testimony", function(){
 		$.ajax({
-			url : "technology/searchTechnology/text.html",
+			url : "testimony/addTestimony/save.json",
 			type : "get",
-			dataType : "html",
-			data : {text:text},
+			dataType : "json",
+			data : $(this).serialize(),
 			success : function(result){
-				$("list-data-technology").html(result);
+				$("#modal-input").modal("hide");
+				alert("Data sucessfully added!");
+				listDataTestimony();
 			}
 		});
 		return false;
 	});
 
-		
 </script>

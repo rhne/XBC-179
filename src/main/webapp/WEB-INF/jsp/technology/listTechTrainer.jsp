@@ -7,19 +7,9 @@
 	<td>${technologyModel.active}</td>
 	<td>
 		<select id="action">
-			<option id="edit-list-technology">Edit</option>
+			<option id="edit-list-tech-trainer">Edit</option>
 			<option id="deactive-status" value="0">Deactive</option>
 		</select>
 	</td>
 </tr>
-
 </tech:forEach>
-
-<tr>
-	<td>
-		<select id="action">
-			<option id="edit-list-technology">Edit</option>
-			<option id="deactive-status" value="0">Deactive</option>
-		</select>
-	</td>
-</tr>
