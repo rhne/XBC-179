@@ -1,6 +1,6 @@
 package com.spring.miniproject.model;
 
-import java.util.Date; 
+import java.time.LocalDateTime; 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,25 +12,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.spring.miniproject.model.AkunModel;
 
 @Entity
 @Table(name="R_ROLE")
 public class RoleModel {
 	
-	private Integer id;
+	private Long id;
 	private String kode, name, description;
 	
 	//AuditTrail////////////////////
 		private Integer isActive;
 			
-		private Integer createdBy;
+		private Long createdBy;
 		private AkunModel createdByUser;
-		private Date createdOn;
+		private LocalDateTime createdOn;
 			
-		private Integer modifiedBy;
+		private Long modifiedBy;
 		private AkunModel modifiedByUser;
-		private Date modifiedOn;
+		private LocalDateTime modifiedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
@@ -39,11 +42,11 @@ public class RoleModel {
 	@TableGenerator(name="R_ROLE", table="S_SEQUENCE",
 			pkColumnName="SEQUENCE_NAME", pkColumnValue="R_ROLE_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize=1, initialValue=0)
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -80,12 +83,12 @@ public class RoleModel {
 	public void setIsActive(Integer isActive) {
 		this.isActive = isActive;
 	}
-/*	
+	
 	@Column(name="CREATED_BY")
-	public Integer getcreatedBy() {
+	public Long getcreatedBy() {
 		return createdBy;
 	}
-	public void setCreatedBy(Integer createdBy) {
+	public void setCreatedBy(Long createdBy) {
 		this.createdBy = createdBy;
 	}
 	
@@ -98,19 +101,20 @@ public class RoleModel {
 		this.createdByUser = createdByUser;
 	}
 	
+	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	public Date getCreatedOn() {
+	public LocalDateTime getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(Date createdOn) {
+	public void setCreatedOn(LocalDateTime createdOn) {
 		this.createdOn = createdOn;
 	}
 	
 	@Column(name="MODIFIED_BY")
-	public Integer getModifiedBy() {
+	public Long getModifiedBy() {
 		return modifiedBy;
 	}
-	public void setModifiedBy(Integer modifiedBy) {
+	public void setModifiedBy(Long modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 	
@@ -123,11 +127,12 @@ public class RoleModel {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
+	@UpdateTimestamp
 	@Column(name="MODIFIED_ON")
-	public Date getModifiedOn() {
+	public LocalDateTime getModifiedOn() {
 		return modifiedOn;
 	}
-	public void setModifiedOn(Date modifiedOn) {
+	public void setModifiedOn(LocalDateTime modifiedOn) {
 		this.modifiedOn = modifiedOn;
-	}*/
+	}
 }

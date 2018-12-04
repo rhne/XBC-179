@@ -14,6 +14,8 @@
 		<pattern>/monitoring/*</pattern>
 		<pattern>/assignment/*</pattern>
 
+		<pattern>/bootcamp_test_type/*</pattern>
+		<pattern>/category/*</pattern>
 		<pattern>/technology/*</pattern>
 		<pattern>/question/*</pattern>
 		<pattern>/office/*</pattern>

@@ -16,8 +16,6 @@
 				<th>Office Name</th>
 				<th>Phone</th>
 				<th>Email</th>
-				<th>Address</th>
-				<th>Notes</th>
 				<th>Status</th>
 			</tr>
 			</thead>

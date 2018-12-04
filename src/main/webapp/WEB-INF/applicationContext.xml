@@ -50,6 +50,11 @@
 				<value>com.spring.miniproject.model.MonitoringModel</value>
 				<value>com.spring.miniproject.model.AssignmentModel</value>
 
+				<value>com.spring.miniproject.model.AsssignmentModel</value> 
+				
+				<value>com.spring.miniproject.model.CategoryModel</value>
+				<value>com.spring.miniproject.model.BootcampTestTypeModel</value>
+
 				<value>com.spring.miniproject.model.QuestionModel</value>
 				<value>com.spring.miniproject.model.OfficeModel</value>
 

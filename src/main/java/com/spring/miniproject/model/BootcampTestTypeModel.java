@@ -1,6 +1,7 @@
 package com.spring.miniproject.model;
 
-import java.time.LocalDateTime; 
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;  
 import javax.persistence.Entity;
@@ -18,38 +19,31 @@ import org.hibernate.annotations.UpdateTimestamp;
 import com.spring.miniproject.model.RoleModel;
 
 @Entity
-@Table(name="U_USER")
-public class AkunModel {
+@Table(name="T_BOOTCAMP_TEST_TYPE")
+public class BootcampTestTypeModel {
 
 	private Long id;
 	private String name;
-	private String password;
-	
-	private Long idRole;
-	private RoleModel roleModel;
-	
-	private Integer mobileFlag;
-	private Long mobileToken;
+	private String notes;
 	
 	//AuditTrail////////////////////
 		private Integer isActive;
 			
 		private Long createdBy;
-		private AkunModel createdByUser;
+		private BootcampTestTypeModel createdByUser;
 		private LocalDateTime createdOn;
 				
 		private Long modifiedBy;
-		private AkunModel modifiedByUser;
+		private BootcampTestTypeModel modifiedByUser;
 		private LocalDateTime modifiedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
 	@Column(name="ID")
-	@GeneratedValue(strategy=GenerationType.TABLE, generator="U_USER")
-	@TableGenerator(name="U_USER", table="S_SEQUENCE",
-			pkColumnName="SEQUENCE_NAME", pkColumnValue="U_USER_ID",
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="T_BOOTCAMP_TEST_TYPE")
+	@TableGenerator(name="T_BOOTCAMP_TEST_TYPE", table="S_SEQUENCE",
+			pkColumnName="SEQUENCE_NAME", pkColumnValue="T_BOOTCAMP_TEST_TYPE_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize =1, initialValue=0)
-	
 	public Long getId() {
 		return id;
 	}
@@ -57,41 +51,22 @@ public class AkunModel {
 		this.id = id;
 	}
 	
-	@Column(name="USERNAME")
+	@Column(name="NAMA")
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Column(name="PASSWORD")
-	public String getPassword() {
-		return password;
+	@Column(name="NOTES")
+	public String getNotes() {
+		return notes;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	@Column(name="ID_ROLE")
-	public Long getIdRole() {
-		return idRole;
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 	
-	public void setIdRole(Long idRole) {
-		this.idRole = idRole;
-	}
-	
-	@ManyToOne
-	@JoinColumn(name="ID_ROLE", nullable=true, updatable=false, insertable=false)
-	public RoleModel getRoleModel() {
-		return roleModel;
-	}
-	
-	public void setRoleModel(RoleModel roleModel) {
-		this.roleModel = roleModel;
-	}
-	
-	@Column(name="IS_ACTIVE")
+	@Column(name="IS_DELETE")
 	public Integer getIsActive() {
 		return isActive;
 	}
@@ -109,10 +84,10 @@ public class AkunModel {
 	
 	@ManyToOne
 	@JoinColumn(name="CREATED_BY",nullable=true, updatable=false, insertable=false)
-	public AkunModel getCreatedByUser() {
+	public BootcampTestTypeModel getCreatedByUser() {
 		return createdByUser;
 	}
-	public void setCreatedByUser(AkunModel createdByUser) {
+	public void setCreatedByUser(BootcampTestTypeModel createdByUser) {
 		this.createdByUser = createdByUser;
 	}
 	
@@ -135,10 +110,10 @@ public class AkunModel {
 	
 	@ManyToOne
 	@JoinColumn(name="MODIFIED_BY",nullable=true, updatable=false, insertable=false)
-	public AkunModel getModifiedByUser() {
+	public BootcampTestTypeModel getModifiedByUser() {
 		return modifiedByUser;
 	}
-	public void setModifiedByUser(AkunModel modifiedByUser) {
+	public void setModifiedByUser(BootcampTestTypeModel modifiedByUser) {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
@@ -149,21 +124,5 @@ public class AkunModel {
 	}
 	public void setModifiedOn(LocalDateTime modifiedOn) {
 		this.modifiedOn = modifiedOn;
-	}
-	
-	@Column(name="MOBILE_FLAG")
-	public Integer getMobileFlag() {
-		return mobileFlag;
-	}
-	public void setMobileFlag(Integer mobileFlag) {
-		this.mobileFlag = mobileFlag;
-	}
-	
-	@Column(name="MOBILE_TOKEN")
-	public Long getMobileToken() {
-		return mobileToken;
-	}
-	public void setMobileToken(Long mobileToken) {
-		this.mobileToken = mobileToken;
 	}
 }
