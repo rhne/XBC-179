@@ -89,7 +89,7 @@ public class AkunController {
 		return jsp;
 	}
 	
-	@RequestMapping(value="user/search")
+	@RequestMapping(value="user/search/name")
 	public String userSearchName(HttpServletRequest request, Model model) {
 		String name = request.getParameter("nameCari");
 		List<AkunModel> akunModelList = new ArrayList<AkunModel>();

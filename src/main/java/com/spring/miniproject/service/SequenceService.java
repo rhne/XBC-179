@@ -9,5 +9,6 @@ public interface SequenceService {
 	public Integer nextIdOffice();
 	public Integer nextIdBootcampTestType();
 	public Integer nextIdCategory();
+	public Integer nextIdBiodata();
 	
 }

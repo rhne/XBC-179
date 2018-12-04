@@ -48,6 +48,28 @@ public class QuestionController {
 		questionModel.setQuestion(question);
 		questionModel.setCreatedOn(new Date());
 		questionModel.setIsDelete(0);
+		this.questionService.create(questionModel);
+		
+		String jsp = "question/home";
+		return jsp;
+	}
+	
+	@RequestMapping (value="question/delete")
+	public String delete(HttpServletRequest request, Model model) {
+		String id = request.getParameter("id");
+		QuestionModel questionModel = new QuestionModel();
+		questionModel = this.questionService.searchById(Long.parseLong(id));
+		model.addAttribute("questionModel", questionModel);
+		String jsp = "question/delete";
+		return jsp;
+	}
+	
+	@RequestMapping (value="question/delete/save")
+	public String delete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		QuestionModel questionModel = new QuestionModel();
+		questionModel = this.questionService.searchById(Long.parseLong(id));
+		this.questionService.delete(questionModel);
 		
 		String jsp = "question/home";
 		return jsp;

@@ -4,7 +4,7 @@
 	<tr>
 		<td>${akunModel.name}</td>
 		<td>${akunModel.roleModel.name}</td>
-		<td>${akunModel.isActive}</td>
+		<td>Active</td>
 		<td>
 			<ul class="sidebar-menu">
 				<li>

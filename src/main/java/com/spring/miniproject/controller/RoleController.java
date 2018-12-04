@@ -133,11 +133,11 @@ public class RoleController {
 		return roleAuto;
 	}
 	
-	@RequestMapping(value="role/search")
+	@RequestMapping(value="role/search/name")
 	public String roleSearchName(HttpServletRequest request, Model model) {
-		String nameCari = request.getParameter("nameCari");
+		String name = request.getParameter("nameCari");
 		List<RoleModel> roleModelList = new ArrayList<RoleModel>();
-		roleModelList = this.roleService.searchByLikeName(nameCari);
+		roleModelList = this.roleService.searchByLikeName(name);
 		model.addAttribute("roleModelList", roleModelList);
 		String jsp = "role/list";
 		return jsp;

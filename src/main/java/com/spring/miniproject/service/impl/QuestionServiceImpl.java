@@ -22,4 +22,24 @@ public class QuestionServiceImpl implements QuestionService {
 		return this.questionDao.searchAll();
 	}
 
+	@Override
+	public void create(QuestionModel questionModel) {
+		this.questionDao.create(questionModel);
+	}
+
+	@Override
+	public QuestionModel searchById(Long id) {
+		return this.questionDao.searchById(id);
+	}
+
+	@Override
+	public void update(QuestionModel questionModel) {
+		this.questionDao.update(questionModel);
+	}
+
+	@Override
+	public void delete(QuestionModel questionModel) {
+		this.questionDao.delete(questionModel);
+	}
+
 }
