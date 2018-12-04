@@ -7,6 +7,6 @@ public interface SequenceService {
 	public Integer nextIdTechnology();
 	public Integer nextIdTrainer();
 	public Integer nextIdBiodata();
-	
+	public Integer nextIdMonitoring();
 	
 }

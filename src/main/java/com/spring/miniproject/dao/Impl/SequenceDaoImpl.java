@@ -101,4 +101,22 @@ public class SequenceDaoImpl implements SequenceDao {
 		return idBiodata;
 	}
 
+	@Override
+	public Integer nextIdMonitoring() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idMonitoring = 0;
+		String query = " from SequenceModel where sequenceName='ID_MONITORING' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idMonitoring = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idMonitoring = 1;
+		}
+		return idMonitoring;
+	}
+
 }
