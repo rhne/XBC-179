@@ -18,7 +18,17 @@
 					</ul>
 				</li>
 				<!-- Modul 2 -->	
-				
+				<li>
+					<a href="#"><i class="fa fa-edit"></i><span>QuestionVersion Master</span><span class="pull-right-container"> </span></a>
+					<ul class="treeview-menu">
+						<li>
+							<a href="${contextName}/question.html" class="menu-item"><i class="fa fa-book"></i>Question</a>
+						</li>
+						<li>
+							<a href="${contextName}/version.html" class="menu-item"><i class="fa fa-book"></i>Version</a>
+						</li>
+					</ul>
+				</li>
 				<!-- Modul 3 -->
 				<li>
 					<a href="#"><i class="fa fa-edit"></i><span>Module 3</span><span class="pull-right-container"> </span></a>
