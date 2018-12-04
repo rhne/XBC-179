@@ -8,27 +8,27 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.miniproject.dao.AkunDao;
-import com.spring.miniproject.model.AkunModel;
+import com.spring.miniproject.dao.BiodataDao;
+import com.spring.miniproject.model.BiodataModel;
 
 @Repository
-public class AkunDaoImpl implements AkunDao{
+public class BiodataDaoImpl implements BiodataDao{
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public void create(AkunModel akunModel) {
+	public void create(BiodataModel biodataModel) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		session.save(akunModel);
+		session.save(biodataModel);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<AkunModel> searchAll() {
+	public List<BiodataModel> searchAll() {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		List<AkunModel> akunModelList = new ArrayList<AkunModel>();
-		akunModelList = session.createQuery(" from AkunModel ").list();
-		return akunModelList;
+		List<BiodataModel> biodataModelList = new ArrayList<BiodataModel>();
+		biodataModelList = session.createQuery(" from BiodataModel ").list();
+		return biodataModelList;
 	}
 }
