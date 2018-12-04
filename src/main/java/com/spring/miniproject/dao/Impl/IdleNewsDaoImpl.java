@@ -8,28 +8,27 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.miniproject.dao.OfficeDao;
-import com.spring.miniproject.model.OfficeModel;
-
+import com.spring.miniproject.dao.IdleNewsDao;
+import com.spring.miniproject.model.IdleNewsModel;
 @Repository
-public class OfficeDaoImpl implements OfficeDao{
+public class IdleNewsDaoImpl implements IdleNewsDao{
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@SuppressWarnings("unchecked")
-	public List<OfficeModel> searchAll() {
+	public List<IdleNewsModel> searchAll() {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		List<OfficeModel> officeModelList = new ArrayList<OfficeModel>();
-		officeModelList = session.createQuery(" from OfficeModel where isActive =1 ").list();
-		return officeModelList;
+		List<IdleNewsModel> idlenewsModelList = new ArrayList<IdleNewsModel>();
+		idlenewsModelList = session.createQuery(" from IdleNewsModel where isDeleted=0 ").list();
+		return idlenewsModelList;
 	}
 
 	@Override
-	public void create(OfficeModel officeModel) {
+	public void create(IdleNewsModel idlenewsModel) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		session.save(officeModel);
+		session.save(idlenewsModel);
 	}
 }
