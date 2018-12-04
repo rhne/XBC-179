@@ -67,8 +67,8 @@ public class RoleDaoImpl implements RoleDao {
 	public List<RoleModel> searchByLikeName(String name) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		String query = " select a from RoleModel a "
-					 + " where a.name like '%"+name+"%' ";
+		String query = " select r from RoleModel r "
+					 + " where r.name like '%"+name+"%' ";
 		
 		List<RoleModel> roleModelList = new ArrayList<RoleModel>();
 		roleModelList = session.createQuery(query).list();
