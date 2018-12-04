@@ -6,5 +6,6 @@ public interface SequenceDao {
 	public Integer nextIdRole();
 	public Integer nextIdTechnology();
 	public Integer nextIdTrainer();
+	public Integer nextIdBiodata();
 
 }

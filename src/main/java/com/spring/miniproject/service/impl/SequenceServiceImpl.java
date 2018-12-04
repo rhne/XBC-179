@@ -36,4 +36,10 @@ public class SequenceServiceImpl implements SequenceService {
 		// TODO Auto-generated method stub
 		return this.sequenceDao.nextIdTrainer();
 	}
+
+	@Override
+	public Integer nextIdBiodata() {
+		// TODO Auto-generated method stub
+		return this.sequenceDao.nextIdBiodata();
+	}
 }
