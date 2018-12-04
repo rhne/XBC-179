@@ -47,4 +47,10 @@ public class RoleServiceImpl implements RoleService{
 		this.roleDao.update(roleModel);
 	}
 
+	@Override
+	public List<RoleModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		return this.roleDao.searchByLikeName(name);
+	}
+
 }

@@ -16,7 +16,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="description">Description</label>
 		<div class="col-md-8">
-			<input type="text" id="description" name="description" class="form-control">
+			<textarea id="deskripsi" name="deskripsi" class="form-control"></textarea> 
 		</div>
 	</div>
 
