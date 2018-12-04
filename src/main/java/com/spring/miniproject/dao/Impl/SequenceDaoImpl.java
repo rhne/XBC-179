@@ -83,4 +83,22 @@ public class SequenceDaoImpl implements SequenceDao {
 		return idTrainer;
 	}
 
+	@Override
+	public Integer nextIdTechTrainer() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idTechTrainer = 0;
+		String query = " from SequenceModel where sequenceName='ID_TECH_TRAINER' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idTechTrainer = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idTechTrainer = 1;
+		}
+		return idTechTrainer;
+	}
+
 }

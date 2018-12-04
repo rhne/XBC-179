@@ -12,6 +12,7 @@
 		<pattern>/technology/*</pattern>
 		<pattern>/question/*</pattern>
 		<pattern>/office/*</pattern>
+		<pattern>/trainer/*</pattern>
 	</excludes>
 
 	<decorator name="login" page="login.jsp">

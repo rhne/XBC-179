@@ -47,6 +47,9 @@
 				<value>com.spring.miniproject.model.RoleModel</value>
 				<value>com.spring.miniproject.model.QuestionModel</value>
 				<value>com.spring.miniproject.model.OfficeModel</value>
+				<value>com.spring.miniproject.model.TechnologyModel</value>
+				<value>com.spring.miniproject.model.TrainerModel</value>
+				<value>com.spring.miniproject.model.TechnologyTrainerModel</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

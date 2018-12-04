@@ -7,4 +7,5 @@ import com.spring.miniproject.model.TechnologyModel;
 public interface TechnologyService {
 	public void create(TechnologyModel technologyModel);
 	public List<TechnologyModel> showAll();
+	public List<TechnologyModel> searchBy(String text);
 }
