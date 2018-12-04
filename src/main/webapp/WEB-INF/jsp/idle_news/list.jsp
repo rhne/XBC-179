@@ -3,7 +3,7 @@
 <c:forEach items = "${idlenewsModelList}" var = "idlenewsModel" varStatus="number">
 	<tr>
 		<td>${idlenewsModel.title}</td>
-		<td>${categoryModel.name}</td>
+		<td>${idlenewsModel.categoryModel.name}</td>
 		<td>${idlenewsModel.isDeleted}</td>
 		<td></td>
 	</tr>
