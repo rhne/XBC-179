@@ -26,4 +26,22 @@ public class AkunServiceImpl implements AkunService{
 		// TODO Auto-generated method stub
 		return this.akunDao.searchAll();
 	}
+
+	@Override
+	public AkunModel searchById(Integer id) {
+		// TODO Auto-generated method stub
+		return this.akunDao.searchById(id);
+	}
+
+	@Override
+	public void update(AkunModel akunModel) {
+		// TODO Auto-generated method stub
+		this.akunDao.update(akunModel);
+	}
+
+	@Override
+	public List<AkunModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		return this.akunDao.searchByLikeName(name);
+	}
 }

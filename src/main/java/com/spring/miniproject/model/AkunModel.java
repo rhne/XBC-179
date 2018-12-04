@@ -1,6 +1,6 @@
 package com.spring.miniproject.model;
 
-import java.util.Date;
+import java.time.LocalDateTime; 
 
 import javax.persistence.Column;  
 import javax.persistence.Entity;
@@ -12,29 +12,35 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.spring.miniproject.model.RoleModel;
 
 @Entity
 @Table(name="U_USER")
 public class AkunModel {
 
-	private Integer id;
+	private Long id;
 	private String name;
 	private String password;
 	
-	private Integer idRole;
+	private Long idRole;
 	private RoleModel roleModel;
+	
+	private Integer mobileFlag;
+	private Long mobileToken;
 	
 	//AuditTrail////////////////////
 		private Integer isActive;
 			
-		private Integer createdBy;
+		private Long createdBy;
 		private AkunModel createdByUser;
-		private Date createdOn;
+		private LocalDateTime createdOn;
 				
-		private Integer modifiedBy;
+		private Long modifiedBy;
 		private AkunModel modifiedByUser;
-		private Date modifiedOn;
+		private LocalDateTime modifiedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
@@ -43,14 +49,15 @@ public class AkunModel {
 	@TableGenerator(name="U_USER", table="S_SEQUENCE",
 			pkColumnName="SEQUENCE_NAME", pkColumnValue="U_USER_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize =1, initialValue=0)
-	public Integer getId() {
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	@Column(name="NAMA")
+	@Column(name="USERNAME")
 	public String getName() {
 		return name;
 	}
@@ -66,11 +73,11 @@ public class AkunModel {
 	}
 	
 	@Column(name="ID_ROLE")
-	public Integer getIdRole() {
+	public Long getIdRole() {
 		return idRole;
 	}
 	
-	public void setIdRole(Integer idRole) {
+	public void setIdRole(Long idRole) {
 		this.idRole = idRole;
 	}
 	
@@ -84,7 +91,7 @@ public class AkunModel {
 		this.roleModel = roleModel;
 	}
 	
-	@Column(name="IS_DELETE")
+	@Column(name="IS_ACTIVE")
 	public Integer getIsActive() {
 		return isActive;
 	}
@@ -93,10 +100,10 @@ public class AkunModel {
 	}
 	
 	@Column(name="CREATED_BY")
-	public Integer getcreatedBy() {
+	public Long getcreatedBy() {
 		return createdBy;
 	}
-	public void setCreatedBy(Integer createdBy) {
+	public void setCreatedBy(Long createdBy) {
 		this.createdBy = createdBy;
 	}
 	
@@ -109,19 +116,20 @@ public class AkunModel {
 		this.createdByUser = createdByUser;
 	}
 	
+	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	public Date getCreatedOn() {
+	public LocalDateTime getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(Date createdOn) {
+	public void setCreatedOn(LocalDateTime createdOn) {
 		this.createdOn = createdOn;
 	}
 	
 	@Column(name="MODIFIED_BY")
-	public Integer getModifiedBy() {
+	public Long getModifiedBy() {
 		return modifiedBy;
 	}
-	public void setModifiedBy(Integer modifiedBy) {
+	public void setModifiedBy(Long modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 	
@@ -134,11 +142,28 @@ public class AkunModel {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
+	@UpdateTimestamp
 	@Column(name="MODIFIED_ON")
-	public Date getModifiedOn() {
+	public LocalDateTime getModifiedOn() {
 		return modifiedOn;
 	}
-	public void setModifiedOn(Date modifiedOn) {
+	public void setModifiedOn(LocalDateTime modifiedOn) {
 		this.modifiedOn = modifiedOn;
+	}
+	
+	@Column(name="MOBILE_FLAG")
+	public Integer getMobileFlag() {
+		return mobileFlag;
+	}
+	public void setMobileFlag(Integer mobileFlag) {
+		this.mobileFlag = mobileFlag;
+	}
+	
+	@Column(name="MOBILE_TOKEN")
+	public Long getMobileToken() {
+		return mobileToken;
+	}
+	public void setMobileToken(Long mobileToken) {
+		this.mobileToken = mobileToken;
 	}
 }

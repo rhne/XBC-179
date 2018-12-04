@@ -2,8 +2,10 @@
 	<div class="box-header with-border">
 		<h3 class="box-title">Role</h3>
 		<div class="box-tools">
-				<div class="input-group input-group-sm" style="width: 200px;">
+			<div class="input-group input-group-sm" style="width: 200px;'">
+				<input type="text" id="nameCari" name="search-box" class="form-control pull-right" placeholder="Search by Name">
 				<div class="input-group-btn">
+					<button type="button" id="button-search" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="search"><i class="fa fa-search"></i></button>
                     <button type="button" id="button-tambah" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Create Data"><i class="fa fa-user-plus"></i></button>
                 </div>
 				</div>
@@ -13,9 +15,9 @@
 		<table class="table" id="table-role">
 			<thead>
 			<tr>
-				<th>Role Code</th>
-				<th>Role Name</th>
-				<th>Status</th>
+				<th>CODE</th>
+				<th>NAME</th>
+				<th>STATUS</th>
 			</tr>
 			</thead>
 			<tbody id="list-data-role">
@@ -86,6 +88,20 @@
 					$("#modal-alert1").modal("show");
 					$("#modal-input").modal("hide");
 					listDataAkun();
+				}
+			});
+			return false;
+		});
+		
+		$("#button-search").on("submit", function(){
+			var nameCari = document.getElementById("nameCari").value;
+			$.ajax({
+				url:"role/search.html",
+				type:"get",
+				dataType:"html",
+				data:{nameCari:nameCari},
+				success: function(result){
+					$("#list-data-role").html(result);
 				}
 			});
 			return false;
