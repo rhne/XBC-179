@@ -1,6 +1,6 @@
 <div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title">Office</h3>
+		<h3 class="box-title">Bootcamp Test Type</h3>
 		<div class="box-tools">
 				<div class="input-group input-group-sm" style="width: 200px;">
 				<div class="input-group-btn">
@@ -10,16 +10,15 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<table class="table" id="table-office">
+		<table class="table" id="table-bootcamp-test-type">
 			<thead>
 			<tr>
-				<th>Office Name</th>
-				<th>Phone</th>
-				<th>Email</th>
+				<th>Name</th>
+				<th>Created By</th>
 				<th>Status</th>
 			</tr>
 			</thead>
-			<tbody id="list-data-office">
+			<tbody id="list-data-bootcamp-test-type">
 			
 			</tbody>
 		</table>
@@ -40,21 +39,7 @@
 	</div>
 </div>
 
-<div class="modal fade" id = "modal-room">
-	<div class="modal-dialog">
-		<div class = "modal-content">
-			<div class="modal-header" style="background-color:#3c8dbc;">
-				<h4 class="modal-title" style="color:white;"></h4>
-			</div>
-			
-			<div class="modal-body">
-			
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id = "modal-alert1">
+<div class="modal fade" id = "modal-alert">
 	<div class="modal-dialog">
 		<div class="alert alert-success alert-dismissible">
         	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
@@ -65,22 +50,22 @@
 </div>
 
 <script>
-	listDataOffice();
+	listDataBootcampTestType();
 
-	function listDataOffice() {
+	function listDataBootcampTestType() {
 		$.ajax({
-			url:"office/list.html",
+			url:"bootcamp_test_type/list.html",
 			type:"get",
 			dataType:"html",
 			success:function(result){
-				$("#list-data-office").html(result);
+				$("#list-data-bootcamp-test-type").html(result);
 			}
 		});
 	}
 	$(document).ready(function(){
 		$("#button-tambah").on("click", function(){
 			$.ajax({
-				url:"office/tambah.html",
+				url:"bootcamp_test_type/tambah.html",
 				type:"get",
 				dataType:"html",
 				success:function(result){
@@ -91,15 +76,15 @@
 			});
 		});
 		
-		$("#modal-input").on("submit", "#form-office-tambah", function(){
+		$("#modal-input").on("submit", "#form-bootcamp-test-type-tambah", function(){
 			$.ajax({
-				url:"office/create.json",
+				url:"bootcamp_test_type/create.json",
 				type:"get",
 				dataType:"json",
 				data:$(this).serialize(),
 				success:function(result){
-					$("#modal-alert1").find(".modal-title");  
-					$("#modal-alert1").modal("show");
+					$("#modal-alert").find(".modal-title");  
+					$("#modal-alert").modal("show");
 					$("#modal-input").modal("hide");
 					listDataAkun();
 				}

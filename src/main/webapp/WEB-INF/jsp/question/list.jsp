@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:forEach items = "${questionModelList}" var = "questionModel" varStatus="number">
+<c:forEach items="${questionModelList}" var="questionModel" varStatus="number">
 	<tr>
 		<td>${number.count}</td>
 		<td>${questionModel.question}</td>
@@ -13,7 +13,7 @@
 			    <span class="sr-only">Toggle Dropdown</span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu">
-			    <li><a href="#">Delete</a></li>
+			    <li><a id="${questionModel.id}" class="btn-delete">Delete</a></li>
 			    <li class="divider"></li>
 			  </ul>
 			</div>
