@@ -33,6 +33,7 @@ public class OfficeController {
 		String jsp = "office/tambah";
 		return jsp;
 	}	
+		
 	
 	@RequestMapping(value="office/create")
 	public String create(HttpServletRequest request, Model model) throws Exception{
@@ -86,7 +87,7 @@ public class OfficeController {
 		officeModel = this.officeService.searchById(Long.parseLong(id));
 		this.officeService.delete(officeModel);
 		
-		String jsp = "office/home";
+		String jsp = "office/office";
 		return jsp;
 	}
 }

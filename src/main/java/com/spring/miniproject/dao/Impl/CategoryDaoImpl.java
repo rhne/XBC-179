@@ -58,4 +58,17 @@ public class CategoryDaoImpl implements CategoryDao{
 		
 		return categoryModelList;
 	}
+	@Override
+	public CategoryModel searchById(Long id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return (CategoryModel) session.createQuery("from CategoryModel where id=" + id).getSingleResult();
+	}
+	
+	@Override
+	public void delete(CategoryModel categoryModel) {
+		categoryModel.setIsActive(0);
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(categoryModel);
+	}
 }

@@ -46,4 +46,17 @@ public class BootcampTestTypeDaoImpl implements BootcampTestTypeDao{
 		
 		return bootcamptesttypeModelList;
 	}
+	@Override
+	public BootcampTestTypeModel searchById(Long id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return (BootcampTestTypeModel) session.createQuery("from BootcampTestTypeModel where id=" + id).getSingleResult();
+	}
+	
+	@Override
+	public void delete(BootcampTestTypeModel bootcamptesttypeModel) {
+		bootcamptesttypeModel.setIsActive(0);
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(bootcamptesttypeModel);
+	}
 }

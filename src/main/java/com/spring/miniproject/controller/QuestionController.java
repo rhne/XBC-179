@@ -41,6 +41,16 @@ public class QuestionController {
 		return jsp;
 	}
 	
+	@RequestMapping (value="question/search/question")
+	public String searchQuestion(HttpServletRequest request, Model model) {
+		String searchString = request.getParameter("search");
+		List<QuestionModel> questionModels = new ArrayList<QuestionModel>();
+		questionModels = this.questionService.searchByLikeQuestion(searchString);
+		model.addAttribute("questionModelList", questionModels);
+		String jsp = "question/list";
+		return jsp;
+	}
+	
 	@RequestMapping (value="question/create")
 	public String create(HttpServletRequest request) {
 		String question = request.getParameter("question");

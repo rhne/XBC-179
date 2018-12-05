@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.miniproject.dao.BootcampTestTypeDao;
 import com.spring.miniproject.model.BootcampTestTypeModel;
+import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.service.BootcampTestTypeService;
 
 
@@ -34,6 +35,15 @@ public class BootcampTestTypeServiceImpl implements BootcampTestTypeService{
 		// TODO Auto-generated method stub
 		return this.bootcamptesttypeDao.searchByLikeName(name);
 	}
-
+	
+	@Override
+	public BootcampTestTypeModel searchById(Long id) {
+		return this.bootcamptesttypeDao.searchById(id);
+	}
+	
+	@Override
+	public void delete(BootcampTestTypeModel bootcamptesttypeModel) {
+		this.bootcamptesttypeDao.delete(bootcamptesttypeModel);
+	}
 
 }

@@ -41,7 +41,25 @@
 		</div>
 	</div>
 </div> 
-
+<div class="modal fade" id = "modal-alert">
+	<div class="modal-dialog">
+		<div class="alert alert-success alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Added ...
+       	</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-alert-delete">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
+            Are you sure you want to delete?
+            <div class="modal-body">
+			
+			</div>
+       	</div>
+	</div>
+</div>
 
 
 <script type="text/javascript">
@@ -98,6 +116,35 @@
 			data:{nameCari:nameCari},
 			success: function(result){
 				$("#list-data-idle-news").html(result);
+			}
+		});
+		return false;
+	});
+	$("#list-data-idle-news").on("click", ".btn-delete", function() {
+		var Id = $(this).prop('id');
+		$.ajax({
+			url: "idle_news/delete",
+			type: "get",
+			dataType: "html",
+			data: {
+				id: Id
+			},
+			success: function (result) {
+				$("#modal-alert-delete").find(".modal-body").html(result);
+				$("#modal-alert-delete").modal("show");
+			}
+		});
+	});
+	
+	$("#modal-alert-delete").on("submit", "#form-confirm-delete", function() {
+		$.ajax({
+			url: "idle_news/delete/save.json",
+			type: "get",
+			dataType: "json",
+			data: $(this).serialize(),
+			success: function (result) {
+				$("#modal-alert-delete").modal("hide");
+				listDataIdleNews();
 			}
 		});
 		return false;

@@ -30,17 +30,6 @@
 		</table>
 	</div>
 
-	<div class="modal fade" id="modal-input2">
-		<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title"></h4>
-			</div>
-			<div class="modal-body"></div>
-		</div>
-	</div>
-	</div>
-
 	<td colspan="2"><input type="submit" class="add-technology" value="submit"></td>
 </form>
 
@@ -56,32 +45,4 @@
 			}
 		});
 	}
-	
-	$("#btn-add-trainer").on("click", function() {
-		$.ajax({
-			url:"technology/addTechTrainer.html",
-			type: "get",
-			dataType: "html",
-			success: function(result){
-				$("#modal-input2").find(".modal-body").html(result);
-				$("#modal-input2").modal("show");
-			}
-		});
-	});
-	
-	$("#modal-input2").on("submit", "#form-add-tech-trainer", function(){
-		$.ajax({
-			url:"technology/addTechTrainer/save.json",
-			type : "get",
-			dataType : "json",
-			data: $(this).serialize(),
-			success : function(result){
-				$("#modal-input2").modal("hide");
-				alert("Data succesfully added!");
-				$("#modal-input").modal("show");
-				listDataTrainer();
-			}
-		});
-		return false;
-	});
 </script>

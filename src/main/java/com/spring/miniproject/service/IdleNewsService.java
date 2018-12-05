@@ -8,4 +8,6 @@ public interface IdleNewsService {
 	public void create(IdleNewsModel idlenewsModel);
 	public List<IdleNewsModel> searchAll();
 	public List<IdleNewsModel> searchByLikeName(String name);
+	public IdleNewsModel searchById(Long id);
+	public void delete(IdleNewsModel idlenewsModel);
 }
