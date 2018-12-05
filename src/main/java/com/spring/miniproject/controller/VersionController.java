@@ -23,6 +23,12 @@ public class VersionController {
 		return jsp;
 	}
 	
+	@RequestMapping(value="version/tambah")
+	public String tambah() {
+		String jsp = "version/tambah";
+		return jsp;
+	}
+	
 	@RequestMapping(value="version/list")
 	public String list(Model model) {
 		List<VersionModel> versionModels = new ArrayList<VersionModel>();

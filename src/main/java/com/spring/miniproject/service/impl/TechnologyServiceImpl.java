@@ -28,4 +28,10 @@ public class TechnologyServiceImpl implements TechnologyService{
 		// TODO Auto-generated method stub
 		return this.technologyDao.showAll();
 	}
+
+	@Override
+	public List<TechnologyModel> searchBy(String text) {
+		// TODO Auto-generated method stub
+		return this.technologyDao.searchBy(text);
+	}
 }

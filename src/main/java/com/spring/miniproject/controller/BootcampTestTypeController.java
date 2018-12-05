@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.miniproject.model.AkunModel;
 import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.service.BootcampTestTypeService;
 
@@ -55,5 +56,13 @@ public class BootcampTestTypeController {
 		String jsp = "bootcamp_test_type/list";
 		return jsp;
 	}
-	
+	@RequestMapping(value="bootcamp_test_type/search/name")
+	public String SearchName(HttpServletRequest request, Model model) {
+		String name = request.getParameter("nameCari");
+		List<BootcampTestTypeModel> bootcamptesttypeModelList = new ArrayList<BootcampTestTypeModel>();
+		bootcamptesttypeModelList = this.bootcamptesttypeService.searchByLikeName(name);
+		model.addAttribute("bootcamptesttypeModelList", bootcamptesttypeModelList);
+		String jsp = "bootcamp_test_type/list";
+		return jsp;
+	}
 }

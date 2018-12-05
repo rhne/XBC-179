@@ -54,7 +54,10 @@
 					<ul class="treeview-menu">
 					<li>
 							<a href="${contextName}/technology.html" class="menu-item"><i class="fa fa-book"></i>Technology</a>
-						</li>
+					</li>
+					<li>
+							<a href="${contextName}/trainer.html" class="menu-item"><i class="fa fa-book"></i>Trainer</a>
+					</li>
 					</ul>
 				</li>	
 				

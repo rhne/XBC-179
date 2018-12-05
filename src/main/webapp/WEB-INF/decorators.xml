@@ -21,6 +21,7 @@
 		<pattern>/question/*</pattern>
 		<pattern>/version/*</pattern>
 		<pattern>/office/*</pattern>
+		<pattern>/trainer/*</pattern>
 
 	</excludes>
 

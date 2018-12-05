@@ -77,7 +77,7 @@
 	$(document).ready(function(){
 		$("#button-tambah").on("click", function(){
 			$.ajax({
-				url:"question/tambah.html",
+				url:"version/tambah.html",
 				type:"get",
 				dataType:"html",
 				success:function(result){
