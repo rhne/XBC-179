@@ -223,5 +223,20 @@ public class SequenceDaoImpl implements SequenceDao {
 		}
 		return idMenu;
 	}
-
+	public Integer nextIdRoom() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idRoom = 0;
+		String query = " from SequenceModel where sequenceName='T_ROOM_ID' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idRoom = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idRoom = 1;
+		}
+		return idRoom;
+	}
 }
