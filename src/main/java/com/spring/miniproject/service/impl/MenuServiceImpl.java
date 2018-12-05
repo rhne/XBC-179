@@ -40,10 +40,16 @@ public class MenuServiceImpl implements MenuService {
 		// TODO Auto-generated method stub
 		this.menuDao.update(menuModel);
 	}
-	
+
 	@Override
-	public List<MenuModel> searchByRole(Long idRole) {
+	public List<MenuModel> searchByLikeParent(String menuparent) {
 		// TODO Auto-generated method stub
-		return this.menuDao.searchByRole(idRole);
+		return this.menuDao.searchByLikeParent(menuparent);
+	}
+
+	@Override
+	public void deactivate(MenuModel menuModel) {
+		// TODO Auto-generated method stub
+		this.menuDao.deactivate(menuModel);
 	}
 }

@@ -34,7 +34,7 @@ public class AkunDaoImpl implements AkunDao{
 	}
 
 	@Override
-	public AkunModel searchById(Integer id) {
+	public AkunModel searchById(Long id) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		String query = "Select a from AkunModel a where id="+id+" ";

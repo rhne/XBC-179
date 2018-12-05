@@ -28,7 +28,7 @@ public class AkunServiceImpl implements AkunService{
 	}
 
 	@Override
-	public AkunModel searchById(Integer id) {
+	public AkunModel searchById(Long id) {
 		// TODO Auto-generated method stub
 		return this.akunDao.searchById(id);
 	}

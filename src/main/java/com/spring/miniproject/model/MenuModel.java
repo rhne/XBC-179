@@ -1,6 +1,6 @@
 package com.spring.miniproject.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column; 
 import javax.persistence.Entity;
@@ -12,17 +12,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="M_MENU")
 public class MenuModel {
 	
-	private Long id, parent, createdBy, modifiedBy;
-	private String kode, title, description, imgurl, menuurl;
-	private Integer active, order;
-	private LocalDateTime createdOn, modifiedOn;
+	private Long id;
+	private Long menuparent;
+	private Long createdBy;
+	private Long modifiedBy;
+	private String kode;
+	private String title;
+	private String description;
+	private String imgurl;
+	private String menuurl;
+	private Integer active;
+	private Integer menuorder;
+	private Date createdOn, modifiedOn;
 	
 	//Join Column
 	private AkunModel createdByUser;
@@ -42,11 +48,11 @@ public class MenuModel {
 		this.id = id;
 	}
 	@Column(name="MENU_PARENT")
-	public Long getParent() {
-		return parent;
+	public Long getMenuparent() {
+		return menuparent;
 	}
-	public void setParent(Long parent) {
-		this.parent = parent;
+	public void setMenuparent(Long menuparent) {
+		this.menuparent = menuparent;
 	}
 	@Column(name="KODE")
 	public String getKode() {
@@ -91,26 +97,24 @@ public class MenuModel {
 		this.active = active;
 	}
 	@Column(name="MENU_ORDER")
-	public Integer getOrder() {
-		return order;
+	public Integer getMenuOrder() {
+		return menuorder;
 	}
-	public void setOrder(Integer order) {
-		this.order = order;
+	public void setMenuOrder(Integer menuorder) {
+		this.menuorder = menuorder;
 	}
-	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	public LocalDateTime getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(LocalDateTime createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
-	@UpdateTimestamp
 	@Column(name="MODIFIED_ON")
-	public LocalDateTime getModifiedOn() {
+	public Date getModifiedOn() {
 		return modifiedOn;
 	}
-	public void setModifiedOn(LocalDateTime modifiedOn) {
+	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
 	@ManyToOne

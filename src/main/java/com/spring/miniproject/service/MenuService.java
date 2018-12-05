@@ -8,8 +8,8 @@ public interface MenuService {
 	public void create(MenuModel menuModel);
 	public List<MenuModel> select();
 	public MenuModel searchById(Long id);
+	List<MenuModel> searchByLikeParent(String menuparent);
 	public void update(MenuModel menuModel);
-
-	public List<MenuModel> searchByRole(Long idRole);
+	public void deactivate(MenuModel menuModel);
 	
 }

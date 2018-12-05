@@ -8,7 +8,9 @@
 		<div class="col-md-8">
 			<select class="form-control" id="idRole" name="idRole">
 				<c:forEach items="${roleModelList}" var="roleModel">
-					<option value="${roleModel.id}">${roleModel.name}</option>		
+					<option value="${roleModel.id}" ${roleModel.id == akunModel.idRole ? 'selected="true"':'' }>
+						${roleModel.name}
+					</option>		
 				</c:forEach>
 			</select>
 		</div>

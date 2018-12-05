@@ -76,7 +76,7 @@
 	$(document).ready(function(){
 		$("#button-tambah").on("click", function(){
 			$.ajax({
-				url:"role/tambah.html",
+				url:"menu/tambah.html",
 				type:"get",
 				dataType:"html",
 				success:function(result){
@@ -97,7 +97,7 @@
 					$("#modal-alert1").find(".modal-title");  
 					$("#modal-alert1").modal("show");
 					$("#modal-input").modal("hide");
-					listDataRole();
+					listDataMenu();
 				}
 			});
 			return false;
@@ -142,7 +142,7 @@
 					$("#modal-alert2").find(".modal-title");  
 					$("#modal-alert2").modal("show");
 					$("#modal-input").modal("hide");
-					listDataRole();
+					listDataMenu();
 				}
 			});
 			return false;

@@ -195,7 +195,7 @@ public class SequenceDaoImpl implements SequenceDao {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		Integer idMenu = 0;
-		String query = " from SequenceModel where sequenceName='ID_MENU' ";
+		String query = " from SequenceModel where sequenceName='M_MENU_ID' ";
 		try {
 			SequenceModel sequenceModel = new SequenceModel();
 			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
