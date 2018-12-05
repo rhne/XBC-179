@@ -2,7 +2,7 @@
 
 <form id="form-question-tambah" class="form-horizontal" onsubmit="return validasi_input();">
 <div class="form-group" style="padding: 20px;">
-	<label>Version</label>
+	<label>Version Tambah.2</label>
 	<input id="version" name="version" class="form-control" disabled="disabled">
 	<br/>
 	<button type="button" id="btn-tambah-question" class="btn btn-primary btn-sm">+ Question</button>
@@ -30,20 +30,6 @@
 </div>
 </form>
 
-<div class="modal fade" id="modal-input-question">
-	<div class="modal-dialog">
-		<div class = "modal-content">
-			<div class="modal-header" style="background-color:#3c8dbc;">
-				<h4 class="modal-title" style="color:white;"></h4>
-			</div>
-			
-			<div class="modal-body">
-			
-			</div>
-		</div>
-	</div>
-</div>
-
 <script type="text/javascript">
 
 	listDataQuestion();
@@ -59,22 +45,6 @@
 			}
 		});
 	}
-	
-	$(document).ready(function(){
-		$("#btn-tambah-question").on("click", function(){
-			$.ajax({
-				url:"question/tambah.html",
-				type:"get",
-				dataType:"html",
-				success:function(result){
-					$("#modal-input-question").find(".modal-title").html("Question");
-					$("#modal-input-question").find(".modal-body").html(result);
-					$("#modal-input-question").modal("show");
-				}
-			});
-		});
-	});
-	
 	
 	function validasi_input(){
 		var question = document.getElementById("question");
