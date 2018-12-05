@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
-<form action="#" method="get" id="form-office-room"
+<form action="#" method="get" id="form-room-tambah"
 	class="form-horizontal">
 		<div class="form-group">
 			<label class="control-label col-md-3" for="code">Code</label>
@@ -48,7 +48,7 @@
 </form>
 <script>
 $(document).ready(function(){
-	$("#form-office-room").on("submit", function(){
+	$("#form-room-tambah").on("submit", function(){
 		$.ajax({
 			url:"office/create_room.json",
 			type:"get",
