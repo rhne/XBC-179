@@ -20,7 +20,6 @@ public class QuestionModel {
 			pkColumnName="SEQUENCE_NAME", pkColumnValue="T_QUESTION_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize =1, initialValue=0)
 	private Long id;
-	@Column(nullable=false)
 	private String question;
 	@Column(name="CREATED_ON")
 	private Date createdOn;
