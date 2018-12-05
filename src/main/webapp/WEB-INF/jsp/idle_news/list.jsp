@@ -4,7 +4,18 @@
 	<tr>
 		<td>${idlenewsModel.title}</td>
 		<td>${idlenewsModel.categoryModel.name}</td>
-		<td>${idlenewsModel.isDeleted}</td>
+		<td>
+			<div class="btn-group">
+			  <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown">
+			    <span class="fa fa-bars"></span>
+			    <span class="sr-only">Toggle Dropdown</span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a id="${idlenewsModel.id}" class="btn-delete">Delete</a></li>
+			    <li class="divider"></li>
+			  </ul>
+			</div>
+		</td>	
 		<td></td>
 	</tr>
 </c:forEach>

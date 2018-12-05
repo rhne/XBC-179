@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spring.miniproject.dao.IdleNewsDao;
 import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.IdleNewsModel;
+import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.service.IdleNewsService;
 
 
@@ -34,5 +35,15 @@ public class IdleNewsServiceImpl implements IdleNewsService{
 	public List<IdleNewsModel> searchByLikeName(String name) {
 		// TODO Auto-generated method stub
 		return this.idlenewsDao.searchByLikeName(name);
+	}
+	
+	@Override
+	public IdleNewsModel searchById(Long id) {
+		return this.idlenewsDao.searchById(id);
+	}
+	
+	@Override
+	public void delete(IdleNewsModel idlenewsModel) {
+		this.idlenewsDao.delete(idlenewsModel);
 	}
 }

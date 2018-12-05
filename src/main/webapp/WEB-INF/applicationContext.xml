@@ -57,7 +57,7 @@
 				<value>com.spring.miniproject.model.CategoryModel</value>
 				<value>com.spring.miniproject.model.BootcampTestTypeModel</value>
 				<value>com.spring.miniproject.model.IdleNewsModel</value>
-
+				<value>com.spring.miniproject.model.RoomModel</value>
 				<value>com.spring.miniproject.model.CategoryModel</value>
 				<value>com.spring.miniproject.model.BootcampTestTypeModel</value> 
 

@@ -78,7 +78,6 @@
 
 <script>
 	listDataOffice();
-
 	function listDataOffice() {
 		$.ajax({
 			url:"office/list.html",
@@ -96,7 +95,7 @@
 				type:"get",
 				dataType:"html",
 				success:function(result){
-					$("#modal-input").find(".modal-title").html("Form Role Data");
+					$("#modal-input").find(".modal-title").html("Form Tambah Office");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
 				}
@@ -132,7 +131,7 @@
 			return false;
 		});
 		
-		$("#list-data-office").on("click", ".btn-delete", function() {
+		$("#list-data-office").on("click", ".btn-deactivate", function() {
 			var Id = $(this).prop('id');
 			$.ajax({
 				url: "office/delete",
@@ -151,7 +150,7 @@
 		$("#modal-alert-delete").on("submit", "#form-confirm-delete", function() {
 			$.ajax({
 				url: "office/delete/save.json",
-				type: "post",
+				type: "get",
 				dataType: "json",
 				data: $(this).serialize(),
 				success: function (result) {

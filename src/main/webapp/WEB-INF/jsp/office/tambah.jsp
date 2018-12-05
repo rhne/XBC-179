@@ -32,20 +32,17 @@
 				<TextArea id="notes" name="notes" class="form-control"></TextArea>
 			</div>
 		</div>
-	<button type="button" id="button-tambah2" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Create Room"><i class="fa fa-user-plus"></i>Room</button>
+	<button type="button" id="button-tambah2" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" ><i class="fa fa-user-plus"></i>Room</button>
 			<div class="box-body">
-		<table class="table" id="table-office">
+		<table class="table" id="table-room">
 			<thead>
 			<tr>
-				<th>Office Name</th>
-				<th>Phone</th>
-				<th>Email</th>
-				<th>Address</th>
-				<th>Notes</th>
-				<th>Status</th>
+				<th>Code</th>
+				<th>Name</th>
+				<th>Capacity</th>
 			</tr>
 			</thead>
-			<tbody id="list-data-office2">
+			<tbody id="list-data-room">
 			
 			</tbody>
 		</table>
@@ -54,23 +51,34 @@
 			<button type="submit" class="btn btn-primary btn-sm">Simpan</button>
 		</div>
 </form>
+<div class="modal fade" id="modal-alert-delete-room">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
+            Are you sure you want to delete?
+            <div class="modal-body">
+			
+			</div>
+       	</div>
+	</div>
+</div>
 <script>
-listDataOffice2();
+listDataRoom();
 
-function listDataOffice2() {
+function listDataRoom() {
 	$.ajax({
-		url:"office/list.html",
+		url:"office/list_room.html",
 		type:"get",
 		dataType:"html",
 		success:function(result){
-			$("#list-data-office2").html(result);
+			$("#list-data-room").html(result);
 		}
 	});
 }
 $(document).ready(function(){
 	$("#button-tambah2").on("click", function(){
 		$.ajax({
-			url:"office/tambah_room.html",
+			url:"office/room.html",
 			type:"get",
 			dataType:"html",
 			success:function(result){
@@ -80,22 +88,34 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
-	$("#modal-input").on("submit", "#form-office-tambah2", function(){
+	$("#list-data-room").on("click", ".btn-deactivate", function() {
+		var Id = $(this).prop('id');
 		$.ajax({
-			url:"office/create_room.json",
-			type:"get",
-			dataType:"json",
-			data:$(this).serialize(),
-			success:function(result){
-				$("#modal-alert1").find(".modal-title");  
-				$("#modal-alert1").modal("show");
-				$("#modal-input").modal("hide");
-				listDataAkun();
+			url: "office/delete_room",
+			type: "get",
+			dataType: "html",
+			data: {
+				id: Id
+			},
+			success: function (result) {
+				$("#modal-alert-delete-room").find(".modal-body").html(result);
+				$("#modal-alert-delete-room").modal("show");
+			}
+		});
+	});
+	
+	$("#modal-alert-delete-room").on("submit", "#form-confirm-delete-room", function() {
+		$.ajax({
+			url: "office/delete_room/save.json",
+			type: "get",
+			dataType: "json",
+			data: $(this).serialize(),
+			success: function (result) {
+				$("#modal-alert-delete-room").modal("hide");
+				listDataRoom();
 			}
 		});
 		return false;
 	});
-	
 });
 </script>

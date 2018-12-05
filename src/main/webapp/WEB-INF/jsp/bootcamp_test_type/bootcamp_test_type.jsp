@@ -50,6 +50,17 @@
        	</div>
 	</div>
 </div>
+<div class="modal fade" id="modal-alert-delete">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
+            Are you sure you want to delete?
+            <div class="modal-body">
+			
+			</div>
+       	</div>
+	</div>
+</div>
 </div>
 
 <script>
@@ -103,6 +114,35 @@
 				data:{nameCari:nameCari},
 				success: function(result){
 					$("#list-data-bootcamp-test-type").html(result);
+				}
+			});
+			return false;
+		});
+		$("#list-data-bootcamp-test-type").on("click", ".btn-deactivate", function() {
+			var Id = $(this).prop('id');
+			$.ajax({
+				url: "bootcamp_test_type/delete",
+				type: "get",
+				dataType: "html",
+				data: {
+					id: Id
+				},
+				success: function (result) {
+					$("#modal-alert-delete").find(".modal-body").html(result);
+					$("#modal-alert-delete").modal("show");
+				}
+			});
+		});
+		
+		$("#modal-alert-delete").on("submit", "#form-confirm-delete", function() {
+			$.ajax({
+				url: "bootcamp_test_type/delete/save.json",
+				type: "get",
+				dataType: "json",
+				data: $(this).serialize(),
+				success: function (result) {
+					$("#modal-alert-delete").modal("hide");
+					listDataBootcampTestType();
 				}
 			});
 			return false;
