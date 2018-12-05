@@ -6,6 +6,7 @@ public interface SequenceDao {
 	public Integer nextIdRole();
 	public Integer nextIdTechnology();
 	public Integer nextIdTrainer();
+	public Integer nextIdMenu();
 	public Integer nextIdTechTrainer();
 
 	public Integer nextIdOffice();
@@ -16,6 +17,5 @@ public interface SequenceDao {
 	public Integer nextIdMonitoring();
 	
 	public Integer nextIdTestimony();
-
 
 }

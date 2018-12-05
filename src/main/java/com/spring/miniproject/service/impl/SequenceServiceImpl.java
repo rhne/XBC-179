@@ -38,6 +38,11 @@ public class SequenceServiceImpl implements SequenceService {
 	}
 
 	@Override
+	public Integer nextIdMenu() {
+		// TODO Auto-generated method stub
+		return this.sequenceDao.nextIdMenu();
+	}
+	
 	public Integer nextIdTechTrainer() {
 		// TODO Auto-generated method stub
 		return this.sequenceDao.nextIdTechTrainer();

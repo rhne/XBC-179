@@ -1,6 +1,7 @@
 package com.spring.miniproject.dao.Impl;
 
-import java.util.ArrayList;    
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;  
@@ -58,6 +59,33 @@ public class AkunDaoImpl implements AkunDao{
 
 	@Override
 	public void update(AkunModel akunModel) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(akunModel);
+	}
+
+	@Override
+	public AkunModel searchByUsernamePassword(String username, String password) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		AkunModel akunModel = new AkunModel();
+		String query = " from AkunModel "
+				     + " where name='"+username+"' "
+				     + "   and password='"+password+"' ";
+		try {
+			akunModel = (AkunModel) session.createQuery(query).getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return akunModel;
+	}
+
+	@Override
+	public void deactivate(AkunModel akunModel) {
+		// TODO Auto-generated method stub
+		akunModel.setIsActive(0);
+		akunModel.setModifiedOn(new Date());
+		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(akunModel);
 	}

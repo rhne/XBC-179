@@ -6,19 +6,15 @@
 		<td>${roleModel.name}</td>
 		<td>Active</td>	
 		<td>
-			<ul class="sidebar-menu">
-				<li>
-				<a href="#"><i class="fa fa-list"></i><span class="pull-right-container"> </span></a>
-					<ul class="treeview-menu">
-						<li>
-							<a href="${contextName}/edit.html" class="menu-item"><i class="fa fa-book"></i>Edit</a>
-						</li>
-						<li>
-							<a href="${contextName}/deactivate.html" class="menu-item"><i class="fa fa-book"></i>Deactivate</a>
-						</li>
-					</ul>
-				</li>	
-			</ul> 
+			<div class="dropdown">
+  				<button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">
+  				<i class="fa fa-bars"></i>
+  				</button>
+  					<ul class="dropdown-menu">
+    					<li><button type="button" class="btn btn-link" id="btn-edit" value="${roleModel.id}">Edit</button></li>
+    					<li><button type="button" class="btn btn-link" id="btn-deactivate" value="${roleModel.id}">Deactivate</button></li>
+  					</ul>
+			</div>
 		</td>
 	</tr>
 </c:forEach>

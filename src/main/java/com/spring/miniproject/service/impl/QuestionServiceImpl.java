@@ -42,4 +42,9 @@ public class QuestionServiceImpl implements QuestionService {
 		this.questionDao.delete(questionModel);
 	}
 
+	@Override
+	public List<QuestionModel> searchByLikeQuestion(String str) {
+		return this.questionDao.searchByLikeQuestion(str);
+	}
+
 }

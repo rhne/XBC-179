@@ -7,5 +7,5 @@ import com.spring.miniproject.model.IdleNewsModel;
 public interface IdleNewsService {
 	public void create(IdleNewsModel idlenewsModel);
 	public List<IdleNewsModel> searchAll();
-
+	public List<IdleNewsModel> searchByLikeName(String name);
 }

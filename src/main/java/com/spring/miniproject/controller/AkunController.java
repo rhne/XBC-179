@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
-import java.util.ArrayList;      
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +51,7 @@ public class AkunController {
 		akunModel.setMobileFlag(0);
 		akunModel.setIsActive(1);
 		akunModel.setIdRole(idRole);
+		akunModel.setCreatedOn(new Date());
 		
 		this.akunService.create(akunModel);
 		model.addAttribute("akunModel", akunModel);
@@ -81,6 +83,7 @@ public class AkunController {
 		akunModelDB.setName(nama);
 		akunModelDB.setPassword(password);
 		akunModelDB.setIdRole(idRole);
+		akunModelDB.setModifiedOn(new Date());
 		
 		this.akunService.update(akunModelDB);
 		model.addAttribute("akunModelDB", akunModelDB);

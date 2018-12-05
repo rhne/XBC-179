@@ -7,13 +7,16 @@
 				<li class="header"><h5>XBC 179</h5></li>
 				<!-- Modul 1 -->	
 				<li>
-					<a href="#"><i class="fa fa-edit"></i><span>UserRole Master</span><span class="pull-right-container"> </span></a>
+					<a href="#"><i class="fa fa-edit"></i><span>Module 1</span><span class="pull-right-container"> </span></a>
 					<ul class="treeview-menu">
 						<li>
 							<a href="${contextName}/user.html" class="menu-item"><i class="fa fa-book"></i>User</a>
 						</li>
 						<li>
 							<a href="${contextName}/role.html" class="menu-item"><i class="fa fa-book"></i>Role</a>
+						</li>
+						<li>
+							<a href="${contextName}/menu.html" class="menu-item"><i class="fa fa-book"></i>Menu</a>
 						</li>
 					</ul>
 				</li>

@@ -34,6 +34,11 @@ public class CategoryServiceImpl implements CategoryService {
 		// TODO Auto-generated method stub
 		return this.categoryDao.select();
 	}
-
+	
+	@Override
+	public List<CategoryModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		return this.categoryDao.searchByLikeName(name);
+	}
 
 }
