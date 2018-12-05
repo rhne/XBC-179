@@ -13,8 +13,7 @@ public interface SequenceService {
 	public Integer nextIdBootcampTestType();
 	public Integer nextIdCategory();
 	public Integer nextIdBiodata();
-
 	public Integer nextIdMonitoring();
-
+	public Integer nextIdTestimony();
 	
 }

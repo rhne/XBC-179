@@ -15,5 +15,7 @@ public interface SequenceDao {
 
 	public Integer nextIdBiodata();
 	public Integer nextIdMonitoring();
+	
+	public Integer nextIdTestimony();
 
 }

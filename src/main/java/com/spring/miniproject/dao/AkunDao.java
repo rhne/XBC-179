@@ -11,5 +11,6 @@ public interface AkunDao {
 	public void update(AkunModel akunModel);
 	List<AkunModel> searchByLikeName(String name);
 	public AkunModel searchByUsernamePassword(String username, String password);
+	public void deactivate(AkunModel akunModel);
 
 }

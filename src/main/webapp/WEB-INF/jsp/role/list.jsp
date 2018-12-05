@@ -11,8 +11,8 @@
   				<i class="fa fa-bars"></i>
   				</button>
   					<ul class="dropdown-menu">
-    					<li><button type="button" class="btn btn-link" id="btn-edit">Edit</button></li>
-    					<li><button type="button" class="btn btn-link" id="btn-deactivate">Deactivate</button></li>
+    					<li><button type="button" class="btn btn-link" id="btn-edit" value="${roleModel.id}">Edit</button></li>
+    					<li><button type="button" class="btn btn-link" id="btn-deactivate" value="${roleModel.id}">Deactivate</button></li>
   					</ul>
 			</div>
 		</td>

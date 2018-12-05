@@ -17,6 +17,7 @@ public class QuestionDaoImpl implements QuestionDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<QuestionModel> searchAll() {
 		Session session = this.sessionFactory.getCurrentSession();
@@ -51,6 +52,12 @@ public class QuestionDaoImpl implements QuestionDao {
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(questionModel);
+	}
+
+	@Override
+	public List<QuestionModel> searchByLikeQuestion(String str) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.createQuery("from QuestionModel where isDelete=0 and question like '%"+ str +"%'").list();
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.spring.miniproject.dao.Impl;
 
-import java.util.ArrayList;  
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -38,7 +39,7 @@ public class RoleDaoImpl implements RoleDao {
 	}
 
 	@Override
-	public RoleModel searchById(Integer id) {
+	public RoleModel searchById(Long id) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		String query = "select r from RoleModel r where r.id="+id+"";
@@ -68,6 +69,16 @@ public class RoleDaoImpl implements RoleDao {
 		roleModelList = session.createQuery(query).list();
 		
 		return roleModelList;
+	}
+
+	@Override
+	public void deactivate(RoleModel roleModel) {
+		// TODO Auto-generated method stub
+		roleModel.setIsActive(0);
+		roleModel.setModifiedOn(new Date());
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(roleModel);
 	}
 	
 }

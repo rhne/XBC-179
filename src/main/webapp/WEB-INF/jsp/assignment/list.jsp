@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:forEach items = "${assignmentModelList}" var = "assignmentModel" varStatus="number">
 	<tr>
-		<td>Reynaldo Kevin</td>
+		<td>${assignmentModel.biodataModel.name}</td>
 		<td>${assignmentModel.startDate}</td>
 		<td>${assignmentModel.endDate}</td>
 	</tr>

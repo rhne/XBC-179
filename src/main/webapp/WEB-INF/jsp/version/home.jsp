@@ -39,6 +39,20 @@
 	</div>
 </div>
 
+<div class="modal fade" id="modal-input-question">
+	<div class="modal-dialog">
+		<div class = "modal-content">
+			<div class="modal-header" style="background-color:#3c8dbc;">
+				<h4 class="modal-title" style="color:white;"></h4>
+			</div>
+			
+			<div class="modal-body">
+			
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="modal fade" id = "modal-alert1">
 	<div class="modal-dialog">
 		<div class="alert alert-success alert-dismissible">
@@ -74,40 +88,40 @@
 			}
 		});
 	}
+	
 	$(document).ready(function(){
 		$("#button-tambah").on("click", function(){
 			$.ajax({
-				url:"version/tambah.html",
+				url:"version/tambah",
 				type:"get",
 				dataType:"html",
 				success:function(result){
-					$("#modal-input").find(".modal-title").html("Question");
+					$("#modal-input").find(".modal-title").html("Version");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
 				}
 			});
 		});
 		
-		$("#modal-input").on("submit", "#form-question-tambah", function(){
+		//REGION MODAL QUESTION
+		$("#modal-input").on("click", "#btn-tambah-question" ,function() {
 			$.ajax({
-				url: "question/create.json",
-				type: "post",
-				dataType: "json",
-				data: $(this).serialize(),
-				success: function(result){
-					$("#modal-alert1").find(".modal-title");  
-					$("#modal-alert1").modal("show");
-					$("#modal-input").modal("hide");
-					listData();
+				url:"version/tambahquestion",
+				type:"get",
+				dataType:"html",
+				success:function(result){
+					$("#modal-input-question").find(".modal-title").html("Add Question");
+					$("#modal-input-question").find(".modal-body").html(result);
+					$("#modal-input-question").modal("show");
 				}
 			});
-			return false;
 		});
-
-		$("#list-data").on("click", ".btn-delete", function() {
+		
+		$("#modal-input").on("click", ".btn-delete", function() {
 			var questionId = $(this).prop('id');
+			alert(questionId);
 			$.ajax({
-				url: "question/delete",
+				url: "version/deletequestion",
 				type: "get",
 				dataType: "html",
 				data: {
@@ -119,19 +133,6 @@
 				}
 			});
 		});
-		
-		$("#modal-alert-delete").on("submit", "#form-confirm-delete", function() {
-			$.ajax({
-				url: "question/delete/save.json",
-				type: "post",
-				dataType: "json",
-				data: $(this).serialize(),
-				success: function (result) {
-					$("#modal-alert-delete").modal("hide");
-					listData();
-				}
-			});
-			return false;
-		});
+		//END REGION MODAL QUESTION
 	});
 </script>

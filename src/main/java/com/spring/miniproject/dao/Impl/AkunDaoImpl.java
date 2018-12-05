@@ -1,6 +1,7 @@
 package com.spring.miniproject.dao.Impl;
 
-import java.util.ArrayList;     
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;  
@@ -77,5 +78,15 @@ public class AkunDaoImpl implements AkunDao{
 		}
 		
 		return akunModel;
+	}
+
+	@Override
+	public void deactivate(AkunModel akunModel) {
+		// TODO Auto-generated method stub
+		akunModel.setIsActive(0);
+		akunModel.setModifiedOn(new Date());
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(akunModel);
 	}
 }

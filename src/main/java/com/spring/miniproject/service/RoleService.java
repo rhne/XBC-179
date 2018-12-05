@@ -8,7 +8,8 @@ public interface RoleService {
 	
 	public void create(RoleModel roleModel);
 	public List<RoleModel> select();
-	public RoleModel searchById(Integer id);
+	public RoleModel searchById(Long id);
 	public void update(RoleModel roleModel);
 	public List<RoleModel> searchByLikeName(String name);
+	public void deactivate(RoleModel roleModel);
 }

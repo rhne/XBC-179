@@ -15,6 +15,9 @@
 						<li>
 							<a href="${contextName}/role.html" class="menu-item"><i class="fa fa-book"></i>Role</a>
 						</li>
+						<li>
+							<a href="${contextName}/menu.html" class="menu-item"><i class="fa fa-book"></i>Menu</a>
+						</li>
 					</ul>
 				</li>
 				<!-- Modul 2 -->	
@@ -61,6 +64,15 @@
 					</ul>
 				</li>	
 				
+				<li>
+					<a href="#"><i class="fa fa-edit"></i><span>Testimony Master</span><span class="pull-right-container"> </span></a>
+					<ul class="treeview-menu">
+					<li>
+							<a href="${contextName}/testimony.html" class="menu-item"><i class="fa fa-book"></i>Testimony</a>
+					</li>
+					<li>
+					</ul>
+				</li>	
 
 
 				<li>

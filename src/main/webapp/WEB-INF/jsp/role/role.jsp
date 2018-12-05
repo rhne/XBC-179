@@ -57,6 +57,18 @@
        	</div>
 	</div>
 </div>
+
+<div class="modal fade" id="modal-deactivate">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
+            
+            <div class="modal-body">
+			
+			</div>
+       	</div>
+	</div>
+</div>
 </div>
 
 <script>
@@ -141,6 +153,34 @@
 					$("#modal-alert2").find(".modal-title");  
 					$("#modal-alert2").modal("show");
 					$("#modal-input").modal("hide");
+					listDataRole();
+				}
+			});
+			return false;
+		});
+		
+		$("#list-data-role").on("click", "#btn-deactivate", function(){
+			var id = $(this).val();
+			$.ajax({
+				url:"role/deactivate.html",
+				type:"get",
+				dataType:"html",
+				data: {id:id},
+				success:function(result){
+					$("#modal-deactivate").find(".modal-body").html(result);
+					$("#modal-deactivate").modal("show");
+				}
+			});
+		});
+		
+		$("#modal-deactivate").on("submit","#form-deactivate", function(){
+			$.ajax({
+				url:"role/deactivate/save.json",
+				type:"get",
+				dataType:"json",
+				data:$(this).serialize(),
+				success: function(result){
+					$("#modal-deactivate").modal("hide");
 					listDataRole();
 				}
 			});

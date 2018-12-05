@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
-import java.util.ArrayList;  
+import java.util.ArrayList; 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +52,7 @@ public class RoleController {
 		roleModel.setName(nama);
 		roleModel.setDescription(desc);
 		roleModel.setIsActive(1);
+		roleModel.setCreatedOn(new Date());
 		
 		this.roleService.create(roleModel);;
 		model.addAttribute("roleModel", roleModel);
@@ -69,20 +71,9 @@ public class RoleController {
 		return jsp;
 	}
 	
-	@RequestMapping(value="role/detail")
-	public String roleDetail(HttpServletRequest request,Model model) {
-		Integer id = Integer.valueOf(request.getParameter("id"));
-		RoleModel roleModel = new RoleModel();
-		roleModel = this.roleService.searchById(id);
-		model.addAttribute("roleModel", roleModel);
-		
-		String jsp = "role/detail";
-		return jsp;
-	}
-	
 	@RequestMapping(value="role/edit")
 	public String roleEdit(HttpServletRequest request,Model model) {
-		Integer id = Integer.valueOf(request.getParameter("id"));
+		Long id = Long.valueOf(request.getParameter("id"));
 		RoleModel roleModel = new RoleModel();
 		roleModel = this.roleService.searchById(id);
 		model.addAttribute("roleModel", roleModel);
@@ -93,7 +84,7 @@ public class RoleController {
 	
 	@RequestMapping(value="role/edit/save")
 	public String roleEditSave(HttpServletRequest request, Model model) {
-		Integer id = Integer.valueOf(request.getParameter("id"));
+		Long id = Long.valueOf(request.getParameter("id"));
 		
 		String kode = request.getParameter("kode");
 		String nama = request.getParameter("name");
@@ -105,9 +96,33 @@ public class RoleController {
 		roleModelDB.setKode(kode);
 		roleModelDB.setName(nama);
 		roleModelDB.setDescription(desc);
+		roleModelDB.setModifiedOn(new Date());
 		
 		this.roleService.update(roleModelDB);
 		model.addAttribute("roleModelDB", roleModelDB);
+		
+		String jsp = "role/role";
+		return jsp;
+	}
+	
+	@RequestMapping (value="role/deactivate")
+	public String deactivate(HttpServletRequest request, Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
+		RoleModel roleModel = new RoleModel();
+		roleModel = this.roleService.searchById(id);
+		model.addAttribute("roleModel", roleModel);
+		String jsp = "role/deactivate";
+		return jsp;
+	}
+	
+	@RequestMapping(value="role/deactivate/save")
+	public String roleDeactivateSave(HttpServletRequest request, Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
+		
+		RoleModel roleModelDB = new RoleModel();
+		roleModelDB = this.roleService.searchById(id);
+	
+		this.roleService.deactivate(roleModelDB);
 		
 		String jsp = "role/role";
 		return jsp;

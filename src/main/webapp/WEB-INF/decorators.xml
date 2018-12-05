@@ -22,7 +22,9 @@
 		<pattern>/question/*</pattern>
 		<pattern>/version/*</pattern>
 		<pattern>/office/*</pattern>
+		
 		<pattern>/trainer/*</pattern>
+		<pattern>/testimony/*</pattern>
 
 	</excludes>
 

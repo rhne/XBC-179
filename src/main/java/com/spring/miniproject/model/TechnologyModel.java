@@ -24,7 +24,7 @@ public class TechnologyModel {
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="M_TECHNOLOGY")
 	@TableGenerator(name="M_TECHNOLOGY", table="S_SEQUENCE", pkColumnName="SEQUENCE_NAME", pkColumnValue="ID_SEQ_TECH", valueColumnName="SEQUENCE_VALUE", allocationSize=1, initialValue=0)
 	@Column(name="ID")
-	private Integer idTech;
+	private Long idTech;
 	
 	@Column(name="NAME")
 	private String name;
@@ -50,17 +50,17 @@ public class TechnologyModel {
 	private Integer active;
 	
 	@Column(name="ID_TRAINER")
-	private Integer idTrainer;
+	private Long idTrainer;
 	
 	@ManyToOne
 	@JoinColumn(name="ID_TRAINER", nullable=true, updatable=false,insertable=false)
 	private TrainerModel trainerModel;
 	
 	
-	public Integer getIdTech() {
+	public Long getIdTech() {
 		return idTech;
 	}
-	public void setIdTech(Integer idTech) {
+	public void setIdTech(Long idTech) {
 		this.idTech = idTech;
 	}
 	public String getName() {
@@ -105,10 +105,10 @@ public class TechnologyModel {
 	public void setActive(Integer active) {
 		this.active = active;
 	}
-	public Integer getIdTrainer() {
+	public Long getIdTrainer() {
 		return idTrainer;
 	}
-	public void setIdTrainer(Integer idTrainer) {
+	public void setIdTrainer(Long idTrainer) {
 		this.idTrainer = idTrainer;
 	}
 	public TrainerModel getTrainerModel() {

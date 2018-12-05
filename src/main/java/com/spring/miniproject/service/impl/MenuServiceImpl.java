@@ -30,7 +30,7 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public MenuModel searchById(Integer id) {
+	public MenuModel searchById(Long id) {
 		// TODO Auto-generated method stub
 		return menuDao.searchById(id);
 	}
