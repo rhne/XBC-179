@@ -56,12 +56,6 @@ public class RoleDaoImpl implements RoleDao {
 		session.update(roleModel);
 	}
 
-	@Override
-	public void delete(RoleModel roleModel) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<RoleModel> searchByLikeName(String name) {

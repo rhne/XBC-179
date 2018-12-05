@@ -50,12 +50,12 @@
 	authorities-by-username-query: adalah query yg digunakan oleh spring security untuk mendapatkan informasi role dari user yg sedang login,
 	urutannya juga jangan salah yaitu userid,role
 	 -->
-	<authentication-manager>
+	<authentication-manager alias="authenticationManager" erase-credentials="false">
 		<authentication-provider>
 			<jdbc-user-service
 			    data-source-ref="dataSource"
-				users-by-username-query="SELECT USERNAME, PASSWORD, ACTIVE FROM MST_USER WHERE USERNAME=?"
-				authorities-by-username-query="SELECT u1.USERNAME, u2.NAME FROM  MST_USER u1, MST_ROLE u2 WHERE u1.ROLE_ID = u2.ID and u1.USERNAME=?" />
+				users-by-username-query="SELECT USERNAME, PASSWORD, ID FROM U_USER WHERE USERNAME=?"
+				authorities-by-username-query="SELECT U.USERNAME, R.ROLE_NAME FROM  U_USER U, R_ROLE R WHERE U.ID_ROLE = R.ID and U.USERNAME=?" />
 		</authentication-provider>
 	</authentication-manager>
 </b:beans>

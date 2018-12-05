@@ -10,5 +10,6 @@ public interface AkunDao {
 	public AkunModel searchById(Integer id);
 	public void update(AkunModel akunModel);
 	List<AkunModel> searchByLikeName(String name);
+	public AkunModel searchByUsernamePassword(String username, String password);
 
 }
