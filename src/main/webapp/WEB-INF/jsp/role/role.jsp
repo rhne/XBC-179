@@ -48,6 +48,15 @@
        	</div>
 	</div>
 </div>
+
+<div class="modal fade" id = "modal-alert2">
+	<div class="modal-dialog">
+		<div class="alert alert-success alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Updated ...
+       	</div>
+	</div>
+</div>
 </div>
 
 <script>
@@ -107,5 +116,35 @@
 			return false;
 		});
 		
+		$("#list-data-role").on("click", "#btn-edit",function(){
+			var id = $(this).val();
+			$.ajax({
+				url:"role/edit.html",
+				type:"get",
+				dataType:"html",
+				data: {id:id},
+				success: function(result){
+					$("#modal-input").find(".modal-title").html("Form Role Data");
+					$("#modal-input").find(".modal-body").html(result);
+					$("#modal-input").modal("show");
+				}
+			});
+		});
+		
+		$("#modal-input").on("submit","#form-role-edit", function(){
+			$.ajax({
+				url:"role/edit/save.json",
+				type:"get",
+				dataType:"json",
+				data:$(this).serialize(),
+				success: function(result){
+					$("#modal-alert2").find(".modal-title");  
+					$("#modal-alert2").modal("show");
+					$("#modal-input").modal("hide");
+					listDataRole();
+				}
+			});
+			return false;
+		});
 	});
 </script>

@@ -36,12 +36,6 @@ public class RoleServiceImpl implements RoleService{
 	}
 
 	@Override
-	public void delete(RoleModel roleModel) {
-		// TODO Auto-generated method stub
-		this.roleDao.delete(roleModel);
-	}
-
-	@Override
 	public void update(RoleModel roleModel) {
 		// TODO Auto-generated method stub
 		this.roleDao.update(roleModel);

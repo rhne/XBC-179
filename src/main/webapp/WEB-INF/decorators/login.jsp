@@ -1,9 +1,6 @@
 
-<%
-	request.setAttribute("contextName", request.getContextPath());
-%>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
-	prefix="decorator"%>
+<% request.setAttribute("contextName", request.getContextPath()); %>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"	prefix="decorator"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
 <!DOCTYPE html>
 <!-- main.jsp decorator //-->
@@ -11,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Spring 160</title>
+<title>Login XBC</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -43,10 +40,6 @@
 </head>
 <body class="hold-transition login-page">
 	<div class="login-box">
-		<div class="login-logo">
-			<a href="../../index2.html"><b>Spring</b>160</a>
-		</div>
-		<!-- /.login-logo -->
 		<decorator:body />
 	</div>
 	<!-- /.login-box -->
