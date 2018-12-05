@@ -63,12 +63,12 @@ public class MonitoringController {
 	@RequestMapping(value="monitoring/create")
 	public String create(HttpServletRequest request, Model model) throws Exception{
 		
-		Long testId = Long.valueOf(request.getParameter("testID"));
+		Long id = Long.valueOf(request.getParameter("testId"));
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		Date idleDate = sdf.parse(request.getParameter("idleDate"));
 		
 		MonitoringModel monitoringModel = new MonitoringModel();
-		monitoringModel.setTestId(testId);
+		monitoringModel.setTestId(id);
 		monitoringModel.setIdleDate(idleDate);
 		monitoringModel.setLastProject(request.getParameter("lastProject"));
 		monitoringModel.setIdleReason(request.getParameter("idleReason"));

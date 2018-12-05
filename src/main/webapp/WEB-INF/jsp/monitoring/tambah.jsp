@@ -30,4 +30,7 @@
 			<input type="text" id="idleReason" name="idleReason" class="form-control">
 		</div>
 	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+	</div>
 </form>
