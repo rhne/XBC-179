@@ -2,11 +2,14 @@
 	<div class="box-header with-border">
 		<h3 class="box-title">Bootcamp Test Type</h3>
 		<div class="box-tools">
-				<div class="input-group input-group-sm" style="width: 200px;">
+			<div class="input-group input-group-sm" style="width: 200px;'">
+				<input type="text" id="nameCari" name="table_search" class="form-control pull-right" placeholder="Search by Name">
 				<div class="input-group-btn">
+					<button type="button" id="button-search" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="search"><i class="fa fa-search"></i></button>
                     <button type="button" id="button-tambah" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Create Data"><i class="fa fa-user-plus"></i></button>
                 </div>
-				</div>
+               	
+			</div>
 		</div>
 	</div>
 	<div class="box-body">
@@ -86,11 +89,23 @@
 					$("#modal-alert").find(".modal-title");  
 					$("#modal-alert").modal("show");
 					$("#modal-input").modal("hide");
-					listDataAkun();
+					listDataBootcampTestType();
 				}
 			});
 			return false;
 		});
-		
+		$("#button-search").on("click", function(){
+			var nameCari = document.getElementById("nameCari").value;
+			$.ajax({
+				url:"bootcamp_test_type/search/name.html",
+				type:"get",
+				dataType:"html",
+				data:{nameCari:nameCari},
+				success: function(result){
+					$("#list-data-bootcamp-test-type").html(result);
+				}
+			});
+			return false;
+		});
 	});
 </script>

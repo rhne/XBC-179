@@ -1,18 +1,25 @@
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="tech" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<tech:forEach items="${technologyModelList}" var="technologyModel" varStatus="number">
 <tr>
 	<td>${technologyModel.name}</td>
 	<td>${technologyModel.createdBy}</td>
-	<td>${technologyModel.status}</td>
+	<td>${technologyModel.active}</td>
 	<td>
-		<li>
-				<a href="#"><i class="fa fa-bars"></i><span></span><span class="pull-right-container"> </span></a>
-				<ul class="treeview-menu">
-				<li>
-						<a href="technology/editTechnology.html" class="menu-item">Edit</a>
-					</li>
-				<li>
-					<a href="technology/deactive.html" class="menu-item">Deactive</a>
-				</li>
-				</ul>
-		</li>
+		<select id="action">
+			<option id="edit-list-technology">Edit</option>
+			<option id="deactive-status" value="0">Deactive</option>
+		</select>
+	</td>
+</tr>
+
+</tech:forEach>
+
+<tr>
+	<td>
+		<select id="action">
+			<option id="edit-list-technology">Edit</option>
+			<option id="deactive-status" value="0">Deactive</option>
+		</select>
 	</td>
 </tr>

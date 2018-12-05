@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
@@ -46,6 +48,13 @@ public class TechnologyModel {
 	
 	@Column(name="ACTIVE")
 	private Integer active;
+	
+	@Column(name="ID_TRAINER")
+	private Integer idTrainer;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_TRAINER", nullable=true, updatable=false,insertable=false)
+	private TrainerModel trainerModel;
 	
 	
 	public Integer getIdTech() {
@@ -96,5 +105,18 @@ public class TechnologyModel {
 	public void setActive(Integer active) {
 		this.active = active;
 	}
+	public Integer getIdTrainer() {
+		return idTrainer;
+	}
+	public void setIdTrainer(Integer idTrainer) {
+		this.idTrainer = idTrainer;
+	}
+	public TrainerModel getTrainerModel() {
+		return trainerModel;
+	}
+	public void setTrainerModel(TrainerModel trainerModel) {
+		this.trainerModel = trainerModel;
+	}
+	
 		
 }

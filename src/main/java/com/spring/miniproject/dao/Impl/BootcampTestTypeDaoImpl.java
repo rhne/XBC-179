@@ -22,7 +22,7 @@ public class BootcampTestTypeDaoImpl implements BootcampTestTypeDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<BootcampTestTypeModel> bootcamptesttypeModelList = new ArrayList<BootcampTestTypeModel>();
-		bootcamptesttypeModelList = session.createQuery(" from BootcampTestTypeModel ").list();
+		bootcamptesttypeModelList = session.createQuery(" from BootcampTestTypeModel where isActive =1").list();
 		return bootcamptesttypeModelList;
 	}
 
@@ -32,5 +32,18 @@ public class BootcampTestTypeDaoImpl implements BootcampTestTypeDao{
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(bootcamptesttypeModel);
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<BootcampTestTypeModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String query = " select a from BootcampTestTypeModel a "
+					 + " where a.name like '%"+name+"%' ";
+		
+		List<BootcampTestTypeModel> bootcamptesttypeModelList = new ArrayList<BootcampTestTypeModel>();
+		bootcamptesttypeModelList = session.createQuery(query).list();
+		
+		return bootcamptesttypeModelList;
+	}
 }

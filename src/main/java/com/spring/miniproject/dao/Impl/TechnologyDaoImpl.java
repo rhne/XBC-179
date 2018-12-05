@@ -11,8 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.spring.miniproject.dao.TechnologyDao;
 import com.spring.miniproject.model.TechnologyModel;
 
-import antlr.collections.impl.LList;
-
 @Repository
 public class TechnologyDaoImpl implements TechnologyDao{
 
@@ -26,12 +24,24 @@ public class TechnologyDaoImpl implements TechnologyDao{
 		session.save(technologyModel);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<TechnologyModel> showAll() {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<TechnologyModel> technologyModelList = new ArrayList<TechnologyModel>();
 		technologyModelList = session.createQuery(" from TechnologyModel ").list();
+		return technologyModelList;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TechnologyModel> searchBy(String text) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String query = " select t from TechnologyModel t where t.name like '%"+text+"%' or t.name like '%"+text+"' or t.name like '"+text+"%'";
+		List<TechnologyModel> technologyModelList = new ArrayList<TechnologyModel>();
+		technologyModelList = session.createQuery(query).list();
 		return technologyModelList;
 	}
 }

@@ -6,7 +6,8 @@
 	<textarea id="question" name="question" class="form-control" style="resize:vertical" rows="3"></textarea>
 	
 	<div class="modal-footer">
-		<button type="submit" class="btn btn-primary btn-sm">Tambah</button>
+		<button type="submit" class="btn btn-primary btn-sm">Save</button>
+		<button type="button" class="btn btn-normal btn-sm" data-dismiss="modal">Cancel</button>
 	</div>
 </div>
 </form>

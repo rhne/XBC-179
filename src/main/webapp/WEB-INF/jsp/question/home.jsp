@@ -4,7 +4,7 @@
 		<div class="box-tools">
 				<div class="input-group input-group-sm" style="width: 200px;">
 				<div class="input-group-btn">
-                    <button type="button" id="button-tambah" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Create Data"><i class="fa fa-plus"> New</i></button>
+                    <button type="button" id="button-tambah" class="btn btn-primary btn-sm pull-right" data-toggle="tooltip" title="Create Data"><i class="fa fa-plus"> New</i></button>
                 </div>
 				</div>
 		</div>
@@ -52,7 +52,7 @@
 	<div class="modal-dialog">
 		<div class="alert alert-warning alert-dismissible">
         	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
-            Are you sure you want to delete?
+            
             <div class="modal-body">
 			
 			</div>

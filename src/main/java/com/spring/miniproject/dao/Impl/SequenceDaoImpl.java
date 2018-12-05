@@ -82,6 +82,113 @@ public class SequenceDaoImpl implements SequenceDao {
 		}
 		return idTrainer;
 	}
+	
+	@Override
+	public Integer nextIdOffice() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idOff = 0;
+		String query = " from SequenceModel where sequenceName='T_OFFICE_ID' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idOff = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idOff = 1;
+		}
+		return idOff;
+	}
+	
+	@Override
+	public Integer nextIdBootcampTestType() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idboot = 0;
+		String query = " from SequenceModel where sequenceName='T_BOOTCAMP_TEST_TYPE_ID' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idboot = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idboot = 1;
+		}
+		return idboot;
+	}
+	
+	@Override
+	public Integer nextIdCategory() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idcat = 0;
+		String query = " from SequenceModel where sequenceName='T_CATEGORY_ID' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idcat = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idcat = 1;
+		}
+		return idcat;
+	}
+
+	@Override
+	public Integer nextIdBiodata() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idBiodata = 0;
+		String query = " from SequenceModel where sequenceName='ID_BIODATA' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idBiodata = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idBiodata = 1;
+		}
+		return idBiodata;
+	}
+
+	@Override
+	public Integer nextIdTechTrainer() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idTechTrainer = 0;
+		String query = " from SequenceModel where sequenceName='ID_TECH_TRAINER' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idTechTrainer = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idTechTrainer = 1;
+		}
+		return idTechTrainer;
+	}
+	
+	public Integer nextIdMonitoring() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idMonitoring = 0;
+		String query = " from SequenceModel where sequenceName='ID_MONITORING' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idMonitoring = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idMonitoring = 1;
+		}
+		return idMonitoring;
+	}
 
 	@Override
 	public Integer nextIdMenu() {
