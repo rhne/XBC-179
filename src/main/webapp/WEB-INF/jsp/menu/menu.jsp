@@ -1,6 +1,6 @@
 <div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title">Role</h3>
+		<h3 class="box-title">Menu</h3>
 		<div class="box-tools">
 			<div class="input-group input-group-sm" style="width: 200px;'">
 				<input type="text" id="nameCari" name="table-search" class="form-control pull-right" placeholder="Search by Name">
@@ -12,15 +12,16 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<table class="table" id="table-role">
+		<table class="table" id="table-menu">
 			<thead>
 			<tr>
 				<th>CODE</th>
-				<th>NAME</th>
+				<th>TITLE</th>
+				<th>PARENT</th>
 				<th>STATUS</th>
 			</tr>
 			</thead>
-			<tbody id="list-data-role">
+			<tbody id="list-data-menu">
 			
 			</tbody>
 		</table>
@@ -57,30 +58,18 @@
        	</div>
 	</div>
 </div>
-
-<div class="modal fade" id="modal-deactivate">
-	<div class="modal-dialog">
-		<div class="alert alert-warning alert-dismissible">
-        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
-            
-            <div class="modal-body">
-			
-			</div>
-       	</div>
-	</div>
-</div>
 </div>
 
 <script>
-	listDataRole();
+	listDataMenu();
 
-	function listDataRole() {
+	function listDataMenu() {
 		$.ajax({
-			url:"role/list.html",
+			url:"menu/list.html",
 			type:"get",
 			dataType:"html",
 			success:function(result){
-				$("#list-data-role").html(result);
+				$("#list-data-menu").html(result);
 			}
 		});
 	}
@@ -91,16 +80,16 @@
 				type:"get",
 				dataType:"html",
 				success:function(result){
-					$("#modal-input").find(".modal-title").html("Form Role Data");
+					$("#modal-input").find(".modal-title").html("Form Menu");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
 				}
 			});
 		});
 		
-		$("#modal-input").on("submit", "#form-role-tambah", function(){
+		$("#modal-input").on("submit", "#form-menu-tambah", function(){
 			$.ajax({
-				url:"role/create.json",
+				url:"menu/create.json",
 				type:"get",
 				dataType:"json",
 				data:$(this).serialize(),
@@ -117,35 +106,35 @@
 		$("#button-search").on("click", function(){
 			var nameCari = document.getElementById("nameCari").value;
 			$.ajax({
-				url:"role/search/name.html",
+				url:"menu/search/name.html",
 				type:"get",
 				dataType:"html",
 				data:{nameCari:nameCari},
 				success: function(result){
-					$("#list-data-role").html(result);
+					$("#list-data-menu").html(result);
 				}
 			});
 			return false;
 		});
 		
-		$("#list-data-role").on("click", "#btn-edit",function(){
+		$("#list-data-menu").on("click", "#btn-edit",function(){
 			var id = $(this).val();
 			$.ajax({
-				url:"role/edit.html",
+				url:"menu/edit.html",
 				type:"get",
 				dataType:"html",
 				data: {id:id},
 				success: function(result){
-					$("#modal-input").find(".modal-title").html("Form Role Data");
+					$("#modal-input").find(".modal-title").html("Form Menu");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
 				}
 			});
 		});
 		
-		$("#modal-input").on("submit","#form-role-edit", function(){
+		$("#modal-input").on("submit","#form-menu-edit", function(){
 			$.ajax({
-				url:"role/edit/save.json",
+				url:"menu/edit/save.json",
 				type:"get",
 				dataType:"json",
 				data:$(this).serialize(),
@@ -153,34 +142,6 @@
 					$("#modal-alert2").find(".modal-title");  
 					$("#modal-alert2").modal("show");
 					$("#modal-input").modal("hide");
-					listDataRole();
-				}
-			});
-			return false;
-		});
-		
-		$("#list-data-role").on("click", "#btn-deactivate", function(){
-			var id = $(this).val();
-			$.ajax({
-				url:"role/deactivate.html",
-				type:"get",
-				dataType:"html",
-				data: {id:id},
-				success:function(result){
-					$("#modal-deactivate").find(".modal-body").html(result);
-					$("#modal-deactivate").modal("show");
-				}
-			});
-		});
-		
-		$("#modal-deactivate").on("submit","#form-deactivate", function(){
-			$.ajax({
-				url:"role/deactivate/save.json",
-				type:"get",
-				dataType:"json",
-				data:$(this).serialize(),
-				success: function(result){
-					$("#modal-deactivate").modal("hide");
 					listDataRole();
 				}
 			});

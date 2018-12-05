@@ -17,6 +17,7 @@ public class QuestionDaoImpl implements QuestionDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<QuestionModel> searchAll() {
 		Session session = this.sessionFactory.getCurrentSession();

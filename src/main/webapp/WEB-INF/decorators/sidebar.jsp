@@ -15,6 +15,9 @@
 						<li>
 							<a href="${contextName}/role.html" class="menu-item"><i class="fa fa-book"></i>Role</a>
 						</li>
+						<li>
+							<a href="${contextName}/menu.html" class="menu-item"><i class="fa fa-book"></i>Menu</a>
+						</li>
 					</ul>
 				</li>
 				<!-- Modul 2 -->	

@@ -1,6 +1,6 @@
 package com.spring.miniproject.service.impl;
 
-import java.util.List; 
+import java.util.List;  
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class RoleServiceImpl implements RoleService{
 	}
 
 	@Override
-	public RoleModel searchById(Integer id) {
+	public RoleModel searchById(Long id) {
 		// TODO Auto-generated method stub
 		return this.roleDao.searchById(id);
 	}
@@ -45,6 +45,12 @@ public class RoleServiceImpl implements RoleService{
 	public List<RoleModel> searchByLikeName(String name) {
 		// TODO Auto-generated method stub
 		return this.roleDao.searchByLikeName(name);
+	}
+
+	@Override
+	public void deactivate(RoleModel roleModel) {
+		// TODO Auto-generated method stub
+		this.roleDao.deactivate(roleModel);
 	}
 
 }

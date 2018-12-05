@@ -40,7 +40,7 @@ public class MenuDaoImpl implements MenuDao {
 	}
 
 	@Override
-	public MenuModel searchById(Integer id) {
+	public MenuModel searchById(Long id) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		String query = "select m from MenuModel m where m.id="+id+"";
@@ -58,21 +58,21 @@ public class MenuDaoImpl implements MenuDao {
 		session.update(menuModel);
 	}
 
-@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<MenuModel> searchByRole(Long idRole) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		String query = "SELECT "
 					 + " M.ID ID, "
-					 + " M.NAMA NAMA,"
+					 + " M.TITLE TITLE,"
 					 + " M.KODE KODE, "
-					 + " M.CONTROLLER CONTROLLER "
+					 + " M.MENU_PARENT MENU_PARENT"
 					 + "FROM M_MENU M "
-					 + "JOIN M_USERACCESS UA "
-					 + " ON UA.ID_MENU = M.ID "
-					 + "WHERE UA.ID_ROLE="+idRole+" "
-					 + "ORDER BY M.NAMA ASC ";
+					 + "JOIN M_MENUACCESS MA "
+					 + " ON MA.ID_MENU = M.ID "
+					 + "WHERE MA.ID_ROLE="+idRole+" "
+					 + "ORDER BY M.TITLE ASC ";
 		
 		List<MenuModel> menuModelList = new ArrayList<MenuModel>();
 		SQLQuery sqlQuery = session.createSQLQuery(query);

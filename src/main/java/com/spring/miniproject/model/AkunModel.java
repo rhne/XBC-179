@@ -1,6 +1,6 @@
 package com.spring.miniproject.model;
 
-import java.time.LocalDateTime; 
+import java.util.Date;
 
 import javax.persistence.Column;  
 import javax.persistence.Entity;
@@ -11,9 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import com.spring.miniproject.model.RoleModel;
 
@@ -36,11 +33,11 @@ public class AkunModel {
 			
 		private Long createdBy;
 		private AkunModel createdByUser;
-		private LocalDateTime createdOn;
+		private Date createdOn;
 				
 		private Long modifiedBy;
 		private AkunModel modifiedByUser;
-		private LocalDateTime modifiedOn;
+		private Date modifiedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
@@ -116,12 +113,11 @@ public class AkunModel {
 		this.createdByUser = createdByUser;
 	}
 	
-	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	public LocalDateTime getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(LocalDateTime createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 	
@@ -142,12 +138,11 @@ public class AkunModel {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
-	@UpdateTimestamp
 	@Column(name="MODIFIED_ON")
-	public LocalDateTime getModifiedOn() {
+	public Date getModifiedOn() {
 		return modifiedOn;
 	}
-	public void setModifiedOn(LocalDateTime modifiedOn) {
+	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
 	

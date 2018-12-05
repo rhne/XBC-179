@@ -42,14 +42,22 @@ public class MenuController {
 	@RequestMapping(value="menu/add/save")
 	public String menuAddSave(HttpServletRequest request, Model model) {
 		String kode = request.getParameter("kode");
-		String nama = request.getParameter("nama");
-		String controller = request.getParameter("controller");
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+		String imgurl = request.getParameter("imgurl");
+		String menuorder = request.getParameter("menuorder");
+		String parent = request.getParameter("parent");
+		String menuurl = request.getParameter("menuurl");
 		
 		MenuModel menuModel = new MenuModel();
 		
 		menuModel.setKode(kode);
-		menuModel.setNama(nama);
-		menuModel.setController(controller);
+		menuModel.setTitle(title);
+		menuModel.setTitle(description);
+		menuModel.setTitle(imgurl);
+		menuModel.setTitle(menuorder);
+		menuModel.setTitle(parent);
+		menuModel.setTitle(menuurl);
 		
 		this.menuService.create(menuModel);;
 		model.addAttribute("menuModel", menuModel);
@@ -68,20 +76,9 @@ public class MenuController {
 		return jsp;
 	}
 	
-	@RequestMapping(value="menu/detail")
-	public String menuDetail(HttpServletRequest request,Model model) {
-		Integer id = Integer.valueOf(request.getParameter("id"));
-		MenuModel menuModel = new MenuModel();
-		menuModel = this.menuService.searchById(id);
-		model.addAttribute("menuModel", menuModel);
-		
-		String jsp = "menu/detail";
-		return jsp;
-	}
-	
 	@RequestMapping(value="menu/edit")
 	public String menuEdit(HttpServletRequest request,Model model) {
-		Integer id = Integer.valueOf(request.getParameter("id"));
+		Long id = Long.valueOf(request.getParameter("id"));
 		MenuModel menuModel = new MenuModel();
 		menuModel = this.menuService.searchById(id);
 		model.addAttribute("menuModel", menuModel);
@@ -92,21 +89,29 @@ public class MenuController {
 	
 	@RequestMapping(value="menu/edit/save")
 	public String menuEditSave(HttpServletRequest request, Model model) {
-		Integer id = Integer.valueOf(request.getParameter("id"));
+		Long id = Long.valueOf(request.getParameter("id"));
 		
 		String kode = request.getParameter("kode");
-		String nama = request.getParameter("nama");
-		String controller = request.getParameter("controller");
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+		String imgurl = request.getParameter("imgurl");
+		String menuorder = request.getParameter("menuorder");
+		String parent = request.getParameter("parent");
+		String menuurl = request.getParameter("menuurl");
 		
-		MenuModel menuModelDB = new MenuModel();
-		menuModelDB = this.menuService.searchById(id);
+		MenuModel menuModel = new MenuModel();
+		menuModel = this.menuService.searchById(id);
 		
-		menuModelDB.setKode(kode);
-		menuModelDB.setNama(nama);
-		menuModelDB.setController(controller);
+		menuModel.setKode(kode);
+		menuModel.setTitle(title);
+		menuModel.setTitle(description);
+		menuModel.setTitle(imgurl);
+		menuModel.setTitle(menuorder);
+		menuModel.setTitle(parent);
+		menuModel.setTitle(menuurl);
 		
-		this.menuService.update(menuModelDB);
-		model.addAttribute("menuModelDB", menuModelDB);
+		this.menuService.update(menuModel);
+		model.addAttribute("menuModel", menuModel);
 		
 		String jsp = "menu/menu";
 		return jsp;

@@ -6,19 +6,15 @@
 		<td>${akunModel.roleModel.name}</td>
 		<td>Active</td>
 		<td>
-			<ul class="sidebar-menu">
-				<li>
-				<a href="#"><i class="fa fa-list"></i><span class="pull-right-container"> </span></a>
-					<ul class="treeview-menu">
-						<li>
-							<a href="${contextName}/user.html" class="menu-item"><i class="fa fa-book"></i>User</a>
-						</li>
-						<li>
-							<a href="${contextName}/role.html" class="menu-item"><i class="fa fa-book"></i>Role</a>
-						</li>
-					</ul>
-				</li>	
-			</ul> 
+			<div class="dropdown">
+  				<button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">
+  				<i class="fa fa-bars"></i>
+  				</button>
+  					<ul class="dropdown-menu">
+    					<li><button type="button" class="btn btn-link" id="btn-edit" value="${akunModel.id}">Edit</button></li>
+    					<li><button type="button" class="btn btn-link" id="btn-deactivate">Deactivate</button></li>
+  					</ul>
+			</div> 
 		</td>
 	</tr>
 </c:forEach>

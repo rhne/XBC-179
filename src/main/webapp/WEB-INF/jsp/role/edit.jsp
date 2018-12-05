@@ -6,7 +6,8 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="idRole">CODE</label>
 		<div class="col-md-8">
-			<input type="text" id="kode" name="kode" class="form-control" value="${roleModel.kode}" disabled="disabled">
+			<input type="hidden" id="kode" name="kode" value="${roleModel.kode}">
+			<input type="text" id="kodedis" name="kodedis" class="form-control" value="${roleModel.kode}" disabled="disabled">
 		</div>
 	</div>
 	<div class="form-group">

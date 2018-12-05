@@ -50,4 +50,10 @@ public class AkunServiceImpl implements AkunService{
 		// TODO Auto-generated method stub
 		return this.akunDao.searchByUsernamePassword(username, password);
 	}
+
+	@Override
+	public void deactivate(AkunModel akunModel) {
+		// TODO Auto-generated method stub
+		this.akunDao.deactivate(akunModel);
+	}
 }
