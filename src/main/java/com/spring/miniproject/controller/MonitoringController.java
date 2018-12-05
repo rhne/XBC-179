@@ -34,6 +34,7 @@ public class MonitoringController {
 		return jsp;
 	}
 	
+	/*List Monitoring*/
 	@RequestMapping(value="monitoring/list")
 	public String listmonitoring(Model model) {
 		List<MonitoringModel> monitoringModelList = new ArrayList<MonitoringModel>();
@@ -43,16 +44,17 @@ public class MonitoringController {
 		return jsp;
 	}
 	
+	/*Popup Input Monitoring*/
 	@RequestMapping(value="monitoring/tambah")
 	public String tambahmonitoring(Model model) {
 		
 		this.listbiodata(model);
 		
-		
 		String jsp = "monitoring/tambah";
 		return jsp;
 	}
 	
+	/*List Biodata for Name Dropdown*/
 	private void listbiodata(Model model) {
 		// TODO Auto-generated method stub
 		List<BiodataModel> biodataModelList = new ArrayList<BiodataModel>();
@@ -60,11 +62,12 @@ public class MonitoringController {
 		model.addAttribute("biodataModelList", biodataModelList);
 	}
 
+	/*Create Monitoring*/
 	@RequestMapping(value="monitoring/create")
 	public String create(HttpServletRequest request, Model model) throws Exception{
 		
 		Long id = Long.valueOf(request.getParameter("testId"));
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date idleDate = sdf.parse(request.getParameter("idleDate"));
 		
 		MonitoringModel monitoringModel = new MonitoringModel();
