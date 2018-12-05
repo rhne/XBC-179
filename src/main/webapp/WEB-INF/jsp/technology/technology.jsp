@@ -38,6 +38,17 @@
 	</div>
 </div>
 
+	<div class="modal fade" id="modal-input2">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body2"></div>
+		</div>
+	</div>
+	</div>
+
 <script>
 
 	listDataTechnology();
@@ -96,5 +107,32 @@
 		return false;
 	});
 
+	
+	$("#btn-add-trainer").on("click", function() {
+		$.ajax({
+			url:"technology/addTechTrainer.html",
+			type: "get",
+			dataType: "html",
+			success: function(result){
+				$("#modal-input2").find(".modal-body2").html(result);
+				$("#modal-input2").modal("show");
+			}
+		});
+	});
+	
+	$("#modal-input").on("submit", "#form-add-tech-trainer", function(){
+		$.ajax({
+			url:"technology/addTechTrainer/save.json",
+			type : "get",
+			dataType : "json",
+			data: $(this).serialize(),
+			success : function(result){
+				$("#modal-input2").modal("hide");
+				alert("Data succesfully added!");
+				listDataTrainer();
+			}
+		});
+		return false;
+	});
 		
 </script>

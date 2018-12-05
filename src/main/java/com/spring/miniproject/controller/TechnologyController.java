@@ -49,7 +49,7 @@ public class TechnologyController {
 	
 	@RequestMapping(value="technology/addTechnology/save")
 	public String addSaveTechnology(HttpServletRequest request, Model model) {
-		Integer idTech = this.sequenceService.nextIdTechnology();
+		Long idTech = new Long(this.sequenceService.nextIdTechnology());
 		model.addAttribute("idTech", idTech);
 		String name = request.getParameter("techName");
 		String notes = request.getParameter("techNote");

@@ -190,4 +190,22 @@ public class SequenceDaoImpl implements SequenceDao {
 		return idMonitoring;
 	}
 
+	@Override
+	public Integer nextIdTestimony() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idTestimony = 0;
+		String query = " from SequenceModel where sequenceName='ID_TESTIMONY' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idTestimony = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idTestimony = 1;
+		}
+		return idTestimony;
+	}
+
 }

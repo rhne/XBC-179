@@ -37,7 +37,7 @@
 </div>
 
 <script>
-	listDatatestimony();
+	listDataTestimony();
 	function listDataTestimony(){
 		$.ajax({
 			url : "testimony/listTestimony.html",
@@ -49,7 +49,9 @@
 		});
 	}
 	
+	$(document).ready(function(){
 	$("#btn-add").on("click", function() {
+		alert("add new");
 		$.ajax({
 			url:"testimony/addTestimony.html",
 			type: "get",
@@ -62,6 +64,7 @@
 	});
 	
 	$("#modal-input").on("submit", "#form-add-testimony", function(){
+		validation();
 		$.ajax({
 			url : "testimony/addTestimony/save.json",
 			type : "get",
@@ -75,5 +78,78 @@
 		});
 		return false;
 	});
-
+	
+	$("#list-data-testimony").on("click", ".btn-edit", function(){
+		var idEdit = $(this).prop('id');
+		$.ajax({
+			url : "testimony/editTestimony.html",
+			type : "get",
+			dataType : "html",
+			data : {idEdit : idEdit},
+			success : function(result){
+				$("#modal-input").find(".modal-body").html(result);
+				$("#modal-input").modal("show");
+			}
+		});
+	});
+	
+	$("#modal-input").on("submit", "#form-edit-testimony", function(){
+		$.ajax({
+			url : "testimony/editTestimony/save.json",
+			type : "get",
+			dataType : "json",
+			data : $(this).serialize(),
+			success : function(result){
+				$("#modal-input").modal("hide");
+				alert("Data sucessfully updated!");
+				listDataTestimony();
+			}
+		});
+		return false;
+	});
+	
+	$("#btn-search").click(function(){
+		var title = $("#txt-search").val();
+		$.ajax({
+			url : "testimony/searchTestimony/title.html",
+			type : "get",
+			dataType : "html",
+			data : {searchTitle : title},
+			success : function(result){
+				$("#list-data-testimony").html(result);
+			}
+		});
+		return false;
+	});
+	
+	$("#list-data-testimony").on("click", ".btn-delete", function(){
+		var idDelete = $(this).prop('id');
+		$.ajax({
+			url : "testimony/deleteTestimony.html",
+			type : "get",
+			dataType : "html",
+			data : {idDelete : idDelete},
+			success : function(result){
+				$("#modal-input").find(".modal-body").html(result);
+				$("#modal-input").modal("show");
+			}
+		});
+	});
+	
+	$("#modal-input").on("submit", "#form-delete-testimony", function(){
+		$.ajax({
+			url : "testimony/deleteTestimony/save.json",
+			type : "get",
+			dataType : "json",
+			data : $(this).serialize(),
+			success : function(result){
+				$("#modal-input").modal("hide");
+				alert("Data sucessfully deleted!");
+				listDataTestimony();
+			}
+		});
+		return false;
+	});
+	
+});
 </script>

@@ -11,9 +11,7 @@ public interface SequenceService {
 	public Integer nextIdBootcampTestType();
 	public Integer nextIdCategory();
 	public Integer nextIdBiodata();
-<<<<<<< HEAD
 	public Integer nextIdMonitoring();
-=======
->>>>>>> 4631942ce7eaa03aec91e75050aef556175fbbfc
+	public Integer nextIdTestimony();
 	
 }

@@ -4,20 +4,18 @@
 <tr>
 	<td>${testimonyModel.title}</td>
 	<td>
-		<select id="action">
-			<option id="edit-list-testimony">Edit</option>
-			<option id="deactive-status" value="0">Deactive</option>
-		</select>
+		<div class="btn-group">
+		  <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown">
+		    <span class="fa fa-bars"></span>
+		    <span class="sr-only">Toggle Dropdown</span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu">
+			    <li><a id="${testimonyModel.idTestimony}" class="btn-edit">Edit</a></li>
+			     <li><a id="${testimonyModel.idTestimony}" class="btn-delete">Delete</a></li>
+			    <li class="divider"></li>
+			</ul>
+			</div>
 	</td>
 </tr>
 
 </tsm:forEach>
-
-<tr>
-	<td>
-		<select id="action">
-			<option id="edit-list-testimony">Edit</option>
-			<option id="deactive-status" value="0">Deactive</option>
-		</select>
-	</td>
-</tr>

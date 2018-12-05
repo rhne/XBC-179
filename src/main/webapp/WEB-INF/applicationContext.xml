@@ -45,9 +45,13 @@
 				<value>com.spring.miniproject.model.SequenceModel</value>
 				<value>com.spring.miniproject.model.AkunModel</value>
 				<value>com.spring.miniproject.model.RoleModel</value>
+				<value>com.spring.miniproject.model.MenuModel</value>
 
 				<value>com.spring.miniproject.model.BiodataModel</value>
 				<value>com.spring.miniproject.model.MonitoringModel</value>
+				<value>com.spring.miniproject.model.AssignmentModel</value> 
+				
+				<value>com.spring.miniproject.model.TechnologyModel</value>
 				<value>com.spring.miniproject.model.AssignmentModel</value>
 
 				<value>com.spring.miniproject.model.CategoryModel</value>
@@ -60,16 +64,18 @@
 				<value>com.spring.miniproject.model.QuestionModel</value>
 				<value>com.spring.miniproject.model.VersionModel</value>
 				<value>com.spring.miniproject.model.OfficeModel</value>
+				
 				<value>com.spring.miniproject.model.TechnologyModel</value>
 				<value>com.spring.miniproject.model.TrainerModel</value>
 				<value>com.spring.miniproject.model.TechnologyTrainerModel</value>
+				<value>com.spring.miniproject.model.TestimonyModel</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property>
 	</bean>

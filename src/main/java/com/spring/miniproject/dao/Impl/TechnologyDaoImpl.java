@@ -30,7 +30,7 @@ public class TechnologyDaoImpl implements TechnologyDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<TechnologyModel> technologyModelList = new ArrayList<TechnologyModel>();
-		technologyModelList = session.createQuery(" from TechnologyModel ").list();
+		technologyModelList = session.createQuery(" select t from TechnologyModel t where t.active = 1 ").list();
 		return technologyModelList;
 	}
 
@@ -39,7 +39,7 @@ public class TechnologyDaoImpl implements TechnologyDao{
 	public List<TechnologyModel> searchBy(String text) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		String query = " select t from TechnologyModel t where t.name like '%"+text+"%' or t.name like '%"+text+"' or t.name like '"+text+"%'";
+		String query = " select t from TechnologyModel t where t.name like '%"+text+"%'";
 		List<TechnologyModel> technologyModelList = new ArrayList<TechnologyModel>();
 		technologyModelList = session.createQuery(query).list();
 		return technologyModelList;

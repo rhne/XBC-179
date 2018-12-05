@@ -61,6 +61,15 @@
 					</ul>
 				</li>	
 				
+				<li>
+					<a href="#"><i class="fa fa-edit"></i><span>Testimony Master</span><span class="pull-right-container"> </span></a>
+					<ul class="treeview-menu">
+					<li>
+							<a href="${contextName}/testimony.html" class="menu-item"><i class="fa fa-book"></i>Testimony</a>
+					</li>
+					<li>
+					</ul>
+				</li>	
 
 
 				<li>

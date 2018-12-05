@@ -11,5 +11,8 @@
 	</div>
 	<input type="hidden" id="statusTrainer" name="trainerStatus" value="1">
 
-	<input type="submit" class="add-trainer" value="submit"></td>
+	<div class="modal-footer">
+		<input type="submit" class="btn btn-primary btn-sm" value="save"></td>
+		<input type="reset" class="btn btn-primary btn-sm" value="cancel"></td>
+	</div>
 </form>
