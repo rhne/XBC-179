@@ -190,4 +190,22 @@ public class SequenceDaoImpl implements SequenceDao {
 		return idMonitoring;
 	}
 
+	@Override
+	public Integer nextIdMenu() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idMenu = 0;
+		String query = " from SequenceModel where sequenceName='ID_MENU' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idMenu = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idMenu = 1;
+		}
+		return idMenu;
+	}
+
 }

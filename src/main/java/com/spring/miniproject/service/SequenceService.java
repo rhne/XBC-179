@@ -6,6 +6,8 @@ public interface SequenceService {
 	public Integer nextIdRole();
 	public Integer nextIdTechnology();
 	public Integer nextIdTrainer();
+	public Integer nextIdMenu();
+
 	public Integer nextIdTechTrainer();
 	public Integer nextIdOffice();
 	public Integer nextIdBootcampTestType();
