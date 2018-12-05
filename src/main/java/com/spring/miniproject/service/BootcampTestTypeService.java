@@ -7,5 +7,5 @@ import com.spring.miniproject.model.BootcampTestTypeModel;
 public interface BootcampTestTypeService {
 	public void create(BootcampTestTypeModel bootcamptesttypeModel);
 	public List<BootcampTestTypeModel> searchAll();
-
+	public List<BootcampTestTypeModel> searchByLikeName(String name);
 }

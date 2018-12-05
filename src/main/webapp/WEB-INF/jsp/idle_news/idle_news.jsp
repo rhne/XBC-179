@@ -2,12 +2,13 @@
 	<div class="box-header with-border">
 		<h3 class="box-title">Idle News</h3>
 		<div class="box-tools">
-			<div class="input-group input-group-sm" style="width: 200px;">
-				<input type="text" id="kodeCari" name="table_search" class="form-control pull-right" placeholder="Search">
+			<div class="input-group input-group-sm" style="width: 200px;'">
+				<input type="text" id="nameCari" name="table_search" class="form-control pull-right" placeholder="Search by Title">
 				<div class="input-group-btn">
-                    <button type="button" id="btn-search" class="btn btn-default"><i class="fa fa-search"></i></button>
-                    <button type="button" id="button-tambah" class="btn btn-primary btn-sm"><i class="fa fa-user-plus"></i></button>
-                  </div>
+					<button type="button" id="button-search" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="search"><i class="fa fa-search"></i></button>
+                    <button type="button" id="button-tambah" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Create Data"><i class="fa fa-user-plus"></i></button>
+                </div>
+               	
 			</div>
 
 		</div>
@@ -70,7 +71,7 @@
 				}
 			});
 		});
-	});
+
 
 	$("#modal-input").on("submit", "#form-idle-news-tambah", function() {
 		$.ajax({
@@ -86,5 +87,20 @@
 			}
 		});
 		return false;
+	});
+	
+	$("#button-search").on("click", function(){
+		var nameCari = document.getElementById("nameCari").value;
+		$.ajax({
+			url:"idle_news/search/name.html",
+			type:"get",
+			dataType:"html",
+			data:{nameCari:nameCari},
+			success: function(result){
+				$("#list-data-idle-news").html(result);
+			}
+		});
+		return false;
+	});
 	});
 </script>

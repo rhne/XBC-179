@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.miniproject.model.AkunModel;
 import com.spring.miniproject.model.OfficeModel;
+import com.spring.miniproject.model.QuestionModel;
 import com.spring.miniproject.service.OfficeService;
 
 @Controller
@@ -58,5 +60,33 @@ public class OfficeController {
 		String jsp = "office/list";
 		return jsp;
 	}
+	@RequestMapping(value="office/search/name")
+	public String officeSearchName(HttpServletRequest request, Model model) {
+		String name = request.getParameter("nameCari");
+		List<OfficeModel> officeModelList = new ArrayList<OfficeModel>();
+		officeModelList = this.officeService.searchByLikeName(name);
+		model.addAttribute("officeModelList", officeModelList);
+		String jsp = "office/list";
+		return jsp;
+	}
+	@RequestMapping (value="office/delete")
+	public String delete(HttpServletRequest request, Model model) {
+		String id = request.getParameter("id");
+		OfficeModel officeModel = new OfficeModel();
+		officeModel = this.officeService.searchById(Long.parseLong(id));
+		model.addAttribute("officeModel", officeModel);
+		String jsp = "office/delete";
+		return jsp;
+	}
 	
+	@RequestMapping (value="office/delete/save")
+	public String delete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		OfficeModel officeModel = new OfficeModel();
+		officeModel = this.officeService.searchById(Long.parseLong(id));
+		this.officeService.delete(officeModel);
+		
+		String jsp = "office/home";
+		return jsp;
+	}
 }

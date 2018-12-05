@@ -28,7 +28,12 @@ public class BootcampTestTypeServiceImpl implements BootcampTestTypeService{
 		// TODO Auto-generated method stub
 		return this.bootcamptesttypeDao.searchAll();
 	}
-
+	
+	@Override
+	public List<BootcampTestTypeModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		return this.bootcamptesttypeDao.searchByLikeName(name);
+	}
 
 
 }

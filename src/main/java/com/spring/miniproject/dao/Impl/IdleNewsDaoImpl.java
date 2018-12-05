@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.IdleNewsDao;
+import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.IdleNewsModel;
 @Repository
 public class IdleNewsDaoImpl implements IdleNewsDao{
@@ -30,5 +31,19 @@ public class IdleNewsDaoImpl implements IdleNewsDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(idlenewsModel);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<IdleNewsModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String query = " select a from IdleNewsModel a "
+					 + " where a.title like '%"+name+"%' ";
+		
+		List<IdleNewsModel> idlenewsModelList = new ArrayList<IdleNewsModel>();
+		idlenewsModelList = session.createQuery(query).list();
+		
+		return idlenewsModelList;
 	}
 }

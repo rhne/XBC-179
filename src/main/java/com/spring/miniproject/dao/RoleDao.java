@@ -9,7 +9,6 @@ public interface RoleDao {
 	public void create(RoleModel roleModel);
 	public List<RoleModel> select();
 	public RoleModel searchById(Integer id);
-	public void delete(RoleModel roleModel);
 	public void update(RoleModel roleModel);
 	public List<RoleModel> searchByLikeName(String name);
 }

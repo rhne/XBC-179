@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.CategoryDao;
 import com.spring.miniproject.model.CategoryModel;
-import com.spring.miniproject.model.RoleModel;
 
 @Repository
 public class CategoryDaoImpl implements CategoryDao{
@@ -39,6 +38,20 @@ public class CategoryDaoImpl implements CategoryDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		String query = "select c from CategoryModel c where c.isActive=1";
+		
+		List<CategoryModel> categoryModelList = new ArrayList<CategoryModel>();
+		categoryModelList = session.createQuery(query).list();
+		
+		return categoryModelList;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CategoryModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String query = " select a from CategoryModel a "
+					 + " where a.code like '%"+name+"%' ";
 		
 		List<CategoryModel> categoryModelList = new ArrayList<CategoryModel>();
 		categoryModelList = session.createQuery(query).list();
