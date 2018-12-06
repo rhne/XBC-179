@@ -51,18 +51,8 @@
 			<button type="submit" class="btn btn-primary btn-sm">Simpan</button>
 		</div>
 </form>
-<div class="modal fade" id="modal-alert-delete-room">
-	<div class="modal-dialog">
-		<div class="alert alert-warning alert-dismissible">
-        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
-            Are you sure you want to delete?
-            <div class="modal-body">
-			
-			</div>
-       	</div>
-	</div>
-</div>
-<script>
+
+<script type="text/javascript">
 listDataRoom();
 
 function listDataRoom() {

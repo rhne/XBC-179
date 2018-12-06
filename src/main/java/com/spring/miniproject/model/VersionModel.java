@@ -20,7 +20,6 @@ public class VersionModel {
 			pkColumnName="SEQUENCE_NAME", pkColumnValue="T_VERSION_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize =1, initialValue=0)
 	private Long id;
-	@Column(nullable=false)
 	private Integer version;
 	@Column(name="CREATED_ON", nullable=false)
 	private Date createdOn;

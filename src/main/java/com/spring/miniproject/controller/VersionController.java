@@ -28,7 +28,12 @@ public class VersionController {
 	}
 	
 	@RequestMapping(value="version/tambah")
-	public String tambah() {
+	public String tambah(Model model) {
+		//immediately create a record to db, and pass the id to frontend
+		VersionModel versionModel = new VersionModel();
+		versionModel = this.versionService.create(versionModel);
+		model.addAttribute("versionModel", versionModel);
+		model.addAttribute("latestVersion", versionModel.getVersion());
 		String jsp = "version/tambah2";
 		return jsp;
 	}

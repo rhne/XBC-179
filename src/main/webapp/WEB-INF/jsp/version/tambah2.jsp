@@ -2,8 +2,9 @@
 
 <form id="form-question-tambah" class="form-horizontal" onsubmit="return validasi_input();">
 <div class="form-group" style="padding: 20px;">
+	<input type="hidden" value="${versionModel}" id="versionModel">
 	<label>Version Tambah.2</label>
-	<input id="version" name="version" class="form-control" disabled="disabled">
+	<input id="version" name="version" class="form-control" disabled="disabled" value="${latestVersion}">
 	<br/>
 	<button type="button" id="btn-tambah-question" class="btn btn-primary btn-sm">+ Question</button>
 	<br/>
