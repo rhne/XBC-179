@@ -10,7 +10,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="name">Name</label>
 		<div class="col-md-8">
-			<input type="text" id="name" name="name" class="form-control" value="${biodataModel.name}" disabled="disabled">
+			<input type="text" id="name" name="name" class="form-control" value="${biodataModel.name}">
 		</div>
 	</div>
 
@@ -18,7 +18,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="lastEducation">Last Education</label>
 		<div class="col-md-8">
-			<input type="text" id="lastEducation" name="lastEducation" value="${biodataModel.name}" class="form-control">
+			<input type="text" id="lastEducation" name="lastEducation" value="${biodataModel.lastEducation}" class="form-control">
 		</div>
 	</div>
 
@@ -70,7 +70,7 @@
 		<div class="col-md-8">
 			<select id="bootcampTestType" name="bootcampTestType"
 				class="form-control">
-				<c:forEach items="${bootcamptesttypeModelList}" var="bootcamptesttypeModel">
+				<c:forEach items="${bootcampTestTypeModelList}" var="bootcamptesttypeModel">
 					<option value="${bootcamptesttypeModel.id}">${bootcamptesttypeModel.name}</option>
 				</c:forEach>
 			</select>
@@ -81,16 +81,16 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="box"></label>
 		<div class="col-md-8">
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<input type="text" id="iq" name="iq" class="form-control">
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<input type="text" id="du" name="du" class="form-control">
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<input type="text" id="nl" name="nl" class="form-control">
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<input type="text" id="jt" name="jt" class="form-control">
 			</div>
 		</div>

@@ -40,22 +40,21 @@ public class MonitoringModel {
 	private Long deletedBy;
 	private Date deletedOn;
 	private Integer isDelete;
-	//AuditTrail/////////////////////
+	// AuditTrail/////////////////////
 
 	@Id
-	@Column(name = "ID", nullable=false)
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "M_MONITORING")
-	@TableGenerator(name = "M_MONITORING", table = "S_SEQUENCE",
-			pkColumnName = "SEQUENCE_NAME", pkColumnValue = "M_MONITORING_ID", 
-			valueColumnName = "SEQUENCE_VALUE", allocationSize = 1, initialValue = 0)
+	@TableGenerator(name = "M_MONITORING", table = "S_SEQUENCE", pkColumnName = "SEQUENCE_NAME", pkColumnValue = "M_MONITORING_ID", valueColumnName = "SEQUENCE_VALUE", allocationSize = 1, initialValue = 0)
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	@Column(name = "BIODATA_ID", nullable=false)
+	@Column(name = "BIODATA_ID")
 	public Long getTestId() {
 		return testId;
 	}
@@ -67,6 +66,7 @@ public class MonitoringModel {
 	public Date getIdleDate() {
 		return idleDate;
 	}
+
 	public void setIdleDate(Date idleDate) {
 		this.idleDate = idleDate;
 	}
@@ -75,6 +75,7 @@ public class MonitoringModel {
 	public String getLastProject() {
 		return lastProject;
 	}
+
 	public void setLastProject(String lastProject) {
 		this.lastProject = lastProject;
 	}
@@ -83,6 +84,7 @@ public class MonitoringModel {
 	public String getIdleReason() {
 		return idleReason;
 	}
+
 	public void setIdleReason(String idleReason) {
 		this.idleReason = idleReason;
 	}
@@ -91,6 +93,7 @@ public class MonitoringModel {
 	public Date getPlacementDate() {
 		return placementDate;
 	}
+
 	public void setPlacementDate(Date placementDate) {
 		this.placementDate = placementDate;
 	}
@@ -99,6 +102,7 @@ public class MonitoringModel {
 	public String getPlacementAt() {
 		return placementAt;
 	}
+
 	public void setPlacementAt(String placementAt) {
 		this.placementAt = placementAt;
 	}
@@ -107,6 +111,7 @@ public class MonitoringModel {
 	public String getNotes() {
 		return notes;
 	}
+
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
@@ -116,15 +121,17 @@ public class MonitoringModel {
 	public Long getCreatedBy() {
 		return createdBy;
 	}
+
 	public void setCreatedBy(Long createdBy) {
 		this.createdBy = createdBy;
 	}
 
 	@CreationTimestamp
-	@Column(name = "CREATED_ON", nullable=false)
+	@Column(name = "CREATED_ON", nullable = false)
 	public Date getCreatedOn() {
 		return createdOn;
 	}
+
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
@@ -134,15 +141,17 @@ public class MonitoringModel {
 	public Integer getModifiedBy() {
 		return modifiedBy;
 	}
+
 	public void setModifiedBy(Integer modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 
 	@LastModifiedDate
-	@Column(name = "MODIFIED_ON", nullable=false)
+	@Column(name = "MODIFIED_ON", nullable = false)
 	public Date getModifiedOn() {
 		return modifiedOn;
 	}
+
 	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
@@ -151,32 +160,36 @@ public class MonitoringModel {
 	public Long getDeletedBy() {
 		return deletedBy;
 	}
+
 	public void setDeletedBy(Long deletedBy) {
 		this.deletedBy = deletedBy;
 	}
-	
+
 	@Column(name = "DELETED_ON")
 	public Date getDeletedOn() {
 		return deletedOn;
 	}
+
 	public void setDeletedOn(Date deletedOn) {
 		this.deletedOn = deletedOn;
 	}
 
-	@Column(name = "IS_DELETE", nullable=false)
+	@Column(name = "IS_DELETE", nullable = false)
 	public Integer getIsDelete() {
 		return isDelete;
 	}
+
 	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
 	}
-	
+
 	@ManyToOne
 	@JoinColumn(name = "BIODATA_ID", nullable = true, updatable = false, insertable = false)
 	public BiodataModel getBiodataModel() {
 		return biodataModel;
 	}
+
 	public void setBiodataModel(BiodataModel biodataModel) {
 		this.biodataModel = biodataModel;
-	}	
+	}
 }

@@ -45,20 +45,10 @@ public class BiodataController {
 	@RequestMapping(value = "biodata/tambah")
 	public String tambahbiodata(Model model) {
 
-		this.listbootcampTestType(model);
-
 		String jsp = "biodata/tambah";
 		return jsp;
 	}
-
-	/* List BootcampTestType for BootcampTestType Dropdown */
-	private void listbootcampTestType(Model model) {
-		// TODO Auto-generated method stub
-		List<BootcampTestTypeModel> bootcampTestTypeModelList = new ArrayList<BootcampTestTypeModel>();
-		bootcampTestTypeModelList = this.bootcampTestTypeService.searchAll();
-		model.addAttribute("bootcampTestTypeModelList", bootcampTestTypeModelList);
-	}
-
+	
 	/* Create Biodata */
 	@RequestMapping(value = "biodata/create")
 	public String create(HttpServletRequest request, Model model) {
@@ -86,10 +76,18 @@ public class BiodataController {
 		biodataModel = this.biodataService.searchById(id);
 		model.addAttribute("biodataModel", biodataModel);
 
-		this.listbiodata(model);
+		this.listbootcampTestType(model);
 
 		String jsp = "biodata/edit";
 		return jsp;
+	}
+	
+	/* List BootcampTestType for BootcampTestType Dropdown */
+	private void listbootcampTestType(Model model) {
+		// TODO Auto-generated method stub
+		List<BootcampTestTypeModel> bootcampTestTypeModelList = new ArrayList<BootcampTestTypeModel>();
+		bootcampTestTypeModelList = this.bootcampTestTypeService.searchAll();
+		model.addAttribute("bootcampTestTypeModelList", bootcampTestTypeModelList);
 	}
 
 	/* Edit Biodata */
