@@ -11,8 +11,11 @@
 			    <span class="sr-only">Toggle Dropdown</span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu">
-			    <li><a id="${idlenewsModel.id}" class="btn-delete">Delete</a></li>
+			    <li><a id="${idlenewsModel.id}" class="btn-edit">Edit</a></li>
+			    			  <li class="divider"></li>
+			    <li><a id="${idlenewsModel.id}" class="btn-publish">Publish</a></li>
 			    <li class="divider"></li>
+			    <li><a id="${idlenewsModel.id}" class="btn-deactivate">Deactivate</a></li>
 			  </ul>
 			</div>
 		</td>	

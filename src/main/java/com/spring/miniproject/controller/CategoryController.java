@@ -122,4 +122,29 @@ public class CategoryController {
 		String jsp = "category/category";
 		return jsp;
 	}
+	//edit
+	@RequestMapping(value="category/edit")
+	public String Edit(HttpServletRequest request, Model model) {
+		String id = (request.getParameter("id"));
+		CategoryModel categoryModel = new CategoryModel();
+		categoryModel = this.categoryService.searchById(Long.parseLong(id));
+		model.addAttribute("categoryModel", categoryModel);
+		String jsp = "category/edit";
+		return jsp;
+	}
+	
+	
+	@RequestMapping(value="category/edit/save")
+	public String EditSave(HttpServletRequest request, Model model) throws Exception{
+		String id = request.getParameter("id");
+		CategoryModel categoryModel = new CategoryModel();
+		categoryModel = this.categoryService.searchById(Long.parseLong(id));		
+		categoryModel.setName(request.getParameter("name"));
+		
+		this.categoryService.update(categoryModel);
+		model.addAttribute("categoryModel", categoryModel);
+		
+		String jsp = "category/category";
+		return jsp;
+	}
 }
