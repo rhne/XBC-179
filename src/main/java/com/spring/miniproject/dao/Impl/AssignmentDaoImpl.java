@@ -30,7 +30,7 @@ public class AssignmentDaoImpl implements AssignmentDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<AssignmentModel> assignmentModelList = new ArrayList<AssignmentModel>();
-		assignmentModelList = session.createQuery(" from AssignmentModel ").list();
+		assignmentModelList = session.createQuery(" from AssignmentModel where isDelete=0").list();
 		return assignmentModelList;
 	}
 

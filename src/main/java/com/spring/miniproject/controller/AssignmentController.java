@@ -100,4 +100,32 @@ public class AssignmentController {
 		String jsp = "assignment/list";
 		return jsp;
 	}
+	
+	/* Popup Delete Assignment */
+	@RequestMapping(value = "assignment/delete")
+	public String delete(HttpServletRequest request, Model model) {
+		
+		String id = request.getParameter("id");
+		
+		AssignmentModel assignmentModel = new AssignmentModel();
+		assignmentModel = this.assignmentService.searchById(Long.parseLong(id));
+		model.addAttribute("assignmentModel", assignmentModel);
+		
+		String jsp = "assignment/delete";
+		return jsp;
+	}
+
+	/* Delete Assignment */
+	@RequestMapping(value = "assignment/delete/save")
+	public String delete(HttpServletRequest request) {
+		
+		Long id = Long.valueOf(request.getParameter("id"));
+
+		AssignmentModel assignmentModel = new AssignmentModel();
+		assignmentModel = this.assignmentService.searchById(id);
+		this.assignmentService.delete(assignmentModel);
+
+		String jsp = "assignment/assignment";
+		return jsp;
+	}
 }
