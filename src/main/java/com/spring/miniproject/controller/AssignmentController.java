@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.miniproject.model.AssignmentModel;
 import com.spring.miniproject.model.BiodataModel;
+import com.spring.miniproject.model.MonitoringModel;
 import com.spring.miniproject.model.AssignmentModel;
 import com.spring.miniproject.service.AssignmentService;
 import com.spring.miniproject.service.BiodataService;
@@ -87,6 +88,16 @@ public class AssignmentController {
 		model.addAttribute("assignmentModel", assignmentModel);
 		
 		String jsp = "assignment/assignment";
+		return jsp;
+	}
+	
+	@RequestMapping(value="assignment/search/name")
+	public String assignmentSearchName(HttpServletRequest request, Model model) {
+		String name = request.getParameter("nameCari");
+		List<AssignmentModel> assignmentModelList = new ArrayList<AssignmentModel>();
+		assignmentModelList = this.assignmentService.searchByLikeName(name);
+		model.addAttribute("assignmentModelList", assignmentModelList);
+		String jsp = "assignment/list";
 		return jsp;
 	}
 }
