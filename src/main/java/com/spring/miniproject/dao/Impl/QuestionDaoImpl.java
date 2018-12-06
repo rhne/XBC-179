@@ -54,4 +54,10 @@ public class QuestionDaoImpl implements QuestionDao {
 		session.update(questionModel);
 	}
 
+	@Override
+	public List<QuestionModel> searchByLikeQuestion(String str) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.createQuery("from QuestionModel where isDelete=0 and question like '%"+ str +"%'").list();
+	}
+
 }

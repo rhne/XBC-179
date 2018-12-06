@@ -77,4 +77,16 @@ public class SequenceServiceImpl implements SequenceService {
 		// TODO Auto-generated method stub
 		return this.sequenceDao.nextIdMonitoring();
 	}
+
+	@Override
+	public Integer nextIdTestimony() {
+		// TODO Auto-generated method stub
+		return this.sequenceDao.nextIdTestimony();
+	}
+	
+	@Override
+	public Integer nextIdRoom() {
+		// TODO Auto-generated method stub
+		return this.sequenceDao.nextIdRoom();
+	}
 }

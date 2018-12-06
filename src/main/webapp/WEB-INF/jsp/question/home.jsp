@@ -2,11 +2,13 @@
 	<div class="box-header with-border">
 		<h3 class="box-title">Question Data</h3>
 		<div class="box-tools">
-				<div class="input-group input-group-sm" style="width: 200px;">
+			<div class="input-group input-group-sm" style="width: 200px;">
+				<input type="text" id="src-question" name="src-question" class="form-control pull-right" placeholder="Search by question">
 				<div class="input-group-btn">
-                    <button type="button" id="button-tambah" class="btn btn-primary btn-sm pull-right" data-toggle="tooltip" title="Create Data"><i class="fa fa-plus"> New</i></button>
+					<button type="button" id="button-search" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="search"><i class="fa fa-search"></i></button>
+                    <button type="button" id="button-tambah" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Create Data"><i class="fa fa-plus"></i></button>
                 </div>
-				</div>
+			</div>
 		</div>
 	</div>
 	<div class="box-body">
@@ -91,7 +93,7 @@
 		$("#modal-input").on("submit", "#form-question-tambah", function(){
 			$.ajax({
 				url: "question/create.json",
-				type: "post",
+				type: "get",
 				dataType: "json",
 				data: $(this).serialize(),
 				success: function(result){
@@ -123,12 +125,28 @@
 		$("#modal-alert-delete").on("submit", "#form-confirm-delete", function() {
 			$.ajax({
 				url: "question/delete/save.json",
-				type: "post",
+				type: "get",
 				dataType: "json",
 				data: $(this).serialize(),
 				success: function (result) {
 					$("#modal-alert-delete").modal("hide");
 					listData();
+				}
+			});
+			return false;
+		});
+		
+		$("#button-search").on("click", function(){
+			var searchQuestion = document.getElementById("src-question").value;
+			$.ajax({
+				url: "question/search/question.html",
+				type: "get",
+				dataType: "html",
+				data: {
+					search: searchQuestion
+				},
+				success: function(result){
+					$("#list-data").html(result);
 				}
 			});
 			return false;

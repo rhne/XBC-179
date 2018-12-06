@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.IdleNewsModel;
+import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.service.CategoryService;
 import com.spring.miniproject.service.IdleNewsService;
 
@@ -76,6 +77,26 @@ public class IdleNewsController {
 		idlenewsModelList = this.idlenewsService.searchByLikeName(name);
 		model.addAttribute("idlenewsModelList", idlenewsModelList);
 		String jsp = "idle_news/list";
+		return jsp;
+	}
+	@RequestMapping (value="idle_news/delete")
+	public String delete(HttpServletRequest request, Model model) {
+		String id = request.getParameter("id");
+		IdleNewsModel idlenewsModel = new IdleNewsModel();
+		idlenewsModel = this.idlenewsService.searchById(Long.parseLong(id));
+		model.addAttribute("idlenewsModel", idlenewsModel);
+		String jsp = "idle_news/delete";
+		return jsp;
+	}
+	
+	@RequestMapping (value="idle_news/delete/save")
+	public String delete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		IdleNewsModel idlenewsModel = new IdleNewsModel();
+		idlenewsModel = this.idlenewsService.searchById(Long.parseLong(id));
+		this.idlenewsService.delete(idlenewsModel);
+		
+		String jsp = "idle_news/idle_news";
 		return jsp;
 	}
 }

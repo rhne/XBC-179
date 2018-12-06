@@ -11,5 +11,6 @@ public interface QuestionService {
 	public QuestionModel searchById(Long id);
 	public void update(QuestionModel questionModel);
 	public void delete(QuestionModel questionModel);
+	public List<QuestionModel> searchByLikeQuestion(String str);
 	
 }

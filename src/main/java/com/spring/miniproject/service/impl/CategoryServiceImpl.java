@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.miniproject.dao.CategoryDao;
 import com.spring.miniproject.model.CategoryModel;
+import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.service.CategoryService;
 
 
@@ -39,6 +40,16 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<CategoryModel> searchByLikeName(String name) {
 		// TODO Auto-generated method stub
 		return this.categoryDao.searchByLikeName(name);
+	}
+	
+	@Override
+	public CategoryModel searchById(Long id) {
+		return this.categoryDao.searchById(id);
+	}
+	
+	@Override
+	public void delete(CategoryModel categoryModel) {
+		this.categoryDao.delete(categoryModel);
 	}
 
 }

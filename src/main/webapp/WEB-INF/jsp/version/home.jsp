@@ -116,6 +116,23 @@
 				}
 			});
 		});
+		
+		$("#modal-input").on("click", ".btn-delete", function() {
+			var questionId = $(this).prop('id');
+			alert(questionId);
+			$.ajax({
+				url: "version/deletequestion",
+				type: "get",
+				dataType: "html",
+				data: {
+					id: questionId
+				},
+				success: function (result) {
+					$("#modal-alert-delete").find(".modal-body").html(result);
+					$("#modal-alert-delete").modal("show");
+				}
+			});
+		});
 		//END REGION MODAL QUESTION
 	});
 </script>

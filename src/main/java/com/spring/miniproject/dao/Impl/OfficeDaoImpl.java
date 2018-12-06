@@ -1,7 +1,6 @@
 package com.spring.miniproject.dao.Impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;  
@@ -10,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.OfficeDao;
-import com.spring.miniproject.model.AkunModel;
 import com.spring.miniproject.model.OfficeModel;
-import com.spring.miniproject.model.QuestionModel;
 
 @Repository
 public class OfficeDaoImpl implements OfficeDao{

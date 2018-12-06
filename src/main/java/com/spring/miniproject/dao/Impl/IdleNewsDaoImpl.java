@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.IdleNewsDao;
-import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.IdleNewsModel;
 @Repository
 public class IdleNewsDaoImpl implements IdleNewsDao{
@@ -45,5 +44,18 @@ public class IdleNewsDaoImpl implements IdleNewsDao{
 		idlenewsModelList = session.createQuery(query).list();
 		
 		return idlenewsModelList;
+	}
+	@Override
+	public IdleNewsModel searchById(Long id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return (IdleNewsModel) session.createQuery("from IdleNewsModel where id=" + id).getSingleResult();
+	}
+	
+	@Override
+	public void delete(IdleNewsModel idlenewsModel) {
+		idlenewsModel.setIsDeleted(1);
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(idlenewsModel);
 	}
 }

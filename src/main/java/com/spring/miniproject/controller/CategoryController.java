@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.CategoryModel;
+import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.model.RoleModel;
 import com.spring.miniproject.service.CategoryService;
 import com.spring.miniproject.service.RoleService;
@@ -99,6 +100,26 @@ public class CategoryController {
 		categoryModelList = this.categoryService.searchByLikeName(name);
 		model.addAttribute("categoryModelList", categoryModelList);
 		String jsp = "category/list";
+		return jsp;
+	}
+	@RequestMapping (value="category/delete")
+	public String delete(HttpServletRequest request, Model model) {
+		String id = request.getParameter("id");
+		CategoryModel categoryModel = new CategoryModel();
+		categoryModel = this.categoryService.searchById(Long.parseLong(id));
+		model.addAttribute("categoryModel", categoryModel);
+		String jsp = "category/delete";
+		return jsp;
+	}
+	
+	@RequestMapping (value="category/delete/save")
+	public String delete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		CategoryModel categoryModel = new CategoryModel();
+		categoryModel = this.categoryService.searchById(Long.parseLong(id));
+		this.categoryService.delete(categoryModel);
+		
+		String jsp = "category/category";
 		return jsp;
 	}
 }

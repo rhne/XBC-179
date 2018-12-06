@@ -58,16 +58,18 @@
 				<value>com.spring.miniproject.model.CategoryModel</value>
 				<value>com.spring.miniproject.model.BootcampTestTypeModel</value>
 				<value>com.spring.miniproject.model.IdleNewsModel</value>
-
+				<value>com.spring.miniproject.model.RoomModel</value>
 				<value>com.spring.miniproject.model.CategoryModel</value>
 				<value>com.spring.miniproject.model.BootcampTestTypeModel</value> 
 
 				<value>com.spring.miniproject.model.QuestionModel</value>
 				<value>com.spring.miniproject.model.VersionModel</value>
 				<value>com.spring.miniproject.model.OfficeModel</value>
+				
 				<value>com.spring.miniproject.model.TechnologyModel</value>
 				<value>com.spring.miniproject.model.TrainerModel</value>
 				<value>com.spring.miniproject.model.TechnologyTrainerModel</value>
+				<value>com.spring.miniproject.model.TestimonyModel</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

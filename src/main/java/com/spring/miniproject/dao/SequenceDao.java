@@ -8,12 +8,14 @@ public interface SequenceDao {
 	public Integer nextIdTrainer();
 	public Integer nextIdMenu();
 	public Integer nextIdTechTrainer();
-
+	public Integer nextIdRoom();
 	public Integer nextIdOffice();
 	public Integer nextIdBootcampTestType();
 	public Integer nextIdCategory();
 
 	public Integer nextIdBiodata();
 	public Integer nextIdMonitoring();
+	
+	public Integer nextIdTestimony();
 
 }

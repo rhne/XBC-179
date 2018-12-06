@@ -4,7 +4,7 @@
 <tr>
 	<td>${technologyModel.name}</td>
 	<td>${technologyModel.createdBy}</td>
-	<td>${technologyModel.active}</td>
+	<td>Active</td>
 	<td>
 		<select id="action">
 			<option id="edit-list-technology">Edit</option>
