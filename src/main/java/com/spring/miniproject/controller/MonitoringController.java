@@ -43,7 +43,7 @@ public class MonitoringController {
 		return jsp;
 	}
 
-	/* Popup Input Monitoring */
+	/* Popup Add Monitoring */
 	@RequestMapping(value = "monitoring/tambah")
 	public String tambahmonitoring(Model model) {
 
@@ -74,7 +74,6 @@ public class MonitoringController {
 		monitoringModel.setIdleDate(idleDate);
 		monitoringModel.setLastProject(request.getParameter("lastProject"));
 		monitoringModel.setIdleReason(request.getParameter("idleReason"));
-		monitoringModel.setIsDelete(0);
 		
 		this.monitoringService.create(monitoringModel);
 		model.addAttribute("monitoringModel", monitoringModel);

@@ -2,13 +2,16 @@
 
 <form action="#" method="get" id="form-monitoring-edit"
 	class="form-horizontal">
+	
 	<input type="hidden" id="id" name="id" value="${monitoringModel.id}" />
+	
 	<div class="form-group">
 	<label class="control-label col-md-3" for="name">Name</label>
 		<div class="col-md-8">
 			<input type="text" id="name" name="name" class="form-control" value="${monitoringModel.biodataModel.name}" disabled="disabled">
 		</div>
 	</div>
+	
 	<div class="form-group">
 		<label class="control-label col-md-3" for="idleDate">Idle Date</label>
 		<div class="col-md-8">

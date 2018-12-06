@@ -22,7 +22,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 public class MonitoringModel {
 
 	private Long id;
-	private Long testId;
 	private Date idleDate;
 	private String lastProject;
 	private String idleReason;
@@ -31,6 +30,7 @@ public class MonitoringModel {
 	private String notes;
 
 	private BiodataModel biodataModel;
+	private Long testId;
 
 	// AuditTrail////////////////////
 	private Long createdBy;
@@ -55,7 +55,7 @@ public class MonitoringModel {
 		this.id = id;
 	}
 
-	@Column(name = "BIODATA_ID")
+	@Column(name = "BIODATA_ID", nullable=false)
 	public Long getTestId() {
 		return testId;
 	}
@@ -121,7 +121,7 @@ public class MonitoringModel {
 	}
 
 	@CreationTimestamp
-	@Column(name = "CREATED_ON")
+	@Column(name = "CREATED_ON", nullable=false)
 	public Date getCreatedOn() {
 		return createdOn;
 	}
@@ -139,7 +139,7 @@ public class MonitoringModel {
 	}
 
 	@LastModifiedDate
-	@Column(name = "MODIFIED_ON")
+	@Column(name = "MODIFIED_ON", nullable=false)
 	public Date getModifiedOn() {
 		return modifiedOn;
 	}
@@ -163,7 +163,7 @@ public class MonitoringModel {
 		this.deletedOn = deletedOn;
 	}
 
-	@Column(name = "IS_DELETE")
+	@Column(name = "IS_DELETE", nullable=false)
 	public Integer getIsDelete() {
 		return isDelete;
 	}
@@ -172,7 +172,7 @@ public class MonitoringModel {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "BIODATA_ID", nullable = false, updatable = false, insertable = false)
+	@JoinColumn(name = "BIODATA_ID", nullable = true, updatable = false, insertable = false)
 	public BiodataModel getBiodataModel() {
 		return biodataModel;
 	}

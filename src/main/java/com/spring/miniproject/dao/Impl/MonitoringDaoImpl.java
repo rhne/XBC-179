@@ -22,6 +22,8 @@ public class MonitoringDaoImpl implements MonitoringDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		monitoringModel.setCreatedOn(new Date());
+		monitoringModel.setModifiedOn(new Date());
+		monitoringModel.setIsDelete(0);
 		session.save(monitoringModel);
 	}
 
