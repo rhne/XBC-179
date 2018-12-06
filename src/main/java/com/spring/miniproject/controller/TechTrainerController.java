@@ -35,21 +35,6 @@ public class TechTrainerController {
 		return jsp;
 	}
 	
-	@RequestMapping(value="technology/addTechTrainer/save")
-	public String addSaveTechTrainer(HttpServletRequest request) {
-		Integer idTechTrainer = this.sequenceService.nextIdTechTrainer();
-		Integer idTrainer = Integer.valueOf(request.getParameter("idTrainer"));
-
-		TechnologyTrainerModel technologyTrainerModel = new TechnologyTrainerModel();
-		technologyTrainerModel.setIdTechTrainer(idTechTrainer);
-		technologyTrainerModel.setTrainerId(idTrainer);
-		
-		this.technologyTrainerService.create(technologyTrainerModel);
-		
-		String jsp="technology/addTechTrainer";
-		return jsp;
-	}
-	
 	public void listTrainer(Model model) {
 		List<TrainerModel> trainerModelList = new ArrayList<TrainerModel>();
 		trainerModelList = this.trainerService.showAll();

@@ -30,11 +30,29 @@
 		</table>
 	</div>
 
-	<td colspan="2"><input type="submit" class="add-technology" value="submit"></td>
+	<div class="modal-footer" style="border-top: 0 none;">
+		<button type="submit" class="btn btn-primary btn-sm">Save</button>
+		<button type="button" class="btn btn-normal btn-sm" data-dismiss="modal">Cancel</button>
+	</div>
 </form>
 
+<div class="modal fade" id="modal-input-trainer">
+	<div class="modal-dialog">
+		<div class = "modal-content">
+			<div class="modal-header" style="background-color:#3c8dbc;">
+				<h4 class="modal-title" style="color:white;"></h4>
+			</div>
+			
+			<div class="modal-body">
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <script>
-	listDataTrainer();
+
 	function listDataTrainer(){
 		$.ajax({
 			url : "technology/listTechTrainer.html",
@@ -45,4 +63,5 @@
 			}
 		});
 	}
+	
 </script>

@@ -1,9 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="tech" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<tech:forEach items="${technologyModelList}" var="technologyModel" varStatus="number">
+
+<tech:forEach items="${technologyTrainerModelList}" var="technologyTrainerModel" varStatus="number">
 <tr>
-	<td>${technologyModel.name}</td>
-	<td>${technologyModel.createdBy}</td>
+	<td>${technologyTrainerModel.trainerId}</td>
+	<td>${technologyModel.createdOn}</td>
 	<td>${technologyModel.active}</td>
 	<td>
 		<select id="action">
