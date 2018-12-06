@@ -3,7 +3,6 @@ package com.spring.miniproject.dao;
 import java.util.List;
 
 import com.spring.miniproject.model.BootcampTestTypeModel;
-import com.spring.miniproject.model.OfficeModel;
 
 public interface BootcampTestTypeDao {
 	public void create(BootcampTestTypeModel bootcamptesttypeModel);
@@ -11,4 +10,5 @@ public interface BootcampTestTypeDao {
 	public List<BootcampTestTypeModel> searchByLikeName(String name);
 	public BootcampTestTypeModel searchById(Long id);
 	public void delete(BootcampTestTypeModel bootcamptesttypeModel);
+	public void update(BootcampTestTypeModel bootcamptesttypeModel);
 }

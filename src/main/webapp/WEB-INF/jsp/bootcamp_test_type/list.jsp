@@ -12,8 +12,9 @@
 			    <span class="sr-only">Toggle Dropdown</span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu">
-			    <li><a id="${bootcamptesttypeModel.id}" class="btn-deactivate">Deactivate</a></li>
+			    <li><a id="${bootcamptesttypeModel.id}" class="btn-edit">Edit</a></li>
 			    <li class="divider"></li>
+			    <li><a id="${bootcamptesttypeModel.id}" class="btn-deactivate">Deactivate</a></li>
 			  </ul>
 			</div>
 		</td>		
