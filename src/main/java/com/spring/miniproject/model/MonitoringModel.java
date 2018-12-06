@@ -55,7 +55,7 @@ public class MonitoringModel {
 		this.id = id;
 	}
 
-	@Column(name = "BIODATA_ID", nullable=false)
+	@Column(name = "BIODATA_ID")
 	public Long getTestId() {
 		return testId;
 	}
@@ -63,7 +63,7 @@ public class MonitoringModel {
 		this.testId = testId;
 	}
 
-	@Column(name = "IDLE_DATE", nullable=false)
+	@Column(name = "IDLE_DATE")
 	public Date getIdleDate() {
 		return idleDate;
 	}
@@ -87,7 +87,7 @@ public class MonitoringModel {
 		this.idleReason = idleReason;
 	}
 
-	@Column(name = "PLACEMENT_DATE", nullable=false)
+	@Column(name = "PLACEMENT_DATE")
 	public Date getPlacementDate() {
 		return placementDate;
 	}
@@ -112,7 +112,7 @@ public class MonitoringModel {
 	}
 
 	@CreatedBy
-	@Column(name = "CREATED_BY", nullable=false)
+	@Column(name = "CREATED_BY")
 	public Long getCreatedBy() {
 		return createdBy;
 	}
@@ -121,7 +121,7 @@ public class MonitoringModel {
 	}
 
 	@CreationTimestamp
-	@Column(name = "CREATED_ON", nullable=false)
+	@Column(name = "CREATED_ON")
 	public Date getCreatedOn() {
 		return createdOn;
 	}
@@ -163,7 +163,7 @@ public class MonitoringModel {
 		this.deletedOn = deletedOn;
 	}
 
-	@Column(name = "IS_DELETE", nullable=false)
+	@Column(name = "IS_DELETE")
 	public Integer getIsDelete() {
 		return isDelete;
 	}

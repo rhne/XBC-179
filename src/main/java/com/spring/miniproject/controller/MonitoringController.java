@@ -95,9 +95,9 @@ public class MonitoringController {
 		return jsp;
 	}
 	
-	/* Edit Monitoring 
+	/* Edit Monitoring */
 	@RequestMapping(value="monitoring/edit/save")
-	public String monitoringEditSave(HttpServletRequest request, Model model) {
+	public String monitoringEditSave(HttpServletRequest request, Model model) throws Exception{
 		Long id = Long.valueOf(request.getParameter("id"));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -115,7 +115,7 @@ public class MonitoringController {
 		
 		String jsp = "monitoring/monitoring";
 		return jsp;
-	}*/
+	}
 	
 	/* Popup Placement Monitoring */
 	@RequestMapping(value="monitoring/placement")

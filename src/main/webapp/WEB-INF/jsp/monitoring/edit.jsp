@@ -6,7 +6,7 @@
 	<div class="form-group">
 	<label class="control-label col-md-3" for="name">Name</label>
 		<div class="col-md-8">
-			<input type="text" id="name" name="name" class="form-control" value="${monitoringModel.biodataModel.name}">
+			<input type="text" id="name" name="name" class="form-control" value="${monitoringModel.biodataModel.name}" disabled="disabled">
 		</div>
 	</div>
 	<div class="form-group">
