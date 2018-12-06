@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;   
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,34 +31,47 @@ public class MenuController {
 		return jsp;
 	}
 	
-	@RequestMapping(value="menu/add")
-	public String menuAdd(Model model) {
-		String menAuto = "";
-		menAuto = this.kodeMenuGenerator();
-		model.addAttribute("menAuto", menAuto);
-		String jsp = "menu/add";
+	@RequestMapping(value="menu/tambah")
+	public String tambah(Model model) {
+		String menuAuto = "";
+		menuAuto = this.kodeGenerator();
+		model.addAttribute("menuAuto", menuAuto);
+		
+		this.listDataMenu(model);
+		
+		String jsp = "menu/tambah";
 		return jsp;
 	}
 	
-	@RequestMapping(value="menu/add/save")
-	public String menuAddSave(HttpServletRequest request, Model model) {
+	private void listDataMenu(Model model) {
+		// TODO Auto-generated method stub
+		List<MenuModel> menuModelList = new ArrayList<MenuModel>();
+		menuModelList = this.menuService.select();
+		model.addAttribute("menuModelList", menuModelList);
+	}
+
+	@RequestMapping(value="menu/create")
+	public String menucreate(HttpServletRequest request, Model model) {
+		
 		String kode = request.getParameter("kode");
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
 		String imgurl = request.getParameter("imgurl");
-		String menuorder = request.getParameter("menuorder");
-		String parent = request.getParameter("parent");
+		Integer menuorder = Integer.valueOf(request.getParameter("menuorder"));
+		Long menuparent = Long.valueOf(request.getParameter("menuparent"));
 		String menuurl = request.getParameter("menuurl");
 		
 		MenuModel menuModel = new MenuModel();
 		
 		menuModel.setKode(kode);
 		menuModel.setTitle(title);
-		menuModel.setTitle(description);
-		menuModel.setTitle(imgurl);
-		menuModel.setTitle(menuorder);
-		menuModel.setTitle(parent);
-		menuModel.setTitle(menuurl);
+		menuModel.setDescription(description);
+		menuModel.setImgurl(imgurl);
+		menuModel.setMenuorder(menuorder);
+		menuModel.setMenuparent(menuparent);
+		menuModel.setMenuurl(menuurl);
+		menuModel.setCreatedOn(new Date());
+		menuModel.setActive(1);
 		
 		this.menuService.create(menuModel);;
 		model.addAttribute("menuModel", menuModel);
@@ -83,6 +97,8 @@ public class MenuController {
 		menuModel = this.menuService.searchById(id);
 		model.addAttribute("menuModel", menuModel);
 		
+		this.listDataMenu(model);
+		
 		String jsp = "menu/edit";
 		return jsp;
 	}
@@ -95,8 +111,8 @@ public class MenuController {
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
 		String imgurl = request.getParameter("imgurl");
-		String menuorder = request.getParameter("menuorder");
-		String parent = request.getParameter("parent");
+		Integer menuorder = Integer.valueOf(request.getParameter("menuorder"));
+		Long menuparent = Long.valueOf(request.getParameter("menuparent"));
 		String menuurl = request.getParameter("menuurl");
 		
 		MenuModel menuModel = new MenuModel();
@@ -104,11 +120,12 @@ public class MenuController {
 		
 		menuModel.setKode(kode);
 		menuModel.setTitle(title);
-		menuModel.setTitle(description);
-		menuModel.setTitle(imgurl);
-		menuModel.setTitle(menuorder);
-		menuModel.setTitle(parent);
-		menuModel.setTitle(menuurl);
+		menuModel.setDescription(description);
+		menuModel.setImgurl(imgurl);
+		menuModel.setMenuorder(menuorder);
+		menuModel.setMenuparent(menuparent);
+		menuModel.setMenuurl(menuurl);
+		menuModel.setModifiedOn(new Date());
 		
 		this.menuService.update(menuModel);
 		model.addAttribute("menuModel", menuModel);
@@ -117,24 +134,57 @@ public class MenuController {
 		return jsp;
 	}
 	
-	public String kodeMenuGenerator() {
+	public String kodeGenerator() {
 		Integer idMenu = 0;
 		idMenu = this.sequenceService.nextIdMenu();
 		
-		String menAuto ="";
+		String menuAuto ="";
 		if (idMenu < 10) {
-			menAuto = "M000" + idMenu;
+			menuAuto = "M000" + idMenu;
 		}else if (idMenu >= 10 && idMenu < 100) {
-			menAuto = "M00" + idMenu;
+			menuAuto = "M00" + idMenu;
 		}else if (idMenu >= 100 && idMenu < 1000) {
-			menAuto = "M0" + idMenu;
+			menuAuto = "M0" + idMenu;
 		}else if (idMenu >=1000) {
-			menAuto = "M" + idMenu;
+			menuAuto = "M" + idMenu;
 		}else {
 			
 		}
 		
-		return menAuto;
+		return menuAuto;
+	}
+	
+	@RequestMapping (value="menu/deactivate")
+	public String deactivate(HttpServletRequest request, Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
+		MenuModel menuModel = new MenuModel();
+		menuModel = this.menuService.searchById(id);
+		model.addAttribute("menuModel", menuModel);
+		String jsp = "menu/deactivate";
+		return jsp;
+	}
+	
+	@RequestMapping(value="menu/deactivate/save")
+	public String menuDeactivateSave(HttpServletRequest request, Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
+		
+		MenuModel menuModel = new MenuModel();
+		menuModel = this.menuService.searchById(id);
+	
+		this.menuService.deactivate(menuModel);
+		
+		String jsp = "user/user";
+		return jsp;
+	}
+	
+	@RequestMapping(value="menu/search/name")
+	public String menuSearchName(HttpServletRequest request, Model model) {
+		String title = request.getParameter("nameCari");
+		List<MenuModel> menuModelList = new ArrayList<MenuModel>();
+		menuModelList = this.menuService.searchByLikeTitle(title);
+		model.addAttribute("menuModelList", menuModelList);
+		String jsp = "menu/list";
+		return jsp;
 	}
 	
 }

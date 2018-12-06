@@ -8,7 +8,9 @@
 		<div class="col-md-8">
 			<select class="form-control" id="idRole" name="idRole">
 				<c:forEach items="${roleModelList}" var="roleModel">
-					<option value="${roleModel.id}">${roleModel.name}</option>		
+					<option value="${roleModel.id}" ${roleModel.id == akunModel.idRole ? 'selected="true"':'' }>
+						${roleModel.name}
+					</option>		
 				</c:forEach>
 			</select>
 		</div>
@@ -32,16 +34,16 @@
 		</div>
 	</div>
 	<div class="form-group">
-	<label class="control-label col-md-3" for="token">Mobile Flag</label>
+	<label class="control-label col-md-3" for="mobileFlag">Mobile Flag</label>
 		<div class="col-md-8">
-			<input type="radio" id="true" name="flag" value="1"/>True 
-			<input type="radio" id="false" name="flag" value="0"/>False
+			<input type="radio" id="true" name="mobileFlag" value="1"/>True 
+			<input type="radio" id="false" name="mobileFlag" value="0"/>False
 		</div>
 	</div>
 	<div class="form-group">
-	<label class="control-label col-md-3" for="token">Mobile Token</label>
+	<label class="control-label col-md-3" for="mobileToken">Mobile Token</label>
 		<div class="col-md-8">
-			<input type="text" id="token" name="token" class="form-control" value="${akunModel.token}">
+			<input type="text" id="mobileToken" name="mobileToken" class="form-control" value="${akunModel.mobileToken}">
 		</div>
 	</div>
 

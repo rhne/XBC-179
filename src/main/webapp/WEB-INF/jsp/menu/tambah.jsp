@@ -4,7 +4,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="kode">Code</label>
 		<div class="col-md-8">
-			<input type="text" id="kode" name="kode" value="${codeAuto}" class="form-control">
+			<input type="text" id="kode" name="kode" value="${menuAuto}" class="form-control">
 		</div>
 	</div>
 	<div class="form-group">
@@ -32,9 +32,10 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-3" for="parent">Menu Parent</label>
+		<label class="control-label col-md-3" for="menuparent">Menu Parent</label>
 		<div class="col-md-8">
-			<select class="form-control" id="parent" name="parent">
+			<select class="form-control" id="menuparent" name="menuparent">
+				<option value="0">0</option>
 				<c:forEach items="${menuModelList}" var="menuModel">
 					<option value="${menuModel.id}">${menuModel.title}</option>		
 				</c:forEach>

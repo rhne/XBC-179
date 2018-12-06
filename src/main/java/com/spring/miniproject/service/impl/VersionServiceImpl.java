@@ -23,8 +23,8 @@ public class VersionServiceImpl implements VersionService {
 	}
 
 	@Override
-	public void create(VersionModel versionModel) {
-		this.versionDao.create(versionModel);
+	public VersionModel create(VersionModel versionModel) {
+		return this.versionDao.create(versionModel);
 	}
 
 	@Override
@@ -40,6 +40,11 @@ public class VersionServiceImpl implements VersionService {
 	@Override
 	public void delete(VersionModel versionModel) {
 		this.versionDao.delete(versionModel);
+	}
+
+	@Override
+	public Integer getLatestVersion() {
+		return this.versionDao.getLatestVersion();
 	}
 
 }

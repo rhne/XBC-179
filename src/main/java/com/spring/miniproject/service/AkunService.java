@@ -7,7 +7,7 @@ import com.spring.miniproject.model.AkunModel;
 public interface AkunService {
 	public void create(AkunModel akunModel);
 	public List<AkunModel> searchAll();
-	public AkunModel searchById(Integer id);
+	public AkunModel searchById(Long id);
 	public void update(AkunModel akunModelDB);
 	public List<AkunModel> searchByLikeName(String name);
 	public AkunModel searchByUsernamePassword(String username, String password);

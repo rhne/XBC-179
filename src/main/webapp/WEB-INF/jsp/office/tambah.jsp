@@ -51,7 +51,8 @@
 			<button type="submit" class="btn btn-primary btn-sm">Simpan</button>
 		</div>
 </form>
-<script>
+
+<script type="text/javascript">
 listDataRoom();
 
 function listDataRoom() {

@@ -1,9 +1,9 @@
 package com.spring.miniproject.dao.Impl;
 
-import java.util.ArrayList;  
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import com.spring.miniproject.dao.MenuDao;
 import com.spring.miniproject.model.MenuModel;
 
-@SuppressWarnings("deprecation")
 @Repository
 public class MenuDaoImpl implements MenuDao {
 	
@@ -31,7 +30,7 @@ public class MenuDaoImpl implements MenuDao {
 	public List<MenuModel> select() {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		String query = "select m from MenuModel m";
+		String query = "select m from MenuModel m where Active = 1";
 		
 		List<MenuModel> menuModelList = new ArrayList<MenuModel>();
 		menuModelList = session.createQuery(query).list();
@@ -54,32 +53,34 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	public void update(MenuModel menuModel) {
 		// TODO Auto-generated method stub
+		menuModel.setModifiedOn(new Date());
+		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(menuModel);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<MenuModel> searchByRole(Long idRole) {
+	public List<MenuModel> searchByLikeTitle(String title) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		String query = "SELECT "
-					 + " M.ID ID, "
-					 + " M.TITLE TITLE,"
-					 + " M.KODE KODE, "
-					 + " M.MENU_PARENT MENU_PARENT"
-					 + "FROM M_MENU M "
-					 + "JOIN M_MENUACCESS MA "
-					 + " ON MA.ID_MENU = M.ID "
-					 + "WHERE MA.ID_ROLE="+idRole+" "
-					 + "ORDER BY M.TITLE ASC ";
+		String query = " select m from MenuModel m "
+					 + " where Active=1 and m.title like '%"+title+"%' ";
 		
 		List<MenuModel> menuModelList = new ArrayList<MenuModel>();
-		SQLQuery sqlQuery = session.createSQLQuery(query);
-		sqlQuery.addEntity(MenuModel.class);
-		menuModelList = sqlQuery.list();
+		menuModelList = session.createQuery(query).list();
 		
 		return menuModelList;
+	}
+
+	@Override
+	public void deactivate(MenuModel menuModel) {
+		// TODO Auto-generated method stub
+		menuModel.setActive(0);
+		menuModel.setModifiedOn(new Date());
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(menuModel);
 	}
 	
 }

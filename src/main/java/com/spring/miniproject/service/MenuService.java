@@ -9,7 +9,7 @@ public interface MenuService {
 	public List<MenuModel> select();
 	public MenuModel searchById(Long id);
 	public void update(MenuModel menuModel);
-
-	public List<MenuModel> searchByRole(Long idRole);
+	public void deactivate(MenuModel menuModel);
+	public List<MenuModel> searchByLikeTitle(String title);
 	
 }
