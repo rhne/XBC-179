@@ -36,9 +36,6 @@ public class RoomController {
 	@RequestMapping(value="office/room")
 	public String tambahroom(Model model) {
 		this.listDataOffice(model);
-		String codeAuto = "";
-		codeAuto = this.codeRoomGenerator();
-		model.addAttribute("codeAuto", codeAuto);
 		String jsp = "office/room";
 		return jsp;
 	}	

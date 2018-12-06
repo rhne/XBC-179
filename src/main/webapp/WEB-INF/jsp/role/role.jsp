@@ -49,16 +49,18 @@
 	</div>
 </div>
 
-<div class="modal fade" id = "modal-alert2">
-	<div class="modal-dialog">
-		<div class="alert alert-success alert-dismissible">
-        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
-            Data Successfully Updated ...
-       	</div>
+	<div class="modal fade" id="modal-alert2">
+		<div class="modal-dialog">
+			<div class="alert alert-success alert-dismissible">
+				<h4 class="modal-title">
+					<i class="icon fa fa-check"></i>Success!
+				</h4>
+				Data Successfully Updated ...
+			</div>
+		</div>
 	</div>
-</div>
 
-<div class="modal fade" id="modal-deactivate">
+	<div class="modal fade" id="modal-deactivate">
 	<div class="modal-dialog">
 		<div class="alert alert-warning alert-dismissible">
         	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>

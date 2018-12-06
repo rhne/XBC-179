@@ -72,7 +72,7 @@ $(document).ready(function(){
 			type:"get",
 			dataType:"html",
 			success:function(result){
-				$("#modal-input").find(".modal-title").html("Form Role Data");
+				$("#modal-input").find(".modal-title").html("Form Room");
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
 			}

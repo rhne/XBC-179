@@ -43,7 +43,7 @@ public class MonitoringModel {
 	//AuditTrail/////////////////////
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID", nullable=false)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "M_MONITORING")
 	@TableGenerator(name = "M_MONITORING", table = "S_SEQUENCE",
 			pkColumnName = "SEQUENCE_NAME", pkColumnValue = "M_MONITORING_ID", 
@@ -172,7 +172,7 @@ public class MonitoringModel {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "BIODATA_ID", nullable = true, updatable = false, insertable = false)
+	@JoinColumn(name = "BIODATA_ID", nullable = false, updatable = false, insertable = false)
 	public BiodataModel getBiodataModel() {
 		return biodataModel;
 	}
