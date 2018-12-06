@@ -97,10 +97,10 @@ public class MenuModel {
 		this.active = active;
 	}
 	@Column(name="MENU_ORDER")
-	public Integer getMenuOrder() {
+	public Integer getMenuorder() {
 		return menuorder;
 	}
-	public void setMenuOrder(Integer menuorder) {
+	public void setMenuorder(Integer menuorder) {
 		this.menuorder = menuorder;
 	}
 	@Column(name="CREATED_ON")

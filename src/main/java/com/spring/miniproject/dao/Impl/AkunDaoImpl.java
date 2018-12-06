@@ -49,7 +49,7 @@ public class AkunDaoImpl implements AkunDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		String query = " select a from AkunModel a "
-					 + " where a.name like '%"+name+"%' ";
+					 + " where a.isActive=1 and a.name like '%"+name+"%' ";
 		
 		List<AkunModel> akunModelList = new ArrayList<AkunModel>();
 		akunModelList = session.createQuery(query).list();
@@ -59,6 +59,7 @@ public class AkunDaoImpl implements AkunDao{
 
 	@Override
 	public void update(AkunModel akunModel) {
+		akunModel.setModifiedOn(new Date());
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(akunModel);
 	}

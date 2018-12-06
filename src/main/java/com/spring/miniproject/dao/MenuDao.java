@@ -8,7 +8,7 @@ public interface MenuDao {
 	public void create(MenuModel menuModel);
 	public List<MenuModel> select();
 	public MenuModel searchById(Long id);
-	List<MenuModel> searchByLikeParent(String menuparent);
+	List<MenuModel> searchByLikeTitle(String title);
 	public void update(MenuModel menuModel);
 	public void deactivate(MenuModel menuModel);
 	

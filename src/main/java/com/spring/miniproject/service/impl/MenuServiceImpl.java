@@ -42,9 +42,9 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public List<MenuModel> searchByLikeParent(String menuparent) {
+	public List<MenuModel> searchByLikeTitle(String title) {
 		// TODO Auto-generated method stub
-		return this.menuDao.searchByLikeParent(menuparent);
+		return this.menuDao.searchByLikeTitle(title);
 	}
 
 	@Override

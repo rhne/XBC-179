@@ -35,8 +35,9 @@
 		<label class="control-label col-md-3" for="menuparent">Menu Parent</label>
 		<div class="col-md-8">
 			<select class="form-control" id="menuparent" name="menuparent">
+				<option value="0">0</option>
 				<c:forEach items="${menuModelList}" var="menuModel">
-					<option value="${menuModel.id}">${menuModel.id}</option>		
+					<option value="${menuModel.id}">${menuModel.title}</option>		
 				</c:forEach>
 			</select>
 		</div>

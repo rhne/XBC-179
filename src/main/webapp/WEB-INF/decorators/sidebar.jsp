@@ -18,6 +18,9 @@
 						<li>
 							<a href="${contextName}/menu.html" class="menu-item"><i class="fa fa-book"></i>Menu</a>
 						</li>
+						<li>
+							<a href="${contextName}/menuaccess.html" class="menu-item"><i class="fa fa-book"></i>Menu Access</a>
+						</li>
 					</ul>
 				</li>
 				<!-- Modul 2 -->	

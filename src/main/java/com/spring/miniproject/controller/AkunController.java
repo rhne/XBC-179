@@ -69,13 +69,28 @@ public class AkunController {
 		return jsp;
 	}
 	
+	@RequestMapping(value="user/edit")
+	public String userEdit(HttpServletRequest request,Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
+		AkunModel akunModel = new AkunModel();
+		akunModel = this.akunService.searchById(id);
+		model.addAttribute("akunModel", akunModel);
+		
+		this.listDataRole(model);
+		
+		String jsp = "user/edit";
+		return jsp;
+	}
+	
 	@RequestMapping(value="user/edit/save")
-	public String roleEditSave(HttpServletRequest request, Model model) {
+	public String akunEditSave(HttpServletRequest request, Model model) {
 		Long id = Long.valueOf(request.getParameter("id"));
 		
 		String nama = request.getParameter("name");
 		String password = request.getParameter("password");
 		Long idRole = Long.valueOf(request.getParameter("idRole"));
+		Integer mobileFlag = Integer.valueOf(request.getParameter("mobileFlag"));
+		Long mobileToken= Long.valueOf(request.getParameter("mobileToken"));
 		
 		AkunModel akunModelDB = new AkunModel();
 		akunModelDB = this.akunService.searchById(id);
@@ -84,6 +99,8 @@ public class AkunController {
 		akunModelDB.setPassword(password);
 		akunModelDB.setIdRole(idRole);
 		akunModelDB.setModifiedOn(new Date());
+		akunModelDB.setMobileFlag(mobileFlag);
+		akunModelDB.setMobileToken(mobileToken);
 		
 		this.akunService.update(akunModelDB);
 		model.addAttribute("akunModelDB", akunModelDB);

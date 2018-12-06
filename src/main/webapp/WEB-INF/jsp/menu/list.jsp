@@ -4,7 +4,7 @@
 	<tr>
 		<td>${menuModel.kode}</td>
 		<td>${menuModel.title}</td>
-		<td>${menuModel.menuparent}</td>
+		<td>${menuModel.title}</td>
 		<td>Active</td>	
 		<td>
 			<div class="dropdown">

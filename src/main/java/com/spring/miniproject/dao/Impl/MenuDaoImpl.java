@@ -1,6 +1,7 @@
 package com.spring.miniproject.dao.Impl;
 
-import java.util.ArrayList;   
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -52,17 +53,19 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	public void update(MenuModel menuModel) {
 		// TODO Auto-generated method stub
+		menuModel.setModifiedOn(new Date());
+		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(menuModel);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<MenuModel> searchByLikeParent(String menuparent) {
+	public List<MenuModel> searchByLikeTitle(String title) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		String query = " select m from MenuModel m "
-					 + " where m.menuparent like '%"+menuparent+"%' ";
+					 + " where Active=1 and m.title like '%"+title+"%' ";
 		
 		List<MenuModel> menuModelList = new ArrayList<MenuModel>();
 		menuModelList = session.createQuery(query).list();
@@ -73,7 +76,11 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	public void deactivate(MenuModel menuModel) {
 		// TODO Auto-generated method stub
+		menuModel.setActive(0);
+		menuModel.setModifiedOn(new Date());
 		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(menuModel);
 	}
 	
 }
