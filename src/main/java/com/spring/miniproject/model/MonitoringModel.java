@@ -17,6 +17,8 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.spring.miniproject.model.BiodataModel;
+
 @Entity
 @Table(name = "M_MONITORING")
 public class MonitoringModel {

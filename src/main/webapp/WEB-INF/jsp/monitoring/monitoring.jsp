@@ -79,6 +79,7 @@
 			</div>
 		</div>
 	</div>
+	
 </div>
 
 
@@ -226,15 +227,15 @@
 
 				$("#list-data-monitoring").on(
 						"click",
-						".btn-delete",
+						"#btn-delete",
 						function() {
-							var monitoringId = $(this).prop('id');
+							var id = $(this).val();
 							$.ajax({
-								url : "monitoring/delete",
+								url : "monitoring/delete.html",
 								type : "get",
 								dataType : "html",
 								data : {
-									id : monitoringId
+									id : id
 								},
 								success : function(result) {
 									$("#modal-alert-delete")
@@ -248,7 +249,7 @@
 						function() {
 							$.ajax({
 								url : "monitoring/delete/save.json",
-								type : "post",
+								type : "get",
 								dataType : "json",
 								data : $(this).serialize(),
 								success : function(result) {
@@ -258,6 +259,23 @@
 							});
 							return false;
 						});
+				
+				/* Search Monitoring By Name */
+				$("#button-search").on("click", function() {
+					var nameCari = document.getElementById("nameCari").value;
+					$.ajax({
+						url : "monitoring/search/name.html",
+						type : "get",
+						dataType : "html",
+						data : {
+							nameCari : nameCari
+						},
+						success : function(result) {
+							$("#list-data-monitoring").html(result);
+						}
+					});
+					return false;
+				});
 
 			});
 </script>
