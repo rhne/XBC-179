@@ -22,7 +22,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 public class AssignmentModel {
 
 	private Long id;
-	private Long testId;
 	private String title;
 	private Date startDate;
 	private Date endDate;
@@ -33,6 +32,8 @@ public class AssignmentModel {
 	private Integer isDone;
 	
 	private BiodataModel biodataModel;
+	private Long testId;
+	
 	// AuditTrail////////////////////
 	private Long createdBy;
 	private Date createdOn;
