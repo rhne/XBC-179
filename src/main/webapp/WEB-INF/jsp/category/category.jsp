@@ -61,6 +61,14 @@
        	</div>
 	</div>
 </div>
+<div class="modal fade" id = "modal-alert-edit">
+	<div class="modal-dialog">
+		<div class="alert alert-success alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Edited ...
+       	</div>
+	</div>
+</div>
 </div>
 
 <script>
@@ -83,7 +91,7 @@
 				type:"get",
 				dataType:"html",
 				success:function(result){
-					$("#modal-input").find(".modal-title").html("Form Role Data");
+					$("#modal-input").find(".modal-title").html("Form Add Category");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
 				}
@@ -147,5 +155,37 @@
 			});
 			return false;
 		});
+		$("#list-data-category").on("click", ".btn-edit", function() {
+			var Id = $(this).prop('id');
+			$.ajax({
+				url : "category/edit.html",
+				type : "get",
+				dataType : "html",
+				data : {
+					id : Id
+				},
+				success : function(result) {
+					$("#modal-input").find(".modal-title").html("Form Edit Category");
+					$("#modal-input").find(".modal-body").html(result);
+					$("#modal-input").modal("show");
+				}
+			});
+		});
+
+		$("#modal-input").on("submit","#form-category-edit",function() {
+					$.ajax({
+						url : "category/edit/save.json",
+						type : "get",
+						dataType : "json",
+						data : $(this).serialize(),
+						success : function(result) {
+							$("#modal-alert-edit").find(".modal-title");  
+							$("#modal-alert-edit").modal("show");
+							$("#modal-input").modal("hide");
+							listDataCategory();
+						}
+					});
+					return false;
+				});
 	});
 </script>

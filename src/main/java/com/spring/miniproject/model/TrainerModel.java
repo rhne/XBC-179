@@ -21,7 +21,7 @@ public class TrainerModel {
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="M_TRAINER")
 	@TableGenerator(name="M_TRAINER", table="S_SEQUENCE", pkColumnName="SEQUENCE_NAME", pkColumnValue="ID_SEQ_TRAINER", valueColumnName="SEQUENCE_VALUE", allocationSize=1, initialValue=0)
 	@Column(name="ID")
-	private Integer idTrainer;
+	private Long idTrainer;
 	
 	@Column(name="NAME")
 	private String name;
@@ -46,11 +46,11 @@ public class TrainerModel {
 	@Column(name="ACTIVE")
 	private Integer active;
 
-	public Integer getIdTrainer() {
+	public Long getIdTrainer() {
 		return idTrainer;
 	}
 
-	public void setIdTrainer(Integer idTrainer) {
+	public void setIdTrainer(Long idTrainer) {
 		this.idTrainer = idTrainer;
 	}
 

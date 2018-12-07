@@ -64,6 +64,7 @@
 
 				<value>com.spring.miniproject.model.QuestionModel</value>
 				<value>com.spring.miniproject.model.VersionModel</value>
+				<value>com.spring.miniproject.model.VersionDetailModel</value>
 				<value>com.spring.miniproject.model.OfficeModel</value>
 				
 				<value>com.spring.miniproject.model.TechnologyModel</value>

@@ -25,7 +25,7 @@ public class IdleNewsServiceImpl implements IdleNewsService{
 		// TODO Auto-generated method stub
 		this.idlenewsDao.create(idlenewsModel);
 	}
-	
+	@Override
 	public List<IdleNewsModel> searchAll() {
 		// TODO Auto-generated method stub
 		return this.idlenewsDao.searchAll();
@@ -45,5 +45,16 @@ public class IdleNewsServiceImpl implements IdleNewsService{
 	@Override
 	public void delete(IdleNewsModel idlenewsModel) {
 		this.idlenewsDao.delete(idlenewsModel);
+	}
+	@Override
+	public void update(IdleNewsModel idlenewsModel) {
+		// TODO Auto-generated method stub
+		this.idlenewsDao.update(idlenewsModel);
+	}
+
+	@Override
+	public void publish(IdleNewsModel idlenewsModel) {
+		// TODO Auto-generated method stub
+		this.idlenewsDao.publish(idlenewsModel);
 	}
 }

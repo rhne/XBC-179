@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.miniproject.dao.BootcampTestTypeDao;
 import com.spring.miniproject.model.BootcampTestTypeModel;
-import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.service.BootcampTestTypeService;
 
 
@@ -24,7 +23,7 @@ public class BootcampTestTypeServiceImpl implements BootcampTestTypeService{
 		// TODO Auto-generated method stub
 		this.bootcamptesttypeDao.create(bootcamptesttypeModel);
 	}
-	
+	@Override
 	public List<BootcampTestTypeModel> searchAll() {
 		// TODO Auto-generated method stub
 		return this.bootcamptesttypeDao.searchAll();
@@ -45,5 +44,9 @@ public class BootcampTestTypeServiceImpl implements BootcampTestTypeService{
 	public void delete(BootcampTestTypeModel bootcamptesttypeModel) {
 		this.bootcamptesttypeDao.delete(bootcamptesttypeModel);
 	}
-
+	@Override
+	public void update(BootcampTestTypeModel bootcamptesttypeModel) {
+		// TODO Auto-generated method stub
+		this.bootcamptesttypeDao.update(bootcamptesttypeModel);
+	}
 }

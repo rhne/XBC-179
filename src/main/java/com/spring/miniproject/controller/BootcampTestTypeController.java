@@ -10,9 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.miniproject.model.AkunModel;
 import com.spring.miniproject.model.BootcampTestTypeModel;
-import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.service.BootcampTestTypeService;
 
 @Controller
@@ -86,4 +84,30 @@ public class BootcampTestTypeController {
 		String jsp = "bootcamp_test_type/bootcamp_test_type";
 		return jsp;
 	}
+	//edit
+		@RequestMapping(value="bootcamp_test_type/edit")
+		public String Edit(HttpServletRequest request, Model model) {
+			String id = (request.getParameter("id"));
+			BootcampTestTypeModel bootcamptesttypeModel = new BootcampTestTypeModel();
+			bootcamptesttypeModel = this.bootcamptesttypeService.searchById(Long.parseLong(id));
+			model.addAttribute("bootcamptesttypeModel", bootcamptesttypeModel);
+			String jsp = "bootcamp_test_type/edit";
+			return jsp;
+		}
+		
+		
+		@RequestMapping(value="bootcamp_test_type/edit/save")
+		public String EditSave(HttpServletRequest request, Model model) throws Exception{
+			String id = request.getParameter("id");
+			BootcampTestTypeModel bootcamptesttypeModel = new BootcampTestTypeModel();
+			bootcamptesttypeModel = this.bootcamptesttypeService.searchById(Long.parseLong(id));
+			bootcamptesttypeModel.setName(request.getParameter("name"));		
+			bootcamptesttypeModel.setNotes(request.getParameter("notes"));
+			
+			this.bootcamptesttypeService.update(bootcamptesttypeModel);
+			model.addAttribute("bootcamptesttypeModel", bootcamptesttypeModel);
+			
+			String jsp = "bootcamp_test_type/bootcamp_test_type";
+			return jsp;
+		}
 }

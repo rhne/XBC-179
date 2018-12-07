@@ -10,4 +10,6 @@ public interface IdleNewsService {
 	public List<IdleNewsModel> searchByLikeName(String name);
 	public IdleNewsModel searchById(Long id);
 	public void delete(IdleNewsModel idlenewsModel);
+	public void update(IdleNewsModel idlenewsModel);
+	public void publish(IdleNewsModel idlenewsModel);
 }

@@ -8,4 +8,7 @@ public interface TrainerDao {
 
 	public void create(TrainerModel trainerModel);
 	public List<TrainerModel> showAll();
+	public List<TrainerModel> searchBy(String name);
+	public TrainerModel searchById(Long id);
+	public void edit(TrainerModel trainerModel);
 }

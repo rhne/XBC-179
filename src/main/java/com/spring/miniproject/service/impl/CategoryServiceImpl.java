@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.miniproject.dao.CategoryDao;
+import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.service.CategoryService;
@@ -24,7 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
 		// TODO Auto-generated method stub
 		this.categoryDao.create(categoryModel);
 	}
-	
+	@Override
 	public List<CategoryModel> searchAll() {
 		// TODO Auto-generated method stub
 		return this.categoryDao.searchAll();
@@ -51,5 +52,9 @@ public class CategoryServiceImpl implements CategoryService {
 	public void delete(CategoryModel categoryModel) {
 		this.categoryDao.delete(categoryModel);
 	}
-
+	@Override
+	public void update(CategoryModel categoryModel) {
+		// TODO Auto-generated method stub
+		this.categoryDao.update(categoryModel);
+	}
 }

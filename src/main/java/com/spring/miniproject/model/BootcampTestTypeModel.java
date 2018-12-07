@@ -1,6 +1,5 @@
 package com.spring.miniproject.model;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;  
@@ -13,12 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import com.spring.miniproject.model.RoleModel;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
+@DynamicUpdate
 @Table(name="T_BOOTCAMP_TEST_TYPE")
 public class BootcampTestTypeModel {
 
@@ -31,11 +28,11 @@ public class BootcampTestTypeModel {
 			
 		private Long createdBy;
 		private BootcampTestTypeModel createdByUser;
-		private LocalDateTime createdOn;
+		private Date createdOn;
 				
 		private Long modifiedBy;
 		private BootcampTestTypeModel modifiedByUser;
-		private LocalDateTime modifiedOn;
+		private Date modifiedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
@@ -58,6 +55,7 @@ public class BootcampTestTypeModel {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	@Column(name="NOTES")
 	public String getNotes() {
 		return notes;
@@ -66,7 +64,7 @@ public class BootcampTestTypeModel {
 		this.notes = notes;
 	}
 	
-	@Column(name="IS_DELETE")
+	@Column(name="IS_ACTIVE")
 	public Integer getIsActive() {
 		return isActive;
 	}
@@ -91,12 +89,11 @@ public class BootcampTestTypeModel {
 		this.createdByUser = createdByUser;
 	}
 	
-	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	public LocalDateTime getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(LocalDateTime createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 	
@@ -117,12 +114,11 @@ public class BootcampTestTypeModel {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
-	@UpdateTimestamp
 	@Column(name="MODIFIED_ON")
-	public LocalDateTime getModifiedOn() {
+	public Date getModifiedOn() {
 		return modifiedOn;
 	}
-	public void setModifiedOn(LocalDateTime modifiedOn) {
+	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
 }

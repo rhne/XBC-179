@@ -10,4 +10,5 @@ public interface BootcampTestTypeService {
 	public List<BootcampTestTypeModel> searchByLikeName(String name);
 	public BootcampTestTypeModel searchById(Long id);
 	public void delete(BootcampTestTypeModel bootcamptesttypeModel);
+	public void update(BootcampTestTypeModel bootcamptesttypeModel);
 }

@@ -89,4 +89,140 @@ public class AssignmentController {
 		String jsp = "assignment/assignment";
 		return jsp;
 	}
+	
+	/* Search Assignment By Biodata Name */
+	@RequestMapping(value="assignment/search/name")
+	public String assignmentSearchName(HttpServletRequest request, Model model) {
+		String name = request.getParameter("nameCari");
+		List<AssignmentModel> assignmentModelList = new ArrayList<AssignmentModel>();
+		assignmentModelList = this.assignmentService.searchByLikeName(name);
+		model.addAttribute("assignmentModelList", assignmentModelList);
+		String jsp = "assignment/list";
+		return jsp;
+	}
+	
+	/* Popup Delete Assignment */
+	@RequestMapping(value = "assignment/delete")
+	public String delete(HttpServletRequest request, Model model) {
+		
+		String id = request.getParameter("id");
+		
+		AssignmentModel assignmentModel = new AssignmentModel();
+		assignmentModel = this.assignmentService.searchById(Long.parseLong(id));
+		model.addAttribute("assignmentModel", assignmentModel);
+		
+		String jsp = "assignment/delete";
+		return jsp;
+	}
+
+	/* Delete Assignment */
+	@RequestMapping(value = "assignment/delete/save")
+	public String delete(HttpServletRequest request) {
+		
+		Long id = Long.valueOf(request.getParameter("id"));
+
+		AssignmentModel assignmentModel = new AssignmentModel();
+		assignmentModel = this.assignmentService.searchById(id);
+		this.assignmentService.delete(assignmentModel);
+
+		String jsp = "assignment/assignment";
+		return jsp;
+	}
+	
+	/* Popup Hold Assignment */
+	@RequestMapping(value = "assignment/hold")
+	public String hold(HttpServletRequest request, Model model) {
+		
+		String id = request.getParameter("id");
+		
+		AssignmentModel assignmentModel = new AssignmentModel();
+		assignmentModel = this.assignmentService.searchById(Long.parseLong(id));
+		model.addAttribute("assignmentModel", assignmentModel);
+		
+		String jsp = "assignment/hold";
+		return jsp;
+	}
+
+	/* Hold Assignment */
+	@RequestMapping(value = "assignment/hold/save")
+	public String assignmentHold(HttpServletRequest request) {
+		
+		Long id = Long.valueOf(request.getParameter("id"));
+
+		AssignmentModel assignmentModel = new AssignmentModel();
+		assignmentModel = this.assignmentService.searchById(id);
+		this.assignmentService.hold(assignmentModel);
+
+		String jsp = "assignment/assignment";
+		return jsp;
+	}
+	
+	/* Popup Mark As Done Assignment*/
+	@RequestMapping(value = "assignment/done")
+	public String assignmentDone(HttpServletRequest request, Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
+		AssignmentModel assignmentModel = new AssignmentModel();
+		assignmentModel = this.assignmentService.searchById(id);
+		model.addAttribute("assignmentModel", assignmentModel);
+
+		String jsp = "assignment/done";
+		return jsp;
+	}
+
+	/* Mark As Done Assignment */
+	@RequestMapping(value = "assignment/done/save")
+	public String assignmentDoneSave(HttpServletRequest request, Model model) throws Exception {
+		Long id = Long.valueOf(request.getParameter("id"));
+		
+		AssignmentModel assignmentModelDB = new AssignmentModel();
+		assignmentModelDB = this.assignmentService.searchById(id);
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date realizationDate = sdf.parse(request.getParameter("realizationDate"));
+
+		assignmentModelDB.setRealizationDate(realizationDate);
+		assignmentModelDB.setNotes(request.getParameter("notes"));
+
+		this.assignmentService.update(assignmentModelDB);
+		model.addAttribute("assignmentModelDB", assignmentModelDB);
+
+		String jsp = "assignment/assignment";
+		return jsp;
+	}
+	
+	/* Popup Edit Assignment */
+	@RequestMapping(value = "assignment/edit")
+	public String assignmentEdit(HttpServletRequest request, Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
+		AssignmentModel assignmentModel = new AssignmentModel();
+		assignmentModel = this.assignmentService.searchById(id);
+		model.addAttribute("assignmentModel", assignmentModel);
+
+		String jsp = "assignment/edit";
+		return jsp;
+	}
+
+	/* Edit Assignment */
+	@RequestMapping(value = "assignment/edit/save")
+	public String assignmentEditSave(HttpServletRequest request, Model model) throws Exception {
+		Long id = Long.valueOf(request.getParameter("id"));
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date startDate = sdf.parse(request.getParameter("startDate"));
+		Date endDate = sdf.parse(request.getParameter("endDate"));
+
+		AssignmentModel assignmentModelDB = new AssignmentModel();
+		assignmentModelDB = this.assignmentService.searchById(id);
+
+		assignmentModelDB.setTitle(request.getParameter("title"));
+		assignmentModelDB.setStartDate(startDate);
+		assignmentModelDB.setEndDate(endDate);
+		assignmentModelDB.setDescription(request.getParameter("description"));
+
+		this.assignmentService.update(assignmentModelDB);
+		model.addAttribute("assignmentModelDB", assignmentModelDB);
+
+		String jsp = "assignment/assignment";
+		return jsp;
+	}
 }

@@ -36,6 +36,33 @@
 	</div>
 </div>
 
+<div class="modal fade" id = "modal-alert-add">
+	<div class="modal-dialog">
+		<div class="alert alert-success alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Added !
+       	</div>
+	</div>
+</div>
+
+<div class="modal fade" id = "modal-alert-update">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Updated !
+       	</div>
+	</div>
+</div>
+
+<div class="modal fade" id = "modal-alert-delete">
+	<div class="modal-dialog">
+		<div class="alert alert-danger alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Deleted !
+       	</div>
+	</div>
+</div>
+
 <script>
 	listDataTestimony();
 	function listDataTestimony(){
@@ -71,8 +98,9 @@
 			dataType : "json",
 			data : $(this).serialize(),
 			success : function(result){
+				$("#modal-alert-add").find(".modal-title");  
+				$("#modal-alert-add").modal("show");
 				$("#modal-input").modal("hide");
-				alert("Data sucessfully added!");
 				listDataTestimony();
 			}
 		});
@@ -100,8 +128,9 @@
 			dataType : "json",
 			data : $(this).serialize(),
 			success : function(result){
+				$("#modal-alert-update").find(".modal-title");  
+				$("#modal-alert-update").modal("show");
 				$("#modal-input").modal("hide");
-				alert("Data sucessfully updated!");
 				listDataTestimony();
 			}
 		});
@@ -143,8 +172,9 @@
 			dataType : "json",
 			data : $(this).serialize(),
 			success : function(result){
+				$("#modal-alert-delete").find(".modal-title");  
+				$("#modal-alert-delete").modal("show");
 				$("#modal-input").modal("hide");
-				alert("Data sucessfully deleted!");
 				listDataTestimony();
 			}
 		});

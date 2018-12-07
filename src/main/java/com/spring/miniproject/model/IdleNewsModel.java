@@ -35,11 +35,11 @@ public class IdleNewsModel {
 			
 		private Long createdBy;
 		private IdleNewsModel createdByUser;
-		private LocalDateTime createdOn;
+		private Date createdOn;
 				
 		private Long modifiedBy;
 		private IdleNewsModel modifiedByUser;
-		private LocalDateTime modifiedOn;
+		private Date modifiedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
@@ -95,12 +95,11 @@ public class IdleNewsModel {
 		this.createdByUser = createdByUser;
 	}
 	
-	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	public LocalDateTime getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(LocalDateTime createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 	
@@ -121,12 +120,11 @@ public class IdleNewsModel {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
-	@UpdateTimestamp
 	@Column(name="MODIFIED_ON")
-	public LocalDateTime getModifiedOn() {
+	public Date getModifiedOn() {
 		return modifiedOn;
 	}
-	public void setModifiedOn(LocalDateTime modifiedOn) {
+	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
 	@Column(name="ID_CATEGORY")
