@@ -37,6 +37,24 @@
 	</div>
 	<div class="form-group">
 		<div class="col-md-8">
+			<select class="form-control" id="idRoom" name="idRoom">
+				<list:forEach items="${roomModelList}" var="roomModel">
+					<option value="${roomModel.id}">${roomModel.name}</option>
+				</list:forEach>
+			</select>
+		</div>
+	</div>
+		<div class="form-group">
+	<div class="col-md-8">
+			<select class="form-control" id="idBootc" name="idBbootc">
+				<list:forEach items="${bootcampTestTypeModelList}" var="roomModel">
+					<option value="${bootcampTestTypeModel.id}">${bootcampTestTypeModel.name}</option>
+				</list:forEach>
+			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-8">
 			<textarea rows="5" cols="10" name="batchNotes" id="notesBatch" class="form-control" placeholder="Notes"></textarea>
 		</div>
 	</div>

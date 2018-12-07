@@ -145,8 +145,6 @@
 		
 		var dataTrainer = $("#idTrainer").val();
 		arrayTrainer.push(dataTrainer);
-		alert(arrayTrainer[0]);
-		
 		listTrainer();
 		
 			
@@ -156,9 +154,9 @@
 		});
 	
 		
-	$("#list-data-trainer").on("click", "#btn-delete", function(){
+	$("#list-data-trainer").on("click", ".btn-delete", function(){
 		var index = $(this).prop('id');
-		arrayTrainer.pop(index);
+		alert(index);
 		listTrainer();
 	});
 </script>
