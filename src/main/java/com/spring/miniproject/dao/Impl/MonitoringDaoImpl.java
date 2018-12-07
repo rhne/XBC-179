@@ -22,7 +22,6 @@ public class MonitoringDaoImpl implements MonitoringDao {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		monitoringModel.setCreatedOn(new Date());
-		monitoringModel.setModifiedOn(new Date());
 		monitoringModel.setIsDelete(0);
 		session.save(monitoringModel);
 	}
@@ -69,7 +68,6 @@ public class MonitoringDaoImpl implements MonitoringDao {
 		// TODO Auto-generated method stub
 		monitoringModel.setIsDelete(1);
 		monitoringModel.setDeletedOn(new Date());
-		monitoringModel.setModifiedOn(new Date());
 
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(monitoringModel);

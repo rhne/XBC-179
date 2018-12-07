@@ -14,7 +14,7 @@
     					<li><button type="button" class="btn btn-link" id="btn-edit" value="${assignmentModel.id}">Edit</button></li>
     					<li><button type="button" class="btn btn-link" id="btn-delete" value="${assignmentModel.id}">Delete</button></li>
     					<li><button type="button" class="btn btn-link" id="btn-hold" value="${assignmentModel.id}">Hold</button></li>
-    					<li><button type="button" class="btn btn-link" id="btn-markAsDone" value="${assignmentModel.id}">Mark as Done</button></li>
+    					<li><button type="button" class="btn btn-link" id="btn-done" value="${assignmentModel.id}">Mark as Done</button></li>
   					</ul>
 			</div>
 		</td>
