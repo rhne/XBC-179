@@ -92,7 +92,7 @@
 				type:"get",
 				dataType:"html",
 				success:function(result){
-					$("#modal-input").find(".modal-title").html("Form Account Customer");
+					$("#modal-input").find(".modal-title").html("Add User");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
 				}
