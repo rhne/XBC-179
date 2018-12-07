@@ -134,12 +134,14 @@ public class RoleController {
 		
 		String roleAuto ="";
 		if (idRole < 10) {
-			roleAuto = "RO00" + idRole;
+			roleAuto = "RO000" + idRole;
 		}else if (idRole >= 10 && idRole < 100) {
-			roleAuto = "RO0" + idRole;
+			roleAuto = "RO00" + idRole;
 		}else if (idRole >= 100 && idRole < 1000) {
+			roleAuto = "RO0" + idRole;
+		} else if (idRole >= 1000) {
 			roleAuto = "RO" + idRole;
-		}else {
+		} else {
 			
 		}
 		
