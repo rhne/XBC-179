@@ -74,11 +74,21 @@
        	</div>
 	</div>
 </div>
+<div class="modal fade" id="modal-alert-delete-room">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
+            Are you sure you want to delete?
+            <div class="modal-body">
+			
+			</div>
+       	</div>
+	</div>
+</div>
 </div>
 
 <script>
 	listDataOffice();
-
 	function listDataOffice() {
 		$.ajax({
 			url:"office/list.html",
@@ -96,7 +106,7 @@
 				type:"get",
 				dataType:"html",
 				success:function(result){
-					$("#modal-input").find(".modal-title").html("Form Role Data");
+					$("#modal-input").find(".modal-title").html("Form Tambah Office");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
 				}
@@ -132,7 +142,7 @@
 			return false;
 		});
 		
-		$("#list-data-office").on("click", ".btn-delete", function() {
+		$("#list-data-office").on("click", ".btn-deactivate", function() {
 			var Id = $(this).prop('id');
 			$.ajax({
 				url: "office/delete",
@@ -151,7 +161,7 @@
 		$("#modal-alert-delete").on("submit", "#form-confirm-delete", function() {
 			$.ajax({
 				url: "office/delete/save.json",
-				type: "post",
+				type: "get",
 				dataType: "json",
 				data: $(this).serialize(),
 				success: function (result) {

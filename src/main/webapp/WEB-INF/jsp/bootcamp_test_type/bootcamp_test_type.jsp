@@ -50,6 +50,25 @@
        	</div>
 	</div>
 </div>
+<div class="modal fade" id="modal-alert-delete">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
+            Are you sure you want to deactivate?
+            <div class="modal-body">
+			
+			</div>
+       	</div>
+	</div>
+</div>
+<div class="modal fade" id = "modal-alert-edit">
+	<div class="modal-dialog">
+		<div class="alert alert-success alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Edited ...
+       	</div>
+	</div>
+</div>
 </div>
 
 <script>
@@ -72,7 +91,7 @@
 				type:"get",
 				dataType:"html",
 				success:function(result){
-					$("#modal-input").find(".modal-title").html("Form Role Data");
+					$("#modal-input").find(".modal-title").html("Form Add Bootcamp Test Type");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
 				}
@@ -107,5 +126,66 @@
 			});
 			return false;
 		});
+		$("#list-data-bootcamp-test-type").on("click", ".btn-deactivate", function() {
+			var Id = $(this).prop('id');
+			$.ajax({
+				url: "bootcamp_test_type/delete",
+				type: "get",
+				dataType: "html",
+				data: {
+					id: Id
+				},
+				success: function (result) {
+					$("#modal-alert-delete").find(".modal-body").html(result);
+					$("#modal-alert-delete").modal("show");
+				}
+			});
+		});
+		
+		$("#modal-alert-delete").on("submit", "#form-confirm-delete", function() {
+			$.ajax({
+				url: "bootcamp_test_type/delete/save.json",
+				type: "get",
+				dataType: "json",
+				data: $(this).serialize(),
+				success: function (result) {
+					$("#modal-alert-delete").modal("hide");
+					listDataBootcampTestType();
+				}
+			});
+			return false;
+		});
+		$("#list-data-bootcamp-test-type").on("click", ".btn-edit", function() {
+			var Id = $(this).prop('id');
+			$.ajax({
+				url : "bootcamp_test_type/edit.html",
+				type : "get",
+				dataType : "html",
+				data : {
+					id : Id
+				},
+				success : function(result) {
+					$("#modal-input").find(".modal-title").html("Form Edit Bootcamp Test Type");
+					$("#modal-input").find(".modal-body").html(result);
+					$("#modal-input").modal("show");
+				}
+			});
+		});
+
+		$("#modal-input").on("submit","#form-bootcamp-test-type-edit",function() {
+					$.ajax({
+						url : "bootcamp_test_type/edit/save.json",
+						type : "get",
+						dataType : "json",
+						data : $(this).serialize(),
+						success : function(result) {
+							$("#modal-alert-edit").find(".modal-title");  
+							$("#modal-alert-edit").modal("show");
+							$("#modal-input").modal("hide");
+							listDataBootcampTestType();
+						}
+					});
+					return false;
+				});
 	});
 </script>

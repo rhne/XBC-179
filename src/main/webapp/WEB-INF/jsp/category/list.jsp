@@ -4,7 +4,21 @@
 	<tr>
 		<td>${categoryModel.code}</td>
 		<td>${categoryModel.name}</td>
-		<td>${categoryModel.isActive}</td>	
+		<td>Active</td>
+		<td>
+			<div class="btn-group">
+			  <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown">
+			    <span class="fa fa-bars"></span>
+			    <span class="sr-only">Toggle Dropdown</span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a id="${categoryModel.id}" class="btn-edit">Edit</a></li>
+			    			  <li class="divider"></li>
+			    <li><a id="${categoryModel.id}" class="btn-deactivate">Deactivate</a></li>
+			    
+			  </ul>
+			</div>
+		</td>		
 		<td></td>
 	</tr>
 </c:forEach>

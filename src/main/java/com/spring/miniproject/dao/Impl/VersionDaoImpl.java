@@ -24,9 +24,13 @@ public class VersionDaoImpl implements VersionDao {
 	}
 
 	@Override
-	public void create(VersionModel versionModel) {
+	public VersionModel create(VersionModel versionModel) {
+		versionModel.setCreatedOn(new Date());
+		versionModel.setIsDelete(0);
+		versionModel.setVersion(getLatestVersion() + 1);
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(versionModel);
+		return versionModel;
 	}
 
 	@Override
@@ -50,6 +54,25 @@ public class VersionDaoImpl implements VersionDao {
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(versionModel);
+	}
+
+	@Override
+	public Integer getLatestVersion() {
+		Session session = this.sessionFactory.getCurrentSession();
+		VersionModel versionModel = new VersionModel();
+		try {
+			versionModel = (VersionModel) session.createQuery("from VersionModel order by version desc")
+					.list().get(0);
+			if(versionModel.getVersion() == null) {
+				return 0;
+			}
+			return versionModel.getVersion();
+		}
+		catch (Exception e) {
+			return 0;
+		}
+		
+		
 	}
 
 }

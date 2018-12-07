@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <form action = "#" method = "get" id="form-akun-tambah" class="form-horizontal" onsubmit="return validasi_input(this)">
-<div class="form-group">
 	<div class="form-group">
 		<label class="control-label col-md-3" for="idRole">Role</label>
 		<div class="col-md-8">
@@ -34,7 +33,6 @@
 	<div class="modal-footer">
 		<button type="submit" class="btn btn-primary btn-sm">Simpan</button>
 	</div>
-</div>
 </form>
 
 <script type="text/javascript">

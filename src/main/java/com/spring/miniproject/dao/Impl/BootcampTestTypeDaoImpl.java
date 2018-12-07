@@ -1,6 +1,7 @@
 package com.spring.miniproject.dao.Impl;
 
-import java.util.ArrayList;  
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;  
@@ -29,6 +30,7 @@ public class BootcampTestTypeDaoImpl implements BootcampTestTypeDao{
 	@Override
 	public void create(BootcampTestTypeModel bootcamptesttypeModel) {
 		// TODO Auto-generated method stub
+		bootcamptesttypeModel.setCreatedOn(new Date());
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(bootcamptesttypeModel);
 	}
@@ -39,11 +41,31 @@ public class BootcampTestTypeDaoImpl implements BootcampTestTypeDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		String query = " select a from BootcampTestTypeModel a "
-					 + " where a.name like '%"+name+"%' ";
+					 + " where a.isActive =1 and a.name like '%"+name+"%' ";
 		
 		List<BootcampTestTypeModel> bootcamptesttypeModelList = new ArrayList<BootcampTestTypeModel>();
 		bootcamptesttypeModelList = session.createQuery(query).list();
 		
 		return bootcamptesttypeModelList;
+	}
+	@Override
+	public BootcampTestTypeModel searchById(Long id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return (BootcampTestTypeModel) session.createQuery("from BootcampTestTypeModel where id=" + id).getSingleResult();
+	}
+	
+	@Override
+	public void delete(BootcampTestTypeModel bootcamptesttypeModel) {
+		bootcamptesttypeModel.setIsActive(0);
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(bootcamptesttypeModel);
+	}
+	@Override
+	public void update(BootcampTestTypeModel bootcamptesttypeModel) {
+		// TODO Auto-generated method stub
+		bootcamptesttypeModel.setModifiedOn(new Date());
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(bootcamptesttypeModel);
 	}
 }

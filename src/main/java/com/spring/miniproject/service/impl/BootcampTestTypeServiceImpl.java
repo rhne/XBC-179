@@ -23,7 +23,7 @@ public class BootcampTestTypeServiceImpl implements BootcampTestTypeService{
 		// TODO Auto-generated method stub
 		this.bootcamptesttypeDao.create(bootcamptesttypeModel);
 	}
-	
+	@Override
 	public List<BootcampTestTypeModel> searchAll() {
 		// TODO Auto-generated method stub
 		return this.bootcamptesttypeDao.searchAll();
@@ -34,6 +34,19 @@ public class BootcampTestTypeServiceImpl implements BootcampTestTypeService{
 		// TODO Auto-generated method stub
 		return this.bootcamptesttypeDao.searchByLikeName(name);
 	}
-
-
+	
+	@Override
+	public BootcampTestTypeModel searchById(Long id) {
+		return this.bootcamptesttypeDao.searchById(id);
+	}
+	
+	@Override
+	public void delete(BootcampTestTypeModel bootcamptesttypeModel) {
+		this.bootcamptesttypeDao.delete(bootcamptesttypeModel);
+	}
+	@Override
+	public void update(BootcampTestTypeModel bootcamptesttypeModel) {
+		// TODO Auto-generated method stub
+		this.bootcamptesttypeDao.update(bootcamptesttypeModel);
+	}
 }

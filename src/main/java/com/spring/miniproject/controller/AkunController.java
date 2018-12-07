@@ -24,7 +24,7 @@ public class AkunController {
 	
 	@Autowired
 	private RoleService roleService;
-	
+		
 	@RequestMapping(value="user")
 	public String user(Model model) {
 		String jsp = "user/user";
@@ -69,13 +69,28 @@ public class AkunController {
 		return jsp;
 	}
 	
+	@RequestMapping(value="user/edit")
+	public String userEdit(HttpServletRequest request,Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
+		AkunModel akunModel = new AkunModel();
+		akunModel = this.akunService.searchById(id);
+		model.addAttribute("akunModel", akunModel);
+		
+		this.listDataRole(model);
+		
+		String jsp = "user/edit";
+		return jsp;
+	}
+	
 	@RequestMapping(value="user/edit/save")
-	public String roleEditSave(HttpServletRequest request, Model model) {
-		Integer id = Integer.valueOf(request.getParameter("id"));
+	public String akunEditSave(HttpServletRequest request, Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
 		
 		String nama = request.getParameter("name");
 		String password = request.getParameter("password");
 		Long idRole = Long.valueOf(request.getParameter("idRole"));
+		Integer mobileFlag = Integer.valueOf(request.getParameter("mobileFlag"));
+		Long mobileToken= Long.valueOf(request.getParameter("mobileToken"));
 		
 		AkunModel akunModelDB = new AkunModel();
 		akunModelDB = this.akunService.searchById(id);
@@ -84,6 +99,8 @@ public class AkunController {
 		akunModelDB.setPassword(password);
 		akunModelDB.setIdRole(idRole);
 		akunModelDB.setModifiedOn(new Date());
+		akunModelDB.setMobileFlag(mobileFlag);
+		akunModelDB.setMobileToken(mobileToken);
 		
 		this.akunService.update(akunModelDB);
 		model.addAttribute("akunModelDB", akunModelDB);
@@ -108,4 +125,26 @@ public class AkunController {
 		model.addAttribute("roleModelList", roleModelList);
 	}
 	
+	@RequestMapping (value="user/deactivate")
+	public String deactivate(HttpServletRequest request, Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
+		AkunModel akunModel = new AkunModel();
+		akunModel = this.akunService.searchById(id);
+		model.addAttribute("akunModel", akunModel);
+		String jsp = "user/deactivate";
+		return jsp;
+	}
+	
+	@RequestMapping(value="user/deactivate/save")
+	public String userDeactivateSave(HttpServletRequest request, Model model) {
+		Long id = Long.valueOf(request.getParameter("id"));
+		
+		AkunModel userModel = new AkunModel();
+		userModel = this.akunService.searchById(id);
+	
+		this.akunService.deactivate(userModel);
+		
+		String jsp = "user/user";
+		return jsp;
+	}
 }

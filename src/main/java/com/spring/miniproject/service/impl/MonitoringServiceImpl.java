@@ -26,4 +26,34 @@ public class MonitoringServiceImpl implements MonitoringService{
 		// TODO Auto-generated method stub
 		return this.monitoringDao.searchAll();
 	}
+
+	@Override
+	public MonitoringModel searchById(Long id) {
+		// TODO Auto-generated method stub
+		return this.monitoringDao.searchById(id);
+	}
+
+	@Override
+	public void update(MonitoringModel monitoringModel) {
+		// TODO Auto-generated method stub
+		this.monitoringDao.update(monitoringModel);
+	}
+
+	@Override
+	public List<MonitoringModel> searchByLikeName(String name) {
+		// TODO Auto-generated method stub
+		return this.monitoringDao.searchByLikeName(name);
+	}
+
+	@Override
+	public void delete(MonitoringModel monitoringModel) {
+		// TODO Auto-generated method stub
+		this.monitoringDao.delete(monitoringModel);
+	}
+
+	@Override
+	public void placement(MonitoringModel monitoringModel) {
+		// TODO Auto-generated method stub
+		this.monitoringDao.placement(monitoringModel);
+	}
 }

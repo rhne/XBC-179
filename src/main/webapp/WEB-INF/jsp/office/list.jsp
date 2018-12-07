@@ -5,15 +5,15 @@
 		<td>${officeModel.name}</td>
 		<td>${officeModel.phone}</td>
 		<td>${officeModel.email}</td>
-		<td>${officeModel.isActive}</td>
-				<td>
+		<td>Active</td>
+		<td>
 			<div class="btn-group">
 			  <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown">
 			    <span class="fa fa-bars"></span>
 			    <span class="sr-only">Toggle Dropdown</span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu">
-			    <li><a id="${officeModel.id}" class="btn-delete">Delete</a></li>
+			    <li><a id="${officeModel.id}" class="btn-deactivate">Deactivate</a></li>
 			    <li class="divider"></li>
 			  </ul>
 			</div>

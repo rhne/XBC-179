@@ -32,20 +32,17 @@
 				<TextArea id="notes" name="notes" class="form-control"></TextArea>
 			</div>
 		</div>
-	<button type="button" id="button-tambah2" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Create Room"><i class="fa fa-user-plus"></i>Room</button>
+	<button type="button" id="button-tambah2" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" ><i class="fa fa-user-plus"></i>Room</button>
 			<div class="box-body">
-		<table class="table" id="table-office">
+		<table class="table" id="table-room">
 			<thead>
 			<tr>
-				<th>Office Name</th>
-				<th>Phone</th>
-				<th>Email</th>
-				<th>Address</th>
-				<th>Notes</th>
-				<th>Status</th>
+				<th>Code</th>
+				<th>Name</th>
+				<th>Capacity</th>
 			</tr>
 			</thead>
-			<tbody id="list-data-office2">
+			<tbody id="list-data-room">
 			
 			</tbody>
 		</table>
@@ -54,48 +51,61 @@
 			<button type="submit" class="btn btn-primary btn-sm">Simpan</button>
 		</div>
 </form>
-<script>
-listDataOffice2();
 
-function listDataOffice2() {
+<script type="text/javascript">
+listDataRoom();
+
+function listDataRoom() {
 	$.ajax({
-		url:"office/list.html",
+		url:"office/list_room.html",
 		type:"get",
 		dataType:"html",
 		success:function(result){
-			$("#list-data-office2").html(result);
+			$("#list-data-room").html(result);
 		}
 	});
 }
 $(document).ready(function(){
 	$("#button-tambah2").on("click", function(){
 		$.ajax({
-			url:"office/tambah_room.html",
+			url:"office/room.html",
 			type:"get",
 			dataType:"html",
 			success:function(result){
-				$("#modal-input").find(".modal-title").html("Form Role Data");
+				$("#modal-input").find(".modal-title").html("Form Room");
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
 			}
 		});
 	});
-	
-	$("#modal-input").on("submit", "#form-office-tambah2", function(){
+	$("#list-data-room").on("click", ".btn-deactivate", function() {
+		var Id = $(this).prop('id');
 		$.ajax({
-			url:"office/create_room.json",
-			type:"get",
-			dataType:"json",
-			data:$(this).serialize(),
-			success:function(result){
-				$("#modal-alert1").find(".modal-title");  
-				$("#modal-alert1").modal("show");
-				$("#modal-input").modal("hide");
-				listDataAkun();
+			url: "office/delete_room",
+			type: "get",
+			dataType: "html",
+			data: {
+				id: Id
+			},
+			success: function (result) {
+				$("#modal-alert-delete-room").find(".modal-body").html(result);
+				$("#modal-alert-delete-room").modal("show");
+			}
+		});
+	});
+	
+	$("#modal-alert-delete-room").on("submit", "#form-confirm-delete-room", function() {
+		$.ajax({
+			url: "office/delete_room/save.json",
+			type: "get",
+			dataType: "json",
+			data: $(this).serialize(),
+			success: function (result) {
+				$("#modal-alert-delete-room").modal("hide");
+				listDataRoom();
 			}
 		});
 		return false;
 	});
-	
 });
 </script>

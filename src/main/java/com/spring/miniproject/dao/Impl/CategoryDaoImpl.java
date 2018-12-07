@@ -1,6 +1,7 @@
 package com.spring.miniproject.dao.Impl;
 
-import java.util.ArrayList;  
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;  
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.CategoryDao;
+import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.CategoryModel;
 
 @Repository
@@ -29,6 +31,7 @@ public class CategoryDaoImpl implements CategoryDao{
 	@Override
 	public void create(CategoryModel categoryModel) {
 		// TODO Auto-generated method stub
+		categoryModel.setCreatedOn(new Date());
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(categoryModel);
 	}
@@ -57,5 +60,25 @@ public class CategoryDaoImpl implements CategoryDao{
 		categoryModelList = session.createQuery(query).list();
 		
 		return categoryModelList;
+	}
+	@Override
+	public CategoryModel searchById(Long id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		return (CategoryModel) session.createQuery("from CategoryModel where id=" + id).getSingleResult();
+	}
+	
+	@Override
+	public void delete(CategoryModel categoryModel) {
+		categoryModel.setIsActive(0);
+		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(categoryModel);
+	}
+	@Override
+	public void update(CategoryModel categoryModel) {
+		// TODO Auto-generated method stub
+		categoryModel.setModifiedOn(new Date());
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(categoryModel);
 	}
 }

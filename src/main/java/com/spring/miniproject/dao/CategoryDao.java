@@ -9,4 +9,7 @@ public interface CategoryDao {
 	public List<CategoryModel> searchAll();
 	public List<CategoryModel> select();
 	public List<CategoryModel> searchByLikeName(String name);
+	public CategoryModel searchById(Long id);
+	public void delete(CategoryModel categoryModel);
+	public void update(CategoryModel categoryModel);
 }
