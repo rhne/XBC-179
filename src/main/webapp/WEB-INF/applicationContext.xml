@@ -54,7 +54,7 @@
 				
 				<value>com.spring.miniproject.model.TechnologyModel</value>
 				<value>com.spring.miniproject.model.AssignmentModel</value>
-
+				<value>com.spring.miniproject.model.TestModel</value>
 				<value>com.spring.miniproject.model.CategoryModel</value>
 				<value>com.spring.miniproject.model.BootcampTestTypeModel</value>
 				<value>com.spring.miniproject.model.IdleNewsModel</value>
