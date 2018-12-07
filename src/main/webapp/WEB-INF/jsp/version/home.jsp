@@ -76,7 +76,13 @@
 </div>
 
 <script>
+	var questionArray = new Array;
 	listData();
+	
+	window.alert_ = window.alert;
+	window.alert = function() {
+	    alert_.apply(window,arguments)
+	};
 
 	function listData() {
 		$.ajax({
@@ -117,22 +123,56 @@
 			});
 		});
 		
-		$("#modal-input").on("click", ".btn-delete", function() {
-			var questionId = $(this).prop('id');
-			alert(questionId);
-			$.ajax({
-				url: "version/deletequestion",
-				type: "get",
-				dataType: "html",
-				data: {
-					id: questionId
-				},
-				success: function (result) {
-					$("#modal-alert-delete").find(".modal-body").html(result);
-					$("#modal-alert-delete").modal("show");
-				}
-			});
+		$("#modal-input").on("click", ".btn-delete-question", function() {
+			var questionId = JSON.parse($(this).prop('id'));
+			populateQuestionListTable();
+			
+			//alert(questionArray.pop(questionId));
+			
+		});
+		
+		$("#modal-input-question").on("submit", "#form-tambah-question", function () {
+			var selectedQuestion = $("#questionId").val();
+			//questionArray.push(JSON.parse(selectedQuestion));
+			questionArray.push(JSON.parse(selectedQuestion));
+			//alert(JSON.parse('{"id": 5, "q": "a"}')['q']);   //working syntax
+			//alert(JSON.parse(selectedQuestion)['id']);
+			//alert(questionArray[0]['id']);
+			populateQuestionListTable();
+			$("#modal-input-question").modal("hide");
+			return false;
 		});
 		//END REGION MODAL QUESTION
+		
+		$("#modal-input").on("submit", "#form-tambah-version", function () {
+			alert(JSON.stringify(questionArray));
+			$.ajax({
+				url: "version/create",
+				type: "get",
+				dataType: "json",
+				data: {
+					questions: JSON.stringify(questionArray)
+				},
+				success: function (result) {
+					
+				}
+			});
+			return false;
+		});
 	});
+	
+	function populateQuestionListTable() {
+		var questionListTable = '<tr></tr>';
+		
+		for(i=0; i<questionArray.length; i++) {
+			questionListTable += '<tr><td>' + (i+1) + '</td>';
+			questionListTable += '<td>' + questionArray[i]['question'] + '</td>';
+			questionListTable += '<td><div class="btn-group"> <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown"> <span class="fa fa-bars"></span> <span class="sr-only">Toggle Dropdown</span> </button> <ul class="dropdown-menu" role="menu"> <li><a ';
+			questionListTable += 'id={"id":' + '"' + questionArray[i]['id'] + '","question":'+ '"' + questionArray[i]['question'] + "\"}";
+			questionListTable += ' class="btn-delete-question">Delete Question</a></li> </ul></div></td>';
+			questionListTable += '</tr>';
+		}
+		
+		$("#modal-input").find("#list-data-question").html(questionListTable);
+	}
 </script>
