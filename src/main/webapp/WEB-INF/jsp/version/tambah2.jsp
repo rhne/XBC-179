@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
-<form id="form-question-tambah" class="form-horizontal" onsubmit="return validasi_input();">
+<form id="form-tambah-version" class="form-horizontal">
 <div class="form-group" style="padding: 20px;">
 	<input type="hidden" value="${versionModel}" id="versionModel">
 	<label>Version Tambah.2</label>
@@ -15,8 +15,6 @@
 			<tr>
 				<th>No.</th>
 				<th>Question</th>
-				<th>Created On</th>
-				<th>Is Delete</th>
 			</tr>
 			</thead>
 			<tbody id="list-data-question">
@@ -32,8 +30,8 @@
 </form>
 
 <script type="text/javascript">
-
-	listDataQuestion();
+	var questionArray = new Array();
+	/* listDataQuestion();
 	
 	function listDataQuestion() {
 		$.ajax({
@@ -42,18 +40,10 @@
 			dataType:"html",
 			success:function(result){
 				$("#list-data-question").html(result);
-				alert(result);
+				//alert(result);
 			}
 		});
-	}
+	} */
 	
-	function validasi_input(){
-		var question = document.getElementById("question");
-  		if (question.value == ""){
-    		alert("Cie mikir? Isi dong");
-    		return false;
-  		}
-		return true;
-	}
 	
 </script>
