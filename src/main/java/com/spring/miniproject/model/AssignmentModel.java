@@ -45,7 +45,7 @@ public class AssignmentModel {
 	// AuditTrail/////////////////////
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "A_ASSIGNMENT")
 	@TableGenerator(name = "A_ASSIGNMENT", table = "S_SEQUENCE", pkColumnName = "SEQUENCE_NAME", pkColumnValue = "A_ASSIGNMENT_ID", valueColumnName = "SEQUENCE_VALUE", allocationSize = 1, initialValue = 0)
 	public Long getId() {
@@ -55,7 +55,7 @@ public class AssignmentModel {
 		this.id = id;
 	}
 
-	@Column(name = "BIODATA_ID")
+	@Column(name = "BIODATA_ID", nullable = false)
 	public Long getTestId() {
 		return testId;
 	}
@@ -63,7 +63,7 @@ public class AssignmentModel {
 		this.testId = testId;
 	}
 
-	@Column(name = "TITLE")
+	@Column(name = "TITLE", nullable = false)
 	public String getTitle() {
 		return title;
 	}
@@ -71,7 +71,7 @@ public class AssignmentModel {
 		this.title = title;
 	}
 
-	@Column(name = "START_DATE")
+	@Column(name = "START_DATE", nullable = false)
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -79,7 +79,7 @@ public class AssignmentModel {
 		this.startDate = startDate;
 	}
 
-	@Column(name = "END_DATE")
+	@Column(name = "END_DATE", nullable = false)
 	public Date getEndDate() {
 		return endDate;
 	}
@@ -137,7 +137,7 @@ public class AssignmentModel {
 	}
 
 	@CreationTimestamp
-	@Column(name = "CREATED_ON")
+	@Column(name = "CREATED_ON", nullable = false)
 	public Date getCreatedOn() {
 		return createdOn;
 	}
@@ -180,7 +180,7 @@ public class AssignmentModel {
 		this.deletedOn = deletedOn;
 	}
 
-	@Column(name = "IS_DELETE")
+	@Column(name = "IS_DELETE", nullable = false)
 	public Integer getIsDelete() {
 		return isDelete;
 	}
@@ -189,7 +189,7 @@ public class AssignmentModel {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "BIODATA_ID", nullable = true, updatable = false, insertable = false)
+	@JoinColumn(name = "BIODATA_ID", nullable = false, updatable = false, insertable = false)
 	public BiodataModel getBiodataModel() {
 		return biodataModel;
 	}

@@ -45,7 +45,7 @@ public class MonitoringModel {
 	// AuditTrail/////////////////////
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "M_MONITORING")
 	@TableGenerator(name = "M_MONITORING", table = "S_SEQUENCE", pkColumnName = "SEQUENCE_NAME", pkColumnValue = "M_MONITORING_ID", valueColumnName = "SEQUENCE_VALUE", allocationSize = 1, initialValue = 0)
 	public Long getId() {
@@ -56,7 +56,7 @@ public class MonitoringModel {
 		this.id = id;
 	}
 
-	@Column(name = "BIODATA_ID")
+	@Column(name = "BIODATA_ID", nullable = false)
 	public Long getTestId() {
 		return testId;
 	}
@@ -64,7 +64,7 @@ public class MonitoringModel {
 		this.testId = testId;
 	}
 
-	@Column(name = "IDLE_DATE")
+	@Column(name = "IDLE_DATE", nullable = false)
 	public Date getIdleDate() {
 		return idleDate;
 	}
@@ -91,7 +91,7 @@ public class MonitoringModel {
 		this.idleReason = idleReason;
 	}
 
-	@Column(name = "PLACEMENT_DATE")
+	@Column(name = "PLACEMENT_DATE", nullable = false)
 	public Date getPlacementDate() {
 		return placementDate;
 	}
@@ -149,7 +149,7 @@ public class MonitoringModel {
 	}
 
 	@LastModifiedDate
-	@Column(name = "MODIFIED_ON", nullable = false)
+	@Column(name = "MODIFIED_ON")
 	public Date getModifiedOn() {
 		return modifiedOn;
 	}
@@ -186,7 +186,7 @@ public class MonitoringModel {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "BIODATA_ID", nullable = true, updatable = false, insertable = false)
+	@JoinColumn(name = "BIODATA_ID", nullable = false, updatable = false, insertable = false)
 	public BiodataModel getBiodataModel() {
 		return biodataModel;
 	}
