@@ -50,17 +50,15 @@
 
 				<value>com.spring.miniproject.model.BiodataModel</value>
 				<value>com.spring.miniproject.model.MonitoringModel</value>
-				<value>com.spring.miniproject.model.AssignmentModel</value> 
 				
-				<value>com.spring.miniproject.model.TechnologyModel</value>
 				<value>com.spring.miniproject.model.AssignmentModel</value>
-
+				<value>com.spring.miniproject.model.TestModel</value>
 				<value>com.spring.miniproject.model.CategoryModel</value>
+
 				<value>com.spring.miniproject.model.BootcampTestTypeModel</value>
 				<value>com.spring.miniproject.model.IdleNewsModel</value>
 				<value>com.spring.miniproject.model.RoomModel</value>
 				<value>com.spring.miniproject.model.CategoryModel</value>
-				<value>com.spring.miniproject.model.BootcampTestTypeModel</value> 
 
 				<value>com.spring.miniproject.model.QuestionModel</value>
 				<value>com.spring.miniproject.model.VersionModel</value>
@@ -71,6 +69,9 @@
 				<value>com.spring.miniproject.model.TrainerModel</value>
 				<value>com.spring.miniproject.model.TechnologyTrainerModel</value>
 				<value>com.spring.miniproject.model.TestimonyModel</value>
+				<value>com.spring.miniproject.model.BootcampTypeModel</value>
+				<value>com.spring.miniproject.model.BatchModel</value>
+				
 			</list>
 		</property>
 		<property name="hibernateProperties">

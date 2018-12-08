@@ -224,6 +224,117 @@
 							});
 							return false;
 						});
+				
+				$("#list-data-assignment").on(
+						"click",
+						"#btn-hold",
+						function() {
+							var id = $(this).val();
+							$.ajax({
+								url : "assignment/hold.html",
+								type : "get",
+								dataType : "html",
+								data : {
+									id : id
+								},
+								success : function(result) {
+									$("#modal-alert-delete")
+											.find(".modal-body").html(result);
+									$("#modal-alert-delete").modal("show");
+								}
+							});
+						});
+
+				$("#modal-alert-delete").on("submit", "#form-confirm-hold",
+						function() {
+							$.ajax({
+								url : "assignment/hold/save.json",
+								type : "get",
+								dataType : "json",
+								data : $(this).serialize(),
+								success : function(result) {
+									$("#modal-alert-delete").modal("hide");
+									listDataAssignment();
+								}
+							});
+							return false;
+						});
+				
+				$("#list-data-assignment").on(
+						"click",
+						"#btn-done",
+						function() {
+							var id = $(this).val();
+							$.ajax({
+								url : "assignment/done.html",
+								type : "get",
+								dataType : "html",
+								data : {
+									id : id
+								},
+								success : function(result) {
+									$("#modal-input").find(".modal-title")
+											.html("Mark As Done");
+									$("#modal-input").find(".modal-body").html(
+											result);
+									$("#modal-input").modal("show");
+								}
+							});
+						});
+
+				$("#modal-input").on("submit", "#form-assignment-done",
+						function() {
+							$.ajax({
+								url : "assignment/done/save.json",
+								type : "get",
+								dataType : "json",
+								data : $(this).serialize(),
+								success : function(result) {
+									$("#modal-input").modal("hide");
+									listDataAssignment();
+								}
+							});
+							return false;
+						});
+				
+				$("#list-data-assignment").on(
+						"click",
+						"#btn-edit",
+						function() {
+							var id = $(this).val();
+							$.ajax({
+								url : "assignment/edit.html",
+								type : "get",
+								dataType : "html",
+								data : {
+									id : id
+								},
+								success : function(result) {
+									$("#modal-input").find(".modal-title")
+											.html("Form Edit Assignment");
+									$("#modal-input").find(".modal-body").html(
+											result);
+									$("#modal-input").modal("show");
+								}
+							});
+						});
+
+				$("#modal-input").on("submit", "#form-assignment-edit",
+						function() {
+							$.ajax({
+								url : "assignment/edit/save.json",
+								type : "get",
+								dataType : "json",
+								data : $(this).serialize(),
+								success : function(result) {
+									$("#modal-alert2").find(".modal-title");
+									$("#modal-alert2").modal("show");
+									$("#modal-input").modal("hide");
+									listDataAssignment();
+								}
+							});
+							return false;
+						});
 
 			});
 </script>

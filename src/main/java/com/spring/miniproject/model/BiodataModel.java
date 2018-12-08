@@ -233,7 +233,7 @@ public class BiodataModel {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "BOOTCAMP_TEST_TYPE_ID", nullable = true, updatable = false, insertable = false)
+	@JoinColumn(name = "BOOTCAMP_TEST_TYPE_ID", updatable = false, insertable = false)
 	public BootcampTestTypeModel getBootcampTestTypeModel() {
 		return bootcampTestTypeModel;
 	}

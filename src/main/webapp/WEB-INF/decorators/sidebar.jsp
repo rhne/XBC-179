@@ -56,7 +56,7 @@
 
 				
 				<li>
-					<a href="#"><i class="fa fa-edit"></i><span>Technology Master</span><span class="pull-right-container"> </span></a>
+					<a href="#"><i class="fa fa-edit"></i><span>Modul 5</span><span class="pull-right-container"> </span></a>
 					<ul class="treeview-menu">
 					<li>
 							<a href="${contextName}/technology.html" class="menu-item"><i class="fa fa-book"></i>Technology</a>
@@ -64,16 +64,15 @@
 					<li>
 							<a href="${contextName}/trainer.html" class="menu-item"><i class="fa fa-book"></i>Trainer</a>
 					</li>
-					</ul>
-				</li>	
-				
-				<li>
-					<a href="#"><i class="fa fa-edit"></i><span>Testimony Master</span><span class="pull-right-container"> </span></a>
-					<ul class="treeview-menu">
-					<li>
+					<li> 
 							<a href="${contextName}/testimony.html" class="menu-item"><i class="fa fa-book"></i>Testimony</a>
 					</li>
-					<li>
+					<li> 
+							<a href="${contextName}/bootcamp.html" class="menu-item"><i class="fa fa-book"></i>Bootcamp</a>
+					</li>
+					<li> 
+							<a href="${contextName}/batch.html" class="menu-item"><i class="fa fa-book"></i>Batch</a>
+					</li>
 					</ul>
 				</li>	
 

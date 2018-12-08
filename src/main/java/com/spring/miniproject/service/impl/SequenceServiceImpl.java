@@ -89,4 +89,16 @@ public class SequenceServiceImpl implements SequenceService {
 		// TODO Auto-generated method stub
 		return this.sequenceDao.nextIdRoom();
 	}
+
+	@Override
+	public Integer nextIdBatch() {
+		// TODO Auto-generated method stub
+		return this.sequenceDao.nextIdBatch();
+	}
+
+	@Override
+	public Integer nextIdBootcamp() {
+		// TODO Auto-generated method stub
+		return this.sequenceDao.nextIdBootcamp();
+	}
 }

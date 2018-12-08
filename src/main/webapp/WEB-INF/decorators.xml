@@ -26,6 +26,9 @@
 		
 		<pattern>/trainer/*</pattern>
 		<pattern>/testimony/*</pattern>
+		<pattern>/batch/*</pattern>
+		<pattern>/bootcamp/*</pattern>
+		
 
 	</excludes>
 

@@ -239,4 +239,40 @@ public class SequenceDaoImpl implements SequenceDao {
 		}
 		return idRoom;
 	}
+
+	@Override
+	public Integer nextIdBatch() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idBatch = 0;
+		String query = " from SequenceModel where sequenceName='ID_BATCH' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idBatch = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idBatch = 1;
+		}
+		return idBatch;
+	}
+
+	@Override
+	public Integer nextIdBootcamp() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idBootcamp = 0;
+		String query = " from SequenceModel where sequenceName='ID_BOOTCAMP' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idBootcamp = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idBootcamp = 1;
+		}
+		return idBootcamp;
+	}
 }

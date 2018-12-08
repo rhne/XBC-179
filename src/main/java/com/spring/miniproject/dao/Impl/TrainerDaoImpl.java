@@ -30,7 +30,7 @@ public class TrainerDaoImpl implements TrainerDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<TrainerModel> trainerModelList = new ArrayList<TrainerModel>();
-		trainerModelList = session.createQuery(" from TrainerModel ").list();
+		trainerModelList = session.createQuery(" select t from TrainerModel t where t.active = 1 ").list();
 		return trainerModelList;
 	}
 

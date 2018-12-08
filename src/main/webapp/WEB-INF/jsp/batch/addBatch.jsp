@@ -44,11 +44,11 @@
 			</select>
 		</div>
 	</div>
-		<div class="form-group">
-	<div class="col-md-8">
-			<select class="form-control" id="idBootc" name="idBbootc">
-				<list:forEach items="${bootcampTestTypeModelList}" var="roomModel">
-					<option value="${bootcampTestTypeModel.id}">${bootcampTestTypeModel.name}</option>
+	<div class="form-group">
+		<div class="col-md-8">
+			<select class="form-control" id="idBootcamp" name="idBootcamp">
+				<list:forEach items="${bootcampTypeModelList}" var="bootcampTypeModel">
+					<option value="${bootcampTypeModel.idBootcamp}">${bootcampTypeModel.name}</option>
 				</list:forEach>
 			</select>
 		</div>
