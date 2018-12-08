@@ -1,5 +1,6 @@
 package com.spring.miniproject.dao.Impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.VersionDao;
+import com.spring.miniproject.model.VersionDetailModel;
 import com.spring.miniproject.model.VersionModel;
 
 @Repository
@@ -28,6 +30,8 @@ public class VersionDaoImpl implements VersionDao {
 		versionModel.setCreatedOn(new Date());
 		versionModel.setIsDelete(0);
 		versionModel.setVersion(getLatestVersion() + 1);
+		//versionModel.setVersionDetails(new ArrayList<VersionDetailModel>());
+		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(versionModel);
 		return versionModel;
