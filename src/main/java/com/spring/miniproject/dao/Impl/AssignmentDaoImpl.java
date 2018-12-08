@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.AssignmentDao;
 import com.spring.miniproject.model.AssignmentModel;
-import com.spring.miniproject.model.MonitoringModel;
 
 @Repository
 public class AssignmentDaoImpl implements AssignmentDao{
@@ -22,6 +21,8 @@ public class AssignmentDaoImpl implements AssignmentDao{
 	public void create(AssignmentModel assignmentModel) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
+		assignmentModel.setCreatedOn(new Date());
+		assignmentModel.setIsDelete(0);
 		session.save(assignmentModel);
 	}
 
@@ -67,7 +68,6 @@ public class AssignmentDaoImpl implements AssignmentDao{
 		// TODO Auto-generated method stub
 		assignmentModel.setIsDelete(1);
 		assignmentModel.setDeletedOn(new Date());
-		assignmentModel.setModifiedOn(new Date());
 
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(assignmentModel);
@@ -77,6 +77,7 @@ public class AssignmentDaoImpl implements AssignmentDao{
 	public void hold(AssignmentModel assignmentModel) {
 		// TODO Auto-generated method stub
 		assignmentModel.setModifiedOn(new Date());
+		assignmentModel.setIsHold(1);
 
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(assignmentModel);

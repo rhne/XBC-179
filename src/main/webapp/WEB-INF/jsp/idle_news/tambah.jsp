@@ -25,6 +25,24 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+			<button type="submit" class="btn btn-primary btn-sm" onclick="return validasi_input();">Simpan</button>
+			<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
 		</div>
 </form>
+
+<script type="text/javascript">
+
+function validasi_input(){
+	var title = document.getElementById("title");
+	var content = document.getElementById("content");
+		if (title.value == ""){
+		alert("Title Is Still Empty :v");
+		return false;
+		}else if (content.value == ""){
+		alert("Content Is Still Empty :v");
+		return false;
+		}
+	return true;
+}
+	
+</script>

@@ -50,7 +50,10 @@
 
 				<value>com.spring.miniproject.model.BiodataModel</value>
 				<value>com.spring.miniproject.model.MonitoringModel</value>
-				<value>com.spring.miniproject.model.AssignmentModel</value> 
+				
+				<value>com.spring.miniproject.model.AssignmentModel</value>
+				<value>com.spring.miniproject.model.TestModel</value>
+				<value>com.spring.miniproject.model.CategoryModel</value>
 
 				<value>com.spring.miniproject.model.BootcampTestTypeModel</value>
 				<value>com.spring.miniproject.model.IdleNewsModel</value>
@@ -59,6 +62,7 @@
 
 				<value>com.spring.miniproject.model.QuestionModel</value>
 				<value>com.spring.miniproject.model.VersionModel</value>
+				<value>com.spring.miniproject.model.VersionDetailModel</value>
 				<value>com.spring.miniproject.model.OfficeModel</value>
 				
 				<value>com.spring.miniproject.model.TechnologyModel</value>

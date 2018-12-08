@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
@@ -25,8 +26,10 @@ public class IdleNewsModel {
 	private Long id;
 	private String title;
 	private String content;
+	private Long idTest;
 	private Long idCategory;
 	private CategoryModel categoryModel;
+	private TestModel testModel;
 	
 	
 	//AuditTrail////////////////////
@@ -134,6 +137,13 @@ public class IdleNewsModel {
 	public void setIdCategory(Long idCategory) {
 		this.idCategory = idCategory;
 	}
+	@Column(name="ID_TEST")
+	public Long getIdTest() {
+		return idTest;
+	}
+	public void setIdTest(Long idTest) {
+		this.idTest = idTest;
+	}
 	@Column(name="IS_PUBLISH")
 	public Integer getIsPublish() {
 		return isPublish;
@@ -148,5 +158,13 @@ public class IdleNewsModel {
 	}
 	public void setCategoryModel(CategoryModel categoryModel) {
 		this.categoryModel = categoryModel;
+	}
+	@ManyToOne
+	@JoinColumn(name="ID_TEST",nullable=true, updatable=false, insertable=false)
+	public TestModel getTestModel() {
+		return testModel;
+	}
+	public void setTestModel(TestModel testModel) {
+		this.testModel = testModel;
 	}
 }

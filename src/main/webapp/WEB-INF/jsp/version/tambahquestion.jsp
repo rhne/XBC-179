@@ -1,9 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
-<form id="form-question-tambah" class="form-horizontal" >
+<form id="form-tambah-question" class="form-horizontal" >
 	<select id="questionId" name="questionId">
 		<c:forEach items="${questionModelList}" var="questionModel" varStatus="number">
-			<option value="${questionModel.id}">${questionModel.question}</option>
+			<option value='{
+				"id": "${questionModel.id}",
+				"question": "${questionModel.question}"
+			}'>${questionModel.question}</option>
 		</c:forEach>
 	</select>
 	
