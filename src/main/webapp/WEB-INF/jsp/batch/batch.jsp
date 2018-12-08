@@ -17,7 +17,7 @@
 				<tr>
 					<td>TECHNOLOGY</td>
 					<td>NAME</td>
-					<td>Batch</td>
+					<td>BATCH</td>
 					<td></td>
 				</tr>
 			</thead>
@@ -53,7 +53,7 @@
 	
 	$("#btn-add").on("click", function() {
 		$.ajax({
-			url:"Batch/addBatch.html",
+			url:"batch/addBatch.html",
 			type: "get",
 			dataType: "html",
 			success: function(result){

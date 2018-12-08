@@ -40,7 +40,7 @@
 <div class="modal fade" id="modal-alert-deactive">
 	<div class="modal-dialog">
 		<div class="alert alert-warning alert-dismissible">
-        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Data deactivated !</h4>
             <div class="modal-body">
 			
 			</div>
@@ -118,7 +118,7 @@
 	
 	$("#modal-input").on("submit", "#form-edit-trainer", function(){
 		$.ajax({
-			url : "testimony/editTrainer/save.json",
+			url : "trainer/editTrainer/save.json",
 			type : "get",
 			dataType : "json",
 			data : $(this).serialize(),
@@ -126,41 +126,24 @@
 				$("#modal-alert-update").find(".modal-title");  
 				$("#modal-alert-update").modal("show");
 				$("#modal-input").modal("hide");
-				listDataTestimony();
+				listDataTrainer();
 			}
 		});
 		return false;
 	});
 	
 	$("#list-data-trainer").on("click", ".btn-deactive", function(){
-		var idDeact = $(this).prop('id');
 		$.ajax({
 			url : "trainer/deactiveTrainer.html",
 			type : "get",
 			dataType : "html",
-			data : {idDeact : idDeact},
-			success : function(result){
-				$("#modal-alert-delete").find(".modal-title");  
-				$("#modal-alert-delete").modal("show");
+			success : function(result){ 
+				$("#modal-alert-deactive").modal("show");
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
+				listDataTrainer();
 			}
 		});
 	});
 	
-	$("#modal-input").on("submit", "#form-delete-testimony", function(){
-		$.ajax({
-			url : "testimony/deleteTestimony/save.json",
-			type : "get",
-			dataType : "json",
-			data : $(this).serialize(),
-			success : function(result){
-				$("#modal-alert-delete").find(".modal-title");  
-				$("#modal-alert-delete").modal("show");
-				$("#modal-input").modal("hide");
-				listDataTestimony();
-			}
-		});
-		return false;
-	});
 </script>

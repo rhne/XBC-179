@@ -17,5 +17,7 @@ public interface SequenceService {
 	public Integer nextIdMonitoring();
 
 	public Integer nextIdTestimony();
+	public Integer nextIdBatch();
+	public Integer nextIdBootcamp();
 	
 }
