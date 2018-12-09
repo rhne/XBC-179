@@ -275,4 +275,22 @@ public class SequenceDaoImpl implements SequenceDao {
 		}
 		return idBootcamp;
 	}
+
+	@Override
+	public Integer nextIdClazz() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Integer idClazz = 0;
+		String query = " from SequenceModel where sequenceName='ID_CLAZZ' ";
+		try {
+			SequenceModel sequenceModel = new SequenceModel();
+			sequenceModel = (SequenceModel) session.createQuery(query).getSingleResult();
+			idClazz = sequenceModel.getSequenceValue();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			idClazz = 1;
+		}
+		return idClazz;
+	}
 }

@@ -19,5 +19,6 @@ public interface SequenceDao {
 	public Integer nextIdTestimony();
 	public Integer nextIdBatch();
 	public Integer nextIdBootcamp();
+	public Integer nextIdClazz();
 
 }

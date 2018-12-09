@@ -19,5 +19,6 @@ public interface SequenceService {
 	public Integer nextIdTestimony();
 	public Integer nextIdBatch();
 	public Integer nextIdBootcamp();
+	public Integer nextIdClazz();
 	
 }

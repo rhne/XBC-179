@@ -71,6 +71,7 @@
 				<value>com.spring.miniproject.model.TestimonyModel</value>
 				<value>com.spring.miniproject.model.BootcampTypeModel</value>
 				<value>com.spring.miniproject.model.BatchModel</value>
+				<value>com.spring.miniproject.model.ClazzModel</value>
 				
 			</list>
 		</property>

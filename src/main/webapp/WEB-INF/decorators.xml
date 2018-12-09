@@ -28,6 +28,7 @@
 		<pattern>/testimony/*</pattern>
 		<pattern>/batch/*</pattern>
 		<pattern>/bootcamp/*</pattern>
+		<pattern>/clazz/*</pattern>
 		
 
 	</excludes>

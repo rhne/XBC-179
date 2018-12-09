@@ -37,7 +37,7 @@ public class BatchDaoImpl implements BatchDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<BatchModel> batchModelList = new ArrayList<BatchModel>();
-		String query = " select b from BatchModel b where b.idDeleted = 0 ";
+		String query = " from BatchModel ";
 		batchModelList = session.createQuery(query).list();
 		return batchModelList;
 	}
@@ -46,7 +46,7 @@ public class BatchDaoImpl implements BatchDao{
 	public BatchModel searchById(Long idBatch) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		String query = " select b from BatchModel b where b.idBatch="+idBatch+"";
+		String query = " select b from BatchModel b where b.batchId="+idBatch+"";
 		BatchModel batchModel = new BatchModel();
 		batchModel = (BatchModel) session.createQuery(query).getSingleResult();
 	
@@ -59,7 +59,7 @@ public class BatchDaoImpl implements BatchDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<BatchModel> batchModelList = new ArrayList<BatchModel>();
-		String query = " select b from BatchModel t where b.name like '%"+nameTech+"%'";
+		String query = " select b from BatchModel b join TechnologyModel t on t.idTech = b.technologyId where b.name like '%"+nameTech+"%' or t.name like '%"+nameTech+"%'";
 		batchModelList = session.createQuery(query).list();
 		return batchModelList;
 	}

@@ -101,4 +101,10 @@ public class SequenceServiceImpl implements SequenceService {
 		// TODO Auto-generated method stub
 		return this.sequenceDao.nextIdBootcamp();
 	}
+
+	@Override
+	public Integer nextIdClazz() {
+		// TODO Auto-generated method stub
+		return this.sequenceDao.nextIdClazz();
+	}
 }

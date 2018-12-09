@@ -16,6 +16,7 @@ import javax.persistence.TableGenerator;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+
 @Entity
 @Table(name="M_BATCH")
 public class BatchModel {
@@ -47,8 +48,8 @@ public class BatchModel {
 	@Column(name="CREATED_BY")
 	private Long createdBy;
 	
-	@Column(name="CREATED_ON")
 	@CreationTimestamp
+	@Column(name="CREATED_ON")
 	private LocalDateTime createdOn;
 	
 	@Column(name="MODIFIED_BY")
@@ -64,14 +65,6 @@ public class BatchModel {
 	@Column(name="PERIOD_TO")
 	private Date periodTo;
 	
-	@Column(name="DELETED_BY")
-	private Long deletedBy;
-	
-	@Column(name="DELETED_ON")
-	private Date deletedOn;
-	
-	@Column(name="IS_DELETED")
-	private Integer isDeleted;
 
 	public Long getBatchId() {
 		return batchId;
@@ -175,30 +168,6 @@ public class BatchModel {
 
 	public void setPeriodTo(Date periodTo) {
 		this.periodTo = periodTo;
-	}
-
-	public Long getDeletedBy() {
-		return deletedBy;
-	}
-
-	public void setDeletedBy(Long deletedBy) {
-		this.deletedBy = deletedBy;
-	}
-
-	public Date getDeletedOn() {
-		return deletedOn;
-	}
-
-	public void setDeletedOn(Date deletedOn) {
-		this.deletedOn = deletedOn;
-	}
-
-	public Integer getIsDeleted() {
-		return isDeleted;
-	}
-
-	public void setIsDeleted(Integer isDeleted) {
-		this.isDeleted = isDeleted;
 	}
 	
 //Many to One Relationship

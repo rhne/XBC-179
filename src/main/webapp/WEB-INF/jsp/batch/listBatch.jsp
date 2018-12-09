@@ -3,7 +3,6 @@
 <btch:forEach items="${batchModelList}" var="batchModel" varStatus="number">
 <tr>
 	<td>${batchModel.technologyModel.name}</td>
-	<td>
 	<td>${batchModel.name}</td>
 	<td>${batchModel.trainerModel.name}</td>
 	<td>
@@ -13,8 +12,8 @@
 		    <span class="sr-only">Toggle Dropdown</span>
 		  </button>
 		  <ul class="dropdown-menu" role="menu">
-			    <li><a id="${batchModel.idBatch}" class="btn-edit">Edit</a></li>
-			     <li><a id="${batchModel.idBatch}" class="btn-add-participant">Add Participant</a></li>
+			    <li><a id="${batchModel.batchId}" class="btn-edit">Edit</a></li>
+			     <li><a id="${batchModel.batchId}" class="btn-add-participant">Add Participant</a></li>
 			    <li class="divider"></li>
 			</ul>
 			</div>
