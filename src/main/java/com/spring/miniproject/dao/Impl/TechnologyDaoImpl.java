@@ -18,10 +18,12 @@ public class TechnologyDaoImpl implements TechnologyDao{
 	private SessionFactory sessionFactory;
 
 	@Override
-	public void crete(TechnologyModel technologyModel) {
+	public TechnologyModel create(TechnologyModel technologyModel) {
 		// TODO Auto-generated method stub
+		technologyModel.setActive(1);
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(technologyModel);
+		return technologyModel;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -43,5 +45,31 @@ public class TechnologyDaoImpl implements TechnologyDao{
 		List<TechnologyModel> technologyModelList = new ArrayList<TechnologyModel>();
 		technologyModelList = session.createQuery(query).list();
 		return technologyModelList;
+	}
+
+	@Override
+	public TechnologyModel searchById(Long idTech) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String query = " select t from TechnologyModel t where t.idTech="+idTech+"";
+		TechnologyModel technologyModel = new TechnologyModel();
+		technologyModel = (TechnologyModel) session.createQuery(query).getSingleResult();
+		return technologyModel;
+	}
+
+	@Override
+	public void edit(TechnologyModel technologyModel) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(technologyModel);
+	}
+
+	@Override
+	public TechnologyModel delete(TechnologyModel technologyModel) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		technologyModel.setActive(0);
+		session.update(technologyModel);
+		return technologyModel;
 	}
 }

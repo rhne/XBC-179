@@ -3,7 +3,6 @@ package com.spring.miniproject.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +13,7 @@ import com.spring.miniproject.model.TrainerModel;
 import com.spring.miniproject.service.SequenceService;
 import com.spring.miniproject.service.TechnologyTrainerService;
 import com.spring.miniproject.service.TrainerService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 
 @Controller
 public class TechTrainerController {
@@ -21,8 +21,6 @@ public class TechTrainerController {
 	@Autowired
 	private TechnologyTrainerService technologyTrainerService;
 	
-	@Autowired
-	private SequenceService sequenceService;
 	
 	@Autowired
 	private TrainerService trainerService;
@@ -41,11 +39,14 @@ public class TechTrainerController {
 		model.addAttribute("trainerModelList", trainerModelList);
 	}
 	
+	
 	@RequestMapping(value="technology/listTechTrainer")
 	public String listTechTrainer(Model model) {
 		List<TechnologyTrainerModel> technologyTrainerModelList = new ArrayList<TechnologyTrainerModel>();
 		technologyTrainerModelList = this.technologyTrainerService.showAll();
 		model.addAttribute("technologyTrainerModelList", technologyTrainerModelList);
+		
+		this.listTrainer(model);
 		
 		String jsp = "technology/listTechTrainer";
 		return jsp;

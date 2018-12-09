@@ -131,7 +131,7 @@
 		
 		$("#modal-input").on("click", ".btn-delete-question", function() {
 			var questionId = JSON.parse($(this).prop('id'));
-			
+			alert(questionId);
 			questionArray.pop(questionId);
 			populateQuestionListTable();
 		});

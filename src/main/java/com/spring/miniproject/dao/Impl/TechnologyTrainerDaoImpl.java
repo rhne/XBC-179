@@ -1,6 +1,7 @@
 package com.spring.miniproject.dao.Impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -18,10 +19,12 @@ public class TechnologyTrainerDaoImpl implements TechnologyTrainerDao{
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public void create(TechnologyTrainerModel technologyTrainerModel) {
+	public TechnologyTrainerModel create(TechnologyTrainerModel technologyTrainerModel) {
 		// TODO Auto-generated method stub
+		technologyTrainerModel.setCreatedOn(new Date());
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(technologyTrainerModel);
+		return technologyTrainerModel;
 	}
 
 	@SuppressWarnings("unchecked")

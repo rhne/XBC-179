@@ -49,11 +49,22 @@
 	</div>
 	</div>
 
+<div class="modal fade" id = "modal-alert-deactivated">
+	<div class="modal-dialog">
+		<div class="alert alert-danger alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Deactivated !
+       	</div>
+	</div>
+</div>
+
 <script>
 	
-	listDataTechnology();
 	var arrayTrainer = new Array;
-	var arrayidTrainer = new Array;
+	var newIdTrainer;
+	
+	listDataTechnology();
+
 	function listDataTechnology(){
 		$.ajax({
 			url : "technology/listTechnology.html",
@@ -79,11 +90,14 @@
 	});
 		
 	$("#modal-input").on("submit", "#form-add-technology", function(){
+			alert(JSON.stringify(arrayTrainer));
+			var addTech = $("#nameTech").val();
+			var addNote = $("#noteTech").val();
 			$.ajax({
 				url:"technology/addTechnology/save.json",
 				type : "get",
 				dataType : "json",
-				data: $(this).serialize(),
+				data: {trainer : JSON.stringify(arrayTrainer), name : addTech, note : addNote},
 				success : function(result){
 					$("#modal-input").modal("hide");
 					alert("Data succesfully added!");
@@ -120,20 +134,24 @@
 		});
 	});
 	
+	
+	//List trainer on addTechnology
 	function listTrainer(){
 		
 		var htmlSyntax = "<tr></tr>";
 		
 		for(i = 0; i < arrayTrainer.length; i++){
-			htmlSyntax = htmlSyntax + '<tr><td>' + arrayTrainer[i] + '</td>';
+			htmlSyntax = htmlSyntax + '<tr><td>' + arrayTrainer[i]['name']+ '</td>';
 			htmlSyntax = htmlSyntax + '<td></td>';
 			htmlSyntax = htmlSyntax + '<td>Active</td>';
 			htmlSyntax = htmlSyntax + '<td> <div class="btn-group">';
 			htmlSyntax = htmlSyntax + '<button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown">';
 			htmlSyntax = htmlSyntax + '<span class="fa fa-bars"></span> <span class="sr-only">Toggle Dropdown</span></button>';
 			htmlSyntax = htmlSyntax + '<ul class="dropdown-menu" role="menu">';
-			htmlSyntax = htmlSyntax + '<li><a id="' + i + '" class="btn-edit">Edit</a></li>';
-			htmlSyntax = htmlSyntax + '<li><a id="' + i + '" class="btn-delete">Delete</a></li>';
+			htmlSyntax = htmlSyntax + '<li><a id={"id":' + '"' + arrayTrainer[i]['id'] + '","name":'+ '"' + arrayTrainer[i]['name'] + '"}';
+			htmlSyntax = htmlSyntax + ' class="btn-edit">Edit</a></li>';
+			htmlSyntax = htmlSyntax + '<li><a id={"id":' + '"' + arrayTrainer[i]['id'] + '","name":'+ '"' + arrayTrainer[i]['name'] + '"}'; 
+			htmlSyntax = htmlSyntax + ' class="btn-delete">Delete</a></li>';
 			htmlSyntax = htmlSyntax + '<li class="divider"></li></ul></div></td></tr>';
 			
 		}
@@ -143,20 +161,67 @@
 
 	$("#modal-input").on("submit", "#form-add-tech-trainer", function(){
 		
-		var dataTrainer = $("#idTrainer").val();
-		arrayTrainer.push(dataTrainer);
-		listTrainer();
+		var newIdTrainer = $("#idTrainer").val();
+		arrayTrainer.push(JSON.parse(newIdTrainer));
+		alert(newIdTrainer);
 		
-			
-			$("#modal-input-trainer").modal("hide");
-			
-			return false;
+		listTrainer();
+		$("#modal-input-trainer").modal("hide");
+		return false;
 		});
 	
 		
-	$("#list-data-trainer").on("click", ".btn-delete", function(){
-		var index = $(this).prop('id');
-		alert(index);
+	$("#modal-input").on("click", ".btn-delete", function(){
+		var jsonId = JSON.parse($(this).prop('id'));
+		alert(jsonId);
+		var trainerId = jsonId;
+		alert(trainerId);
+		arrayTrainer.pop(trainerId);
 		listTrainer();
 	});
+	
+	$("#list-data-technology").on("click", ".btn-edit", function(){
+		var idEdit = $(this).prop('id');
+		$.ajax({
+			url : "technology/editTechnology.html",
+			type : "get",
+			dataType : "html",
+			data : {idEdit : idEdit},
+			success : function(result){
+				$("#modal-input").find(".modal-body").html(result);
+				$("#modal-input").modal("show");
+			}
+		});
+	});
+	
+	$("#list-data-technology").on("click", ".btn-deactive", function(){
+		var idTech = $(this).prop('id');
+		$.ajax({
+			url : "technology/deactiveTechnology.html",
+			type : "get",
+			dataType : "html",
+			data : { idDeact : idTech },
+			success : function(result){
+				$("#modal-input").find(".modal-body").html(result);
+				$("#modal-input").modal("show");
+			}
+		});
+	});
+	
+	$("#modal-input").on("submit", "#form-deactive-tech", function(){
+		$.ajax({
+			url : "technology/deactiveTechnology/save.json",
+			type : "get",
+			dataType : "json",
+			data : $(this).serialize(),
+			success : function(result){
+				$("#modal-alert-deactivated").find(".modal-title");  
+				$("#modal-alert-deactivated").modal("show");
+				$("#modal-input").modal("hide");
+				listDataTechnology();
+			}
+		});
+		return false;
+	});
+	
 </script>

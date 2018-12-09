@@ -18,9 +18,9 @@ public class TechnologyServiceImpl implements TechnologyService{
 	private TechnologyDao technologyDao;
 
 	@Override
-	public void create(TechnologyModel technologyModel) {
+	public TechnologyModel create(TechnologyModel technologyModel) {
 		// TODO Auto-generated method stub
-		this.technologyDao.crete(technologyModel);
+		return this.technologyDao.create(technologyModel);
 	}
 
 	@Override
@@ -33,5 +33,23 @@ public class TechnologyServiceImpl implements TechnologyService{
 	public List<TechnologyModel> searchBy(String text) {
 		// TODO Auto-generated method stub
 		return this.technologyDao.searchBy(text);
+	}
+
+	@Override
+	public void edit(TechnologyModel technologyModel) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public TechnologyModel searchById(Long idTech) {
+		// TODO Auto-generated method stub
+		return this.technologyDao.searchById(idTech);
+	}
+
+	@Override
+	public TechnologyModel delete(TechnologyModel technologyModel) {
+		// TODO Auto-generated method stub
+		return this.technologyDao.delete(technologyModel);
 	}
 }
