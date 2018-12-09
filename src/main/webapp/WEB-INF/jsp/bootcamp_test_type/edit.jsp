@@ -16,6 +16,23 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="submit" class="btn btn-primary btn-sm" >Edit</button>
+			<button type="submit" class="btn btn-primary btn-sm" onclick="return validasi_input();">Edit</button>
+			<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
 		</div>
 </form>
+<script type="text/javascript">
+
+function validasi_input(){
+	var name = document.getElementById("name");
+	var notes = document.getElementById("notes");
+		if (name.value == ""){
+		alert("Nama Is Still Empty :v");
+		return false;
+		}else if (notes.value == ""){
+		alert("Notes Is Still Empty :v");
+		return false;
+		}
+	return true;
+}
+	
+</script>

@@ -68,10 +68,12 @@ public class MonitoringController {
 		Long id = Long.valueOf(request.getParameter("testId"));
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date idleDate = sdf.parse(request.getParameter("idleDate"));
+		Date placementDate = sdf.parse("1111-11-11");
 
 		MonitoringModel monitoringModel = new MonitoringModel();
 		monitoringModel.setTestId(id);
 		monitoringModel.setIdleDate(idleDate);
+		monitoringModel.setPlacementDate(placementDate);	
 		monitoringModel.setLastProject(request.getParameter("lastProject"));
 		monitoringModel.setIdleReason(request.getParameter("idleReason"));
 

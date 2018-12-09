@@ -3,65 +3,77 @@
 
 <form action="#" method="get" id="form-add-batch" class="form-horizontal" onsubmit="return validation();">
 	<div class="form-group">
+		<label class="control-label col-md-3" for="idTechnology">Technology</label>
 		<div class="col-md-8">
 			<select class="form-control" id="idTechnology" name="idTechnology">
 				<list:forEach items="${technologyModelList}" var="technologyModel">
+					<option selected disabled hidden>-Select Technology-</option>
 					<option value="${technologyModel.idTech}">${technologyModel.name}</option>
 				</list:forEach>
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="control-label col-md-3" for="idTrainer">Trainer</label>
 		<div class="col-md-8">
 			<select class="form-control" id="idTrainer" name="idTrainer">
 				<list:forEach items="${trainerModelList}" var="trainerModel">
+					<option selected disabled hidden>-Select Trainer-</option>
 					<option value="${trainerModel.idTrainer}">${trainerModel.name}</option>
 				</list:forEach>
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="control-label col-md-3" for="nameBatch">Name</label>
 		<div class="col-md-8">
 			<input type="text" name="batchName" id="nameBatch" class="form-control" placeholder="Name">
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="control-label col-md-3" for="startBatch">Period From</label>
 		<div class="col-md-8">
 			<input type="date" name="batchStart" id="startBatch" class="form-control" placeholder="Period from">
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="control-label col-md-3" for="endBatch">Period To</label>
 		<div class="col-md-8">
 			<input type="date" name="batchEnd" id="endBatch" class="form-control" placeholder="Period to">
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="control-label col-md-3" for="idRoom">Room</label>
 		<div class="col-md-8">
 			<select class="form-control" id="idRoom" name="idRoom">
 				<list:forEach items="${roomModelList}" var="roomModel">
+					<option selected disabled hidden>-Select Room-</option>
 					<option value="${roomModel.id}">${roomModel.name}</option>
 				</list:forEach>
 			</select>
 		</div>
 	</div>
-		<div class="form-group">
-	<div class="col-md-8">
-			<select class="form-control" id="idBootc" name="idBbootc">
-				<list:forEach items="${bootcampTestTypeModelList}" var="roomModel">
-					<option value="${bootcampTestTypeModel.id}">${bootcampTestTypeModel.name}</option>
+	<div class="form-group">
+		<label class="control-label col-md-3" for="idBootcamp">Bootcamp</label>
+		<div class="col-md-8">
+			<select class="form-control" id="idBootcamp" name="idBootcamp">
+				<list:forEach items="${bootcampTypeModelList}" var="bootcampTypeModel">
+					<option selected disabled hidden>-Select Bootcamp-</option>
+					<option value="${bootcampTypeModel.idBootcamp}">${bootcampTypeModel.name}</option>
 				</list:forEach>
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="control-label col-md-3" for="notesBatch">Notes</label>
 		<div class="col-md-8">
 			<textarea rows="5" cols="10" name="batchNotes" id="notesBatch" class="form-control" placeholder="Notes"></textarea>
 		</div>
 	</div>
 	
 	<div class="modal-footer">
-		<input type="submit" class="btn btn-primary btn-sm" value="save">
-		<input type="button" class="btn btn-primary btn-sm" data-dismiss="modal" value="cancel">
+		<input type="submit" class="btn btn-primary btn-sm" value="Save">
+		<input type="button" class="btn btn-primary btn-sm" data-dismiss="modal" value="Cancel">
 	</div>
 </form>
 

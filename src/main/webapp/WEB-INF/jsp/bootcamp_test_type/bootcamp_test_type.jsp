@@ -71,7 +71,7 @@
 </div>
 </div>
 
-<script>
+<script type="text/javascript">
 	listDataBootcampTestType();
 
 	function listDataBootcampTestType() {
@@ -142,7 +142,7 @@
 			});
 		});
 		
-		$("#modal-alert-delete").on("submit", "#form-confirm-delete", function() {
+		$("#modal-alert-delete").on("submit", "#form-confirm-deactivate", function() {
 			$.ajax({
 				url: "bootcamp_test_type/delete/save.json",
 				type: "get",

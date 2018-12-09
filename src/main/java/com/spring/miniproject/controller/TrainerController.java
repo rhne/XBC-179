@@ -97,21 +97,34 @@ public class TrainerController {
 	}
 	
 	@RequestMapping(value="trainer/editTrainer/save")
-	public String editSaveTrainer(HttpServletRequest request, Model model) {
-		Long idTrainer = new Long(this.sequenceService.nextIdTrainer());
-		model.addAttribute("idTrainer", idTrainer);
+	public String editSaveTrainer(HttpServletRequest request) {
+		Long idTrainer = new Long(request.getParameter("idTrainer"));
 		
 		String name = request.getParameter("trainerName");
 		String notes = request.getParameter("trainerNote");	
 		String modifiedBy = request.getParameter("modifiedBy");
-		Integer active = Integer.valueOf(request.getParameter("trainerStatus"));
 		
 		TrainerModel trainerModel = new TrainerModel();
+		trainerModel = this.trainerService.searchById(idTrainer);
 		trainerModel.setIdTrainer(idTrainer);
 		trainerModel.setName(name);
 		trainerModel.setNotes(notes);
 		trainerModel.setModifiedBy(modifiedBy);
-		trainerModel.setActive(active);
+		trainerModel.setActive(1);
+		
+		this.trainerService.edit(trainerModel);
+		
+		String jsp = "trainer/trainer";
+		return jsp;
+	}
+	
+	@RequestMapping(value="trainer/deactiveTrainer")
+	public String deactiveTrainer(HttpServletRequest request) {
+		Long idTrainer = new Long(request.getParameter("idTrainer"));
+		TrainerModel trainerModel = new TrainerModel();
+		trainerModel = this.trainerService.searchById(idTrainer);
+		
+		trainerModel.setActive(0);
 		
 		this.trainerService.edit(trainerModel);
 		
