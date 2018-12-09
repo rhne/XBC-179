@@ -2,7 +2,7 @@
 
 <form id="form-tambah-version" class="form-horizontal">
 <div class="form-group" style="padding: 20px;">
-	<input type="hidden" value="${versionModel}" id="versionModel">
+	<%-- <input type="hidden" value="${versionModel}" id="versionModel"> --%>
 	<label>Version Tambah.2</label>
 	<input id="version" name="version" class="form-control" disabled="disabled" value="${latestVersion}">
 	<br/>

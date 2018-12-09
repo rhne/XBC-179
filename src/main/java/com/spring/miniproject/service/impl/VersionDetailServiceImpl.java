@@ -1,5 +1,7 @@
 package com.spring.miniproject.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,11 @@ public class VersionDetailServiceImpl implements VersionDetailService {
 	@Override
 	public VersionDetailModel create(VersionDetailModel versionDetailModel) {
 		return this.versionDetailDao.create(versionDetailModel);
+	}
+
+	@Override
+	public List<VersionDetailModel> searchAll() {
+		return this.versionDetailDao.searchAll();
 	}
 
 }

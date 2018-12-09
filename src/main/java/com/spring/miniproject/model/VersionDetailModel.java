@@ -50,12 +50,14 @@ public class VersionDetailModel {
 		this.question = question;
 	}
 
+	
 	public VersionModel getVersion() {
 		return version;
 	}
 
 	public void setVersion(VersionModel version) {
 		this.version = version;
+		//version.getVersionDetails().add(this);
 	}
 
 	public Date getCreatedOn() {
