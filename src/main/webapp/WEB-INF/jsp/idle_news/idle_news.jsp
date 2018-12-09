@@ -1,4 +1,4 @@
-<div class="box box-info">
+<div class="box box-danger">
 	<div class="box-header with-border">
 		<h3 class="box-title">Idle News</h3>
 		<div class="box-tools">
@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<table class="table" id="table-idle-news">
+		<table class="table table-striped table-hover" id="table-idle-news">
 		<thead>
 			<tr>
 				<td>Title</td>
@@ -33,8 +33,8 @@
 <div class="modal fade" id="modal-input">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title"></h4>
+			<div class="modal-header" style="background-color:#605ca8;">
+				<h4 class="modal-title" style="color:white;"></h4>
 			</div>
 			<div class="modal-body">
 			</div>

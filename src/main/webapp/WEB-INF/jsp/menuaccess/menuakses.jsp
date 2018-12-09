@@ -1,11 +1,16 @@
-<div class="box box-info">
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+
+<div class="box box-danger">
 	<div class="box-header with-border">
 		<h3 class="box-title">Menu Access</h3>
 		<div class="box-tools">
 			<div class="input-group input-group-sm" style="width: 200px;'">
-				<input type="text" id="nameCari" name="table_search" class="form-control pull-right" placeholder="Search by Name">
+				<select class="form-control" id="nameCari" name="table_search" class="form-control pull-right" >
+					<c:forEach items="${roleModelList}" var="roleModel">
+						<option value="${roleModel.id}">${roleModel.name}</option>		
+					</c:forEach>
+				</select>
 				<div class="input-group-btn">
-					<button type="button" id="button-search" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="search"><i class="fa fa-search"></i></button>
                     <button type="button" id="button-tambah" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Create Data"><i class="fa fa-user-plus"></i></button>
                 </div>
                	
@@ -13,7 +18,7 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<table class="table" id="table-menu-akses">
+		<table class="table table-striped table-hover" id="table-menu-akses">
 			<thead>
 			<tr>
 				<th>Role</th>
@@ -29,7 +34,7 @@
 <div class="modal fade" id = "modal-input">
 	<div class="modal-dialog">
 		<div class = "modal-content">
-			<div class="modal-header" style="background-color:#3c8dbc;">
+			<div class="modal-header" style="background-color:#605ca8;">
 				<h4 class="modal-title" style="color:white;"></h4>
 			</div>
 			
@@ -114,7 +119,7 @@
 			return false;
 		});
 		
-		$("#button-search").on("click", function(){
+		$("#nameCari").on("load", function(){
 			var nameCari = document.getElementById("nameCari").value;
 			$.ajax({
 				url:"menuaccess/search/name.html",
