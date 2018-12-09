@@ -2730,7 +2730,7 @@ select[multiple].input-sm {
   height: 30px;
   line-height: 30px;
 }
-.form-group-sm textarea.form-control,
+.skiform-group-sm textarea.form-control,
 .form-group-sm select[multiple].form-control {
   height: auto;
 }

@@ -44,4 +44,5 @@ public class MenuAksesServiceImpl implements MenuAksesService{
 		// TODO Auto-generated method stub
 		this.menuAksesDao.delete(menuAksesModel);
 	}
+
 }

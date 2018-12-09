@@ -1,4 +1,4 @@
-<div class="box box-info">
+<div class="box box-danger">
 	<div class="box-header with-border">
 		<h3 class="box-title">BATCH</h3>
 		<div class="box-tools">
@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<table class="table" id="batch-table">
+		<table class="table table-striped table-hover" id="batch-table">
 			<thead>
 				<tr>
 					<td><b>TECHNOLOGY</b></td>
@@ -25,15 +25,14 @@
 			<tbody id="list-data-batch"></tbody>
 		</table>
 	</div>
-</div>
 
-<div class="modal fade" id="modal-input">
+<div class"modal fade" id="modal-input">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color:#3c8dbc;">
-				<h4 class="modal-title" style="color: white;"></h4>
-			</div>
+			<div class="modal-header" style="background-color:#605ca8;">
+				<h4 class="modal-title" style="color:white;"></h4>
 			<div class="modal-body"></div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -63,6 +62,7 @@
             Participant successfully added
        	</div>
 	</div>
+</div>
 </div>
 
 <script>

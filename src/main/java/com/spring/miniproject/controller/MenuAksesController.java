@@ -30,6 +30,9 @@ public class MenuAksesController {
 		
 	@RequestMapping(value="menuaccess")
 	public String menuAkses(Model model) {
+		
+		this.listDataRole(model);
+		
 		String jsp = "menuaccess/menuakses";
 		return jsp;
 	}
@@ -81,6 +84,7 @@ public class MenuAksesController {
 	
 	@RequestMapping(value="menuaccess/search/name")
 	public String menuAksesSearchName(HttpServletRequest request, Model model) {
+		
 		String name = request.getParameter("nameCari");
 		List<MenuAksesModel> menuAksesModelList = new ArrayList<MenuAksesModel>();
 		menuAksesModelList = this.menuAksesService.searchByLikeName(name);
