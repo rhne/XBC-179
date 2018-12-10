@@ -52,4 +52,10 @@ public class MenuServiceImpl implements MenuService {
 		// TODO Auto-generated method stub
 		this.menuDao.deactivate(menuModel);
 	}
+
+	@Override
+	public List<MenuModel> selectMenuByRole(Long idRole) {
+		// TODO Auto-generated method stub
+		return this.menuDao.selectMenuByRole(idRole);
+	}
 }

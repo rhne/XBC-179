@@ -8,10 +8,29 @@
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-
+      <div>
+      	<ul class="nav navbar-nav">
+      		<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      			<span class="hidden-xs">
+      			Welcome Here, ${username} as ${nameRole}</span>
+      		</a></li>     		
+      	</ul>
+      </div>
+      <div class = "navbar-custom-menu">
+      	<ul class="nav navbar-nav">
+      	
+      		<li>
+      			<form method="post" action="<c:url value="/j_spring_security_logout"/>">
+      				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+      					<button type="submit" class="btn btn-block btn-warning"> Log Out</button>
+      			</form>
+      		</li>
+      		
+      	</ul>
+      	<div class="pull-right"></div>
+      </div>
+      
     </nav>
+    
+    
   </header>

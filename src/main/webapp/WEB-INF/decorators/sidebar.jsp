@@ -1,3 +1,5 @@
+
+
 <nav class="navbar" style="height: 100%; position: fixed;"
 	role="navigation">
 	<aside class="main-sidebar">
@@ -5,7 +7,19 @@
 		<section class="sidebar">
 			<ul class="sidebar-menu">
 				<li class="header"><h5>XBC 179</h5></li>
-				<!-- Modul 1 -->	
+				<li>
+					<a href="#"><i class="fa fa-edit"></i><span>Master</span><span class="pull-right-container"> </span></a>
+					<ul class="treeview-menu">
+						<c:forEach items="${menuModelList}" var="menuModel">
+							<li>
+								<a href="${contextName}/${menuModel.menuurl}.html">
+									${menuModel.title}	
+								</a>	
+							</li>
+						</c:forEach>
+					</ul>
+				</li>	
+			 <!-- Modul 1 -->	
 				<li>
 					<a href="#"><i class="fa fa-edit"></i><span>Module 1</span><span class="pull-right-container"> </span></a>
 					<ul class="treeview-menu">
