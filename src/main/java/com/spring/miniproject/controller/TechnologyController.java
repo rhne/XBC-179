@@ -164,4 +164,5 @@ public class TechnologyController {
 		String jsp = "technology/editTechnology";
 		return jsp;
 	}
+	
 }

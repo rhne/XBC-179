@@ -11,7 +11,7 @@
 		    <span class="sr-only">Toggle Dropdown</span>
 		  </button>
 		  <ul class="dropdown-menu" role="menu">
-			     <li><a id="${clazzModel.clazzId}" class="btn-delete">Delete</a></li>
+			     <li><a id="${clazzModel.clazzId}" class="btn-delete">Deactive</a></li>
 			    <li class="divider"></li>
 			</ul>
 			</div>

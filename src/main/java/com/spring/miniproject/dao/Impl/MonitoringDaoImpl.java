@@ -20,9 +20,12 @@ public class MonitoringDaoImpl implements MonitoringDao {
 
 	public void create(MonitoringModel monitoringModel) {
 		// TODO Auto-generated method stub
+		Long createdById = Long.valueOf(1);
+		
 		Session session = this.sessionFactory.getCurrentSession();
 		monitoringModel.setCreatedOn(new Date());
 		monitoringModel.setIsDelete(0);
+		monitoringModel.setCreatedBy(createdById);
 		session.save(monitoringModel);
 	}
 

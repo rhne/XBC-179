@@ -17,16 +17,21 @@ public class BiodataDaoImpl implements BiodataDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	
+	/* Biodata Add */
 	public void create(BiodataModel biodataModel) {
 		// TODO Auto-generated method stub
+		Long createdById = Long.valueOf(1);
+		
 		Session session = this.sessionFactory.getCurrentSession();
 		biodataModel.setCreatedOn(new Date());
 		biodataModel.setModifiedOn(new Date());
 		biodataModel.setActive(1);
+		biodataModel.setCreatedBy(createdById);
 		session.save(biodataModel);
 	}
 
+	/* Biodata List */
 	@SuppressWarnings("unchecked")
 	public List<BiodataModel> searchAll() {
 		// TODO Auto-generated method stub
@@ -36,6 +41,7 @@ public class BiodataDaoImpl implements BiodataDao {
 		return biodataModelList;
 	}
 
+	/* Select Biodata ID to Modify */
 	@Override
 	public BiodataModel searchById(Long id) {
 		// TODO Auto-generated method stub
@@ -48,6 +54,7 @@ public class BiodataDaoImpl implements BiodataDao {
 		return biodataModel;
 	}
 
+	/* Biodata Edit */
 	@Override
 	public void update(BiodataModel biodataModel) {
 		// TODO Auto-generated method stub
@@ -56,6 +63,7 @@ public class BiodataDaoImpl implements BiodataDao {
 		session.update(biodataModel);
 	}
 
+	/* Biodata Search */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<BiodataModel> searchByLikeName(String name) {
@@ -69,6 +77,7 @@ public class BiodataDaoImpl implements BiodataDao {
 		return biodataModelList;
 	}
 
+	/* Biodata Deactivate */
 	@Override
 	public void deactivate(BiodataModel biodataModel) {
 		// TODO Auto-generated method stub
