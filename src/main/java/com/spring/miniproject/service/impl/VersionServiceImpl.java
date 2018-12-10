@@ -47,4 +47,9 @@ public class VersionServiceImpl implements VersionService {
 		return this.versionDao.getLatestVersion();
 	}
 
+	@Override
+	public VersionModel getLatestVersionModel() {
+		return this.versionDao.getLatestVersionModel();
+	}
+
 }
