@@ -71,8 +71,10 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="gender">Gender</label>
 		<div class="col-md-8">
-			<input type="radio" id="male" name="gender" value="male" />Male <input
-				type="radio" id="female" name="gender" value="female" />Female
+			<input type="radio" id="male" name="gender" value="male"
+				${biodataModel.gender=='male'? 'checked' : 'checked'} />Male 
+			<input type="radio"id="female" name="gender" value="female"
+				${biodataModel.gender=='female'? 'checked' : 'checked'} />Female
 		</div>
 	</div>
 
@@ -83,8 +85,7 @@
 		<div class="col-md-8">
 			<select id="bootcampTestType" name="bootcampTestType"
 				class="form-control">
-				<c:forEach items="${bootcampTestTypeModelList}"
-					var="bootcamptesttypeModel">
+				<c:forEach items="${bootcampTestTypeModelList}" var="bootcamptesttypeModel">
 					<option value="${bootcamptesttypeModel.id}">${bootcamptesttypeModel.name}</option>
 				</c:forEach>
 			</select>
@@ -135,7 +136,8 @@
 		<label class="control-label col-md-3" for="tro">TRO</label>
 		<div class="col-md-8">
 			<input type="text" id="tro" name="tro" class="form-control"
-				placeholder="TRO" value="${biodataModel.tro}" maxlength="50" size="50">
+				placeholder="TRO" value="${biodataModel.tro}" maxlength="50"
+				size="50">
 		</div>
 	</div>
 

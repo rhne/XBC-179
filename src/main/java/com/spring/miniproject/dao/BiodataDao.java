@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.spring.miniproject.model.BiodataModel;
 
-
 public interface BiodataDao {
 	
 	/* Biodata Add */
