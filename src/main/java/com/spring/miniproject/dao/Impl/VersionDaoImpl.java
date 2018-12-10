@@ -79,4 +79,11 @@ public class VersionDaoImpl implements VersionDao {
 		
 	}
 
+	@Override
+	public VersionModel getLatestVersionModel() {
+		int latestVersion = getLatestVersion();
+		Session session = this.sessionFactory.getCurrentSession();
+		return (VersionModel) session.createQuery("from VersionModel where isDelete=0 order by version desc").list().get(0);
+	}
+
 }

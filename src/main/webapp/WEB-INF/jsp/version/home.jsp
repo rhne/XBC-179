@@ -84,10 +84,10 @@
 	var selectedVersionId;
 	listData();
 	
-	window.alert_ = window.alert;
+	/* window.alert_ = window.alert;
 	window.alert = function() {
 	    alert_.apply(window,arguments)
-	};
+	}; */
 
 	function listData() {
 		$.ajax({
@@ -131,7 +131,7 @@
 		
 		$("#modal-input").on("click", ".btn-delete-question", function() {
 			var questionId = JSON.parse($(this).prop('id'));
-			
+			alert(questionId);
 			questionArray.pop(questionId);
 			populateQuestionListTable();
 		});

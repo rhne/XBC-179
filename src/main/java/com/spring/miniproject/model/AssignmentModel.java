@@ -44,8 +44,9 @@ public class AssignmentModel {
 	private Integer isDelete;
 	// AuditTrail/////////////////////
 
+	/* Auto Increment */
 	@Id
-	@Column(name = "ID", nullable = false)
+	@Column(name = "ID", nullable = false, length = 11)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "A_ASSIGNMENT")
 	@TableGenerator(name = "A_ASSIGNMENT", table = "S_SEQUENCE", pkColumnName = "SEQUENCE_NAME", pkColumnValue = "A_ASSIGNMENT_ID", valueColumnName = "SEQUENCE_VALUE", allocationSize = 1, initialValue = 0)
 	public Long getId() {
@@ -55,7 +56,7 @@ public class AssignmentModel {
 		this.id = id;
 	}
 
-	@Column(name = "BIODATA_ID", nullable = false)
+	@Column(name = "BIODATA_ID", nullable = false, length = 11)
 	public Long getTestId() {
 		return testId;
 	}
@@ -63,7 +64,7 @@ public class AssignmentModel {
 		this.testId = testId;
 	}
 
-	@Column(name = "TITLE", nullable = false)
+	@Column(name = "TITLE", nullable = false, length = 255)
 	public String getTitle() {
 		return title;
 	}
@@ -87,7 +88,7 @@ public class AssignmentModel {
 		this.endDate = endDate;
 	}
 
-	@Column(name = "DESCRIPTION")
+	@Column(name = "DESCRIPTION", length = 255)
 	public String getDescription() {
 		return description;
 	}
@@ -103,7 +104,7 @@ public class AssignmentModel {
 		this.realizationDate = realizationDate;
 	}
 
-	@Column(name = "NOTES")
+	@Column(name = "NOTES", length = 255)
 	public String getNotes() {
 		return notes;
 	}
@@ -127,8 +128,9 @@ public class AssignmentModel {
 		this.isDone = isDone;
 	}
 
+	/* User Login ID */
 	@CreatedBy
-	@Column(name = "CREATED_BY")
+	@Column(name = "CREATED_BY", nullable = false, length = 11)
 	public Long getCreatedBy() {
 		return createdBy;
 	}
@@ -145,8 +147,9 @@ public class AssignmentModel {
 		this.createdOn = createdOn;
 	}
 
+	/* User Login ID */
 	@LastModifiedBy
-	@Column(name = "MODIFIED_BY")
+	@Column(name = "MODIFIED_BY", length = 11)
 	public Integer getModifiedBy() {
 		return modifiedBy;
 	}
@@ -163,7 +166,8 @@ public class AssignmentModel {
 		this.modifiedOn = modifiedOn;
 	}
 
-	@Column(name = "DELETED_BY")
+	/* User Login ID */
+	@Column(name = "DELETED_BY", length = 11)
 	public Long getDeletedBy() {
 		return deletedBy;
 	}

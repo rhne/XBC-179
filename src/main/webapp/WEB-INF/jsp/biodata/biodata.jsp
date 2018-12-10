@@ -3,13 +3,20 @@
 		<h3 class="box-title">BIODATA</h3>
 		<div class="box-tools">
 			<div class="input-group input-group-sm" style="width: 200px;">
+
+				<!-- Search Box -->
 				<input type="text" id="nameCari" name="table-search"
 					class="form-control pull-right" placeholder="Search by Name">
+
 				<div class="input-group-btn">
+
+					<!-- Search Button -->
 					<button type="button" id="button-search" class="btn btn-default"
 						data-toggle="tooltip" data-placement="bottom" title="search">
 						<i class="fa fa-search"></i>
 					</button>
+
+					<!-- Add Button -->
 					<button type="button" id="button-tambah"
 						class="btn btn-primary btn-sm" data-toggle="tooltip"
 						data-placement="top" title="Create Data">
@@ -89,6 +96,7 @@
 </div>
 
 <script>
+	/* List Biodata */
 	listDataBiodata();
 
 	function listDataBiodata() {

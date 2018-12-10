@@ -3,14 +3,21 @@
 
 <tech:forEach items="${technologyTrainerModelList}" var="technologyTrainerModel" varStatus="number">
 <tr>
-	<td>${technologyTrainerModel.trainerId}</td>
+	<td>${technologyTrainerModel.trainerModel.name}</td>
 	<td>${technologyModel.createdOn}</td>
-	<td>${technologyModel.active}</td>
+	<td>Aktif</td>
 	<td>
-		<select id="action">
-			<option id="edit-list-tech-trainer">Edit</option>
-			<option id="deactive-status" value="0">Deactive</option>
-		</select>
+		<div class="btn-group">
+		  <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown">
+		    <span class="fa fa-bars"></span>
+		    <span class="sr-only">Toggle Dropdown</span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu">
+		    <li><a id="${technologyTrainerModel.idTechTrainer}" class="btn-edit">Edit</a></li>
+ 			<li><a id="${technologyTrainerModel.idTechTrainer}" class="btn-delete">Delete</a></li>
+		    <li class="divider"></li>
+		  </ul>
+		</div>
 	</td>
 </tr>
 </tech:forEach>
