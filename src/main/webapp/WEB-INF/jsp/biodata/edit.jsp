@@ -44,7 +44,7 @@
 		<div class="col-md-8">
 			<input type="text" id="graduationYear" name="graduationYear"
 				value="${biodataModel.graduationYear}" class="form-control"
-				required="required">
+				required="required" maxlength="4" size="4">
 		</div>
 	</div>
 
@@ -63,7 +63,7 @@
 		<label class="control-label col-md-3" for="gpa">GPA</label>
 		<div class="col-md-8">
 			<input type="text" id="gpa" name="gpa" value="${biodataModel.gpa}"
-				class="form-control" required="required">
+				class="form-control" required="required" maxlength="4" size="4">
 		</div>
 	</div>
 
@@ -98,22 +98,24 @@
 			<!-- IQ -->
 			<div class="col-md-3">
 				<input type="text" id="iq" name="iq" class="form-control"
-					placeholder="IQ" value="${biodataModel.iq}">
+					placeholder="IQ" value="${biodataModel.iq}" maxlength="4" size="4">
 			</div>
 			<!-- DU -->
 			<div class="col-md-3">
 				<input type="text" id="du" name="du" class="form-control"
-					placeholder="DU" value="${biodataModel.du}">
+					placeholder="DU" value="${biodataModel.du}" maxlength="4" size="4">
 			</div>
 			<!-- NL -->
 			<div class="col-md-3">
 				<input type="text" id="nl" name="nl" class="form-control"
-					placeholder="NL" value="${biodataModel.nestedLogic}">
+					placeholder="NL" value="${biodataModel.nestedLogic}" maxlength="4"
+					size="4">
 			</div>
 			<!-- JT -->
 			<div class="col-md-3">
 				<input type="text" id="jt" name="jt" class="form-control"
-					placeholder="JT" value="${biodataModel.joinTable}">
+					placeholder="JT" value="${biodataModel.joinTable}" maxlength="4"
+					size="4">
 			</div>
 		</div>
 	</div>
@@ -124,7 +126,7 @@
 		<div class="col-md-8">
 			<input type="text" id="arithmetic" name="arithmetic"
 				class="form-control" placeholder="Arithmetic"
-				value="${biodataModel.arithmetic}">
+				value="${biodataModel.arithmetic}" maxlength="4" size="4">
 		</div>
 	</div>
 
@@ -133,7 +135,7 @@
 		<label class="control-label col-md-3" for="tro">TRO</label>
 		<div class="col-md-8">
 			<input type="text" id="tro" name="tro" class="form-control"
-				placeholder="TRO" value="${biodataModel.tro}">
+				placeholder="TRO" value="${biodataModel.tro}" maxlength="50" size="50">
 		</div>
 	</div>
 
