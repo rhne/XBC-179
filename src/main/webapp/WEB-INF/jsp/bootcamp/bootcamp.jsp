@@ -6,7 +6,7 @@
 				<input type="text" id="txt-search" name="search-box" class="form-control pull-right" placeholder="Search by Name">
 				<div class="input-group-btn">
 					<button type="button" id="btn-search" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="search"><i class="fa fa-search"></i></button>
-					<button type="button" id="btn-add" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="add new"><i class="fa fa-plus"></i></button>
+					<button type="button" id="btn-add" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="add new"><i class="fa fa-plus"></i></button>
 				</div>
 			</div>
 		</div>
@@ -15,7 +15,7 @@
 		<table class="table" id="bootcamp-table">
 			<thead>
 				<tr>
-					<td>NAME</td>
+					<td><b>NAME</b></td>
 					<td></td>
 				</tr>
 			</thead>
@@ -28,8 +28,8 @@
 <div class="modal fade" id="modal-input">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title"></h4>
+			<div class="modal-header" style="background-color:#605ca8;">
+				<h4 class="modal-title" style="color: white;"></h4>
 			</div>
 			<div class="modal-body"></div>
 		</div>
@@ -50,6 +50,16 @@
 		<div class="alert alert-warning alert-dismissible">
         	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
             Data Successfully Updated !
+       	</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modal-deactive">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Deactive</h4>
+            <div class="modal-body">
+			</div>
        	</div>
 	</div>
 </div>
@@ -78,12 +88,12 @@
 	
 	$(document).ready(function(){
 	$("#btn-add").on("click", function() {
-		alert("add new");
 		$.ajax({
 			url:"bootcamp/addBootcamp.html",
 			type: "get",
 			dataType: "html",
 			success: function(result){
+				$("#modal-input").find(".modal-title").html("Add New Bootcamp")
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
 			}
@@ -114,6 +124,7 @@
 			dataType : "html",
 			data : {idEdit : idEdit},
 			success : function(result){
+				$("#modal-input").find(".modal-title").html("Edit Bootcamp");
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
 			}
@@ -158,8 +169,8 @@
 			dataType : "html",
 			data : {idDeactive : deactive},
 			success : function(result){
-				$("#modal-input").find(".modal-body").html(result);
-				$("#modal-input").modal("show");
+				$("#modal-deactive").find(".modal-body").html(result);
+				$("#modal-deactive").modal("show");
 			}
 		});
 	});

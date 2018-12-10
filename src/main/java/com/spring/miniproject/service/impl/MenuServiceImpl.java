@@ -58,4 +58,10 @@ public class MenuServiceImpl implements MenuService {
 		// TODO Auto-generated method stub
 		return this.menuDao.selectMenuByRole(idRole);
 	}
+
+	@Override
+	public List<MenuModel> searchAll() {
+		// TODO Auto-generated method stub
+		return this.menuDao.searchAll();
+	}
 }

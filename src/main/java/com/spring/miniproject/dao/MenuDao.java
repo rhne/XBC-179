@@ -12,5 +12,6 @@ public interface MenuDao {
 	public void update(MenuModel menuModel);
 	public void deactivate(MenuModel menuModel);
 	public List<MenuModel> selectMenuByRole(Long idRole);
+	public List<MenuModel> searchAll();
 	
 }
