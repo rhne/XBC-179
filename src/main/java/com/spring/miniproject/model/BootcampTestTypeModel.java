@@ -27,11 +27,11 @@ public class BootcampTestTypeModel {
 		private Integer isActive;
 			
 		private Long createdBy;
-		private BootcampTestTypeModel createdByUser;
+		private AkunModel createdByUser;
 		private Date createdOn;
 				
 		private Long modifiedBy;
-		private BootcampTestTypeModel modifiedByUser;
+		private AkunModel modifiedByUser;
 		private Date modifiedOn;
 	//AuditTrail/////////////////////
 	
@@ -82,10 +82,10 @@ public class BootcampTestTypeModel {
 	
 	@ManyToOne
 	@JoinColumn(name="CREATED_BY",nullable=true, updatable=false, insertable=false)
-	public BootcampTestTypeModel getCreatedByUser() {
+	public AkunModel getCreatedByUser() {
 		return createdByUser;
 	}
-	public void setCreatedByUser(BootcampTestTypeModel createdByUser) {
+	public void setCreatedByUser(AkunModel createdByUser) {
 		this.createdByUser = createdByUser;
 	}
 	
@@ -107,10 +107,10 @@ public class BootcampTestTypeModel {
 	
 	@ManyToOne
 	@JoinColumn(name="MODIFIED_BY",nullable=true, updatable=false, insertable=false)
-	public BootcampTestTypeModel getModifiedByUser() {
+	public AkunModel getModifiedByUser() {
 		return modifiedByUser;
 	}
-	public void setModifiedByUser(BootcampTestTypeModel modifiedByUser) {
+	public void setModifiedByUser(AkunModel modifiedByUser) {
 		this.modifiedByUser = modifiedByUser;
 	}
 	

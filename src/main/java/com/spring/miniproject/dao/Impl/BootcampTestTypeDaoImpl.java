@@ -30,7 +30,7 @@ public class BootcampTestTypeDaoImpl implements BootcampTestTypeDao{
 	@Override
 	public void create(BootcampTestTypeModel bootcamptesttypeModel) {
 		// TODO Auto-generated method stub
-		bootcamptesttypeModel.setCreatedOn(new Date());
+		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(bootcamptesttypeModel);
 	}
@@ -64,7 +64,7 @@ public class BootcampTestTypeDaoImpl implements BootcampTestTypeDao{
 	@Override
 	public void update(BootcampTestTypeModel bootcamptesttypeModel) {
 		// TODO Auto-generated method stub
-		bootcamptesttypeModel.setModifiedOn(new Date());
+		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(bootcamptesttypeModel);
 	}

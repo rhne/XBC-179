@@ -26,7 +26,6 @@ public class IdleNewsModel {
 	private Long id;
 	private String title;
 	private String content;
-	private Long idTest;
 	private Long idCategory;
 	private CategoryModel categoryModel;
 	private TestModel testModel;
@@ -37,11 +36,11 @@ public class IdleNewsModel {
 		private Integer isDeleted;
 			
 		private Long createdBy;
-		private IdleNewsModel createdByUser;
+		private AkunModel createdByUser;
 		private Date createdOn;
 				
 		private Long modifiedBy;
-		private IdleNewsModel modifiedByUser;
+		private AkunModel modifiedByUser;
 		private Date modifiedOn;
 	//AuditTrail/////////////////////
 	
@@ -91,10 +90,10 @@ public class IdleNewsModel {
 	
 	@ManyToOne
 	@JoinColumn(name="CREATED_BY",nullable=true, updatable=false, insertable=false)
-	public IdleNewsModel getCreatedByUser() {
+	public AkunModel getCreatedByUser() {
 		return createdByUser;
 	}
-	public void setCreatedByUser(IdleNewsModel createdByUser) {
+	public void setCreatedByUser(AkunModel createdByUser) {
 		this.createdByUser = createdByUser;
 	}
 	
@@ -116,10 +115,10 @@ public class IdleNewsModel {
 	
 	@ManyToOne
 	@JoinColumn(name="MODIFIED_BY",nullable=true, updatable=false, insertable=false)
-	public IdleNewsModel getModifiedByUser() {
+	public AkunModel getModifiedByUser() {
 		return modifiedByUser;
 	}
-	public void setModifiedByUser(IdleNewsModel modifiedByUser) {
+	public void setModifiedByUser(AkunModel modifiedByUser) {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
@@ -137,13 +136,6 @@ public class IdleNewsModel {
 	public void setIdCategory(Long idCategory) {
 		this.idCategory = idCategory;
 	}
-	@Column(name="ID_TEST")
-	public Long getIdTest() {
-		return idTest;
-	}
-	public void setIdTest(Long idTest) {
-		this.idTest = idTest;
-	}
 	@Column(name="IS_PUBLISH")
 	public Integer getIsPublish() {
 		return isPublish;
@@ -158,13 +150,5 @@ public class IdleNewsModel {
 	}
 	public void setCategoryModel(CategoryModel categoryModel) {
 		this.categoryModel = categoryModel;
-	}
-	@ManyToOne
-	@JoinColumn(name="ID_TEST",nullable=true, updatable=false, insertable=false)
-	public TestModel getTestModel() {
-		return testModel;
-	}
-	public void setTestModel(TestModel testModel) {
-		this.testModel = testModel;
 	}
 }
