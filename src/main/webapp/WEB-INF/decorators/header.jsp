@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="/miniproject/" class="logo">
+    <a href="/miniproject/index.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>XBC</b></span>
       <!-- logo for regular state and mobile devices -->
