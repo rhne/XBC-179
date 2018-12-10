@@ -1,12 +1,14 @@
 package com.spring.miniproject.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
@@ -30,6 +32,8 @@ public class VersionModel {
 	@Column(name="IS_DELETE", nullable=false)
 	private Integer isDelete;
 	
+	@OneToMany(mappedBy="version")
+	private List<VersionDetailModel> versionDetails;
 	
 	public Long getId() {
 		return id;
@@ -66,6 +70,12 @@ public class VersionModel {
 	}
 	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
+	}
+	public List<VersionDetailModel> getVersionDetails() {
+		return versionDetails;
+	}
+	public void setVersionDetails(List<VersionDetailModel> versionDetails) {
+		this.versionDetails = versionDetails;
 	}
 	
 	

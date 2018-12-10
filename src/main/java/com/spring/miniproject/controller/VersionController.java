@@ -2,6 +2,7 @@ package com.spring.miniproject.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.spring.miniproject.model.QuestionModel;
 import com.spring.miniproject.model.VersionDetailModel;
 import com.spring.miniproject.model.VersionModel;
@@ -37,19 +40,20 @@ public class VersionController {
 	@RequestMapping(value="version/tambah")
 	public String tambah(Model model) {
 		//immediately create a record to db, and pass the id to frontend
-		VersionModel versionModel = new VersionModel();
-		versionModel = this.versionService.create(versionModel);
+//		VersionModel versionModel = new VersionModel();
+//		versionModel = this.versionService.create(versionModel);
+//		
+//		QuestionModel questionModel = new QuestionModel();
+//		questionModel.setId((long) 1);
+//		
+//		VersionDetailModel versionDetailModel = new VersionDetailModel();
+//		versionDetailModel.setVersion(versionModel);
+//		versionDetailModel.setQuestion(questionModel);
+//		versionDetailModel = this.versionDetailService.create(versionDetailModel);
+//		
+//		model.addAttribute("versionModel", versionModel);
 		
-		QuestionModel questionModel = new QuestionModel();
-		questionModel.setId((long) 1);
-		
-		VersionDetailModel versionDetailModel = new VersionDetailModel();
-		versionDetailModel.setVersion(versionModel);
-		versionDetailModel.setQuestion(questionModel);
-		versionDetailModel = this.versionDetailService.create(versionDetailModel);
-		
-		model.addAttribute("versionModel", versionModel);
-		model.addAttribute("latestVersion", versionModel.getVersion());
+		model.addAttribute("latestVersion", this.versionService.getLatestVersion()+1);
 		String jsp = "version/tambah2";
 		return jsp;
 	}
@@ -77,18 +81,62 @@ public class VersionController {
 	public String list(Model model) {
 		List<VersionModel> versionModels = new ArrayList<VersionModel>();
 		versionModels = this.versionService.searchAll();
+//		List<VersionDetailModel> versionDetailModels = new ArrayList<VersionDetailModel>();
+//		versionDetailModels = this.versionDetailService.searchAll();
 		
 		model.addAttribute("versionModelList", versionModels);
-		
 		String jsp = "version/list";
 		return jsp;
 	}
 	
 	@RequestMapping(value="version/create")
 	public String create(HttpServletRequest request, Model model) {
+		//parse inputed question json array 
+		String stringQuestionJsonArray = request.getParameter("questions");
+		JsonParser jsonParser = new JsonParser();
+		Object obj = jsonParser.parse(stringQuestionJsonArray);
+		JsonArray questionArray = (JsonArray) obj;
+		JsonObject jsonObject = new JsonObject();
 		
-		String input = request.getParameter("questions");
-		ObjectMapper objectMapper = new ObjectMapper();
+		//create Version model instance in table
+		VersionModel versionModel = new VersionModel();
+		versionModel.setVersionDetails(new ArrayList<VersionDetailModel>());
+		versionModel = this.versionService.create(versionModel);
+		
+		//create VersionDetail instances in table
+		List<QuestionModel> questionModels = new ArrayList<QuestionModel>();
+		List<VersionDetailModel> versionDetailModels = new ArrayList<VersionDetailModel>();
+		QuestionModel questionModel;
+		VersionDetailModel versionDetailModel;
+		for(int i=0; i<questionArray.size(); i++) {
+			jsonObject = (JsonObject) questionArray.get(i);
+			questionModel = new QuestionModel();
+			Long id = jsonObject.get("id").getAsLong();
+			questionModel.setId(id);
+			questionModels.add(questionModel);
+			
+			versionDetailModel = new VersionDetailModel();
+			versionDetailModel.setVersion(versionModel);
+			versionDetailModel.setQuestion(questionModel);
+			versionDetailModel = this.versionDetailService.create(versionDetailModel);
+			versionDetailModels.add(versionDetailModel);
+			//versionModel.getVersionDetails().add(versionDetailModel);
+		}
+		
+		//versionModel.setVersionDetails(versionDetailModels);
+		//this.versionService.update(versionModel);
+		
+		String jsp = "version/home";
+		return jsp;
+	}
+	
+	@RequestMapping(value="version/delete/save")
+	public String delete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		VersionModel versionModel = new VersionModel();
+		versionModel = this.versionService.searchById(Long.parseLong(id));
+		this.versionService.delete(versionModel);
+		
 		String jsp = "version/home";
 		return jsp;
 	}

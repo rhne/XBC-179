@@ -1,6 +1,7 @@
 package com.spring.miniproject.dao.Impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,6 +24,12 @@ public class VersionDetailDaoImpl implements VersionDetailDao {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(versionDetailModel);
 		return versionDetailModel;
+	}
+
+	@Override
+	public List<VersionDetailModel> searchAll() {
+		Session session = this.sessionFactory.getCurrentSession();
+		return session.createQuery("from VersionDetailModel").list();
 	}
 
 }

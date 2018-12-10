@@ -30,7 +30,7 @@
 	folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="${contextName}/assets/dist/css/skins/_all-skins.min.css">
 	<!-- iCheck -->
-  	<link rel="stylesheet" href="${contextName}/assets/plugins/iCheck/flat/blue.css">
+  	<link rel="stylesheet" href="${contextName}/assets/plugins/iCheck/flat/purple.css">
   	<!-- Date Picker -->
   	<link rel="stylesheet" href="${contextName}/assets/plugins/datepicker/datepicker3.css">
   	<!-- jQuery 2.2.3 -->
@@ -50,10 +50,10 @@
 	  <link rel="stylesheet" href="${contextName}/assets/dist/css/AdminLTE.min.css">
   	  <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="${contextName}/assets/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="${contextName}/assets/dist/css/skins/skin-purple.css">
 	<decorator:head/>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-purple sidebar-mini">
 	<div class="wrapper">
 		<!-- Sidebar -->
 		<%@include file="sidebar.jsp" %>

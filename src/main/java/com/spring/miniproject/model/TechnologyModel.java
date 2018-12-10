@@ -1,6 +1,7 @@
 package com.spring.miniproject.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
@@ -52,9 +54,8 @@ public class TechnologyModel {
 	@Column(name="ID_TRAINER")
 	private Long idTrainer;
 	
-	@ManyToOne
-	@JoinColumn(name="ID_TRAINER", nullable=true, updatable=false,insertable=false)
-	private TrainerModel trainerModel;
+	@OneToMany(mappedBy="technologyId")
+	private List<TechnologyTrainerModel> technologyTrainer;
 	
 	
 	public Long getIdTech() {
@@ -111,12 +112,12 @@ public class TechnologyModel {
 	public void setIdTrainer(Long idTrainer) {
 		this.idTrainer = idTrainer;
 	}
-	public TrainerModel getTrainerModel() {
-		return trainerModel;
+	public List<TechnologyTrainerModel> getTechnologyTrainer() {
+		return technologyTrainer;
 	}
-	public void setTrainerModel(TrainerModel trainerModel) {
-		this.trainerModel = trainerModel;
+	public void setTechnologyTrainer(List<TechnologyTrainerModel> technologyTrainer) {
+		this.technologyTrainer = technologyTrainer;
 	}
 	
-		
+	
 }

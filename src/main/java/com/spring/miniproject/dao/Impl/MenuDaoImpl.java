@@ -30,7 +30,7 @@ public class MenuDaoImpl implements MenuDao {
 	public List<MenuModel> select() {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		String query = "select m from MenuModel m where Active = 1";
+		String query = "select m from MenuModel m where Active = 1 and menuparent > 0";
 		
 		List<MenuModel> menuModelList = new ArrayList<MenuModel>();
 		menuModelList = session.createQuery(query).list();

@@ -1,4 +1,4 @@
-<div class="box box-info">
+<div class="box box-danger">
 	<div class="box-header with-border">
 		<h3 class="box-title">TRAINER</h3>
 		<div class="box-tools">
@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<table class="table" id="trainer-table">
+		<table class="table table-striped table-hover" id="trainer-table">
 			<thead>
 				<tr>
 					<td>NAME</td>
@@ -29,8 +29,8 @@
 <div class="modal fade" id="modal-input">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title"></h4>
+			<div class="modal-header" style="background-color:#605ca8;">
+				<h4 class="modal-title" style="color: white;"></h4>
 			</div>
 			<div class="modal-body"></div>
 		</div>
@@ -40,7 +40,7 @@
 <div class="modal fade" id="modal-alert-deactive">
 	<div class="modal-dialog">
 		<div class="alert alert-warning alert-dismissible">
-        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Data deactivated !</h4>
             <div class="modal-body">
 			
 			</div>
@@ -118,7 +118,7 @@
 	
 	$("#modal-input").on("submit", "#form-edit-trainer", function(){
 		$.ajax({
-			url : "testimony/editTrainer/save.json",
+			url : "trainer/editTrainer/save.json",
 			type : "get",
 			dataType : "json",
 			data : $(this).serialize(),
@@ -126,41 +126,24 @@
 				$("#modal-alert-update").find(".modal-title");  
 				$("#modal-alert-update").modal("show");
 				$("#modal-input").modal("hide");
-				listDataTestimony();
+				listDataTrainer();
 			}
 		});
 		return false;
 	});
 	
 	$("#list-data-trainer").on("click", ".btn-deactive", function(){
-		var idDeact = $(this).prop('id');
 		$.ajax({
 			url : "trainer/deactiveTrainer.html",
 			type : "get",
 			dataType : "html",
-			data : {idDeact : idDeact},
-			success : function(result){
-				$("#modal-alert-delete").find(".modal-title");  
-				$("#modal-alert-delete").modal("show");
+			success : function(result){ 
+				$("#modal-alert-deactive").modal("show");
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
+				listDataTrainer();
 			}
 		});
 	});
 	
-	$("#modal-input").on("submit", "#form-delete-testimony", function(){
-		$.ajax({
-			url : "testimony/deleteTestimony/save.json",
-			type : "get",
-			dataType : "json",
-			data : $(this).serialize(),
-			success : function(result){
-				$("#modal-alert-delete").find(".modal-title");  
-				$("#modal-alert-delete").modal("show");
-				$("#modal-input").modal("hide");
-				listDataTestimony();
-			}
-		});
-		return false;
-	});
 </script>

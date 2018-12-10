@@ -4,7 +4,7 @@
 	<tr>
 		<td>${number.count}</td>
 		<td>${versionModel.version}</td>
-		<td>${versionModel.createdOn}</td>
+		<td>${versionDetail.id}</td>
 		<td>${versionModel.isDelete}</td>
 		<td>
 			<div class="btn-group">
@@ -14,7 +14,6 @@
 			  </button>
 			  <ul class="dropdown-menu" role="menu">
 			    <li><a id="${versionModel.id}" class="btn-delete">Delete</a></li>
-			    <li class="divider"></li>
 			  </ul>
 			</div>
 		</td>

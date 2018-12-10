@@ -6,6 +6,6 @@ import com.spring.miniproject.model.TechnologyTrainerModel;
 
 public interface TechnologyTrainerService {
 
-	public void create(TechnologyTrainerModel technologyTrainerModel);
+	public TechnologyTrainerModel create(TechnologyTrainerModel technologyTrainerModel);
 	public List<TechnologyTrainerModel> showAll();
 }

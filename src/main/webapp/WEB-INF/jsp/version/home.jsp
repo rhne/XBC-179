@@ -1,4 +1,4 @@
-<div class="box box-info">
+<div class="box box-danger">
 	<div class="box-header with-border">
 		<h3 class="box-title">Version Data</h3>
 		<div class="box-tools">
@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<table class="table" id="table-user">
+		<table class="table table-striped table-hover" id="table-user">
 			<thead>
 			<tr>
 				<th>No.</th>
@@ -28,7 +28,7 @@
 <div class="modal fade" id = "modal-input">
 	<div class="modal-dialog">
 		<div class = "modal-content">
-			<div class="modal-header" style="background-color:#3c8dbc;">
+			<div class="modal-header" style="background-color:#605ca8;">
 				<h4 class="modal-title" style="color:white;"></h4>
 			</div>
 			
@@ -68,7 +68,11 @@
         	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
             
             <div class="modal-body">
-			
+				Are you sure you want to delete?
+				<div class="modal-footer" style="border-top: 0 none;padding-bottom: 0px;">
+					<button type="submit" id="btn-confirm-delete" class="btn btn-outline">Yes</button>
+					<button type="button" data-dismiss="modal" class="btn btn-outline">No</button>
+				</div>
 			</div>
        	</div>
 	</div>
@@ -77,6 +81,7 @@
 
 <script>
 	var questionArray = new Array;
+	var selectedVersionId;
 	listData();
 	
 	window.alert_ = window.alert;
@@ -111,6 +116,7 @@
 		
 		//REGION MODAL QUESTION
 		$("#modal-input").on("click", "#btn-tambah-question" ,function() {
+			
 			$.ajax({
 				url:"version/tambahquestion",
 				type:"get",
@@ -125,10 +131,9 @@
 		
 		$("#modal-input").on("click", ".btn-delete-question", function() {
 			var questionId = JSON.parse($(this).prop('id'));
+			alert(questionId);
+			questionArray.pop(questionId);
 			populateQuestionListTable();
-			
-			//alert(questionArray.pop(questionId));
-			
 		});
 		
 		$("#modal-input-question").on("submit", "#form-tambah-question", function () {
@@ -146,6 +151,7 @@
 		
 		$("#modal-input").on("submit", "#form-tambah-version", function () {
 			alert(JSON.stringify(questionArray));
+			$("#modal-input").modal("hide");
 			$.ajax({
 				url: "version/create",
 				type: "get",
@@ -175,4 +181,25 @@
 		
 		$("#modal-input").find("#list-data-question").html(questionListTable);
 	}
+	
+	$("#list-data").on("click", ".btn-delete", function() {
+		selectedVersionId = $(this).prop('id');
+		$("#modal-alert-delete").modal("show");
+	});
+	
+	$("#modal-alert-delete").on("click", "#btn-confirm-delete", function () {
+		$.ajax({
+			url: "version/delete/save.json",
+			type: "get",
+			dataType: "json",
+			data: {
+				id: selectedVersionId
+			},
+			success: function (result) {
+				$("#modal-alert-delete").modal("hide");
+				listData();
+			}
+		});
+	});
+	
 </script>

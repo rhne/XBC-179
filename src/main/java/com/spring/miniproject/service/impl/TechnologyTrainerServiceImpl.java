@@ -18,9 +18,9 @@ public class TechnologyTrainerServiceImpl implements TechnologyTrainerService {
 	private TechnologyTrainerDao technologyTrainerDao;
 	
 	@Override
-	public void create(TechnologyTrainerModel technologyTrainerModel) {
+	public TechnologyTrainerModel create(TechnologyTrainerModel technologyTrainerModel) {
 		// TODO Auto-generated method stub
-		this.technologyTrainerDao.create(technologyTrainerModel);
+		return this.technologyTrainerDao.create(technologyTrainerModel);
 	}
 
 	@Override

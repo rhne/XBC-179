@@ -1,10 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:forEach items = "${menuModelList}" var = "menuModel" varStatus="number">
 	<tr>
 		<td>${menuModel.kode}</td>
 		<td>${menuModel.title}</td>
-		<td>${menuModel.title}</td>
+		<td>${menuModel.menuparent}</td>
 		<td>Active</td>	
 		<td>
 			<div class="dropdown">
