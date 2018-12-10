@@ -72,9 +72,9 @@
 		<label class="control-label col-md-3" for="gender">Gender</label>
 		<div class="col-md-8">
 			<input type="radio" id="male" name="gender" value="male"
-				${biodataModel.gender=='male'? 'checked' : 'checked'} />Male 
+				${biodataModel.gender=='male'? 'checked' : ''} />Male 
 			<input type="radio"id="female" name="gender" value="female"
-				${biodataModel.gender=='female'? 'checked' : 'checked'} />Female
+				${biodataModel.gender=='female'? 'checked' : ''} />Female
 		</div>
 	</div>
 
