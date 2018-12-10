@@ -19,7 +19,7 @@ import com.spring.miniproject.service.MenuService;
 import com.spring.miniproject.service.RoleService;
 
 @Controller
-public class MenuAksesController {
+public class MenuAksesController extends BaseController{
 
 	@Autowired
 	private MenuAksesService menuAksesService;
@@ -28,10 +28,22 @@ public class MenuAksesController {
 	@Autowired
 	private MenuService menuService;
 		
+	public void aksesLogin(Model model) {
+		
+		model.addAttribute("username", this.getAkunModel().getName());
+		model.addAttribute("nameRole", this.getAkunModel().getRoleModel().getName());
+		
+		List<MenuModel> menuModelList = null;
+		Long idRole = this.getAkunModel().getRoleModel().getId();
+		menuModelList = this.menuService.selectMenuByRole(idRole);
+		model.addAttribute("menuModelList", menuModelList);
+	}
+
 	@RequestMapping(value="menuaccess")
 	public String menuAkses(Model model) {
 		
 		this.listDataRole(model);
+		this.aksesLogin(model);
 		
 		String jsp = "menuaccess/menuakses";
 		return jsp;

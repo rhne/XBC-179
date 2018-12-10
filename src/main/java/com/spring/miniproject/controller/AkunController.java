@@ -12,21 +12,38 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.miniproject.model.AkunModel;
+import com.spring.miniproject.model.MenuModel;
 import com.spring.miniproject.model.RoleModel;
 import com.spring.miniproject.service.AkunService;
+import com.spring.miniproject.service.MenuService;
 import com.spring.miniproject.service.RoleService;
 
 @Controller
-public class AkunController {
+public class AkunController extends BaseController{
 
 	@Autowired
 	private AkunService akunService;
 	
 	@Autowired
 	private RoleService roleService;
+	
+	@Autowired
+	private MenuService menuService;
+	
+	public void aksesLogin(Model model) {
+		
+		model.addAttribute("username", this.getAkunModel().getName());
+		model.addAttribute("nameRole", this.getAkunModel().getRoleModel().getName());
+		
+		List<MenuModel> menuModelList = null;
+		Long idRole = this.getAkunModel().getRoleModel().getId();
+		menuModelList = this.menuService.selectMenuByRole(idRole);
+		model.addAttribute("menuModelList", menuModelList);
+	}
 		
 	@RequestMapping(value="user")
 	public String user(Model model) {
+		this.aksesLogin(model);
 		String jsp = "user/user";
 		return jsp;
 	}

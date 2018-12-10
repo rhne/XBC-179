@@ -11,5 +11,6 @@ public interface MenuService {
 	public void update(MenuModel menuModel);
 	public void deactivate(MenuModel menuModel);
 	public List<MenuModel> searchByLikeTitle(String title);
+	public List<MenuModel> selectMenuByRole(Long idRole);
 	
 }

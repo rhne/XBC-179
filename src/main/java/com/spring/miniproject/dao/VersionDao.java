@@ -12,5 +12,6 @@ public interface VersionDao {
 	public void update(VersionModel versionModel);
 	public void delete(VersionModel versionModel);
 	public Integer getLatestVersion();
+	public VersionModel getLatestVersionModel();
 	
 }

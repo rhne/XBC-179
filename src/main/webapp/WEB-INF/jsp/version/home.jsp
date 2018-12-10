@@ -84,10 +84,10 @@
 	var selectedVersionId;
 	listData();
 	
-	window.alert_ = window.alert;
+	/* window.alert_ = window.alert;
 	window.alert = function() {
 	    alert_.apply(window,arguments)
-	};
+	}; */
 
 	function listData() {
 		$.ajax({
