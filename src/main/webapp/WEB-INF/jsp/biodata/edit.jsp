@@ -86,7 +86,7 @@
 			<select id="bootcampTestType" name="bootcampTestType"
 				class="form-control">
 				<c:forEach items="${bootcampTestTypeModelList}" var="bootcamptesttypeModel">
-					<option value="${bootcamptesttypeModel.id}">${bootcamptesttypeModel.name}</option>
+					<option value="${bootcamptesttypeModel.id}" ${bootcamptesttypeModel.id == biodataModel.bootcampTestType? 'selected' : ''}>${bootcamptesttypeModel.name}</option>
 				</c:forEach>
 			</select>
 		</div>
