@@ -17,8 +17,6 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import com.spring.miniproject.model.BiodataModel;
-
 @Entity
 @Table(name = "M_MONITORING")
 public class MonitoringModel {
@@ -33,6 +31,9 @@ public class MonitoringModel {
 
 	private BiodataModel biodataModel;
 	private Long testId;
+	
+	private AkunModel createdByUser;
+	private AkunModel modifiedByUser;
 
 	// AuditTrail////////////////////
 	private Long createdBy;
@@ -183,5 +184,25 @@ public class MonitoringModel {
 	}
 	public void setBiodataModel(BiodataModel biodataModel) {
 		this.biodataModel = biodataModel;
+	}
+	
+	/* Created By Join Table Akun */
+	@ManyToOne
+	@JoinColumn(name="CREATED_BY",nullable=false, updatable=false, insertable=false)
+	public AkunModel getCreatedByUser() {
+		return createdByUser;
+	}
+	public void setCreatedByUser(AkunModel createdByUser) {
+		this.createdByUser = createdByUser;
+	}
+	
+	/* Modified By Join Table Akun */
+	@ManyToOne
+	@JoinColumn(name="MODIFIED_BY",nullable=false, updatable=false, insertable=false)
+	public AkunModel getModifiedByUser() {
+		return modifiedByUser;
+	}
+	public void setModifiedByUser(AkunModel modifiedByUser) {
+		this.modifiedByUser = modifiedByUser;
 	}
 }

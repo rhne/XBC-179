@@ -12,4 +12,5 @@ public interface AkunService {
 	public List<AkunModel> searchByLikeName(String name);
 	public AkunModel searchByUsernamePassword(String username, String password);
 	public void deactivate(AkunModel akunModel);
+	public List<AkunModel> searchValidation(String name);
 }

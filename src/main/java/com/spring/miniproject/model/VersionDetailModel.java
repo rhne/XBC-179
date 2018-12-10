@@ -34,6 +34,10 @@ public class VersionDetailModel {
 	@Column(name="CREATED_ON")
 	private Date createdOn;
 
+	@ManyToOne
+	@JoinColumn(name="CREATED_BY")
+	private AkunModel createdBy;
+	
 	public Long getId() {
 		return id;
 	}
@@ -67,6 +71,12 @@ public class VersionDetailModel {
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
-	
-	
+
+	public AkunModel getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(AkunModel createdBy) {
+		this.createdBy = createdBy;
+	}
 }

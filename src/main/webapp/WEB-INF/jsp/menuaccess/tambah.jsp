@@ -24,18 +24,6 @@
 
 	<div class="modal-footer">
 		<button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+		<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancel</button>
 	</div>
 </form>
-
-<script type="text/javascript">
-
-	function validasi_input(form){
-  		if (form.password.value != form.rePass.value){
-    		alert("Password dan Retype Password tidak sesuai!");
-    		form.password.focus();
-    		return (false);
-  		}
-		return (true);
-	}
-	
-</script>

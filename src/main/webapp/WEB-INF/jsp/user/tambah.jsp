@@ -39,7 +39,7 @@
 <script type="text/javascript">
 
 	function cekuser(a) {
-		valid = /^[A-Za-z][a-zA-Z0-9-_\.]{7,}$/;
+		valid = /(?=^.{7,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-z]).*$/;
 		return valid.test(a);
 	}
 	function cekpass(a) {

@@ -27,7 +27,6 @@ public class QuestionDaoImpl implements QuestionDao {
 	@Override
 	public void create(QuestionModel questionModel) {
 		Session session = this.sessionFactory.getCurrentSession();
-		questionModel.setCreatedOn(new Date());
 		session.save(questionModel);
 	}
 
@@ -39,17 +38,12 @@ public class QuestionDaoImpl implements QuestionDao {
 
 	@Override
 	public void update(QuestionModel questionModel) {
-		questionModel.setModifiedOn(new Date());
-		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(questionModel);
 	}
 	
 	@Override
 	public void delete(QuestionModel questionModel) {
-		questionModel.setIsDelete(1);
-		questionModel.setDeletedOn(new Date());
-		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(questionModel);
 	}

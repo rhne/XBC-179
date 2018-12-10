@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,7 @@ import com.spring.miniproject.service.BiodataService;
 import com.spring.miniproject.service.BootcampTestTypeService;
 
 @Controller
-public class BiodataController {
+public class BiodataController extends BaseController {
 
 	@Autowired
 	private BiodataService biodataService;
@@ -44,14 +45,16 @@ public class BiodataController {
 	/* Popup Add Biodata */
 	@RequestMapping(value = "biodata/tambah")
 	public String tambahbiodata(Model model) {
-
 		String jsp = "biodata/tambah";
 		return jsp;
 	}
-	
+
 	/* Create Biodata */
 	@RequestMapping(value = "biodata/create")
 	public String create(HttpServletRequest request, Model model) {
+
+		/* Logged ID */
+		Long createdBy = this.getAkunModel().getId();
 
 		BiodataModel biodataModel = new BiodataModel();
 		biodataModel.setName(request.getParameter("name"));
@@ -60,6 +63,9 @@ public class BiodataController {
 		biodataModel.setGraduationYear(request.getParameter("graduationYear"));
 		biodataModel.setMajors(request.getParameter("majors"));
 		biodataModel.setGpa(request.getParameter("gpa"));
+		biodataModel.setCreatedBy(createdBy);
+		biodataModel.setCreatedOn(new Date());
+		biodataModel.setActive(1);
 
 		this.biodataService.create(biodataModel);
 		model.addAttribute("biodataModel", biodataModel);
@@ -76,12 +82,13 @@ public class BiodataController {
 		biodataModel = this.biodataService.searchById(id);
 		model.addAttribute("biodataModel", biodataModel);
 
+		/* Dropdown List */
 		this.listbootcampTestType(model);
 
 		String jsp = "biodata/edit";
 		return jsp;
 	}
-	
+
 	/* List BootcampTestType for BootcampTestType Dropdown */
 	private void listbootcampTestType(Model model) {
 		// TODO Auto-generated method stub
@@ -93,6 +100,9 @@ public class BiodataController {
 	/* Edit Biodata */
 	@RequestMapping(value = "biodata/edit/save")
 	public String biodataEditSave(HttpServletRequest request, Model model) throws Exception {
+
+		/* Logged ID */
+		Long modifiedBy = this.getAkunModel().getId();
 
 		/* biodataId */
 		Long id = Long.valueOf(request.getParameter("id"));
@@ -134,6 +144,9 @@ public class BiodataController {
 		biodataModelDB.setInterviewer(request.getParameter("interviewer"));
 		biodataModelDB.setNotes(request.getParameter("notes"));
 
+		biodataModelDB.setModifiedBy(modifiedBy);
+		biodataModelDB.setModifiedOn(new Date());
+
 		this.biodataService.update(biodataModelDB);
 		model.addAttribute("biodataModelDB", biodataModelDB);
 
@@ -144,7 +157,10 @@ public class BiodataController {
 	/* Popup Deactivate Biodata */
 	@RequestMapping(value = "biodata/deactivate")
 	public String deactivate(HttpServletRequest request, Model model) {
+
+		/* Biodata ID */
 		String id = request.getParameter("id");
+
 		BiodataModel biodataModel = new BiodataModel();
 		biodataModel = this.biodataService.searchById(Long.parseLong(id));
 		model.addAttribute("biodataModel", biodataModel);
@@ -155,16 +171,27 @@ public class BiodataController {
 	/* Deactivate Biodata */
 	@RequestMapping(value = "biodata/deactivate/save")
 	public String deactivateSave(HttpServletRequest request) {
+
+		/* Logged ID */
+		Long modifiedBy = this.getAkunModel().getId();
+
+		/* Biodata ID */
 		String id = request.getParameter("id");
+
 		BiodataModel biodataModel = new BiodataModel();
+		biodataModel.setActive(0);
+		biodataModel.setModifiedBy(modifiedBy);
+		biodataModel.setModifiedOn(new Date());
+
 		biodataModel = this.biodataService.searchById(Long.parseLong(id));
 		this.biodataService.deactivate(biodataModel);
 
 		String jsp = "biodata/biodata";
 		return jsp;
 	}
-	
-	@RequestMapping(value="biodata/search/name")
+
+	/* Search Biodata */
+	@RequestMapping(value = "biodata/search/name")
 	public String biodataSearchName(HttpServletRequest request, Model model) {
 		String name = request.getParameter("nameCari");
 		List<BiodataModel> biodataModelList = new ArrayList<BiodataModel>();
