@@ -1,6 +1,6 @@
 package com.spring.miniproject.model;
 
-import java.util.Date; 
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,11 +40,14 @@ public class BiodataModel {
 
 	private BootcampTestTypeModel bootcampTestTypeModel;
 	private Long bootcampTestType;
+	
+	private AkunModel createdByUser;
+	private AkunModel modifiedByUser;
 
 	// AuditTrail////////////////////
 	private Long createdBy;
 	private Date createdOn;
-	private Integer modifiedBy;
+	private Long modifiedBy;
 	private Date modifiedOn;
 	private Integer active;
 	// AuditTrail/////////////////////
@@ -212,16 +215,16 @@ public class BiodataModel {
 	/* User Login ID */
 	@LastModifiedBy
 	@Column(name = "MODIFIED_BY", length = 11)
-	public Integer getModifiedBy() {
+	public Long getModifiedBy() {
 		return modifiedBy;
 	}
-	public void setModifiedBy(Integer modifiedBy) {
+	public void setModifiedBy(Long modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 
 	/* Tanggal Diupdate */
 	@LastModifiedDate
-	@Column(name = "MODIFIED_ON", nullable=false)
+	@Column(name = "MODIFIED_ON")
 	public Date getModifiedOn() {
 		return modifiedOn;
 	}
@@ -240,7 +243,7 @@ public class BiodataModel {
 		this.active = active;
 	}
 	
-	/* Bootcamp Test Type Join Table */
+	/* Bootcamp Test Type Join Table Bootcamp Test Type */
 	@ManyToOne
 	@JoinColumn(name = "BOOTCAMP_TEST_TYPE_ID", updatable = false, insertable = false)
 	public BootcampTestTypeModel getBootcampTestTypeModel() {
@@ -248,6 +251,26 @@ public class BiodataModel {
 	}
 	public void setBootcampTestTypeModel(BootcampTestTypeModel bootcampTestTypeModel) {
 		this.bootcampTestTypeModel = bootcampTestTypeModel;
+	}
+	
+	/* Created By Join Table Akun */
+	@ManyToOne
+	@JoinColumn(name="CREATED_BY",nullable=false, updatable=false, insertable=false)
+	public AkunModel getCreatedByUser() {
+		return createdByUser;
+	}
+	public void setCreatedByUser(AkunModel createdByUser) {
+		this.createdByUser = createdByUser;
+	}
+	
+	/* Modified By Join Table Akun */
+	@ManyToOne
+	@JoinColumn(name="MODIFIED_BY",nullable=false, updatable=false, insertable=false)
+	public AkunModel getModifiedByUser() {
+		return modifiedByUser;
+	}
+	public void setModifiedByUser(AkunModel modifiedByUser) {
+		this.modifiedByUser = modifiedByUser;
 	}
 
 }

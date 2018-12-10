@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.CategoryModel;
+import com.spring.miniproject.model.MenuModel;
 import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.model.RoleModel;
 import com.spring.miniproject.service.CategoryService;
+import com.spring.miniproject.service.MenuService;
 import com.spring.miniproject.service.RoleService;
 import com.spring.miniproject.service.SequenceService;
 
 @Controller
-public class CategoryController {
+public class CategoryController extends BaseController{
 	
 	@Autowired
 	private CategoryService categoryService;
@@ -27,10 +29,24 @@ public class CategoryController {
 	@Autowired
 	private SequenceService sequenceService;
 	
-	@RequestMapping(value="category")
-	public String category() {
-		String jsp = "category/category";
+	@Autowired
+	private MenuService menuService;
+	
+	public void aksesLogin(Model model) {
 		
+		model.addAttribute("username", this.getAkunModel().getName());
+		model.addAttribute("nameRole", this.getAkunModel().getRoleModel().getName());
+		
+		List<MenuModel> menuModelList = null;
+		Long idRole = this.getAkunModel().getRoleModel().getId();
+		menuModelList = this.menuService.selectMenuByRole(idRole);
+		model.addAttribute("menuModelList", menuModelList);
+	}
+	
+	@RequestMapping(value="category")
+	public String category(Model model) {
+		this.aksesLogin(model);
+		String jsp = "category/category";
 		return jsp;
 	}
 	
@@ -55,6 +71,8 @@ public class CategoryController {
 		categoryModel.setName(name);
 		categoryModel.setDescription(desc);
 		categoryModel.setIsActive(1);
+		Long createdBy = this.getAkunModel().getId();
+		categoryModel.setCreatedBy(createdBy);
 		
 		this.categoryService.create(categoryModel);;
 		model.addAttribute("categoryModel", categoryModel);
@@ -140,6 +158,8 @@ public class CategoryController {
 		CategoryModel categoryModel = new CategoryModel();
 		categoryModel = this.categoryService.searchById(Long.parseLong(id));		
 		categoryModel.setName(request.getParameter("name"));
+		Long modifiedBy = this.getAkunModel().getId();
+		categoryModel.setModifiedBy(modifiedBy);
 		
 		this.categoryService.update(categoryModel);
 		model.addAttribute("categoryModel", categoryModel);

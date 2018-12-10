@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
@@ -20,14 +22,26 @@ public class FeedbackModel {
 			pkColumnName="SEQUENCE_NAME", pkColumnValue="T_FEEDBACK_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize =1, initialValue=0)
 	private Long id;
+	@Column(name="TEST_ID")
 	private Long testId;
+	@Column(name="VERSION_ID")
 	private Long versionId;
 	@Column(name="JSON_FEEDBACK", length=5000)
 	private String jsonFeedback;
+	@Column(name="CREATED_ON")
 	private Date createdOn;
+	@Column(name="DELETED_ON")
 	private Date deletedOn;
+	@Column(name="IS_DELETE")
 	private Integer isDelete;
 	
+	//Join Column
+	@ManyToOne
+	@JoinColumn(name="CREATED_BY")
+	private AkunModel createdBy;
+	@ManyToOne
+	@JoinColumn(name="MODIFIED_BY")
+	private AkunModel deletedBy;
 	
 	public Long getId() {
 		return id;
@@ -70,6 +84,18 @@ public class FeedbackModel {
 	}
 	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
+	}
+	public AkunModel getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(AkunModel createdBy) {
+		this.createdBy = createdBy;
+	}
+	public AkunModel getDeletedBy() {
+		return deletedBy;
+	}
+	public void setDeletedBy(AkunModel deletedBy) {
+		this.deletedBy = deletedBy;
 	}
 	
 	

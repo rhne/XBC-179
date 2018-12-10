@@ -31,11 +31,11 @@ public class CategoryModel {
 		private Integer isActive;
 			
 		private Long createdBy;
-		private CategoryModel createdByUser;
+		private AkunModel createdByUser;
 		private Date createdOn;
 				
 		private Long modifiedBy;
-		private CategoryModel modifiedByUser;
+		private AkunModel modifiedByUser;
 		private Date modifiedOn;
 	//AuditTrail/////////////////////
 	
@@ -92,10 +92,10 @@ public class CategoryModel {
 	
 	@ManyToOne
 	@JoinColumn(name="CREATED_BY",nullable=true, updatable=false, insertable=false)
-	public CategoryModel getCreatedByUser() {
+	public AkunModel getCreatedByUser() {
 		return createdByUser;
 	}
-	public void setCreatedByUser(CategoryModel createdByUser) {
+	public void setCreatedByUser(AkunModel createdByUser) {
 		this.createdByUser = createdByUser;
 	}
 	
@@ -117,10 +117,10 @@ public class CategoryModel {
 	
 	@ManyToOne
 	@JoinColumn(name="MODIFIED_BY",nullable=true, updatable=false, insertable=false)
-	public CategoryModel getModifiedByUser() {
+	public AkunModel getModifiedByUser() {
 		return modifiedByUser;
 	}
-	public void setModifiedByUser(CategoryModel modifiedByUser) {
+	public void setModifiedByUser(AkunModel modifiedByUser) {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
