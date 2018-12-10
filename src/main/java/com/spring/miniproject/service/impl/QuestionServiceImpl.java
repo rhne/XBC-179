@@ -39,6 +39,7 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public void delete(QuestionModel questionModel) {
+		questionModel.setIsDelete(1);
 		this.questionDao.delete(questionModel);
 	}
 

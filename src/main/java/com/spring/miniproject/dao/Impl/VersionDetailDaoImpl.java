@@ -22,8 +22,6 @@ public class VersionDetailDaoImpl implements VersionDetailDao {
 	
 	@Override
 	public VersionDetailModel create(VersionDetailModel versionDetailModel) {
-		versionDetailModel.setCreatedOn(new Date());
-		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(versionDetailModel);
 		return versionDetailModel;

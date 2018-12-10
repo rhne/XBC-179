@@ -40,7 +40,7 @@ public class FeedbackModel {
 	@JoinColumn(name="CREATED_BY")
 	private AkunModel createdBy;
 	@ManyToOne
-	@JoinColumn(name="MODIFIED_BY")
+	@JoinColumn(name="DELETED_BY")
 	private AkunModel deletedBy;
 	
 	public Long getId() {
