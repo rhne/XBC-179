@@ -210,9 +210,17 @@ var roomArray = new Array;
 			return false;
 		});
 		$("#modal-room").on("submit","#form-room-tambah", function(){
-			var formData = $(this).serialize();
-			alert(formData);
-/*			$.ajax({
+			var room = {
+				code: $("#code").val(),
+				name: $("#name").val(),
+				capacity: $("#capacity").val(),
+				projector: $("#projector").val(),
+				notes: $("#notes").val()
+			};
+			roomArray.push(room);
+			
+			alert(JSON.stringify(room));
+		/*			$.ajax({
 				url:"room/create.json",
 				type:"get",
 				dataType:"json",
@@ -222,10 +230,8 @@ var roomArray = new Array;
 					$("#modal-alert1").modal("show");
 					listDataRoom();
 				}
-			});
+			}); */
 			return false;
-			
-			*/
 		});
 	});
 </script>

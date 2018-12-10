@@ -15,7 +15,7 @@
 			    			  <li class="divider"></li>
 			    <li><a id="${idlenewsModel.id}" class="btn-publish">Publish</a></li>
 			    <li class="divider"></li>
-			    <li><a id="${idlenewsModel.id}" class="btn-deactivate">Deactivate</a></li>
+			    <li><a id="${idlenewsModel.id}" class="btn-delete">Delete</a></li>
 			  </ul>
 			</div>
 		</td>	

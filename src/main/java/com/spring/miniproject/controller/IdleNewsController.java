@@ -109,11 +109,16 @@ public class IdleNewsController extends BaseController{
 	}
 	
 	@RequestMapping (value="idle_news/delete/save")
-	public String delete(HttpServletRequest request) {
+	public String deletesave(HttpServletRequest request, Model model) throws Exception{
 		String id = request.getParameter("id");
 		IdleNewsModel idlenewsModel = new IdleNewsModel();
 		idlenewsModel = this.idlenewsService.searchById(Long.parseLong(id));
+		idlenewsModel.setIsDeleted(1);
+		Long createdBy = this.getAkunModel().getId();
+		idlenewsModel.setDeletedBy(createdBy);
+		idlenewsModel.setDeletedOn(new Date());
 		this.idlenewsService.delete(idlenewsModel);
+		model.addAttribute("idlenewsModel", idlenewsModel);
 		
 		String jsp = "idle_news/idle_news";
 		return jsp;

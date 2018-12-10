@@ -53,6 +53,9 @@ public class RoomController extends BaseController{
 	public String tambahroom(Model model) {
 		this.aksesLogin(model);
 		this.listDataOffice(model);
+		String codeAuto = "";
+		codeAuto = this.codeRoomGenerator();
+		model.addAttribute("codeAuto", codeAuto);
 		String jsp = "office/room";
 		return jsp;
 	}	

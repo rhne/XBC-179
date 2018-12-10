@@ -5,7 +5,7 @@
 		<div class="form-group">
 			<label class="control-label col-md-3" for="code">Code</label>
 			<div class="col-md-8">
-				<input type="text" id="code" name="code" class="form-control">
+				<input type="text" id="code" name="code" class="form-control" value="${codeAuto}" >
 			</div>
 		</div>
 		<div class="form-group">
@@ -23,8 +23,8 @@
 			<div class="form-group">
 	<label class="control-label col-md-3" for="token">Any Projector</label>
 		<div class="col-md-8">
-			<input type="radio" id="true" name="projector" value="1"/>True 
-			<input type="radio" id="false" name="projector" value="0"/>False
+			<input type="radio" id="projector" name="projector" value="1"/>True 
+			<input type="radio" id="projector" name="projector" value="0"/>False
 		</div>
 	</div>
 		<div class="form-group">

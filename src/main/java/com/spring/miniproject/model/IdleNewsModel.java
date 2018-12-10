@@ -42,6 +42,10 @@ public class IdleNewsModel {
 		private Long modifiedBy;
 		private AkunModel modifiedByUser;
 		private Date modifiedOn;
+		
+		private Long deletedBy;
+		private AkunModel deletedByUser;
+		private Date deletedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
@@ -128,6 +132,30 @@ public class IdleNewsModel {
 	}
 	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
+	}
+	@Column(name="DELETED_BY")
+	public Long getDeletedBy() {
+		return deletedBy;
+	}
+	public void setDeletedBy(Long deletedBy) {
+		this.deletedBy = deletedBy;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="DELETED_BY",nullable=true, updatable=false, insertable=false)
+	public AkunModel getDeletedByUser() {
+		return deletedByUser;
+	}
+	public void setDeletedByUser(AkunModel deletedByUser) {
+		this.deletedByUser = deletedByUser;
+	}
+	
+	@Column(name="DELETED_ON")
+	public Date getDeletedOn() {
+		return deletedOn;
+	}
+	public void setDeletedOn(Date deletedOn) {
+		this.deletedOn = deletedOn;
 	}
 	@Column(name="ID_CATEGORY")
 	public Long getIdCategory() {
