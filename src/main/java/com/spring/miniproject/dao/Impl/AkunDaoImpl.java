@@ -90,4 +90,18 @@ public class AkunDaoImpl implements AkunDao{
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(akunModel);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<AkunModel> searchValidation(String name) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String query = " select a from AkunModel a "
+					 + " where a.name = '%"+name+"%' ";
+		
+		List<AkunModel> akunModelList = new ArrayList<AkunModel>();
+		akunModelList = session.createQuery(query).list();
+		
+		return akunModelList;
+	}
 }

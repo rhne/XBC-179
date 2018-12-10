@@ -5,7 +5,8 @@
 		<h3 class="box-title">Menu Access</h3>
 		<div class="box-tools">
 			<div class="input-group input-group-sm" style="width: 200px;'">
-				<select class="form-control" id="nameCari" name="table_search" class="form-control pull-right" >
+				<select class="form-control" id="nameCari" name="table_search" class="form-control pull-right">
+					<option selected disabled hidden>Search by Role</option>
 					<c:forEach items="${roleModelList}" var="roleModel">
 						<option value="${roleModel.id}">${roleModel.name}</option>		
 					</c:forEach>
@@ -119,7 +120,7 @@
 			return false;
 		});
 		
-		/* $("#nameCari").on("load", function(){
+		$("#nameCari").on("change", function(){
 			var nameCari = document.getElementById("nameCari").value;
 			$.ajax({
 				url:"menuaccess/search/name.html",
@@ -131,23 +132,8 @@
 				}
 			});
 			return false;
-		}); */
+		});
 		
-		function showDetail(str) {
-			  var xhttp; 
-			  if (str == "") {
-			    document.getElementById("nameCari").innerHTML = "";
-			    return;
-			  }
-			  xhttp = new XMLHttpRequest();
-			  xhttp.onreadystatechange = function() {
-			    if (this.readyState == 4 && this.status == 200) {
-			    document.getElementById("nameCari").innerHTML = this.responseText;
-			    }
-			  };
-			  xhttp.open("GET", "menuaccess/search/name.html?q="+str, true);
-			  xhttp.send();
-			}
 		
 		$("#list-data-menu-akses").on("click", "#btn-delete", function(){
 			var id = $(this).val();

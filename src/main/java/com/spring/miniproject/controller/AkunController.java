@@ -136,6 +136,14 @@ public class AkunController extends BaseController{
 		return jsp;
 	}
 	
+	@RequestMapping(value="user/validation")
+	public void userValidateName(HttpServletRequest request, Model model) {
+		String name = request.getParameter("name");
+		List<AkunModel> akunModelList = new ArrayList<AkunModel>();
+		akunModelList = this.akunService.searchValidation(name);
+		model.addAttribute("akunModelList", akunModelList);
+	}
+	
 	private void listDataRole(Model model) {
 		List<RoleModel> roleModelList = new ArrayList<RoleModel>();
 		roleModelList = this.roleService.select();

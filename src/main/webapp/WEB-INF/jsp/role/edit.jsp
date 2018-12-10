@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <form action = "#" method = "get" id="form-role-edit" class="form-horizontal">
-<div class="form-group">
 	<input type="hidden" id="id" name="id" value="${roleModel.id}" />
 	<div class="form-group">
 		<label class="control-label col-md-3" for="idRole">CODE</label>
@@ -25,6 +24,6 @@
 
 	<div class="modal-footer">
 		<button type="submit" class="btn btn-primary btn-sm">Save</button>
+		<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancel</button>
 	</div>
-</div>
 </form>
