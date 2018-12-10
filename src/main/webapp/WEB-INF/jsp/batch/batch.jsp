@@ -26,7 +26,7 @@
 		</table>
 	</div>
 
-<div class"modal fade" id="modal-input">
+<div class="modal fade" id="modal-input">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header" style="background-color:#605ca8;">

@@ -1,6 +1,7 @@
 package com.spring.miniproject.model;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,9 +47,8 @@ public class TestimonyModel {
 	@Column(name="DELETED_BY")
 	private String deletedBy;
 	
-	@UpdateTimestamp
 	@Column(name="DELETED_ON")
-	private LocalDateTime deletedOn;
+	private Date deletedOn;
 	
 	@Column(name="IS_DELETED")
 	private Integer isDeleted;
@@ -125,11 +125,11 @@ public class TestimonyModel {
 		this.deletedBy = deletedBy;
 	}
 
-	public LocalDateTime getDeletedOn() {
+	public Date getDeletedOn() {
 		return deletedOn;
 	}
 
-	public void setDeletedOn(LocalDateTime deletedOn) {
+	public void setDeletedOn(Date deletedOn) {
 		this.deletedOn = deletedOn;
 	}
 	

@@ -6,7 +6,7 @@
 				<input type="text" id="txt-search" name="search-box" class="form-control pull-right" placeholder="Search by Name">
 				<div class="input-group-btn">
 					<button type="button" id="btn-search" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="search"><i class="fa fa-search"></i></button>
-					<button type="button" id="btn-add" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="add new"><i class="fa fa-plus"></i></button>
+					<button type="button" id="btn-add" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="add new"><i class="fa fa-plus"></i></button>
 				</div>
 			</div>
 		</div>
@@ -15,8 +15,8 @@
 		<table class="table table-striped table-hover" id="trainer-table">
 			<thead>
 				<tr>
-					<td>NAME</td>
-					<td>STATUS</td>
+					<td><b>NAME</b></td>
+					<td><b>STATUS</b></td>
 					<td></td>
 				</tr>
 			</thead>
@@ -37,10 +37,21 @@
 	</div>
 </div>
 
-<div class="modal fade" id="modal-alert-deactive">
+<div class="modal fade" id="modal-deactive">
 	<div class="modal-dialog">
 		<div class="alert alert-warning alert-dismissible">
-        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Data deactivated !</h4>
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Deactive</h4>
+            <div class="modal-body">
+			</div>
+       	</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modal-alert-deactive">
+	<div class="modal-dialog">
+		<div class="alert alert-danger alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Success !</h4>
+        	Data Successfully Deactivated
             <div class="modal-body">
 			
 			</div>
@@ -67,6 +78,7 @@
 			type: "get",
 			dataType: "html",
 			success: function(result){
+				$("#modal-input").find(".modal-title").html("Add Trainer");
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
 			}
@@ -110,6 +122,7 @@
 			dataType : "html",
 			data : {idEdit : idEdit},
 			success : function(result){
+				$("#modal-input").find(".modal-title").html("Edit Trainer")
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
 			}
@@ -133,17 +146,33 @@
 	});
 	
 	$("#list-data-trainer").on("click", ".btn-deactive", function(){
+		var idTrainer = $(this).prop('id');
 		$.ajax({
 			url : "trainer/deactiveTrainer.html",
 			type : "get",
 			dataType : "html",
+			data : {idDeactive : idTrainer},
 			success : function(result){ 
+				$("#modal-deactive").modal("show");
+				$("#modal-deactive").find(".modal-body").html(result);
+			}
+		});
+	});
+	
+	$("#modal-deactive").on("submit", "#form-deactive-trainer", function(){
+		$.ajax({
+			url : "trainer/deactiveTrainer/save.json",
+			type : "get",
+			dataType : "json",
+			data : $(this).serialize(),
+			success : function(result){
+				$("#modal-alert-deactive").find(".modal-title")
 				$("#modal-alert-deactive").modal("show");
-				$("#modal-input").find(".modal-body").html(result);
-				$("#modal-input").modal("show");
+				$("#modal-deactive").modal("hide");
 				listDataTrainer();
 			}
 		});
+		return false;
 	});
 	
 </script>
