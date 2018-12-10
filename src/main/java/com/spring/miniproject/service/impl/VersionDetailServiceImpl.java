@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.miniproject.dao.VersionDetailDao;
+import com.spring.miniproject.model.QuestionModel;
 import com.spring.miniproject.model.VersionDetailModel;
 import com.spring.miniproject.service.VersionDetailService;
 
@@ -25,6 +26,11 @@ public class VersionDetailServiceImpl implements VersionDetailService {
 	@Override
 	public List<VersionDetailModel> searchAll() {
 		return this.versionDetailDao.searchAll();
+	}
+
+	@Override
+	public List<QuestionModel> getQuestionsByVersionId(Long versionId) {
+		return this.versionDetailDao.getQuestionsByVersionId(versionId);
 	}
 
 }

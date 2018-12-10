@@ -48,7 +48,7 @@ public class TestModel {
 		this.id = id;
 	}
 	
-	@Column(name="NAMA")
+	@Column(name="NAME")
 	public String getName() {
 		return name;
 	}

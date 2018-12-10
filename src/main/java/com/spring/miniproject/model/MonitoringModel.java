@@ -44,19 +44,19 @@ public class MonitoringModel {
 	private Integer isDelete;
 	// AuditTrail/////////////////////
 
+	/* Auto Increment */
 	@Id
-	@Column(name = "ID", nullable = false)
+	@Column(name = "ID", nullable = false, length = 11)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "M_MONITORING")
 	@TableGenerator(name = "M_MONITORING", table = "S_SEQUENCE", pkColumnName = "SEQUENCE_NAME", pkColumnValue = "M_MONITORING_ID", valueColumnName = "SEQUENCE_VALUE", allocationSize = 1, initialValue = 0)
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	@Column(name = "BIODATA_ID", nullable = false)
+	@Column(name = "BIODATA_ID", nullable = false, length = 11)
 	public Long getTestId() {
 		return testId;
 	}
@@ -68,25 +68,22 @@ public class MonitoringModel {
 	public Date getIdleDate() {
 		return idleDate;
 	}
-
 	public void setIdleDate(Date idleDate) {
 		this.idleDate = idleDate;
 	}
 
-	@Column(name = "LAST_PROJECT")
+	@Column(name = "LAST_PROJECT", length = 50)
 	public String getLastProject() {
 		return lastProject;
 	}
-
 	public void setLastProject(String lastProject) {
 		this.lastProject = lastProject;
 	}
 
-	@Column(name = "IDLE_REASON")
+	@Column(name = "IDLE_REASON", length = 255)
 	public String getIdleReason() {
 		return idleReason;
 	}
-
 	public void setIdleReason(String idleReason) {
 		this.idleReason = idleReason;
 	}
@@ -95,35 +92,32 @@ public class MonitoringModel {
 	public Date getPlacementDate() {
 		return placementDate;
 	}
-
 	public void setPlacementDate(Date placementDate) {
 		this.placementDate = placementDate;
 	}
 
-	@Column(name = "PLACEMENT_AT")
+	@Column(name = "PLACEMENT_AT", length = 50)
 	public String getPlacementAt() {
 		return placementAt;
 	}
-
 	public void setPlacementAt(String placementAt) {
 		this.placementAt = placementAt;
 	}
 
-	@Column(name = "NOTES")
+	@Column(name = "NOTES", length = 255)
 	public String getNotes() {
 		return notes;
 	}
-
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
 
+	/* User Login ID */
 	@CreatedBy
-	@Column(name = "CREATED_BY")
+	@Column(name = "CREATED_BY", nullable = false, length = 11)
 	public Long getCreatedBy() {
 		return createdBy;
 	}
-
 	public void setCreatedBy(Long createdBy) {
 		this.createdBy = createdBy;
 	}
@@ -133,17 +127,16 @@ public class MonitoringModel {
 	public Date getCreatedOn() {
 		return createdOn;
 	}
-
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 
+	/* User Login ID */
 	@LastModifiedBy
-	@Column(name = "MODIFIED_BY")
+	@Column(name = "MODIFIED_BY", length = 11)
 	public Integer getModifiedBy() {
 		return modifiedBy;
 	}
-
 	public void setModifiedBy(Integer modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
@@ -153,16 +146,15 @@ public class MonitoringModel {
 	public Date getModifiedOn() {
 		return modifiedOn;
 	}
-
 	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
 
-	@Column(name = "DELETED_BY")
+	/* User Login ID */
+	@Column(name = "DELETED_BY", length = 11)
 	public Long getDeletedBy() {
 		return deletedBy;
 	}
-
 	public void setDeletedBy(Long deletedBy) {
 		this.deletedBy = deletedBy;
 	}
@@ -171,7 +163,6 @@ public class MonitoringModel {
 	public Date getDeletedOn() {
 		return deletedOn;
 	}
-
 	public void setDeletedOn(Date deletedOn) {
 		this.deletedOn = deletedOn;
 	}
@@ -180,17 +171,16 @@ public class MonitoringModel {
 	public Integer getIsDelete() {
 		return isDelete;
 	}
-
 	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
 	}
 
+	/* Biodata Join Table */
 	@ManyToOne
 	@JoinColumn(name = "BIODATA_ID", nullable = false, updatable = false, insertable = false)
 	public BiodataModel getBiodataModel() {
 		return biodataModel;
 	}
-
 	public void setBiodataModel(BiodataModel biodataModel) {
 		this.biodataModel = biodataModel;
 	}

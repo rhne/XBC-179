@@ -49,8 +49,9 @@ public class BiodataModel {
 	private Integer active;
 	// AuditTrail/////////////////////
 
+	/* Auto Increment */
 	@Id
-	@Column(name = "ID", nullable = false)
+	@Column(name = "ID", nullable = false, length = 11)
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "B_BIODATA")
 	@TableGenerator(name = "B_BIODATA", table = "S_SEQUENCE", pkColumnName = "SEQUENCE_NAME", pkColumnValue = "B_BIODATA_ID", valueColumnName = "SEQUENCE_VALUE", allocationSize = 1, initialValue = 0)
 	public Long getId() {
@@ -60,7 +61,7 @@ public class BiodataModel {
 		this.id = id;
 	}
 
-	@Column(name = "NAME", nullable = false)
+	@Column(name = "NAME", nullable = false, length = 255)
 	public String getName() {
 		return name;
 	}
@@ -68,7 +69,7 @@ public class BiodataModel {
 		this.name = name;
 	}
 
-	@Column(name = "GENDER")
+	@Column(name = "GENDER", length = 255)
 	public String getGender() {
 		return gender;
 	}
@@ -76,7 +77,7 @@ public class BiodataModel {
 		this.gender = gender;
 	}
 
-	@Column(name = "LAST_EDUCATION", nullable = false)
+	@Column(name = "LAST_EDUCATION", nullable = false, length = 100)
 	public String getLastEducation() {
 		return lastEducation;
 	}
@@ -84,7 +85,7 @@ public class BiodataModel {
 		this.lastEducation = lastEducation;
 	}
 
-	@Column(name = "GRADUATION_YEAR", nullable = false)
+	@Column(name = "GRADUATION_YEAR", nullable = false, length = 5)
 	public String getGraduationYear() {
 		return graduationYear;
 	}
@@ -92,7 +93,7 @@ public class BiodataModel {
 		this.graduationYear = graduationYear;
 	}
 
-	@Column(name = "EDUCATIONAL_LEVEL", nullable = false)
+	@Column(name = "EDUCATIONAL_LEVEL", nullable = false, length = 5)
 	public String getEducationalLevel() {
 		return educationalLevel;
 	}
@@ -100,7 +101,7 @@ public class BiodataModel {
 		this.educationalLevel = educationalLevel;
 	}
 
-	@Column(name = "MAJORS", nullable = false)
+	@Column(name = "MAJORS", nullable = false, length = 100)
 	public String getMajors() {
 		return majors;
 	}
@@ -108,7 +109,7 @@ public class BiodataModel {
 		this.majors = majors;
 	}
 
-	@Column(name = "GPA", nullable = false)
+	@Column(name = "GPA", nullable = false, length = 5)
 	public String getGpa() {
 		return gpa;
 	}
@@ -116,7 +117,7 @@ public class BiodataModel {
 		this.gpa = gpa;
 	}
 
-	@Column(name = "BOOTCAMP_TEST_TYPE_ID")
+	@Column(name = "BOOTCAMP_TEST_TYPE_ID", length = 11)
 	public Long getBootcampTestType() {
 		return bootcampTestType;
 	}
@@ -124,7 +125,7 @@ public class BiodataModel {
 		this.bootcampTestType = bootcampTestType;
 	}
 
-	@Column(name = "IQ")
+	@Column(name = "IQ", length = 4)
 	public Integer getIq() {
 		return iq;
 	}
@@ -132,7 +133,7 @@ public class BiodataModel {
 		this.iq = iq;
 	}
 
-	@Column(name = "DU")
+	@Column(name = "DU", length = 10)
 	public String getDu() {
 		return du;
 	}
@@ -140,7 +141,7 @@ public class BiodataModel {
 		this.du = du;
 	}
 
-	@Column(name = "ARITHMETIC")
+	@Column(name = "ARITHMETIC", length = 5)
 	public Integer getArithmetic() {
 		return arithmetic;
 	}
@@ -148,7 +149,7 @@ public class BiodataModel {
 		this.arithmetic = arithmetic;
 	}
 
-	@Column(name = "NESTED_LOGIC")
+	@Column(name = "NESTED_LOGIC", length = 5)
 	public Integer getNestedLogic() {
 		return nestedLogic;
 	}
@@ -156,7 +157,7 @@ public class BiodataModel {
 		this.nestedLogic = nestedLogic;
 	}
 
-	@Column(name = "JOIN_TABLE")
+	@Column(name = "JOIN_TABLE", length = 5)
 	public Integer getJoinTable() {
 		return joinTable;
 	}
@@ -164,7 +165,7 @@ public class BiodataModel {
 		this.joinTable = joinTable;
 	}
 
-	@Column(name = "TRO")
+	@Column(name = "TRO", length = 50)
 	public String getTro() {
 		return tro;
 	}
@@ -172,7 +173,7 @@ public class BiodataModel {
 		this.tro = tro;
 	}
 	
-	@Column(name = "NOTES")
+	@Column(name = "NOTES", length = 100)
 	public String getNotes() {
 		return notes;
 	}
@@ -180,16 +181,17 @@ public class BiodataModel {
 		this.notes = notes;
 	}
 
-	@Column(name = "INTERVIEWER")
+	@Column(name = "INTERVIEWER", length = 100)
 	public String getInterviewer() {
 		return interviewer;
 	}
 	public void setInterviewer(String interviewer) {
 		this.interviewer = interviewer;
 	}
-
+	
+	/* User Login ID */
 	@CreatedBy
-	@Column(name = "CREATED_BY")
+	@Column(name = "CREATED_BY", nullable=false, length = 11)
 	public Long getCreatedBy() {
 		return createdBy;
 	}
@@ -197,6 +199,7 @@ public class BiodataModel {
 		this.createdBy = createdBy;
 	}
 
+	/* Tanggal Dibuat */
 	@CreationTimestamp
 	@Column(name = "CREATED_ON", nullable=false)
 	public Date getCreatedOn() {
@@ -206,8 +209,9 @@ public class BiodataModel {
 		this.createdOn = createdOn;
 	}
 
+	/* User Login ID */
 	@LastModifiedBy
-	@Column(name = "MODIFIED_BY")
+	@Column(name = "MODIFIED_BY", length = 11)
 	public Integer getModifiedBy() {
 		return modifiedBy;
 	}
@@ -215,6 +219,7 @@ public class BiodataModel {
 		this.modifiedBy = modifiedBy;
 	}
 
+	/* Tanggal Diupdate */
 	@LastModifiedDate
 	@Column(name = "MODIFIED_ON", nullable=false)
 	public Date getModifiedOn() {
@@ -224,6 +229,9 @@ public class BiodataModel {
 		this.modifiedOn = modifiedOn;
 	}
 
+	/* active : 1
+	 * not active : 0
+	 * */
 	@Column(name = "ACTIVE")
 	public Integer getActive() {
 		return active;
@@ -232,12 +240,12 @@ public class BiodataModel {
 		this.active = active;
 	}
 	
+	/* Bootcamp Test Type Join Table */
 	@ManyToOne
 	@JoinColumn(name = "BOOTCAMP_TEST_TYPE_ID", updatable = false, insertable = false)
 	public BootcampTestTypeModel getBootcampTestTypeModel() {
 		return bootcampTestTypeModel;
 	}
-
 	public void setBootcampTestTypeModel(BootcampTestTypeModel bootcampTestTypeModel) {
 		this.bootcampTestTypeModel = bootcampTestTypeModel;
 	}

@@ -1,6 +1,6 @@
 package com.spring.miniproject.controller;
 
-import java.util.ArrayList;   
+import java.util.ArrayList;    
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +16,7 @@ import com.spring.miniproject.service.MenuService;
 import com.spring.miniproject.service.SequenceService;
 
 @Controller
-public class MenuController {
+public class MenuController extends BaseController{
 	
 	@Autowired
 	private MenuService menuService;
@@ -24,8 +24,20 @@ public class MenuController {
 	@Autowired
 	private SequenceService sequenceService;
 	
+	public void aksesLogin(Model model) {
+		
+		model.addAttribute("username", this.getAkunModel().getName());
+		model.addAttribute("nameRole", this.getAkunModel().getRoleModel().getName());
+		
+		List<MenuModel> menuModelList = null;
+		Long idRole = this.getAkunModel().getRoleModel().getId();
+		menuModelList = this.menuService.selectMenuByRole(idRole);
+		model.addAttribute("menuModelList", menuModelList);
+	}
+	
 	@RequestMapping(value="menu")
-	public String menu() {
+	public String menu(Model model) {
+		this.aksesLogin(model);
 		String jsp = "menu/menu";
 		
 		return jsp;
@@ -36,7 +48,6 @@ public class MenuController {
 		String menuAuto = "";
 		menuAuto = this.kodeGenerator();
 		model.addAttribute("menuAuto", menuAuto);
-		
 		this.listDataMenu(model);
 		
 		String jsp = "menu/tambah";
@@ -70,6 +81,10 @@ public class MenuController {
 		menuModel.setMenuorder(menuorder);
 		menuModel.setMenuparent(menuparent);
 		menuModel.setMenuurl(menuurl);
+		
+		//audit trail
+		Long createdBy = this.getAkunModel().getId();
+		menuModel.setCreatedBy(createdBy);
 		menuModel.setCreatedOn(new Date());
 		menuModel.setActive(1);
 		
@@ -125,6 +140,10 @@ public class MenuController {
 		menuModel.setMenuorder(menuorder);
 		menuModel.setMenuparent(menuparent);
 		menuModel.setMenuurl(menuurl);
+		
+		//audit trail
+		Long modifiedBy = this.getAkunModel().getId();
+		menuModel.setModifiedBy(modifiedBy);
 		menuModel.setModifiedOn(new Date());
 		
 		this.menuService.update(menuModel);
@@ -167,10 +186,15 @@ public class MenuController {
 	@RequestMapping(value="menu/deactivate/save")
 	public String menuDeactivateSave(HttpServletRequest request, Model model) {
 		Long id = Long.valueOf(request.getParameter("id"));
-		
+				
 		MenuModel menuModel = new MenuModel();
 		menuModel = this.menuService.searchById(id);
 	
+		//audit trail
+		Long modifiedBy = this.getAkunModel().getId();
+		menuModel.setModifiedBy(modifiedBy);
+		menuModel.setModifiedOn(new Date());
+				
 		this.menuService.deactivate(menuModel);
 		
 		String jsp = "user/user";

@@ -3,26 +3,26 @@ package com.spring.miniproject.dao;
 import java.util.List;
 
 import com.spring.miniproject.model.BiodataModel;
-import com.spring.miniproject.model.BiodataModel;
+
 
 public interface BiodataDao {
 	
-	/*Biodata Add*/
+	/* Biodata Add */
 	public void create(BiodataModel biodataModel);
 	
-	/*Biodata List*/
+	/* Biodata List */
 	public List<BiodataModel> searchAll();
 	
-	/*Select Biodata to Modify*/
+	/* Select Biodata ID to Modify */
 	public BiodataModel searchById(Long id);
 	
-	/*Biodata Edit*/
+	/* Biodata Edit */
 	public void update(BiodataModel biodataModel);
 	
-	/*Biodata Search*/
+	/* Biodata Search */
 	public List<BiodataModel> searchByLikeName(String name);
 	
-	/*Biodata Deactivate*/
+	/* Biodata Deactivate */
 	public void deactivate(BiodataModel biodataModel);
 	
 }
