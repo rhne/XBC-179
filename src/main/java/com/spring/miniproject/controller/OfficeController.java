@@ -11,18 +11,35 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.miniproject.model.AkunModel;
+import com.spring.miniproject.model.MenuModel;
 import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.model.QuestionModel;
+import com.spring.miniproject.service.MenuService;
 import com.spring.miniproject.service.OfficeService;
 
 @Controller
-public class OfficeController {
+public class OfficeController extends BaseController{
 
+	@Autowired
+	private MenuService menuService;
+	
 	@Autowired
 	private OfficeService officeService;
 	
+	public void aksesLogin(Model model) {
+		
+		model.addAttribute("username", this.getAkunModel().getName());
+		model.addAttribute("nameRole", this.getAkunModel().getRoleModel().getName());
+		
+		List<MenuModel> menuModelList = null;
+		Long idRole = this.getAkunModel().getRoleModel().getId();
+		menuModelList = this.menuService.selectMenuByRole(idRole);
+		model.addAttribute("menuModelList", menuModelList);
+	}
+	
 	@RequestMapping(value="office")
 	public String user(Model model) {
+		this.aksesLogin(model);
 		String jsp = "office/office";
 		return jsp;
 	}
@@ -34,7 +51,6 @@ public class OfficeController {
 		return jsp;
 	}	
 		
-	
 	@RequestMapping(value="office/create")
 	public String create(HttpServletRequest request, Model model) throws Exception{
 		
@@ -45,6 +61,8 @@ public class OfficeController {
 		officeModel.setAddress(request.getParameter("address"));
 		officeModel.setNotes(request.getParameter("notes"));
 		officeModel.setIsActive(1);
+		Long createdBy = this.getAkunModel().getId();
+		officeModel.setCreatedBy(createdBy);
 		
 		this.officeService.create(officeModel);
 		model.addAttribute("officeModel", officeModel);

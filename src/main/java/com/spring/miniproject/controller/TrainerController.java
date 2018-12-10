@@ -119,11 +119,30 @@ public class TrainerController {
 	}
 	
 	@RequestMapping(value="trainer/deactiveTrainer")
-	public String deactiveTrainer(HttpServletRequest request) {
+	public String deactiveTrainer(HttpServletRequest request, Model model) {
+		Long idTrainer = new Long(request.getParameter("idDeactive"));
+		TrainerModel trainerModel = new TrainerModel();
+		trainerModel = this.trainerService.searchById(idTrainer);
+		model.addAttribute("trainerModel", trainerModel);
+		
+		this.listTrainer(model);
+		
+		String jsp = "trainer/deactiveTrainer";
+		return jsp;
+	}
+	
+	@RequestMapping(value="trainer/deactiveTrainer/save")
+	public String deactiveSaveTrainer(HttpServletRequest request, Model model) {
 		Long idTrainer = new Long(request.getParameter("idTrainer"));
 		TrainerModel trainerModel = new TrainerModel();
 		trainerModel = this.trainerService.searchById(idTrainer);
+		model.addAttribute("trainerModel", trainerModel);
 		
+		String name = request.getParameter("trainerName");
+		String notes = request.getParameter("trainerNote");
+		
+		trainerModel.setName(name);
+		trainerModel.setNotes(notes);
 		trainerModel.setActive(0);
 		
 		this.trainerService.edit(trainerModel);

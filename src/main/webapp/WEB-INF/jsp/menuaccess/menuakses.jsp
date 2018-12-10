@@ -119,7 +119,7 @@
 			return false;
 		});
 		
-		$("#nameCari").on("load", function(){
+		/* $("#nameCari").on("load", function(){
 			var nameCari = document.getElementById("nameCari").value;
 			$.ajax({
 				url:"menuaccess/search/name.html",
@@ -131,7 +131,23 @@
 				}
 			});
 			return false;
-		});
+		}); */
+		
+		function showDetail(str) {
+			  var xhttp; 
+			  if (str == "") {
+			    document.getElementById("nameCari").innerHTML = "";
+			    return;
+			  }
+			  xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			    document.getElementById("nameCari").innerHTML = this.responseText;
+			    }
+			  };
+			  xhttp.open("GET", "menuaccess/search/name.html?q="+str, true);
+			  xhttp.send();
+			}
 		
 		$("#list-data-menu-akses").on("click", "#btn-delete", function(){
 			var id = $(this).val();

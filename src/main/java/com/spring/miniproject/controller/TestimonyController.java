@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -139,11 +140,13 @@ public class TestimonyController {
 		
 		TestimonyModel testimonyModel = new TestimonyModel();
 		testimonyModel = this.testimonyService.searchById(idTestimony);
+		model.addAttribute("testimonyModel", testimonyModel);
 		
 		testimonyModel.setIdTestimony(idTestimony);
 		testimonyModel.setTitle(title);
 		testimonyModel.setContent(content);
 		testimonyModel.setIsDeleted(isDeleted);
+		testimonyModel.setDeletedOn(new Date());
 		
 		this.testimonyService.edit(testimonyModel);
 		

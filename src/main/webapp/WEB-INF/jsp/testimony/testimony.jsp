@@ -6,7 +6,7 @@
 				<input type="text" id="txt-search" name="search-box" class="form-control pull-right" placeholder="Search by Title">
 				<div class="input-group-btn">
 					<button type="button" id="btn-search" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="search"><i class="fa fa-search"></i></button>
-					<button type="button" id="btn-add" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="add new"><i class="fa fa-plus"></i></button>
+					<button type="button" id="btn-add" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="add new"><i class="fa fa-plus"></i></button>
 				</div>
 			</div>
 		</div>
@@ -15,7 +15,7 @@
 		<table class="table table-striped table-hover" id="testimony-table">
 			<thead>
 				<tr>
-					<td>TITLE</td>
+					<td><b>TITLE</b></td>
 					<td></td>
 				</tr>
 			</thead>
@@ -54,6 +54,16 @@
 	</div>
 </div>
 
+<div class="modal fade" id="modal-delete">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Delete</h4>
+            <div class="modal-body">
+			</div>
+       	</div>
+	</div>
+</div>
+
 <div class="modal fade" id = "modal-alert-delete">
 	<div class="modal-dialog">
 		<div class="alert alert-danger alert-dismissible">
@@ -78,12 +88,12 @@
 	
 	$(document).ready(function(){
 	$("#btn-add").on("click", function() {
-		alert("add new");
 		$.ajax({
 			url:"testimony/addTestimony.html",
 			type: "get",
 			dataType: "html",
 			success: function(result){
+				$("#modal-input").find(".modal-title").html("Add New Testimony");
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
 			}
@@ -115,6 +125,7 @@
 			dataType : "html",
 			data : {idEdit : idEdit},
 			success : function(result){
+				$("#modal-input").find(".modal-title").html("Edit Testimony");
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
 			}
@@ -159,13 +170,13 @@
 			dataType : "html",
 			data : {idDelete : idDelete},
 			success : function(result){
-				$("#modal-input").find(".modal-body").html(result);
-				$("#modal-input").modal("show");
+				$("#modal-delete").find(".modal-body").html(result);
+				$("#modal-delete").modal("show");
 			}
 		});
 	});
 	
-	$("#modal-input").on("submit", "#form-delete-testimony", function(){
+	$("#modal-delete").on("submit", "#form-delete-testimony", function(){
 		$.ajax({
 			url : "testimony/deleteTestimony/save.json",
 			type : "get",
@@ -174,7 +185,7 @@
 			success : function(result){
 				$("#modal-alert-delete").find(".modal-title");  
 				$("#modal-alert-delete").modal("show");
-				$("#modal-input").modal("hide");
+				$("#modal-delete").modal("hide");
 				listDataTestimony();
 			}
 		});

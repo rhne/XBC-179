@@ -13,6 +13,6 @@
 	
 	<div class="modal-footer">
 		<input type="submit" class="btn btn-primary btn-sm" value="Save">
-		<input type="button" class="btn btn-primary btn-sm" data-dismiss="modal" value="Cancel">
+		<input type="button" class="btn btn-default btn-sm" data-dismiss="modal" value="Cancel">
 	</div>
 </form>

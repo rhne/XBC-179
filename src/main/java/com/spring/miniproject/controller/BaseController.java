@@ -1,5 +1,7 @@
 package com.spring.miniproject.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +18,7 @@ public class BaseController {
 	@Autowired
 	private AkunService akunService;
 	
-	public <Akun> AkunModel getAkunModel() {
+	public AkunModel getAkunModel() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		AkunModel akunModel = new AkunModel ();
 		if (auth!=null) {

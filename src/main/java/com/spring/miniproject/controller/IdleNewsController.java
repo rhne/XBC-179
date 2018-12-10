@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
-import java.util.ArrayList;     
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,24 +11,39 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.IdleNewsModel;
-import com.spring.miniproject.model.OfficeModel;
+import com.spring.miniproject.model.MenuModel;
 import com.spring.miniproject.service.CategoryService;
 import com.spring.miniproject.service.IdleNewsService;
+import com.spring.miniproject.service.MenuService;
 
 @Controller
-public class IdleNewsController {
+public class IdleNewsController extends BaseController{
 
+	@Autowired
+	private MenuService menuService;
+	
 	@Autowired
 	private IdleNewsService idlenewsService;
 	
 	@Autowired
 	private CategoryService categoryService;
 	
+	public void aksesLogin(Model model) {
+		
+		model.addAttribute("username", this.getAkunModel().getName());
+		model.addAttribute("nameRole", this.getAkunModel().getRoleModel().getName());
+		
+		List<MenuModel> menuModelList = null;
+		Long idRole = this.getAkunModel().getRoleModel().getId();
+		menuModelList = this.menuService.selectMenuByRole(idRole);
+		model.addAttribute("menuModelList", menuModelList);
+	}
+	
 	@RequestMapping(value="idle_news")
 	public String user(Model model) {
+		this.aksesLogin(model);
 		String jsp = "idle_news/idle_news";
 		return jsp;
 	}
@@ -47,6 +63,9 @@ public class IdleNewsController {
 		idlenewsModel.setIdCategory(Long.valueOf(request.getParameter("idCategory")));
 		idlenewsModel.setIsDeleted(0);
 		idlenewsModel.setIsPublish(0);
+		Long createdBy = this.getAkunModel().getId();
+		idlenewsModel.setCreatedBy(createdBy);
+		idlenewsModel.setCreatedOn(new Date());
 		
 		this.idlenewsService.create(idlenewsModel);
 		model.addAttribute("idlenewsModel", idlenewsModel);
@@ -120,6 +139,9 @@ public class IdleNewsController {
 		idlenewsModel.setTitle(request.getParameter("title"));		
 		idlenewsModel.setContent(request.getParameter("content"));
 		idlenewsModel.setIdCategory(Long.valueOf(request.getParameter("idCategory")));
+		Long modifiedBy = this.getAkunModel().getId();
+		idlenewsModel.setModifiedBy(modifiedBy);
+		idlenewsModel.setModifiedOn(new Date());
 		
 		this.idlenewsService.update(idlenewsModel);
 		model.addAttribute("idlenewsModel", idlenewsModel);

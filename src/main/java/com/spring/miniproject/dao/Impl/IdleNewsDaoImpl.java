@@ -30,7 +30,7 @@ public class IdleNewsDaoImpl implements IdleNewsDao{
 	@Override
 	public void create(IdleNewsModel idlenewsModel) {
 		// TODO Auto-generated method stub
-		idlenewsModel.setCreatedOn(new Date());
+		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(idlenewsModel);
 	}
@@ -64,7 +64,6 @@ public class IdleNewsDaoImpl implements IdleNewsDao{
 	@Override
 	public void update(IdleNewsModel idlenewsModel) {
 		// TODO Auto-generated method stub
-		idlenewsModel.setModifiedOn(new Date());
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(idlenewsModel);
 	}
