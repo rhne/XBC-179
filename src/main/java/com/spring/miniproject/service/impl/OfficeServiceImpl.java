@@ -19,9 +19,9 @@ public class OfficeServiceImpl implements OfficeService{
 	private OfficeDao officeDao;
 	
 	@Override
-	public void create(OfficeModel officeModel) {
+	public OfficeModel create(OfficeModel officeModel) {
 		// TODO Auto-generated method stub
-		this.officeDao.create(officeModel);
+		return this.officeDao.create(officeModel);
 	}
 	
 	public List<OfficeModel> searchAll() {

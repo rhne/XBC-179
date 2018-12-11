@@ -127,11 +127,23 @@ var roomArray = new Array;
 		});
 		
 		$("#modal-input").on("submit", "#form-office-tambah", function(){
+			var office = {
+				
+			};
+			
+			//alert(JSON.stringify(office));
 			$.ajax({
 				url:"office/create.json",
 				type:"get",
 				dataType:"json",
-				data:$(this).serialize(),
+				data: {
+					name: $("#office-name").val(),
+					phone: $("#phone").val(),
+					email: $("#email").val(),
+					address: $("#address").val(),
+					notes: $("#notes").val(),
+					rooms: JSON.stringify(roomArray)
+				},
 				success:function(result){
 					$("#modal-alert1").find(".modal-title");  
 					$("#modal-alert1").modal("show");
@@ -209,23 +221,38 @@ var roomArray = new Array;
 			});
 			return false;
 		});
+		
 		$("#modal-room").on("submit","#form-room-tambah", function(){
-			var formData = $(this).serialize();
-			alert(formData);
-/*			$.ajax({
-				url:"room/create.json",
-				type:"get",
-				dataType:"json",
-				data:$(this).serialize(),
-				success:function(result){
-					$("#modal-alert1").find(".modal-title");  
-					$("#modal-alert1").modal("show");
-					listDataRoom();
-				}
-			});
-			return false;
+			alert("asdf");
+			var room = {
+				code: $("#code").val(),
+				name: $("#name").val(),
+				capacity: $("#capacity").val(),
+				projector: $("#projector").val(),
+				notes: $("#notes").val()
+			};
+			roomArray.push(room);
+			populateRoomListTable();
+			alert(JSON.stringify(room));
 			
-			*/
+			$("#modal-room").modal("hide");
+			return false;
 		});
 	});
+	
+	function populateRoomListTable() {
+		var roomListTable = '<tr></tr>';
+		
+		for(i=0; i<roomArray.length; i++) {
+			roomListTable += '<tr><td>' + roomArray[i]['code'] + '</td>';
+			roomListTable += '<td>' + roomArray[i]['name'] + '</td>';
+			roomListTable += '<td>' + roomArray[i]['capacity'] + '</td>';
+			roomListTable += '<td><div class="btn-group"> <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown"> <span class="fa fa-bars"></span> <span class="sr-only">Toggle Dropdown</span> </button> <ul class="dropdown-menu" role="menu"> <li><a ';
+			roomListTable += 'id=' + JSON.stringify(roomArray[i]);
+			roomListTable += ' class="btn-delete-question">Delete</a></li> </ul></div></td>';
+			roomListTable += '</tr>';
+		}
+		
+		$("#modal-input").find("#list-data-room").html(roomListTable);
+	}
 </script>

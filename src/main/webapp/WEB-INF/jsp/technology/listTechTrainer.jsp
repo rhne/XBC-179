@@ -13,8 +13,8 @@
 		    <span class="sr-only">Toggle Dropdown</span>
 		  </button>
 		  <ul class="dropdown-menu" role="menu">
-		    <li><a id="${technologyTrainerModel.idTechTrainer}" class="btn-edit">Edit</a></li>
- 			<li><a id="${technologyTrainerModel.idTechTrainer}" class="btn-delete">Delete</a></li>
+		    <li><a id="${technologyTrainerModel.id}" class="btn-edit">Edit</a></li>
+ 			<li><a id="${technologyTrainerModel.id}" class="btn-delete">Delete</a></li>
 		    <li class="divider"></li>
 		  </ul>
 		</div>

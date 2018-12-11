@@ -56,7 +56,7 @@ public class IdleNewsDaoImpl implements IdleNewsDao{
 	
 	@Override
 	public void delete(IdleNewsModel idlenewsModel) {
-		idlenewsModel.setIsDeleted(1);
+		
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(idlenewsModel);

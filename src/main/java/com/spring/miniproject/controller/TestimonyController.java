@@ -16,7 +16,7 @@ import com.spring.miniproject.service.SequenceService;
 import com.spring.miniproject.service.TestimonyService;
 
 @Controller
-public class TestimonyController {
+public class TestimonyController extends BaseController{
 
 	@Autowired
 	private TestimonyService testimonyService;
@@ -50,6 +50,7 @@ public class TestimonyController {
 	public String addSaveTestimony(HttpServletRequest request, Model model) {
 		Long idTestimony = new Long(this.sequenceService.nextIdTestimony());
 		model.addAttribute("idTestimony", idTestimony);
+		Long idUser = this.getAkunModel().getId();
 		
 		String title = request.getParameter("testimonyTitle");
 		String content = request.getParameter("testimonyContent");
@@ -57,6 +58,8 @@ public class TestimonyController {
 		
 		TestimonyModel testimonyModel = new TestimonyModel();
 		testimonyModel.setIdTestimony(idTestimony);
+		testimonyModel.setCreatedBy(idUser);
+		testimonyModel.setCreatedOn(new Date());
 		testimonyModel.setTitle(title);
 		testimonyModel.setContent(content);
 		testimonyModel.setIsDeleted(isDeleted);
@@ -89,11 +92,14 @@ public class TestimonyController {
 		String title = request.getParameter("testimonyTitle");
 		String content = request.getParameter("testimonyContent");
 		Integer isDeleted = 0;
+		Long idUser = this.getAkunModel().getId();
 		
 		TestimonyModel testimonyModel = new TestimonyModel();
 		testimonyModel = this.testimonyService.searchById(idTestimony);
 		
 		testimonyModel.setIdTestimony(idTestimony);
+		testimonyModel.setModifiedBy(idUser);
+		testimonyModel.setModifiedOn(new Date());
 		testimonyModel.setTitle(title);
 		testimonyModel.setContent(content);
 		testimonyModel.setIsDeleted(isDeleted);
@@ -137,12 +143,15 @@ public class TestimonyController {
 		String title = request.getParameter("testimonyTitle");
 		String content = request.getParameter("testimonyContent");
 		Integer isDeleted = 1;
+		Long idUser = this.getAkunModel().getId();
 		
 		TestimonyModel testimonyModel = new TestimonyModel();
 		testimonyModel = this.testimonyService.searchById(idTestimony);
 		model.addAttribute("testimonyModel", testimonyModel);
 		
 		testimonyModel.setIdTestimony(idTestimony);
+		testimonyModel.setDeletedBy(idUser);
+		testimonyModel.setDeletedOn(new Date());
 		testimonyModel.setTitle(title);
 		testimonyModel.setContent(content);
 		testimonyModel.setIsDeleted(isDeleted);

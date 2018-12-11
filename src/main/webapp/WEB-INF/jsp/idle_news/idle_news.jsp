@@ -53,7 +53,7 @@
 	<div class="modal-dialog">
 		<div class="alert alert-success alert-dismissible">
         	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
-            Data Successfully Deactivate ...
+            Data Successfully Delete ...
        	</div>
 	</div>
 </div>
@@ -69,7 +69,7 @@
 	<div class="modal-dialog">
 		<div class="alert alert-warning alert-dismissible">
         	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
-            Are you sure you want to deactivate?
+            Are you sure you want to delete?
             <div class="modal-body">
 			
 			</div>
@@ -155,7 +155,7 @@
 		});
 		return false;
 	});
-	$("#list-data-idle-news").on("click", ".btn-deactivate", function() {
+	$("#list-data-idle-news").on("click", ".btn-delete", function() {
 		var Id = $(this).prop('id');
 		$.ajax({
 			url: "idle_news/delete",

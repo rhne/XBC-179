@@ -53,29 +53,13 @@ public class RoomController extends BaseController{
 	public String tambahroom(Model model) {
 		this.aksesLogin(model);
 		this.listDataOffice(model);
+		String codeAuto = "";
+		codeAuto = this.codeRoomGenerator();
+		model.addAttribute("codeAuto", codeAuto);
 		String jsp = "office/room";
 		return jsp;
 	}	
 	
-	@RequestMapping(value="office/create_room")
-	public String create(HttpServletRequest request, Model model) throws Exception{
-		RoomModel roomModel = new RoomModel();
-		roomModel.setCode(request.getParameter("code"));		
-		roomModel.setName(request.getParameter("name"));
-		roomModel.setCapacity(Integer.valueOf(request.getParameter("capacity")));
-		roomModel.setProjector(Integer.valueOf(request.getParameter("projector")));
-		roomModel.setNotes(request.getParameter("notes"));
-		roomModel.setIdOffice(Long.valueOf(request.getParameter("idOffice")));
-		roomModel.setIsActive(1);
-		Long createdBy = this.getAkunModel().getId();
-		roomModel.setCreatedBy(createdBy);
-		
-		this.roomService.create(roomModel);
-		model.addAttribute("roomModel", roomModel);
-		
-		String jsp = "office/office";
-		return jsp;
-	}
 	
 	@RequestMapping(value="office/list_room")
 	public String listroom(Model model) {

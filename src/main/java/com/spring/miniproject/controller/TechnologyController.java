@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,18 +17,18 @@ import com.google.gson.JsonParser;
 import com.spring.miniproject.model.TechnologyModel;
 import com.spring.miniproject.model.TechnologyTrainerModel;
 import com.spring.miniproject.model.TrainerModel;
-import com.spring.miniproject.service.SequenceService;
+//import com.spring.miniproject.service.SequenceService;
 import com.spring.miniproject.service.TechnologyService;
 import com.spring.miniproject.service.TechnologyTrainerService;
 
 @Controller
-public class TechnologyController {
+public class TechnologyController extends BaseController {
 	
 	@Autowired
 	private TechnologyService technologyService;
 	
-	@Autowired
-	private SequenceService sequenceService;
+//	@Autowired
+//	private SequenceService sequenceService;
 	
 	@Autowired
 	private TechnologyTrainerService technologyTrainerService;
@@ -68,16 +69,13 @@ public class TechnologyController {
 		//Technology model instance
 		TechnologyModel technologyModel = new TechnologyModel();
 		technologyModel.setTechnologyTrainer(new ArrayList<TechnologyTrainerModel>());
-		technologyModel = this.technologyService.create(technologyModel);
 		
 		//get from form
-		Long idTech = new Long(this.sequenceService.nextIdTechnology());
-		model.addAttribute("idTech", idTech);
-		
-		technologyModel.setIdTech(idTech);
+		Long idUser = this.getAkunModel().getId();
+		technologyModel.setCreatedBy(idUser);
+		technologyModel.setCreatedOn(new Date());
 		technologyModel.setName(request.getParameter("name"));
 		technologyModel.setNotes(request.getParameter("note"));
-		technologyModel.setCreatedBy(request.getParameter("createdBy"));
 		
 		this.technologyService.create(technologyModel);
 		
@@ -91,14 +89,16 @@ public class TechnologyController {
 			jsonObject = (JsonObject) trainerArray.get(i);
 			trainerModel = new TrainerModel();
 			Long idTrainer = jsonObject.get("id").getAsLong();
-			trainerModel.setIdTrainer(idTrainer);
+			trainerModel.setId(idTrainer);
 			trainerModelList.add(trainerModel);
 			
 			technologyTrainerModel = new TechnologyTrainerModel();
 			technologyTrainerModel.setTrainerModel(trainerModel);
 			technologyTrainerModel.setTechnologyModel(technologyModel);
-			technologyTrainerModel.setTrainerId(idTrainer);
-			technologyTrainerModel.setTechnologyId(idTech);
+			technologyTrainerModel.setIdTrainer(idTrainer);
+			technologyTrainerModel.setIdTech(technologyModel.getId());
+			technologyTrainerModel.setCreatedBy(idUser);
+			technologyTrainerModel.setCreatedOn(new Date());
 			technologyTrainerModel = this.technologyTrainerService.create(technologyTrainerModel);
 			technologyTrainerModelList.add(technologyTrainerModel);
 		}
@@ -137,11 +137,14 @@ public class TechnologyController {
 	@RequestMapping(value="technology/deactiveTechnology/save")
 	public String deactiveSaveTechnology(HttpServletRequest request) {
 		Long idTech = new Long(request.getParameter("idTech"));
+		Long idUser = this.getAkunModel().getId();
 		
 		TechnologyModel technologyModel = new TechnologyModel();
 		technologyModel = this.technologyService.searchById(idTech);
 		
-		technologyModel.setIdTech(idTech);
+		technologyModel.setId(idTech);
+		technologyModel.setModifiedBy(idUser);
+		technologyModel.setModifiedOn(new Date());
 		
 		this.technologyService.delete(technologyModel);
 		

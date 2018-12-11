@@ -8,7 +8,7 @@ public interface TechnologyDao {
 	public TechnologyModel create(TechnologyModel technologyModel);
 	public List<TechnologyModel> showAll();
 	public List<TechnologyModel> searchBy(String text);
-	public TechnologyModel searchById(Long idTech);
+	public TechnologyModel searchById(Long id);
 	public void edit(TechnologyModel technologyModel);
 	public TechnologyModel delete(TechnologyModel technologyModel);
 }

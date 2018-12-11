@@ -66,6 +66,12 @@ public class BiodataController extends BaseController {
 		biodataModel.setCreatedBy(createdBy);
 		biodataModel.setCreatedOn(new Date());
 		biodataModel.setActive(1);
+		
+		biodataModel.setIq(0);
+		biodataModel.setDu("0,00");
+		biodataModel.setNestedLogic(0);
+		biodataModel.setJoinTable(0);
+		biodataModel.setArithmetic(0);
 
 		this.biodataService.create(biodataModel);
 		model.addAttribute("biodataModel", biodataModel);

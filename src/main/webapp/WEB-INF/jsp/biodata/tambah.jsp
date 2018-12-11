@@ -39,7 +39,7 @@
 		<label class="control-label col-md-3" for="graduationYear">Graduation
 			Year</label>
 		<div class="col-md-8">
-			<input type="text" id="graduationYear" name="graduationYear"
+			<input type="number" id="graduationYear" name="graduationYear"
 				class="form-control" required="required"
 				placeholder="Graduation Year" maxlength="4" size="4">
 		</div>
@@ -58,7 +58,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="gpa">GPA</label>
 		<div class="col-md-8">
-			<input type="text" id="gpa" name="gpa" class="form-control"
+			<input type="number" id="gpa" name="gpa" class="form-control"
 				required="required" placeholder="GPA" maxlength="4" size="4">
 		</div>
 	</div>

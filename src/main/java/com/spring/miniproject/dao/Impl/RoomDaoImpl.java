@@ -26,10 +26,11 @@ public class RoomDaoImpl implements RoomDao{
 	}
 
 	@Override
-	public void create(RoomModel roomModel) {
+	public RoomModel create(RoomModel roomModel) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(roomModel);
+		return roomModel;
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -42,7 +42,7 @@
 		<label class="control-label col-md-3" for="graduationYear">Graduation
 			Year</label>
 		<div class="col-md-8">
-			<input type="text" id="graduationYear" name="graduationYear"
+			<input type="number" id="graduationYear" name="graduationYear"
 				value="${biodataModel.graduationYear}" class="form-control"
 				required="required" maxlength="4" size="4">
 		</div>
@@ -72,9 +72,9 @@
 		<label class="control-label col-md-3" for="gender">Gender</label>
 		<div class="col-md-8">
 			<input type="radio" id="male" name="gender" value="male"
-				${biodataModel.gender=='male'? 'checked' : 'checked'} />Male 
+				${biodataModel.gender=='male'? 'checked' : ''} />Male 
 			<input type="radio"id="female" name="gender" value="female"
-				${biodataModel.gender=='female'? 'checked' : 'checked'} />Female
+				${biodataModel.gender=='female'? 'checked' : ''} />Female
 		</div>
 	</div>
 
@@ -86,7 +86,7 @@
 			<select id="bootcampTestType" name="bootcampTestType"
 				class="form-control">
 				<c:forEach items="${bootcampTestTypeModelList}" var="bootcamptesttypeModel">
-					<option value="${bootcamptesttypeModel.id}">${bootcamptesttypeModel.name}</option>
+					<option value="${bootcamptesttypeModel.id}" ${bootcamptesttypeModel.id == biodataModel.bootcampTestType? 'selected' : ''}>${bootcamptesttypeModel.name}</option>
 				</c:forEach>
 			</select>
 		</div>
@@ -98,23 +98,23 @@
 		<div class="col-md-8">
 			<!-- IQ -->
 			<div class="col-md-3">
-				<input type="text" id="iq" name="iq" class="form-control"
+				<input type="number" id="iq" name="iq" class="form-control"
 					placeholder="IQ" value="${biodataModel.iq}" maxlength="4" size="4">
 			</div>
 			<!-- DU -->
 			<div class="col-md-3">
-				<input type="text" id="du" name="du" class="form-control"
+				<input type="number" id="du" name="du" class="form-control"
 					placeholder="DU" value="${biodataModel.du}" maxlength="4" size="4">
 			</div>
 			<!-- NL -->
 			<div class="col-md-3">
-				<input type="text" id="nl" name="nl" class="form-control"
+				<input type="number" id="nl" name="nl" class="form-control"
 					placeholder="NL" value="${biodataModel.nestedLogic}" maxlength="4"
 					size="4">
 			</div>
 			<!-- JT -->
 			<div class="col-md-3">
-				<input type="text" id="jt" name="jt" class="form-control"
+				<input type="number" id="jt" name="jt" class="form-control"
 					placeholder="JT" value="${biodataModel.joinTable}" maxlength="4"
 					size="4">
 			</div>
@@ -125,7 +125,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="arithmetic">Arithmetic</label>
 		<div class="col-md-8">
-			<input type="text" id="arithmetic" name="arithmetic"
+			<input type="number" id="arithmetic" name="arithmetic"
 				class="form-control" placeholder="Arithmetic"
 				value="${biodataModel.arithmetic}" maxlength="4" size="4">
 		</div>
