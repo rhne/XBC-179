@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.RoomDao;
 import com.spring.miniproject.model.RoomModel;
+import com.spring.miniproject.model.TechnologyTrainerModel;
 @Repository
 public class RoomDaoImpl implements RoomDao{
 
@@ -59,6 +60,23 @@ public class RoomDaoImpl implements RoomDao{
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(roomModel);
 	}
-
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<RoomModel> showAll() {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		List<RoomModel> roomModelList = new ArrayList<RoomModel>();
+		roomModelList = session.createQuery(" from RoomModel ").list();
+		return roomModelList;
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<RoomModel> searchByIdOffice(Long id) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		List<RoomModel> roomModelList = new ArrayList<RoomModel>();
+		roomModelList = session.createQuery(" select t from RoomModel t join OfficeModel c on c.id = t.idOffice where t.idOffice ="+id+"").list();
+		return roomModelList;
+	}
 
 }

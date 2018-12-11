@@ -18,6 +18,7 @@ import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.MenuModel;
 import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.model.RoomModel;
+import com.spring.miniproject.model.TechnologyModel;
 import com.spring.miniproject.service.MenuService;
 import com.spring.miniproject.service.OfficeService;
 import com.spring.miniproject.service.RoomService;
