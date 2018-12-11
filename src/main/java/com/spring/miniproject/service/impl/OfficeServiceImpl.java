@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.miniproject.dao.OfficeDao;
+import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.service.OfficeService;
 
@@ -43,5 +44,10 @@ public class OfficeServiceImpl implements OfficeService{
 	@Override
 	public void delete(OfficeModel officeModel) {
 		this.officeDao.delete(officeModel);
+	}
+	@Override
+	public void update(OfficeModel officeModel) {
+		// TODO Auto-generated method stub
+		this.officeDao.update(officeModel);
 	}
 }

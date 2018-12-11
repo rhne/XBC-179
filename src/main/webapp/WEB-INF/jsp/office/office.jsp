@@ -77,8 +77,8 @@
 <div class="modal fade" id="modal-alert-delete-room">
 	<div class="modal-dialog">
 		<div class="alert alert-warning alert-dismissible">
-        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
-            Are you sure you want to delete?
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Warning!</h4>
+            Data Successfully Deleted ...
             <div class="modal-body">
 			
 			</div>
@@ -101,16 +101,7 @@ var roomArray = new Array;
 		});
 	}
 
-	function listDataRoom() {
-		$.ajax({
-			url:"office/list_room.html",
-			type:"get",
-			dataType:"html",
-			success:function(result){
-				$("#list-data-room").html(result);
-			}
-		});
-	}
+	
 	$(document).ready(function(){
 		$("#button-tambah").on("click", function(){
 			$.ajax({
@@ -121,16 +112,11 @@ var roomArray = new Array;
 					$("#modal-input").find(".modal-title").html("Form Tambah Office");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
-					listDataRoom();
 				}
 			});
 		});
 		
 		$("#modal-input").on("submit", "#form-office-tambah", function(){
-			var office = {
-				
-			};
-			
 			//alert(JSON.stringify(office));
 			$.ajax({
 				url:"office/create.json",
@@ -141,7 +127,7 @@ var roomArray = new Array;
 					phone: $("#phone").val(),
 					email: $("#email").val(),
 					address: $("#address").val(),
-					notes: $("#notes").val(),
+					notes: $("#office-notes").val(),
 					rooms: JSON.stringify(roomArray)
 				},
 				success:function(result){
@@ -164,6 +150,39 @@ var roomArray = new Array;
 				}
 			});
 		});
+		$("#list-data-office").on("click", ".btn-edit", function() {
+			var Id = $(this).prop('id');
+			$.ajax({
+				url : "office/edit.html",
+				type : "get",
+				dataType : "html",
+				data : {
+					id : Id
+				},
+				success : function(result) {
+					$("#modal-input").find(".modal-title").html("Form Edit Office");
+					$("#modal-input").find(".modal-body").html(result);
+					$("#modal-input").modal("show");
+				}
+			});
+		});
+
+		$("#modal-input").on("submit","#form-office-edit",function() {
+					$.ajax({
+						url : "office/edit/save.json",
+						type : "get",
+						dataType : "json",
+						data : $(this).serialize(),
+						success : function(result) {
+							$("#modal-alert-edit").find(".modal-title");  
+							$("#modal-alert-edit").modal("show");
+							$("#modal-input").modal("hide");
+							listDataOffice();
+						}
+					});
+					return false;
+				});
+	
 		$("#button-search").on("click", function(){
 			var nameCari = document.getElementById("nameCari").value;
 			$.ajax({
@@ -208,22 +227,28 @@ var roomArray = new Array;
 			return false;
 		});
 		
+		$("#modal-input").on("click", ".btn-delete", function(){
+			var roomId = JSON.parse($(this).prop('id'));
+			roomArray.pop(roomId);
+			populateRoomListTable();
+			$("#modal-alert-delete-room").modal("show");
+		});
+		
 		$("#modal-alert-delete-room").on("submit", "#form-confirm-delete-room", function() {
 			$.ajax({
 				url: "office/delete_room/save.json",
 				type: "get",
 				dataType: "json",
-				data: $(this).serialize(),
+				data: {
+					id: selectedRoomId
+				},
 				success: function (result) {
 					$("#modal-alert-delete-room").modal("hide");
-					listDataRoom();
+					populateRoomListTable();
 				}
-			});
-			return false;
 		});
-		
+		});
 		$("#modal-room").on("submit","#form-room-tambah", function(){
-			alert("asdf");
 			var room = {
 				code: $("#code").val(),
 				name: $("#name").val(),
@@ -233,12 +258,11 @@ var roomArray = new Array;
 			};
 			roomArray.push(room);
 			populateRoomListTable();
-			alert(JSON.stringify(room));
-			
+			$("#modal-alert1").modal("show");
 			$("#modal-room").modal("hide");
 			return false;
 		});
-	});
+	
 	
 	function populateRoomListTable() {
 		var roomListTable = '<tr></tr>';
@@ -249,10 +273,11 @@ var roomArray = new Array;
 			roomListTable += '<td>' + roomArray[i]['capacity'] + '</td>';
 			roomListTable += '<td><div class="btn-group"> <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown"> <span class="fa fa-bars"></span> <span class="sr-only">Toggle Dropdown</span> </button> <ul class="dropdown-menu" role="menu"> <li><a ';
 			roomListTable += 'id=' + JSON.stringify(roomArray[i]);
-			roomListTable += ' class="btn-delete-question">Delete</a></li> </ul></div></td>';
+			roomListTable += ' class="btn-delete">Delete</a></li> </ul></div></td>';
 			roomListTable += '</tr>';
 		}
 		
 		$("#modal-input").find("#list-data-room").html(roomListTable);
 	}
+	});
 </script>

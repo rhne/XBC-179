@@ -35,11 +35,11 @@ public class RoomModel {
 		private Integer isActive;
 			
 		private Long createdBy;
-		private RoomModel createdByUser;
+		private AkunModel createdByUser;
 		private Date createdOn;
 				
 		private Long modifiedBy;
-		private RoomModel modifiedByUser;
+		private AkunModel modifiedByUser;
 		private Date modifiedOn;
 	//AuditTrail/////////////////////
 	
@@ -110,14 +110,13 @@ public class RoomModel {
 	
 	@ManyToOne
 	@JoinColumn(name="CREATED_BY",nullable=true, updatable=false, insertable=false)
-	public RoomModel getCreatedByUser() {
+	public AkunModel getCreatedByUser() {
 		return createdByUser;
 	}
-	public void setCreatedByUser(RoomModel createdByUser) {
+	public void setCreatedByUser(AkunModel createdByUser) {
 		this.createdByUser = createdByUser;
 	}
 	
-	@CreationTimestamp
 	@Column(name="CREATED_ON")
 	public Date getCreatedOn() {
 		return createdOn;
@@ -136,14 +135,14 @@ public class RoomModel {
 	
 	@ManyToOne
 	@JoinColumn(name="MODIFIED_BY",nullable=true, updatable=false, insertable=false)
-	public RoomModel getModifiedByUser() {
+	public AkunModel getModifiedByUser() {
 		return modifiedByUser;
 	}
-	public void setModifiedByUser(RoomModel modifiedByUser) {
+	public void setModifiedByUser(AkunModel modifiedByUser) {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
-	@UpdateTimestamp
+	
 	@Column(name="MODIFIED_ON")
 	public Date getModifiedOn() {
 		return modifiedOn;
@@ -162,7 +161,7 @@ public class RoomModel {
 	}
 	
 	@Column
-	(name="ID_OFFICE",nullable=true, updatable=false, insertable=false)
+	(name="ID_OFFICE")
 	public Long getIdOffice() {
 		return idOffice;
 	}
