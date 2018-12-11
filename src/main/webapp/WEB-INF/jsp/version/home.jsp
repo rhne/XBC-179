@@ -116,11 +116,13 @@
 		
 		//REGION MODAL QUESTION
 		$("#modal-input").on("click", "#btn-tambah-question" ,function() {
-			
 			$.ajax({
 				url:"version/tambahquestion",
 				type:"get",
 				dataType:"html",
+				data: {
+					data: JSON.stringify(questionArray)
+				},
 				success:function(result){
 					$("#modal-input-question").find(".modal-title").html("Add Question");
 					$("#modal-input-question").find(".modal-body").html(result);
