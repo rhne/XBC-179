@@ -56,4 +56,10 @@ public class AkunServiceImpl implements AkunService{
 		// TODO Auto-generated method stub
 		this.akunDao.deactivate(akunModel);
 	}
+
+	@Override
+	public List<AkunModel> searchValidation(String name) {
+		// TODO Auto-generated method stub
+		return this.akunDao.searchValidation(name);
+	}
 }

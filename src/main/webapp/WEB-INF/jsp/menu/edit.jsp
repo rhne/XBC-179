@@ -37,6 +37,7 @@
 		<label class="control-label col-md-3" for="menuparent">Menu Parent</label>
 		<div class="col-md-8">
 			<select class="form-control" id="menuparent" name="menuparent">
+				<option value="0"> 0 </option>
 				<c:forEach items="${menuModelList}" var="menuModel">
 					<option value="${menuModel.id}">${menuModel.title}</option>		
 				</c:forEach>
@@ -52,5 +53,6 @@
 
 	<div class="modal-footer">
 		<button type="submit" class="btn btn-primary btn-sm">Save</button>
+		<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancel</button>
 	</div>
 </form>

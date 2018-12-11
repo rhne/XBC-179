@@ -86,8 +86,9 @@
 	</div>
 </div>
 </div>
-
+</div>
 <script>
+var roomArray = new Array;
 	listDataOffice();
 	function listDataOffice() {
 		$.ajax({
@@ -96,6 +97,17 @@
 			dataType:"html",
 			success:function(result){
 				$("#list-data-office").html(result);
+			}
+		});
+	}
+
+	function listDataRoom() {
+		$.ajax({
+			url:"office/list_room.html",
+			type:"get",
+			dataType:"html",
+			success:function(result){
+				$("#list-data-room").html(result);
 			}
 		});
 	}
@@ -109,6 +121,7 @@
 					$("#modal-input").find(".modal-title").html("Form Tambah Office");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
+					listDataRoom();
 				}
 			});
 		});
@@ -122,11 +135,22 @@
 				success:function(result){
 					$("#modal-alert1").find(".modal-title");  
 					$("#modal-alert1").modal("show");
-					$("#modal-input").modal("hide");
 					listDataOffice();
 				}
 			});
 			return false;
+		});
+		$("#modal-input").on("click","#button-tambah2", function(){
+			$.ajax({
+				url:"office/room.html",
+				type:"get",
+				dataType:"html",
+				success:function(result){
+					$("#modal-room").find(".modal-title").html("Form Room");
+					$("#modal-room").find(".modal-body").html(result);
+					$("#modal-room").modal("show");
+				}
+			});
 		});
 		$("#button-search").on("click", function(){
 			var nameCari = document.getElementById("nameCari").value;
@@ -169,6 +193,44 @@
 					listDataOffice();
 				}
 			});
+			return false;
+		});
+		
+		$("#modal-alert-delete-room").on("submit", "#form-confirm-delete-room", function() {
+			$.ajax({
+				url: "office/delete_room/save.json",
+				type: "get",
+				dataType: "json",
+				data: $(this).serialize(),
+				success: function (result) {
+					$("#modal-alert-delete-room").modal("hide");
+					listDataRoom();
+				}
+			});
+			return false;
+		});
+		$("#modal-room").on("submit","#form-room-tambah", function(){
+			var room = {
+				code: $("#code").val(),
+				name: $("#name").val(),
+				capacity: $("#capacity").val(),
+				projector: $("#projector").val(),
+				notes: $("#notes").val()
+			};
+			roomArray.push(room);
+			
+			alert(JSON.stringify(room));
+		/*			$.ajax({
+				url:"room/create.json",
+				type:"get",
+				dataType:"json",
+				data:$(this).serialize(),
+				success:function(result){
+					$("#modal-alert1").find(".modal-title");  
+					$("#modal-alert1").modal("show");
+					listDataRoom();
+				}
+			}); */
 			return false;
 		});
 	});

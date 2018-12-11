@@ -18,7 +18,7 @@ import com.spring.miniproject.service.BiodataService;
 import com.spring.miniproject.service.MonitoringService;
 
 @Controller
-public class MonitoringController {
+public class MonitoringController extends BaseController {
 
 	@Autowired
 	private MonitoringService monitoringService;
@@ -65,6 +65,8 @@ public class MonitoringController {
 	@RequestMapping(value = "monitoring/create")
 	public String create(HttpServletRequest request, Model model) throws Exception {
 
+		Long createdBy = this.getAkunModel().getId();
+		
 		Long id = Long.valueOf(request.getParameter("testId"));
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date idleDate = sdf.parse(request.getParameter("idleDate"));
@@ -73,9 +75,12 @@ public class MonitoringController {
 		MonitoringModel monitoringModel = new MonitoringModel();
 		monitoringModel.setTestId(id);
 		monitoringModel.setIdleDate(idleDate);
-		monitoringModel.setPlacementDate(placementDate);	
+		monitoringModel.setPlacementDate(placementDate);
 		monitoringModel.setLastProject(request.getParameter("lastProject"));
 		monitoringModel.setIdleReason(request.getParameter("idleReason"));
+		monitoringModel.setCreatedBy(createdBy);
+		monitoringModel.setCreatedOn(new Date());
+		monitoringModel.setIsDelete(0);
 
 		this.monitoringService.create(monitoringModel);
 		model.addAttribute("monitoringModel", monitoringModel);
@@ -156,13 +161,13 @@ public class MonitoringController {
 	/* Popup Delete Monitoring */
 	@RequestMapping(value = "monitoring/delete")
 	public String delete(HttpServletRequest request, Model model) {
-		
+
 		String id = request.getParameter("id");
-		
+
 		MonitoringModel monitoringModel = new MonitoringModel();
 		monitoringModel = this.monitoringService.searchById(Long.parseLong(id));
 		model.addAttribute("monitoringModel", monitoringModel);
-		
+
 		String jsp = "monitoring/delete";
 		return jsp;
 	}
@@ -170,7 +175,7 @@ public class MonitoringController {
 	/* Delete Monitoring */
 	@RequestMapping(value = "monitoring/delete/save")
 	public String delete(HttpServletRequest request) {
-		
+
 		Long id = Long.valueOf(request.getParameter("id"));
 
 		MonitoringModel monitoringModel = new MonitoringModel();
@@ -180,8 +185,8 @@ public class MonitoringController {
 		String jsp = "monitoring/monitoring";
 		return jsp;
 	}
-	
-	@RequestMapping(value="monitoring/search/name")
+
+	@RequestMapping(value = "monitoring/search/name")
 	public String monitoringSearchName(HttpServletRequest request, Model model) {
 		String name = request.getParameter("nameCari");
 		List<MonitoringModel> monitoringModelList = new ArrayList<MonitoringModel>();

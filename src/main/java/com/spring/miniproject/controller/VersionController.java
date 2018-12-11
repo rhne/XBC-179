@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.spring.miniproject.model.AkunModel;
 import com.spring.miniproject.model.QuestionModel;
 import com.spring.miniproject.model.VersionDetailModel;
 import com.spring.miniproject.model.VersionModel;
@@ -22,7 +24,7 @@ import com.spring.miniproject.service.VersionDetailService;
 import com.spring.miniproject.service.VersionService;
 
 @Controller
-public class VersionController {
+public class VersionController extends BaseController {
 	
 	@Autowired
 	private VersionService versionService;
@@ -101,6 +103,11 @@ public class VersionController {
 		//create Version model instance in table
 		VersionModel versionModel = new VersionModel();
 		versionModel.setVersionDetails(new ArrayList<VersionDetailModel>());
+		AkunModel createdBy = this.getAkunModel();
+		versionModel.setVersion(this.versionService.getLatestVersion() + 1);
+		versionModel.setCreatedBy(createdBy);
+		versionModel.setCreatedOn(new Date());
+		versionModel.setIsDelete(0);
 		versionModel = this.versionService.create(versionModel);
 		
 		//create VersionDetail instances in table
@@ -118,6 +125,8 @@ public class VersionController {
 			versionDetailModel = new VersionDetailModel();
 			versionDetailModel.setVersion(versionModel);
 			versionDetailModel.setQuestion(questionModel);
+			versionDetailModel.setCreatedBy(createdBy);
+			versionDetailModel.setCreatedOn(new Date());
 			versionDetailModel = this.versionDetailService.create(versionDetailModel);
 			versionDetailModels.add(versionDetailModel);
 			//versionModel.getVersionDetails().add(versionDetailModel);
@@ -135,6 +144,10 @@ public class VersionController {
 		String id = request.getParameter("id");
 		VersionModel versionModel = new VersionModel();
 		versionModel = this.versionService.searchById(Long.parseLong(id));
+		AkunModel deletedBy = this.getAkunModel();
+		versionModel.setDeletedBy(deletedBy);
+		versionModel.setDeletedOn(new Date());
+		versionModel.setIsDelete(1);
 		this.versionService.delete(versionModel);
 		
 		String jsp = "version/home";

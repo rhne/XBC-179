@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <form action = "#" method = "get" id="form-akun-edit" class="form-horizontal" onsubmit="return validasi_input(this)">
-<div class="form-group">
+
 	<input type="hidden" id="id" name="id" value="${akunModel.id}" />
 	<div class="form-group">
 		<label class="control-label col-md-3" for="idRole">Role</label>
@@ -49,8 +49,8 @@
 
 	<div class="modal-footer">
 		<button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+		<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancel</button>
 	</div>
-</div>
 </form>
 
 <script type="text/javascript">

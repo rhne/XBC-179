@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
@@ -32,8 +34,16 @@ public class QuestionModel {
 	@Column(name="DELETED_ON")
 	private Date deletedOn;
 	
-//	@OneToMany(mappedBy="question")
-//	private List<VersionDetailModel> versionDetails;
+	//Join Column
+	@ManyToOne
+	@JoinColumn(name="CREATED_BY")
+	private AkunModel createdBy;
+	@ManyToOne
+	@JoinColumn(name="MODIFIED_BY")
+	private AkunModel modifiedBy;
+	@ManyToOne
+	@JoinColumn(name="DELETED_BY")
+	private AkunModel deletedBy;
 	
 	public Long getId() {
 		return id;
@@ -71,5 +81,24 @@ public class QuestionModel {
 	public void setDeletedOn(Date deletedOn) {
 		this.deletedOn = deletedOn;
 	}
+	public AkunModel getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(AkunModel createdBy) {
+		this.createdBy = createdBy;
+	}
+	public AkunModel getModifiedBy() {
+		return modifiedBy;
+	}
+	public void setModifiedBy(AkunModel modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+	public AkunModel getDeletedBy() {
+		return deletedBy;
+	}
+	public void setDeletedBy(AkunModel deletedBy) {
+		this.deletedBy = deletedBy;
+	}
+	
 	
 }

@@ -1,6 +1,6 @@
 package com.spring.miniproject.controller;
 
-import java.util.ArrayList;    
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -57,7 +57,7 @@ public class MenuController extends BaseController{
 	private void listDataMenu(Model model) {
 		// TODO Auto-generated method stub
 		List<MenuModel> menuModelList = new ArrayList<MenuModel>();
-		menuModelList = this.menuService.select();
+		menuModelList = this.menuService.searchAll();
 		model.addAttribute("menuModelList", menuModelList);
 	}
 

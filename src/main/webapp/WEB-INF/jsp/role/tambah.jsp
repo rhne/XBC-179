@@ -28,14 +28,14 @@
 
 <script type="text/javascript">
 
-	function cekuser(a) {
+	function cekrole(a) {
 		valid = /^[A-Za-z]{1,}$/;
 		return valid.test(a);
 	}
 	
 	function validasi_input(){
 		var name = document.getElementById("name").value;
-		if (!cekuser(name)) {
+		if (!cekrole(name)) {
   			 alert("Role Name, isi dengan huruf saja!");
   			 return false;
   		}

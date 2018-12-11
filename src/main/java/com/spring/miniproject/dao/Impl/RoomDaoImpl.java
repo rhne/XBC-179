@@ -21,7 +21,7 @@ public class RoomDaoImpl implements RoomDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<RoomModel> roomModelList = new ArrayList<RoomModel>();
-		roomModelList = session.createQuery(" from RoomModel where isActive=1 ").list();
+		roomModelList = session.createQuery(" from RoomModel where isActive=1").list();
 		return roomModelList;
 	}
 

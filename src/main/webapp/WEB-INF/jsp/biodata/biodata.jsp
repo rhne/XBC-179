@@ -109,6 +109,8 @@
 			}
 		});
 	}
+	
+	/* ON DOCUMENT READY */
 	$(document).ready(
 			function() {
 

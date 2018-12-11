@@ -11,11 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.miniproject.model.AkunModel;
 import com.spring.miniproject.model.QuestionModel;
 import com.spring.miniproject.service.QuestionService;
 
 @Controller
-public class QuestionController {
+public class QuestionController extends BaseController {
 	
 	@Autowired
 	private QuestionService questionService;
@@ -56,8 +57,12 @@ public class QuestionController {
 		String question = request.getParameter("question");
 		QuestionModel questionModel = new QuestionModel();
 		questionModel.setQuestion(question);
+		
+		AkunModel createdBy = this.getAkunModel();
+		questionModel.setCreatedBy(createdBy);
 		questionModel.setCreatedOn(new Date());
 		questionModel.setIsDelete(0);
+		
 		this.questionService.create(questionModel);
 		
 		String jsp = "question/home";
@@ -79,6 +84,10 @@ public class QuestionController {
 		String id = request.getParameter("id");
 		QuestionModel questionModel = new QuestionModel();
 		questionModel = this.questionService.searchById(Long.parseLong(id));
+		
+		AkunModel deletedBy = this.getAkunModel();
+		questionModel.setDeletedBy(deletedBy);
+		questionModel.setDeletedOn(new Date());
 		this.questionService.delete(questionModel);
 		
 		String jsp = "question/home";

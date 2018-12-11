@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
-import java.util.ArrayList;     
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,16 +12,33 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.miniproject.model.BootcampTestTypeModel;
+import com.spring.miniproject.model.MenuModel;
 import com.spring.miniproject.service.BootcampTestTypeService;
+import com.spring.miniproject.service.MenuService;
 
 @Controller
-public class BootcampTestTypeController {
-
+public class BootcampTestTypeController extends BaseController{
+	
 	@Autowired
 	private BootcampTestTypeService bootcamptesttypeService;
 	
+	@Autowired
+	private MenuService menuService;
+	
+	public void aksesLogin(Model model) {
+		
+		model.addAttribute("username", this.getAkunModel().getName());
+		model.addAttribute("nameRole", this.getAkunModel().getRoleModel().getName());
+		
+		List<MenuModel> menuModelList = null;
+		Long idRole = this.getAkunModel().getRoleModel().getId();
+		menuModelList = this.menuService.selectMenuByRole(idRole);
+		model.addAttribute("menuModelList", menuModelList);
+	}
+	
 	@RequestMapping(value="bootcamp_test_type")
 	public String bootcamptesttype(Model model) {
+		this.aksesLogin(model);
 		String jsp = "bootcamp_test_type/bootcamp_test_type";
 		return jsp;
 	}
@@ -33,12 +51,15 @@ public class BootcampTestTypeController {
 	}	
 	
 	@RequestMapping(value="bootcamp_test_type/create")
-	public String create(HttpServletRequest request, Model model) throws Exception{
+	public String create(HttpServletRequest request, Model model){
 		
 		BootcampTestTypeModel bootcamptesttypeModel = new BootcampTestTypeModel();
 		bootcamptesttypeModel.setName(request.getParameter("name"));		
 		bootcamptesttypeModel.setNotes(request.getParameter("notes"));
 		bootcamptesttypeModel.setIsActive(1);
+		Long createdBy = this.getAkunModel().getId();
+		bootcamptesttypeModel.setCreatedBy(createdBy);
+		bootcamptesttypeModel.setCreatedOn(new Date());
 		
 		this.bootcamptesttypeService.create(bootcamptesttypeModel);
 		model.addAttribute("bootcamptesttypeModel", bootcamptesttypeModel);
@@ -89,6 +110,7 @@ public class BootcampTestTypeController {
 		public String Edit(HttpServletRequest request, Model model) {
 			String id = (request.getParameter("id"));
 			BootcampTestTypeModel bootcamptesttypeModel = new BootcampTestTypeModel();
+			
 			bootcamptesttypeModel = this.bootcamptesttypeService.searchById(Long.parseLong(id));
 			model.addAttribute("bootcamptesttypeModel", bootcamptesttypeModel);
 			String jsp = "bootcamp_test_type/edit";
@@ -103,11 +125,14 @@ public class BootcampTestTypeController {
 			bootcamptesttypeModel = this.bootcamptesttypeService.searchById(Long.parseLong(id));
 			bootcamptesttypeModel.setName(request.getParameter("name"));		
 			bootcamptesttypeModel.setNotes(request.getParameter("notes"));
+			Long modifiedBy = this.getAkunModel().getId();
+			bootcamptesttypeModel.setModifiedBy(modifiedBy);
+			bootcamptesttypeModel.setModifiedOn(new Date());
 			
 			this.bootcamptesttypeService.update(bootcamptesttypeModel);
 			model.addAttribute("bootcamptesttypeModel", bootcamptesttypeModel);
 			
-			String jsp = "bootcamp_test_type/bootcamp_test_type";
+			String jsp = "bootcamp_test_type/edit";
 			return jsp;
 		}
 }
