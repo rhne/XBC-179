@@ -1,11 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="tech" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 <tech:forEach items="${technologyTrainerModelList}" var="technologyTrainerModel" varStatus="number">
 <tr>
 	<td>${technologyTrainerModel.trainerModel.name}</td>
 	<td>${technologyModel.createdOn}</td>
-	<td>Aktif</td>
+	<td>Active</td>
 	<td>
 		<div class="btn-group">
 		  <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown">

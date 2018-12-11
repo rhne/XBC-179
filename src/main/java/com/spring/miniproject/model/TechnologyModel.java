@@ -47,6 +47,7 @@ public class TechnologyModel {
 	private Integer active;
 	
 	@OneToMany(mappedBy="technologyModel")
+//	@Cascade({CascadeType.ALL})
 	private List<TechnologyTrainerModel> technologyTrainer;
 	
 	@ManyToOne

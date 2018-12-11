@@ -38,6 +38,7 @@
 	</div>
 </div>
 
+
 	<div class="modal fade" id="modal-input-trainer">
 		<div class="modal-dialog">
 		<div class="modal-content">

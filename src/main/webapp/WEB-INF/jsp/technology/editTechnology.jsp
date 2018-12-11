@@ -1,4 +1,4 @@
-<form action="#" method="get" id="form-add-technology" class="form-horizontal">
+<form action="#" method="get" id="form-edit-technology" class="form-horizontal">
 	<input type="hidden" id="id" name="idTechnology" value="${technologyModel.id}" />
 	<div class="form-group">
 		<div class="col-md-8">
@@ -37,17 +37,6 @@
 	</div>
 </form>
 
-<div class="modal fade" id="modal-edit">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header" style="background-color:#605ca8;">
-				<h4 class="modal-title" style="color: white;"></h4>
-			</div>
-			<div class="modal-body"></div>
-		</div>
-	</div>
-</div>
-
 <div class="modal fade" id="modal-input-trainer">
 	<div class="modal-dialog">
 		<div class = "modal-content">
@@ -65,19 +54,23 @@
 
 <script>
 	
+	var arrayTrainer = new Array;
+	var newIdTrainer;
 	listDataTrainer();
+
 	function listDataTrainer(){
 		$.ajax({
 			url : "technology/listTechTrainer.html",
 			type : "get",
 			dataType : "html",
+			data : { idTech : $("#id").val() },
 			success : function(result){
 				$("#list-data-trainer").html(result);
 			}
 		});
 	}
 	
-	/* $("#modal-edit").on("click", "#btn-add-trainer", function() {
+	$("#list-data-trainer").on("click", "#btn-add-trainer", function() {
 		$.ajax({
 			url:"technology/addTechTrainer.html",
 			type: "get",
@@ -108,29 +101,51 @@
 			htmlSyntax = htmlSyntax + '<li class="divider"></li></ul></div></td></tr>';
 			
 		}
-		$("#modal-edit").find("#list-data-trainer").html(htmlSyntax);
+		var html = $("#modal-input").find("#list-data-trainer").html();
+		html = $("#modal-input").find("#list-data-trainer").html(html+htmlSyntax);
 	}
+	
 
-
-	$("#modal-edit").on("submit", "#form-add-tech-trainer", function(){
+	$("#list-data-trainer").on("submit", "#form-add-tech-trainer", function(){
 		
 		var newIdTrainer = $("#idTrainer").val();
 		arrayTrainer.push(JSON.parse(newIdTrainer));
 		alert(newIdTrainer);
-		listDataTrainer();
 		listTrainer();
 		$("#modal-input-trainer").modal("hide");
 		return false;
 		});
 	
-	$("#modal-edit").on("click", ".btn-delete", function(){
-		var jsonId = JSON.parse($(this).prop('id'));
-		alert(jsonId);
-		var trainerId = jsonId;
-		alert(trainerId);
-		arrayTrainer.pop(trainerId);
+	$("#list-data-trainer").on("click", ".btn-delete", function(){
+		var deletedId = $(this).prop('id');
+		var jsonId = JSON.parse(deletedId);
+		alert(deletedId);
+		arrayTrainer.pop(jsonId);
 		listDataTrainer();
-		listTrainer();
-	}); */
+	});
 	
+	$("#modal-input").on("submit", "#form-edit-technology", function(){
+		alert(JSON.stringify(arrayTrainer));
+		var addTech = $("#nameTech").val();
+		var addNote = $("#noteTech").val();
+		$.ajax({
+			url: "technology/editTechnology/save.json",
+			type : "get",
+			dataType : "json",
+			data: {trainer : JSON.stringify(arrayTrainer), name : addTech, note : addNote},
+			success : function(result){
+				$("#modal-input").modal("hide");
+				alert("Data succesfully edited!");
+				listDataTechnology();
+			}
+		});
+		return false;
+	});
+	
+/* 	$("#list-data-trainer").on("click", ".btn-delete", function(){
+		var idDelete = $(this).prop('id');
+		$.ajax({
+			url : technology/deleteTrainer/save;
+		});
+	}); */
 </script>

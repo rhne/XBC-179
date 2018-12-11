@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name="M_TECH_TRAINER")
 public class TechnologyTrainerModel {
@@ -34,6 +37,7 @@ public class TechnologyTrainerModel {
 	private Long idTech;
 	
 	@ManyToOne
+//	@Cascade({CascadeType.ALL})
 	@JoinColumn(name="TECHNOLOGY_ID", insertable=false, updatable=false)
 	private TechnologyModel technologyModel;
 	

@@ -168,4 +168,54 @@ public class TechnologyController extends BaseController {
 		return jsp;
 	}
 	
+	@RequestMapping(value="technology/editTechnology/save")
+	public String editSaveTechnology(HttpServletRequest request, Model model) {
+		//parse json array
+		String trainerJsonArray = request.getParameter("trainer");
+		JsonParser jsonParser = new JsonParser();
+		Object obj = jsonParser.parse(trainerJsonArray);
+		JsonArray trainerArray = (JsonArray) obj;
+		JsonObject jsonObject = new JsonObject();
+		
+		//Technology model instance
+		TechnologyModel technologyModel = new TechnologyModel();
+		technologyModel.setTechnologyTrainer(new ArrayList<TechnologyTrainerModel>());
+		
+		//get from form
+		Long idUser = this.getAkunModel().getId();
+		technologyModel.setCreatedBy(idUser);
+		technologyModel.setCreatedOn(new Date());
+		technologyModel.setName(request.getParameter("name"));
+		technologyModel.setNotes(request.getParameter("note"));
+		
+		this.technologyService.edit(technologyModel);
+		
+		//TechTrainer instance
+		List<TrainerModel> trainerModelList = new ArrayList<TrainerModel>();
+		List<TechnologyTrainerModel> technologyTrainerModelList = new ArrayList<TechnologyTrainerModel>();
+		TrainerModel trainerModel;
+		TechnologyTrainerModel technologyTrainerModel;
+		
+		for (int i = 0; i < trainerArray.size(); i++) {
+			jsonObject = (JsonObject) trainerArray.get(i);
+			trainerModel = new TrainerModel();
+			Long idTrainer = jsonObject.get("id").getAsLong();
+			trainerModel.setId(idTrainer);
+			trainerModelList.add(trainerModel);
+			
+			technologyTrainerModel = new TechnologyTrainerModel();
+			technologyTrainerModel.setTrainerModel(trainerModel);
+			technologyTrainerModel.setTechnologyModel(technologyModel);
+			technologyTrainerModel.setIdTrainer(idTrainer);
+			technologyTrainerModel.setIdTech(technologyModel.getId());
+			technologyTrainerModel.setCreatedBy(idUser);
+			technologyTrainerModel.setCreatedOn(new Date());
+			technologyTrainerModel = this.technologyTrainerService.create(technologyTrainerModel);
+			technologyTrainerModelList.add(technologyTrainerModel);
+		}
+		
+		String jsp = "technology/technology";
+		return jsp;
+	}
+	
 }
