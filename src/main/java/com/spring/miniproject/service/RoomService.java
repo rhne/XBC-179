@@ -11,4 +11,6 @@ public interface RoomService {
 	public List<RoomModel> searchByLikeName(String name);
 	public RoomModel searchById(Long id);
 	public void delete(RoomModel roomModel);
+	public List<RoomModel> showAll();
+	public List<RoomModel> searchByIdOffice(Long id);
 }

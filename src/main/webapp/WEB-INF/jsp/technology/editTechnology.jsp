@@ -67,8 +67,12 @@
 	
 	listDataTrainer();
 	var arrayTrainer = new Array;
+	listDataTrainer();
+	var arrayTrainer = new Array;
+	var newIdTrainer;
 
 	function listDataTrainer(){
+		alert("boo");
 		$.ajax({
 			url : "technology/listTechTrainer.html",
 			type : "get",

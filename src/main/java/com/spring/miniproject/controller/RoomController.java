@@ -16,6 +16,8 @@ import com.spring.miniproject.model.IdleNewsModel;
 import com.spring.miniproject.model.MenuModel;
 import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.model.RoomModel;
+import com.spring.miniproject.model.TechnologyTrainerModel;
+import com.spring.miniproject.model.TrainerModel;
 import com.spring.miniproject.service.CategoryService;
 import com.spring.miniproject.service.IdleNewsService;
 import com.spring.miniproject.service.MenuService;
@@ -59,13 +61,20 @@ public class RoomController extends BaseController{
 		String jsp = "office/room";
 		return jsp;
 	}	
-	
+	public void listRoom(Model model) {
+		List<RoomModel> roomModelList = new ArrayList<RoomModel>();
+		roomModelList = this.roomService.showAll();
+		model.addAttribute("trainerModelList", roomModelList);
+	}
 	
 	@RequestMapping(value="office/list_room")
-	public String listroom(Model model) {
+	public String listroom(HttpServletRequest request, Model model) {
+		Long id = new Long(request.getParameter("idOffice"));
 		List<RoomModel> roomModelList = new ArrayList<RoomModel>();
-		roomModelList = this.roomService.searchAll();
+		roomModelList = this.roomService.searchByIdOffice(id);
 		model.addAttribute("roomModelList", roomModelList);
+		
+		this.listRoom(model);
 		String jsp = "office/list_room";
 		return jsp;
 	}
@@ -96,6 +105,7 @@ public class RoomController extends BaseController{
 		String jsp = "office/edit";
 		return jsp;
 	}
+	
 	public String codeRoomGenerator() {
 		Integer idRoom = 0;
 		idRoom = this.sequenceService.nextIdRoom();

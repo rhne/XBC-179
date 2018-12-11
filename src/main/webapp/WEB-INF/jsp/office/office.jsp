@@ -90,6 +90,7 @@
 <script>
 var roomArray = new Array;
 	listDataOffice();
+	
 	function listDataOffice() {
 		$.ajax({
 			url:"office/list.html",
@@ -151,6 +152,7 @@ var roomArray = new Array;
 			});
 		});
 		$("#list-data-office").on("click", ".btn-edit", function() {
+			
 			var Id = $(this).prop('id');
 			$.ajax({
 				url : "office/edit.html",
@@ -160,9 +162,11 @@ var roomArray = new Array;
 					id : Id
 				},
 				success : function(result) {
+					
 					$("#modal-input").find(".modal-title").html("Form Edit Office");
 					$("#modal-input").find(".modal-body").html(result);
 					$("#modal-input").modal("show");
+					listDataRoomDB();
 				}
 			});
 		});
@@ -234,20 +238,7 @@ var roomArray = new Array;
 			$("#modal-alert-delete-room").modal("show");
 		});
 		
-		$("#modal-alert-delete-room").on("submit", "#form-confirm-delete-room", function() {
-			$.ajax({
-				url: "office/delete_room/save.json",
-				type: "get",
-				dataType: "json",
-				data: {
-					id: selectedRoomId
-				},
-				success: function (result) {
-					$("#modal-alert-delete-room").modal("hide");
-					populateRoomListTable();
-				}
-		});
-		});
+
 		$("#modal-room").on("submit","#form-room-tambah", function(){
 			var room = {
 				code: $("#code").val(),
