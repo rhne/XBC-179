@@ -16,6 +16,7 @@ public class TechnologyDaoImpl implements TechnologyDao{
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
 
 	@Override
 	public TechnologyModel create(TechnologyModel technologyModel) {
@@ -48,10 +49,10 @@ public class TechnologyDaoImpl implements TechnologyDao{
 	}
 
 	@Override
-	public TechnologyModel searchById(Long idTech) {
+	public TechnologyModel searchById(Long id) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		String query = " select t from TechnologyModel t where t.idTech="+idTech+"";
+		String query = " select t from TechnologyModel t where t.id="+id+"";
 		TechnologyModel technologyModel = new TechnologyModel();
 		technologyModel = (TechnologyModel) session.createQuery(query).getSingleResult();
 		return technologyModel;

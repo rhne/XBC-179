@@ -1,6 +1,7 @@
 package com.spring.miniproject.dao.Impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;  
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.OfficeDao;
+import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.OfficeModel;
 
 @Repository
@@ -27,10 +29,11 @@ public class OfficeDaoImpl implements OfficeDao{
 	}
 
 	@Override
-	public void create(OfficeModel officeModel) {
+	public OfficeModel create(OfficeModel officeModel) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(officeModel);
+		return officeModel;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -57,6 +60,13 @@ public class OfficeDaoImpl implements OfficeDao{
 	public void delete(OfficeModel officeModel) {
 		officeModel.setIsActive(0);
 		
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(officeModel);
+	}
+	@Override
+	public void update(OfficeModel officeModel) {
+		// TODO Auto-generated method stub
+		officeModel.setModifiedOn(new Date());
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(officeModel);
 	}

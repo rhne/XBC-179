@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name="M_TECH_TRAINER")
 public class TechnologyTrainerModel {
@@ -19,21 +22,22 @@ public class TechnologyTrainerModel {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="M_TECH_TRAINER")
 	@TableGenerator(name="M_TECH_TRAINER", table="S_SEQUENCE", pkColumnName="SEQUENCE_NAME", pkColumnValue="ID_TECH_TRAINER", valueColumnName="SEQUENCE_VALUE", allocationSize=1, initialValue=0)
-	private Long idTechTrainer;
-	
-	@Column(name="TECHNOLOGY_ID")
-	private Long technologyId;
-	
-	@Column(name="TRAINER_ID")
-	private Long trainerId;
+	private Long id;
 	
 	@Column(name="CREATED_BY")
-	private String createdBy;
+	private Long createdBy;
 	
 	@Column(name="CREATED_ON")
 	private Date createdOn;
 	
+	@Column(name="TRAINER_ID")
+	private Long idTrainer;
+	
+	@Column(name="TECHNOLOGY_ID")
+	private Long idTech;
+	
 	@ManyToOne
+//	@Cascade({CascadeType.ALL})
 	@JoinColumn(name="TECHNOLOGY_ID", insertable=false, updatable=false)
 	private TechnologyModel technologyModel;
 	
@@ -41,35 +45,35 @@ public class TechnologyTrainerModel {
 	@JoinColumn(name="TRAINER_ID", insertable=false, updatable=false)
 	private TrainerModel trainerModel;
 
-	public Long getIdTechTrainer() {
-		return idTechTrainer;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdTechTrainer(Long idTechTrainer) {
-		this.idTechTrainer = idTechTrainer;
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Long getIdTrainer() {
+		return idTrainer;
 	}
 
-	public Long getTechnologyId() {
-		return technologyId;
+	public void setIdTrainer(Long idTrainer) {
+		this.idTrainer = idTrainer;
 	}
 
-	public void setTechnologyId(Long technologyId) {
-		this.technologyId = technologyId;
+	public Long getIdTech() {
+		return idTech;
 	}
 
-	public Long getTrainerId() {
-		return trainerId;
+	public void setIdTech(Long idTech) {
+		this.idTech = idTech;
 	}
 
-	public void setTrainerId(Long trainerId) {
-		this.trainerId = trainerId;
-	}
-
-	public String getCreatedBy() {
+	public Long getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(Long createdBy) {
 		this.createdBy = createdBy;
 	}
 
@@ -95,6 +99,18 @@ public class TechnologyTrainerModel {
 
 	public void setTrainerModel(TrainerModel trainerModel) {
 		this.trainerModel = trainerModel;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="CREATED_BY", insertable=false, updatable=false)
+	private AkunModel akunModel;
+
+	public AkunModel getAkunModel() {
+		return akunModel;
+	}
+
+	public void setAkunModel(AkunModel akunModel) {
+		this.akunModel = akunModel;
 	}
 	
 	

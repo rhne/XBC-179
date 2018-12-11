@@ -42,9 +42,9 @@ public class TechnologyServiceImpl implements TechnologyService{
 	}
 
 	@Override
-	public TechnologyModel searchById(Long idTech) {
+	public TechnologyModel searchById(Long id) {
 		// TODO Auto-generated method stub
-		return this.technologyDao.searchById(idTech);
+		return this.technologyDao.searchById(id);
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -71,9 +72,27 @@ public class VersionController extends BaseController {
 	}
 	
 	@RequestMapping(value="version/tambahquestion")
-	public String tambahquestion(Model model) {
+	public String tambahquestion(HttpServletRequest request, Model model) {
+		JsonParser jsonParser = new JsonParser();
 		List<QuestionModel> questionModels = new ArrayList<QuestionModel>();
+		Gson gson = new Gson();
+		
+		String questionJsonArrayString = request.getParameter("data");
+		JsonArray questionJsonArray = jsonParser.parse(questionJsonArrayString).getAsJsonArray();
 		questionModels = this.questionService.searchAll();
+		ArrayList selectedQuestionArray = gson.fromJson(questionJsonArrayString, ArrayList.class);
+		
+		for (int i = 0; i < questionJsonArray.size(); i++) {
+			JsonObject jsonObject = questionJsonArray.get(i).getAsJsonObject();
+			Long qId = jsonObject.get("id").getAsLong();
+			
+			for (int j = 0; j < questionModels.size(); j++) {
+				if(questionModels.get(j).getId() == qId) {
+					questionModels.remove(j);
+				}
+			}
+		}
+		
 		model.addAttribute("questionModelList", questionModels);
 		String jsp = "version/tambahquestion";
 		return jsp;

@@ -8,4 +8,5 @@ public interface TechnologyTrainerService {
 
 	public TechnologyTrainerModel create(TechnologyTrainerModel technologyTrainerModel);
 	public List<TechnologyTrainerModel> showAll();
+	public List<TechnologyTrainerModel> searchByIdTech(Long id);
 }

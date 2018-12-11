@@ -12,24 +12,18 @@
       	<ul class="nav navbar-nav">
       		<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
       			<span class="hidden-xs">
-      			Welcome Here, ${username} as ${nameRole}</span>
-      		</a></li>     		
+      			Welcome Here, ${username} as ${nameRole}</span></a>
+      			<ul class="dropdown-menu dropdown-menu-right">
+      				<li>
+      					<form method="post" action="<c:url value="/j_spring_security_logout"/>">
+      						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+      						<button type="submit" class="btn btn-link"><p class="text-danger">Log Out</p></button>
+      					</form>
+      				</li>      		
+      			</ul>
+      		</li>     		
       	</ul>
-      </div>
-      <div class = "navbar-custom-menu">
-      	<ul class="nav navbar-nav">
-      	
-      		<li>
-      			<form method="post" action="<c:url value="/j_spring_security_logout"/>">
-      				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-      					<button type="submit" class="btn btn-block btn-warning"> Log Out</button>
-      			</form>
-      		</li>
-      		
-      	</ul>
-      	<div class="pull-right"></div>
-      </div>
-      
+      </div>      
     </nav>
     
     

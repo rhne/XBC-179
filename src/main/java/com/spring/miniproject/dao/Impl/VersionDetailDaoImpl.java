@@ -36,9 +36,11 @@ public class VersionDetailDaoImpl implements VersionDetailDao {
 	@Override
 	public List<QuestionModel> getQuestionsByVersionId(Long versionId) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String query = "SELECT TQ.* FROM T_VERSION_DETAIL VD JOIN T_QUESTION TQ ON TQ.ID = VD.QUESTION_ID WHERE VD.VERSION_ID=";
+		String query = "SELECT TQ.* FROM T_VERSION_DETAIL VD JOIN T_QUESTION TQ ON TQ.ID = VD.QUESTION_ID WHERE VD.VERSION_ID="
+				+versionId
+				+" ORDER BY VD.CREATED_ON";
 		//List<QuestionModel> questionModels = session.createSQLQuery(query).setResultTransformer(Transformers.aliasToBean(QuestionModel.class)).list();
-		SQLQuery q = session.createSQLQuery(query + versionId);
+		SQLQuery q = session.createSQLQuery(query);
 		q.addEntity(QuestionModel.class);
 		List<QuestionModel> questionModels = q.list();
 		return questionModels;

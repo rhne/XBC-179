@@ -1,6 +1,6 @@
 <h4>Deactive this ?</h4>
 <form action="#" method="get" id="form-deactive-tech" class="form-horizontal">
-	<input type="hidden" id="id" name="idTech" value="${technologyModel.idTech}" />
+	<input type="hidden" id="id" name="idTech" value="${technologyModel.id}" />
 	<div class="form-group">
 		<div class="col-md-8">
 			<input type="text" id="nameTech" name="techName" class="form-control" value="${technologyModel.name}" disabled="disabled"/>

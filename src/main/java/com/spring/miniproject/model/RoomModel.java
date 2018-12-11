@@ -1,6 +1,7 @@
 package com.spring.miniproject.model;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;  
 import javax.persistence.Entity;
@@ -26,20 +27,20 @@ public class RoomModel {
 	private Integer capacity;
 	private Integer projector;
 	private String notes;
-	private Long idOffice;
 	private OfficeModel officeModel;
+	private Long idOffice;
 	
 	
 	//AuditTrail////////////////////
 		private Integer isActive;
 			
 		private Long createdBy;
-		private RoomModel createdByUser;
-		private LocalDateTime createdOn;
+		private AkunModel createdByUser;
+		private Date createdOn;
 				
 		private Long modifiedBy;
-		private RoomModel modifiedByUser;
-		private LocalDateTime modifiedOn;
+		private AkunModel modifiedByUser;
+		private Date modifiedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
@@ -109,19 +110,18 @@ public class RoomModel {
 	
 	@ManyToOne
 	@JoinColumn(name="CREATED_BY",nullable=true, updatable=false, insertable=false)
-	public RoomModel getCreatedByUser() {
+	public AkunModel getCreatedByUser() {
 		return createdByUser;
 	}
-	public void setCreatedByUser(RoomModel createdByUser) {
+	public void setCreatedByUser(AkunModel createdByUser) {
 		this.createdByUser = createdByUser;
 	}
 	
-	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	public LocalDateTime getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(LocalDateTime createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 	
@@ -135,28 +135,22 @@ public class RoomModel {
 	
 	@ManyToOne
 	@JoinColumn(name="MODIFIED_BY",nullable=true, updatable=false, insertable=false)
-	public RoomModel getModifiedByUser() {
+	public AkunModel getModifiedByUser() {
 		return modifiedByUser;
 	}
-	public void setModifiedByUser(RoomModel modifiedByUser) {
+	public void setModifiedByUser(AkunModel modifiedByUser) {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
-	@UpdateTimestamp
+	
 	@Column(name="MODIFIED_ON")
-	public LocalDateTime getModifiedOn() {
+	public Date getModifiedOn() {
 		return modifiedOn;
 	}
-	public void setModifiedOn(LocalDateTime modifiedOn) {
+	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
-	@Column(name="ID_OFFICE")
-	public Long getIdOffice() {
-		return idOffice;
-	}
-	public void setIdOffice(Long idOffice) {
-		this.idOffice = idOffice;
-	}
+	
 	@ManyToOne
 	@JoinColumn(name="ID_OFFICE",nullable=true, updatable=false, insertable=false)
 	public OfficeModel getOfficeModel() {
@@ -164,5 +158,14 @@ public class RoomModel {
 	}
 	public void setOfficeModel(OfficeModel officeModel) {
 		this.officeModel = officeModel;
+	}
+	
+	@Column
+	(name="ID_OFFICE")
+	public Long getIdOffice() {
+		return idOffice;
+	}
+	public void setIdOffice(Long idOffice) {
+		this.idOffice = idOffice;
 	}
 }

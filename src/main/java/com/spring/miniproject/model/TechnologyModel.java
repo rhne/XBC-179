@@ -1,6 +1,6 @@
 package com.spring.miniproject.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,9 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 
 @Entity
 @Table(name="M_TECHNOLOGY")
@@ -26,7 +23,7 @@ public class TechnologyModel {
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="M_TECHNOLOGY")
 	@TableGenerator(name="M_TECHNOLOGY", table="S_SEQUENCE", pkColumnName="SEQUENCE_NAME", pkColumnValue="ID_SEQ_TECH", valueColumnName="SEQUENCE_VALUE", allocationSize=1, initialValue=0)
 	@Column(name="ID")
-	private Long idTech;
+	private Long id;
 	
 	@Column(name="NAME")
 	private String name;
@@ -35,34 +32,33 @@ public class TechnologyModel {
 	private String notes;
 	
 	@Column(name="CREATED_BY")
-	private String createdBy;
+	private Long createdBy;
 	
-	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	private LocalDateTime createdOn;
+	private Date createdOn;
 	
 	@Column(name="MODIFIED_BY")
-	private String modifiedBy;
+	private Long modifiedBy;
 	
-	@UpdateTimestamp
 	@Column(name="MODIFIED_ON")
-	private LocalDateTime modifiedOn;
+	private Date modifiedOn;
 	
 	@Column(name="ACTIVE")
 	private Integer active;
 	
-	@Column(name="ID_TRAINER")
-	private Long idTrainer;
-	
-	@OneToMany(mappedBy="technologyId")
+	@OneToMany(mappedBy="technologyModel")
+//	@Cascade({CascadeType.ALL})
 	private List<TechnologyTrainerModel> technologyTrainer;
 	
+	@ManyToOne
+	@JoinColumn(name="CREATED_BY", insertable=false, updatable=false)
+	private AkunModel akunModel;
 	
-	public Long getIdTech() {
-		return idTech;
+	public Long getId() {
+		return id;
 	}
-	public void setIdTech(Long idTech) {
-		this.idTech = idTech;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -76,28 +72,28 @@ public class TechnologyModel {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	public String getCreatedBy() {
+	public Long getCreatedBy() {
 		return createdBy;
 	}
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(Long createdBy) {
 		this.createdBy = createdBy;
 	}
-	public LocalDateTime getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(LocalDateTime createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
-	public String getModifiedBy() {
+	public Long getModifiedBy() {
 		return modifiedBy;
 	}
-	public void setModifiedBy(String modifiedBy) {
+	public void setModifiedBy(Long modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
-	public LocalDateTime getModifiedOn() {
+	public Date getModifiedOn() {
 		return modifiedOn;
 	}
-	public void setModifiedOn(LocalDateTime modifiedOn) {
+	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
 	public Integer getActive() {
@@ -106,18 +102,18 @@ public class TechnologyModel {
 	public void setActive(Integer active) {
 		this.active = active;
 	}
-	public Long getIdTrainer() {
-		return idTrainer;
-	}
-	public void setIdTrainer(Long idTrainer) {
-		this.idTrainer = idTrainer;
-	}
+	
 	public List<TechnologyTrainerModel> getTechnologyTrainer() {
 		return technologyTrainer;
 	}
 	public void setTechnologyTrainer(List<TechnologyTrainerModel> technologyTrainer) {
 		this.technologyTrainer = technologyTrainer;
 	}
-	
+	public AkunModel getAkunModel() {
+		return akunModel;
+	}
+	public void setAkunModel(AkunModel akunModel) {
+		this.akunModel = akunModel;
+	}
 	
 }

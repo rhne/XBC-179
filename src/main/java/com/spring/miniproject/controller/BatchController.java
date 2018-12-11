@@ -30,7 +30,7 @@ import com.spring.miniproject.service.TechnologyService;
 import com.spring.miniproject.service.TrainerService;
 
 @Controller
-public class BatchController {
+public class BatchController extends BaseController {
 
 	@Autowired
 	private BatchService batchService;
@@ -114,7 +114,11 @@ public class BatchController {
 		Long idBootcamp = new Long(request.getParameter("idBootcamp"));
 		String notes = request.getParameter("batchNotes");
 		
+		Long idUser = this.getAkunModel().getId();
+		
 		BatchModel batchModel = new BatchModel();
+		batchModel.setCreatedOn(new Date());
+		batchModel.setCreatedBy(idUser);
 		batchModel.setBatchId(idBatch);
 		batchModel.setTechnologyId(idTech);
 		batchModel.setTrainerId(idTrainer);
@@ -138,13 +142,16 @@ public class BatchController {
 		Long idTech = new Long(request.getParameter("idTechnology"));
 		Long idTrainer = new Long(request.getParameter("idTrainer"));
 		String name = request.getParameter("batchName");
-		Date from = new SimpleDateFormat("DD-MM-YY").parse(request.getParameter("batchStart"));
-		Date to = new SimpleDateFormat("DD-MM-YY").parse(request.getParameter("batchEnd"));
+		Date from = new SimpleDateFormat("DD/MM/YY").parse(request.getParameter("batchStart"));
+		Date to = new SimpleDateFormat("DD/MM/YY").parse(request.getParameter("batchEnd"));
 //		Long idRoom = new Long(request.getParameter("idBatch"));
 		Long idBootcamp = new Long(request.getParameter("idBootcamp"));
 		String notes = request.getParameter("batchNotes");
+		Long idUser = this.getAkunModel().getId();
 		
 		BatchModel batchModel = new BatchModel();
+		batchModel.setModifiedBy(idUser);
+		batchModel.setModifiedOn(new Date());
 		batchModel.setBatchId(idBatch);
 		batchModel.setTechnologyId(idTech);
 		batchModel.setTrainerId(idTrainer);

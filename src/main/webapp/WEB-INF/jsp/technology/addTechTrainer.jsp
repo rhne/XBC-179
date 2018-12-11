@@ -4,7 +4,7 @@
 		<div class="col-md-8">
 			<select class="form-control" id="idTrainer" name="idTrainer">
 				<trainer:forEach items="${trainerModelList}" var="trainerModel">
-					<option value='{ "id": "${trainerModel.idTrainer}", "name": "${trainerModel.name}"}' id="${trainerModel.idTrainer}">${trainerModel.name}
+					<option value='{ "id": "${trainerModel.id}", "name": "${trainerModel.name}"}' id="${trainerModel.id}">${trainerModel.name}
 					</option>
 				</trainer:forEach>
 			</select>

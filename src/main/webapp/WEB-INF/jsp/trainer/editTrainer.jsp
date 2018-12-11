@@ -1,5 +1,5 @@
 <form action="#" method="get" id="form-edit-trainer" class="form-horizontal">
-	<input type="hidden" id="id" name="idTrainer" value="${trainerModel.idTrainer}" />
+	<input type="hidden" id="id" name="idTrainer" value="${trainerModel.id}" />
 	<div class="form-group">
 		<label class="control-label col-md-3" for="nameTrainer">Name</label>
 		<div class="col-md-8">

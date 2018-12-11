@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import com.spring.miniproject.service.BootcampTypeService;
 import com.spring.miniproject.service.SequenceService;
 
 @Controller
-public class BootcampTypeController {
+public class BootcampTypeController extends BaseController{
 
 	@Autowired
 	private BootcampTypeService bootcampTypeService;
@@ -53,9 +54,12 @@ public class BootcampTypeController {
 		String name = request.getParameter("bootcampName");
 		String notes = request.getParameter("bootcampNotes");
 		Integer isActive = 1;
+		Long idUser = this.getAkunModel().getId();
 		
 		BootcampTypeModel bootcampTypeModel = new BootcampTypeModel();
 		bootcampTypeModel.setIdBootcamp(idBootcamp);
+		bootcampTypeModel.setCreatedBy(idUser);
+		bootcampTypeModel.setCreatedOn(new Date());
 		bootcampTypeModel.setName(name);
 		bootcampTypeModel.setNotes(notes);
 		bootcampTypeModel.setActive(isActive);
@@ -88,11 +92,15 @@ public class BootcampTypeController {
 		Long idBootcamp = new Long(request.getParameter("idBootcamp"));
 		String name = request.getParameter("bootcampName");
 		String notes = request.getParameter("bootcampNotes");
+		Long idUser = this.getAkunModel().getId();
 		
 		BootcampTypeModel bootcampTypeModel = new BootcampTypeModel();
 		bootcampTypeModel = this.bootcampTypeService.searchById(idBootcamp);
 		
+		
 		bootcampTypeModel.setIdBootcamp(idBootcamp);
+		bootcampTypeModel.setModifiedBy(idUser);
+		bootcampTypeModel.setModifiedOn(new Date());
 		bootcampTypeModel.setName(name);
 		bootcampTypeModel.setNotes(notes);
 		bootcampTypeModel.setActive(1);
@@ -134,7 +142,7 @@ public class BootcampTypeController {
 	@RequestMapping(value="bootcamp/deactiveBootcamp/save")
 	public String deactiveSaveBootcamp(HttpServletRequest request, Model model) {
 		Long idBootcamp = new Long(request.getParameter("idBootcamp"));
-		String modifiedBy = request.getParameter("modifiedBy");
+		Long idUser = this.getAkunModel().getId();
 		
 		Integer isActive = 0;
 		
@@ -142,7 +150,8 @@ public class BootcampTypeController {
 		bootcampTypeModel = this.bootcampTypeService.searchById(idBootcamp);
 		
 		bootcampTypeModel.setIdBootcamp(idBootcamp);
-		bootcampTypeModel.setModifiedBy(modifiedBy);
+		bootcampTypeModel.setModifiedBy(idUser);
+		bootcampTypeModel.setModifiedOn(new Date());
 		bootcampTypeModel.setActive(isActive);
 		
 		this.bootcampTypeService.edit(bootcampTypeModel);

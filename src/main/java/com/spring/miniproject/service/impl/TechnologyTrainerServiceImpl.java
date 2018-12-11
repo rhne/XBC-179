@@ -29,4 +29,11 @@ public class TechnologyTrainerServiceImpl implements TechnologyTrainerService {
 		return this.technologyTrainerDao.showAll();
 	}
 
+	@Override
+	public List<TechnologyTrainerModel> searchByIdTech(Long id) {
+		// TODO Auto-generated method stub
+		return this.technologyTrainerDao.searchByIdTech(id);
+	}
+
+
 }
