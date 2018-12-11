@@ -4,6 +4,6 @@ import com.spring.miniproject.model.FeedbackModel;
 
 public interface FeedbackService {
 	
-	public FeedbackModel create(FeedbackModel feedbackModel);
+	public void create(FeedbackModel feedbackModel);
 	
 }

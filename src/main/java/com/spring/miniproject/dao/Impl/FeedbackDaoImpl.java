@@ -15,10 +15,9 @@ public class FeedbackDaoImpl implements FeedbackDao {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public FeedbackModel create(FeedbackModel feedbackModel) {
+	public void create(FeedbackModel feedbackModel) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(feedbackModel);
-		return feedbackModel;
 	}
 	
 }
