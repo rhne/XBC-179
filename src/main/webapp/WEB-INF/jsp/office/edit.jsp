@@ -33,7 +33,7 @@
 				<TextArea id="office-notes" name="office-notes" class="form-control">${officeModel.notes}</TextArea>
 			</div>
 		</div>
-	<button type="button" id="button-tambah-room" class="btn btn-primary btn-sm"><i class="fa fa-user-plus"></i>Room</button>
+	<button type="button" id="button-tambah-room-baru" class="btn btn-primary btn-sm"><i class="fa fa-user-plus"></i>Room</button>
 			<div class="box-body">
 		<table class="table" id="table-room">
 			<thead>
@@ -199,6 +199,20 @@ function validasi_input(){
 			}
 	return true;
 }
-
+ $("#button-tambah-room-baru").on("click", function(){
+		$.ajax({
+			url:"office/tambah_room.html",
+			type:"get",
+			dataType:"html",
+			data: {
+				id: id
+			},
+			success:function(result){
+				$("#modal-input-room-baru").find(".modal-title").html("Form Room");
+				$("#modal-input-room-baru").find(".modal-body").html(result);
+				$("#modal-input-room-baru").modal("show");
+			}
+		});
+	});
 	
 </script>
