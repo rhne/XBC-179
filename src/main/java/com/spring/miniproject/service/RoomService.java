@@ -6,7 +6,7 @@ import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.RoomModel;
 
 public interface RoomService {
-	public void create(RoomModel roomModel);
+	public RoomModel create(RoomModel roomModel);
 	public List<RoomModel> searchAll();
 	public List<RoomModel> searchByLikeName(String name);
 	public RoomModel searchById(Long id);

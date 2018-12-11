@@ -19,9 +19,9 @@ public class RoomServiceImpl implements RoomService {
 	private RoomDao roomDao;
 	
 	@Override
-	public void create(RoomModel roomModel) {
+	public RoomModel create(RoomModel roomModel) {
 		// TODO Auto-generated method stub
-		this.roomDao.create(roomModel);
+		return this.roomDao.create(roomModel);
 	}
 	
 	public List<RoomModel> searchAll() {

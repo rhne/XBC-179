@@ -27,10 +27,11 @@ public class OfficeDaoImpl implements OfficeDao{
 	}
 
 	@Override
-	public void create(OfficeModel officeModel) {
+	public OfficeModel create(OfficeModel officeModel) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(officeModel);
+		return officeModel;
 	}
 	
 	@SuppressWarnings("unchecked")

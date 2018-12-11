@@ -5,7 +5,7 @@
 		<div class="form-group">
 			<label class="control-label col-md-3" for="name">Office Name</label>
 			<div class="col-md-8">
-				<input type="text" id="name" name="name" class="form-control">
+				<input type="text" id="office-name" name="office-name" class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -29,7 +29,7 @@
 		<div class="form-group">
 			<label class="control-label col-md-3" for="notes">Notes</label>
 			<div class="col-md-8">
-				<TextArea id="notes" name="notes" class="form-control"></TextArea>
+				<TextArea id="office-notes" name="office-notes" class="form-control"></TextArea>
 			</div>
 		</div>
 	<button type="button" id="button-tambah2" class="btn btn-primary btn-sm"><i class="fa fa-user-plus"></i>Room</button>
