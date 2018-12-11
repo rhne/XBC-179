@@ -48,4 +48,21 @@ public class TechnologyTrainerDaoImpl implements TechnologyTrainerDao{
 		return technologyTrainerModelList;
 	}
 
+	@Override
+	public void delete(TechnologyTrainerModel technologyTrainerModel) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		session.delete(technologyTrainerModel);
+	}
+
+	@Override
+	public TechnologyTrainerModel deleteById(Long id) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String query = " select t from TechnologyTrainerModel t where t.id ="+id+"";
+		TechnologyTrainerModel technologyTrainerModel = new TechnologyTrainerModel();
+		technologyTrainerModel = (TechnologyTrainerModel) session.createQuery(query).getSingleResult();
+		return technologyTrainerModel;
+	}
+
 }

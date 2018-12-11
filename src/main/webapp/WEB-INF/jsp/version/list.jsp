@@ -4,8 +4,6 @@
 	<tr>
 		<td>${number.count}</td>
 		<td>${versionModel.version}</td>
-		<td>${versionDetail.id}</td>
-		<td>${versionModel.isDelete}</td>
 		<td>
 			<div class="btn-group">
 			  <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown">

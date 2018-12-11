@@ -38,7 +38,7 @@ public class TechnologyServiceImpl implements TechnologyService{
 	@Override
 	public void edit(TechnologyModel technologyModel) {
 		// TODO Auto-generated method stub
-		
+		this.technologyDao.edit(technologyModel);
 	}
 
 	@Override

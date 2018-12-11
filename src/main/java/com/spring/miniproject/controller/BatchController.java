@@ -110,7 +110,7 @@ public class BatchController extends BaseController {
 		String name = request.getParameter("batchName");
 		Date from = new SimpleDateFormat("DD-MM-YY").parse(request.getParameter("batchStart"));
 		Date to = new SimpleDateFormat("DD-MM-YY").parse(request.getParameter("batchEnd"));
-//		Long idRoom = new Long(request.getParameter("idBatch"));
+		Long idRoom = new Long(request.getParameter("idRoom"));
 		Long idBootcamp = new Long(request.getParameter("idBootcamp"));
 		String notes = request.getParameter("batchNotes");
 		
@@ -125,7 +125,7 @@ public class BatchController extends BaseController {
 		batchModel.setName(name);
 		batchModel.setPeriodFrom(from);
 		batchModel.setPeriodTo(to);
-//		batchModel.setRoomId(idRoom);
+		batchModel.setRoomId(idRoom);
 		batchModel.setBootcampId(idBootcamp);
 		batchModel.setNotes(notes);
 		
@@ -144,7 +144,7 @@ public class BatchController extends BaseController {
 		String name = request.getParameter("batchName");
 		Date from = new SimpleDateFormat("DD/MM/YY").parse(request.getParameter("batchStart"));
 		Date to = new SimpleDateFormat("DD/MM/YY").parse(request.getParameter("batchEnd"));
-//		Long idRoom = new Long(request.getParameter("idBatch"));
+		Long idRoom = new Long(request.getParameter("idRoom"));
 		Long idBootcamp = new Long(request.getParameter("idBootcamp"));
 		String notes = request.getParameter("batchNotes");
 		Long idUser = this.getAkunModel().getId();
@@ -158,7 +158,7 @@ public class BatchController extends BaseController {
 		batchModel.setName(name);
 		batchModel.setPeriodFrom(from);
 		batchModel.setPeriodTo(to);
-//		batchModel.setRoomId(idRoom);
+		batchModel.setRoomId(idRoom);
 		batchModel.setBootcampId(idBootcamp);
 		batchModel.setNotes(notes);
 		

@@ -4,8 +4,6 @@
 	<tr>
 		<td>${number.count}</td>
 		<td>${questionModel.question}</td>
-		<td>${questionModel.createdOn}</td>
-		<td>${questionModel.isDelete}</td>
 		<td>
 			<div class="btn-group">
 			  <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown">

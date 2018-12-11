@@ -35,5 +35,17 @@ public class TechnologyTrainerServiceImpl implements TechnologyTrainerService {
 		return this.technologyTrainerDao.searchByIdTech(id);
 	}
 
+	@Override
+	public void delete(TechnologyTrainerModel technologyTrainerModel) {
+		// TODO Auto-generated method stub
+		this.technologyTrainerDao.delete(technologyTrainerModel);
+	}
+
+	@Override
+	public TechnologyTrainerModel deleteById(Long id) {
+		// TODO Auto-generated method stub
+		return this.technologyTrainerDao.deleteById(id);
+	}
+
 
 }
