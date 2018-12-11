@@ -43,7 +43,8 @@ public class TechnologyTrainerDaoImpl implements TechnologyTrainerDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<TechnologyTrainerModel> technologyTrainerModelList = new ArrayList<TechnologyTrainerModel>();
-		technologyTrainerModelList = session.createQuery(" select t from TechnologyTrainerModel t join TechnologyModel c on c.id = t.id where t.id ="+id+"").list();
+		String query = " select t from TechnologyTrainerModel t join TechnologyModel c on c.id = t.idTech where t.idTech ="+id+"";
+		technologyTrainerModelList = session.createQuery(query).list();
 		return technologyTrainerModelList;
 	}
 

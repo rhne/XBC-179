@@ -3,7 +3,7 @@
 <tech:forEach items="${technologyTrainerModelList}" var="technologyTrainerModel" varStatus="number">
 <tr>
 	<td>${technologyTrainerModel.trainerModel.name}</td>
-	<td>${technologyModel.createdOn}</td>
+	<td>${technologyTrainerModel.akunModel.name}</td>
 	<td>Active</td>
 	<td>
 		<div class="btn-group">
