@@ -109,7 +109,7 @@
 			}
 		});
 	}
-	
+
 	/* ON DOCUMENT READY */
 	$(document).ready(
 			function() {
@@ -124,7 +124,7 @@
 								dataType : "html",
 								success : function(result) {
 									$("#modal-input").find(".modal-title")
-											.html("Form Biodata");
+											.html("ADD BIODATA");
 									$("#modal-input").find(".modal-body").html(
 											result);
 									$("#modal-input").modal("show");
@@ -182,7 +182,7 @@
 								},
 								success : function(result) {
 									$("#modal-input").find(".modal-title")
-											.html("Edit Biodata");
+											.html("EDIT BIODATA");
 									$("#modal-input").find(".modal-body").html(
 											result);
 									$("#modal-input").modal("show");
@@ -222,6 +222,8 @@
 									id : id
 								},
 								success : function(result) {
+									$("#modal-deactivate").find(".modal-title")
+									.html("DEACTIVATE");
 									$("#modal-deactivate").find(".modal-body")
 											.html(result);
 									$("#modal-deactivate").modal("show");

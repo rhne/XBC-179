@@ -142,10 +142,17 @@
 		return false;
 	});
 	
-/* 	$("#list-data-trainer").on("click", ".btn-delete", function(){
+ $("#list-data-trainer").on("click", ".btn-delete", function(){
 		var idDelete = $(this).prop('id');
 		$.ajax({
-			url : technology/deleteTrainer/save;
-		});
-	}); */
+			url : "technology/deleteTrainer/save.json",
+			type : "get",
+			dataType : "json",
+			data : {idTech : idDelete},
+			sucess : function(result){
+				$("#modal-input").find("#list-data-trainer").html(result);
+				listDataTrainer;
+			}
+		}); return false;
+	});
 </script>

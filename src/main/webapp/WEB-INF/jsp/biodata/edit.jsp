@@ -71,7 +71,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="gender">Gender</label>
 		<div class="col-md-8">
-			<input type="radio" id="male" name="gender" value="male"
+			<input required type="radio" id="male" name="gender" value="male"
 				${biodataModel.gender=='male'? 'checked' : ''} />Male 
 			<input type="radio"id="female" name="gender" value="female"
 				${biodataModel.gender=='female'? 'checked' : ''} />Female

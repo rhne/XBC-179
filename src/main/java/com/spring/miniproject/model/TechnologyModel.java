@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -46,7 +47,7 @@ public class TechnologyModel {
 	@Column(name="ACTIVE")
 	private Integer active;
 	
-	@OneToMany(mappedBy="technologyModel")
+	@OneToMany(mappedBy="technologyModel", fetch=FetchType.EAGER)
 //	@Cascade({CascadeType.ALL})
 	private List<TechnologyTrainerModel> technologyTrainer;
 	
