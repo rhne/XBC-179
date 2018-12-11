@@ -101,6 +101,7 @@ public class OfficeController extends BaseController{
 				roomModel.setIdOffice(officeModel.getId());
 				roomModel.setCreatedBy(createdBy);
 				roomModel.setCreatedOn(new Date());
+				roomModel.setIsActive(1);
 				roomModel = this.roomService.create(roomModel);
 					//versionModel.getVersionDetails().add(versionDetailModel);
 				}

@@ -75,7 +75,7 @@ public class RoomDaoImpl implements RoomDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<RoomModel> roomModelList = new ArrayList<RoomModel>();
-		roomModelList = session.createQuery(" select t from RoomModel t join OfficeModel c on c.id = t.idOffice where t.idOffice ="+id+"").list();
+		roomModelList = session.createQuery(" select t from RoomModel t join OfficeModel c on c.id = t.idOffice where t.isActive=1 and t.idOffice ="+id+"").list();
 		return roomModelList;
 	}
 

@@ -53,12 +53,13 @@
 
 
 <script>
-	
+	listDataTrainer();
 	var arrayTrainer = new Array;
 	var newIdTrainer;
-	listDataTrainer();
+	
 
 	function listDataTrainer(){
+		alert("boo");
 		$.ajax({
 			url : "technology/listTechTrainer.html",
 			type : "get",
