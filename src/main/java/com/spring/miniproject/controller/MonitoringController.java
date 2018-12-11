@@ -33,7 +33,7 @@ public class MonitoringController extends BaseController {
 		return jsp;
 	}
 
-	/* List Monitoring */
+	/* Monitoring List */
 	@RequestMapping(value = "monitoring/list")
 	public String listmonitoring(Model model) {
 		List<MonitoringModel> monitoringModelList = new ArrayList<MonitoringModel>();
@@ -47,6 +47,7 @@ public class MonitoringController extends BaseController {
 	@RequestMapping(value = "monitoring/tambah")
 	public String tambahmonitoring(Model model) {
 
+		/* Dropdown List */
 		this.listbiodata(model);
 
 		String jsp = "monitoring/tambah";
@@ -64,10 +65,13 @@ public class MonitoringController extends BaseController {
 	/* Create Monitoring */
 	@RequestMapping(value = "monitoring/create")
 	public String create(HttpServletRequest request, Model model) throws Exception {
-
-		Long createdBy = this.getAkunModel().getId();
 		
+		/* Logged ID */
+		Long createdBy = this.getAkunModel().getId();
+
+		/* Biodata  ID */
 		Long id = Long.valueOf(request.getParameter("testId"));
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date idleDate = sdf.parse(request.getParameter("idleDate"));
 		Date placementDate = sdf.parse("1111-11-11");
@@ -75,9 +79,12 @@ public class MonitoringController extends BaseController {
 		MonitoringModel monitoringModel = new MonitoringModel();
 		monitoringModel.setTestId(id);
 		monitoringModel.setIdleDate(idleDate);
-		monitoringModel.setPlacementDate(placementDate);
 		monitoringModel.setLastProject(request.getParameter("lastProject"));
 		monitoringModel.setIdleReason(request.getParameter("idleReason"));
+		
+		monitoringModel.setPlacementDate(placementDate);
+		monitoringModel.setPlacementAt("");
+		
 		monitoringModel.setCreatedBy(createdBy);
 		monitoringModel.setCreatedOn(new Date());
 		monitoringModel.setIsDelete(0);
@@ -92,7 +99,10 @@ public class MonitoringController extends BaseController {
 	/* Popup Edit Monitoring */
 	@RequestMapping(value = "monitoring/edit")
 	public String monitoringEdit(HttpServletRequest request, Model model) {
+		
+		/* Monitoring ID */
 		Long id = Long.valueOf(request.getParameter("id"));
+		
 		MonitoringModel monitoringModel = new MonitoringModel();
 		monitoringModel = this.monitoringService.searchById(id);
 		model.addAttribute("monitoringModel", monitoringModel);
@@ -104,18 +114,25 @@ public class MonitoringController extends BaseController {
 	/* Edit Monitoring */
 	@RequestMapping(value = "monitoring/edit/save")
 	public String monitoringEditSave(HttpServletRequest request, Model model) throws Exception {
+		
+		/* Logged ID */
+		Long modifiedBy = this.getAkunModel().getId();
+		
+		/* Monitoring ID */
 		Long id = Long.valueOf(request.getParameter("id"));
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date idleDate = sdf.parse(request.getParameter("idleDate"));
 
 		MonitoringModel monitoringModelDB = new MonitoringModel();
-		monitoringModelDB = this.monitoringService.searchById(id);
-
 		monitoringModelDB.setIdleDate(idleDate);
 		monitoringModelDB.setLastProject(request.getParameter("lastProject"));
 		monitoringModelDB.setIdleReason(request.getParameter("idleReason"));
-
+	
+		monitoringModelDB.setModifiedBy(modifiedBy);
+		monitoringModelDB.setModifiedOn(new Date());
+		
+		monitoringModelDB = this.monitoringService.searchById(id);
 		this.monitoringService.update(monitoringModelDB);
 		model.addAttribute("monitoringModelDB", monitoringModelDB);
 
@@ -126,7 +143,10 @@ public class MonitoringController extends BaseController {
 	/* Popup Placement Monitoring */
 	@RequestMapping(value = "monitoring/placement")
 	public String monitoringPlacement(HttpServletRequest request, Model model) {
+		
+		/* Monitoring ID */
 		Long id = Long.valueOf(request.getParameter("id"));
+		
 		MonitoringModel monitoringModel = new MonitoringModel();
 		monitoringModel = this.monitoringService.searchById(id);
 		model.addAttribute("monitoringModel", monitoringModel);
@@ -139,6 +159,10 @@ public class MonitoringController extends BaseController {
 	@RequestMapping(value = "monitoring/placement/save")
 	public String placement(HttpServletRequest request, Model model) throws Exception {
 
+		/* Logged ID */
+		Long modifiedBy = this.getAkunModel().getId();
+		
+		/* Monitoring ID */
 		Long id = Long.valueOf(request.getParameter("id"));
 
 		MonitoringModel monitoringModelDB = new MonitoringModel();
@@ -150,6 +174,8 @@ public class MonitoringController extends BaseController {
 		monitoringModelDB.setPlacementDate(placementDate);
 		monitoringModelDB.setPlacementAt(request.getParameter("placementAt"));
 		monitoringModelDB.setNotes(request.getParameter("notes"));
+		monitoringModelDB.setModifiedBy(modifiedBy);
+		monitoringModelDB.setModifiedOn(new Date());
 
 		this.monitoringService.placement(monitoringModelDB);
 		model.addAttribute("monitoringModelDB", monitoringModelDB);
@@ -162,9 +188,11 @@ public class MonitoringController extends BaseController {
 	@RequestMapping(value = "monitoring/delete")
 	public String delete(HttpServletRequest request, Model model) {
 
+		/* Monitoring ID */
 		String id = request.getParameter("id");
 
 		MonitoringModel monitoringModel = new MonitoringModel();
+		
 		monitoringModel = this.monitoringService.searchById(Long.parseLong(id));
 		model.addAttribute("monitoringModel", monitoringModel);
 
@@ -176,9 +204,17 @@ public class MonitoringController extends BaseController {
 	@RequestMapping(value = "monitoring/delete/save")
 	public String delete(HttpServletRequest request) {
 
+		/* Logged ID */
+		Long deletedBy = this.getAkunModel().getId();
+		
+		/* Monitoring ID */
 		Long id = Long.valueOf(request.getParameter("id"));
 
 		MonitoringModel monitoringModel = new MonitoringModel();
+		monitoringModel.setIsDelete(1);
+		monitoringModel.setDeletedBy(deletedBy);
+		monitoringModel.setDeletedOn(new Date());
+		
 		monitoringModel = this.monitoringService.searchById(id);
 		this.monitoringService.delete(monitoringModel);
 
