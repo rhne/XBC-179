@@ -3,47 +3,47 @@
 
 <form action="#" method="get" id="form-add-batch" class="form-horizontal" onsubmit="return validation();">
 	<div class="form-group">
-		<label class="control-label col-md-3" for="idTechnology">Technology</label>
+		<label class="control-label col-md-3" for="idTechnology" style="color: white;">Technology</label>
 		<div class="col-md-8">
 			<select class="form-control" id="idTechnology" name="idTechnology">
 				<list:forEach items="${technologyModelList}" var="technologyModel">
 					<option selected disabled hidden>-Select Technology-</option>
-					<option value="${technologyModel.idTech}">${technologyModel.name}</option>
+					<option value="${technologyModel.id}">${technologyModel.name}</option>
 				</list:forEach>
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-3" for="idTrainer">Trainer</label>
+		<label class="control-label col-md-3" for="idTrainer" style="color: white;">Trainer</label>
 		<div class="col-md-8">
 			<select class="form-control" id="idTrainer" name="idTrainer">
 				<list:forEach items="${trainerModelList}" var="trainerModel">
 					<option selected disabled hidden>-Select Trainer-</option>
-					<option value="${trainerModel.idTrainer}">${trainerModel.name}</option>
+					<option value="${trainerModel.id}">${trainerModel.name}</option>
 				</list:forEach>
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-3" for="nameBatch">Name</label>
+		<label class="control-label col-md-3" for="nameBatch" style="color: white;">Name</label>
 		<div class="col-md-8">
 			<input type="text" name="batchName" id="nameBatch" class="form-control" placeholder="Name">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-3" for="startBatch">Period From</label>
+		<label class="control-label col-md-3" for="startBatch" style="color: white;">Period From</label>
 		<div class="col-md-8">
 			<input type="date" name="batchStart" id="startBatch" class="form-control" placeholder="Period from">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-3" for="endBatch">Period To</label>
+		<label class="control-label col-md-3" for="endBatch" style="color: white;">Period To</label>
 		<div class="col-md-8">
 			<input type="date" name="batchEnd" id="endBatch" class="form-control" placeholder="Period to">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-3" for="idRoom">Room</label>
+		<label class="control-label col-md-3" for="idRoom" style="color: white;">Room</label>
 		<div class="col-md-8">
 			<select class="form-control" id="idRoom" name="idRoom">
 				<list:forEach items="${roomModelList}" var="roomModel">
@@ -54,7 +54,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-3" for="idBootcamp">Bootcamp</label>
+		<label class="control-label col-md-3" for="idBootcamp" style="color: white;">Bootcamp</label>
 		<div class="col-md-8">
 			<select class="form-control" id="idBootcamp" name="idBootcamp">
 				<list:forEach items="${bootcampTypeModelList}" var="bootcampTypeModel">
@@ -65,7 +65,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-3" for="notesBatch">Notes</label>
+		<label class="control-label col-md-3" for="notesBatch" style="color: white;">Notes</label>
 		<div class="col-md-8">
 			<textarea rows="5" cols="10" name="batchNotes" id="notesBatch" class="form-control" placeholder="Notes"></textarea>
 		</div>

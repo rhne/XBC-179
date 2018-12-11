@@ -103,8 +103,6 @@ public class BatchController extends BaseController {
 	
 	@RequestMapping(value="batch/addBatch/save")
 	public String addSaveBatch(HttpServletRequest request, Model model) throws ParseException {
-		Long idBatch = new Long(this.sequenceService.nextIdBatch());
-		model.addAttribute("idBatch", idBatch);
 		Long idTech = new Long(request.getParameter("idTechnology"));
 		Long idTrainer = new Long(request.getParameter("idTrainer"));
 		String name = request.getParameter("batchName");
@@ -119,7 +117,6 @@ public class BatchController extends BaseController {
 		BatchModel batchModel = new BatchModel();
 		batchModel.setCreatedOn(new Date());
 		batchModel.setCreatedBy(idUser);
-		batchModel.setBatchId(idBatch);
 		batchModel.setTechnologyId(idTech);
 		batchModel.setTrainerId(idTrainer);
 		batchModel.setName(name);

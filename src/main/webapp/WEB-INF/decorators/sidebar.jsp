@@ -92,22 +92,22 @@
 					<a href="#"><i class="fa fa-edit"></i><span>Modul 5</span><span class="pull-right-container"> </span></a>
 						<ul class="treeview-menu">
 						<li>
-								<a href="${contextName}/technology.html" class="menu-item"><i class="fa fa-book"></i>Technology</a>
+								<a href="${contextName}/technology.html" class="menu-item"><i class="fa fa-code"></i>Technology</a>
 						</li>
 						<li>
-								<a href="${contextName}/trainer.html" class="menu-item"><i class="fa fa-book"></i>Trainer</a>
+								<a href="${contextName}/trainer.html" class="menu-item"><i class="fa fa-user"></i>Trainer</a>
 						</li>
 						<li> 
-								<a href="${contextName}/testimony.html" class="menu-item"><i class="fa fa-book"></i>Testimony</a>
+								<a href="${contextName}/testimony.html" class="menu-item"><i class="fa fa-sticky-note-o"></i>Testimony</a>
 						</li>
 						<li> 
-								<a href="${contextName}/bootcamp.html" class="menu-item"><i class="fa fa-book"></i>Bootcamp</a>
+								<a href="${contextName}/bootcamp.html" class="menu-item"><i class="fa fa-group"></i>Bootcamp</a>
 						</li>
 						<li> 
-								<a href="${contextName}/batch.html" class="menu-item"><i class="fa fa-book"></i>Batch</a>
+								<a href="${contextName}/batch.html" class="menu-item"><i class="fa fa-sitemap"></i>Batch</a>
 						</li>
 						<li> 
-								<a href="${contextName}/clazz.html" class="menu-item"><i class="fa fa-book"></i>Class</a>
+								<a href="${contextName}/clazz.html" class="menu-item"><i class="fa fa-university"></i>Class</a>
 						</li>
 						</ul>
 				</li>	

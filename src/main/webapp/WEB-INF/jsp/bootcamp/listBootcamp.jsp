@@ -3,7 +3,6 @@
 <bt:forEach items="${bootcampTypeModelList}" var="bootcampTypeModel" varStatus="number">
 <tr>
 	<td>${bootcampTypeModel.name}</td>
-	<td>
 	<td>${bootcampTypeModel.akunModel.name}</td>
 	<td>Active</td>
 	<td>

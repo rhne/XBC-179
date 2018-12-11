@@ -144,15 +144,13 @@ public class BootcampTypeController extends BaseController{
 		Long idBootcamp = new Long(request.getParameter("idBootcamp"));
 		Long idUser = this.getAkunModel().getId();
 		
-		Integer isActive = 0;
-		
 		BootcampTypeModel bootcampTypeModel = new BootcampTypeModel();
 		bootcampTypeModel = this.bootcampTypeService.searchById(idBootcamp);
 		
 		bootcampTypeModel.setIdBootcamp(idBootcamp);
 		bootcampTypeModel.setModifiedBy(idUser);
 		bootcampTypeModel.setModifiedOn(new Date());
-		bootcampTypeModel.setActive(isActive);
+		bootcampTypeModel.setActive(0);
 		
 		this.bootcampTypeService.edit(bootcampTypeModel);
 		

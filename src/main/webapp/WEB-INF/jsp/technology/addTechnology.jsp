@@ -1,10 +1,12 @@
 <form action="#" method="get" id="form-add-technology" class="form-horizontal">
 	<div class="form-group">
+		<label class="control-label col-md-3" for="nameTech">Name</label>
 		<div class="col-md-8">
 			<input type="text" id="nameTech" name="techName" class="form-control" placeholder="Name">
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="control-label col-md-3" for="noteTech">Notes</label>
 		<div class="col-md-8">
 			<input type="text" id="noteTech" name="techNote" class="form-control" placeholder="Notes">
 		</div>

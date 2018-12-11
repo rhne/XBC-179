@@ -8,8 +8,8 @@
 		<div class="col-md-8">
 			<select class="form-control" id="idTechnology" name="idTechnology">
 				<list:forEach items="${technologyModelList}" var="technologyModel">
-					<option selected disabled hidden value="${technologyModel.idTech}">${batchModel.technologyModel.name}</option>
-					<option value="${technologyModel.idTech}">${technologyModel.name}</option>
+					<option selected disabled hidden value="${technologyModel.id}">${batchModel.technologyModel.name}</option>
+					<option value="${technologyModel.id}">${technologyModel.name}</option>
 				</list:forEach>
 			</select>
 		</div>
@@ -19,8 +19,8 @@
 		<div class="col-md-8">
 			<select class="form-control" id="idTrainer" name="idTrainer">
 				<list:forEach items="${trainerModelList}" var="trainerModel">
-					<option selected disabled hidden value="${trainerModel.idTrainer}">${batchModel.trainerModel.name}</option>
-					<option value="${trainerModel.idTrainer}">${trainerModel.name}</option>
+					<option selected disabled hidden value="${trainerModel.id}">${batchModel.trainerModel.name}</option>
+					<option value="${trainerModel.id}">${trainerModel.name}</option>
 				</list:forEach>
 			</select>
 		</div>

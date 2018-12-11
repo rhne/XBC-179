@@ -16,7 +16,8 @@
 			<thead>
 				<tr>
 					<td><b>NAME</b></td>
-					<td></td>
+					<td><b>CREATED BY</b></td>
+					<td><b>STATUS</b></td>
 				</tr>
 			</thead>
 			
@@ -182,6 +183,7 @@
 			dataType : "json",
 			data : $(this).serialize(),
 			success : function(result){
+				alert("OK");
 				$("#modal-alert-deactivated").find(".modal-title");  
 				$("#modal-alert-deactivated").modal("show");
 				$("#modal-input").modal("hide");

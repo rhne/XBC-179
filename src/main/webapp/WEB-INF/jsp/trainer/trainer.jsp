@@ -59,6 +59,24 @@
 	</div>
 </div>
 
+<div class="modal fade" id = "modal-alert-add">
+	<div class="modal-dialog">
+		<div class="alert alert-success alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Added !
+       	</div>
+	</div>
+</div>
+
+<div class="modal fade" id = "modal-alert-update">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Updated !
+       	</div>
+	</div>
+</div>
+
 <script>
 	listDataTrainer();
 	function listDataTrainer(){
@@ -92,8 +110,9 @@
 			dataType : "json",
 			data : $(this).serialize(),
 			success : function(result){
+				$("#modal-alert-add").find(".modal-title");
+				$("#modal-alert-add").modal("show");
 				$("#modal-input").modal("hide");
-				alert("Data sucessfully added!");
 				listDataTrainer();
 			}
 		});

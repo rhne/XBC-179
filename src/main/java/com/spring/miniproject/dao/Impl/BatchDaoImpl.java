@@ -59,7 +59,7 @@ public class BatchDaoImpl implements BatchDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<BatchModel> batchModelList = new ArrayList<BatchModel>();
-		String query = " select b from BatchModel b join TechnologyModel t on t.idTech = b.technologyId where b.name like '%"+nameTech+"%' or t.name like '%"+nameTech+"%'";
+		String query = " select b from BatchModel b join TechnologyModel t on t.id = b.technologyId where b.name like '%"+nameTech+"%' or t.name like '%"+nameTech+"%'";
 		batchModelList = session.createQuery(query).list();
 		return batchModelList;
 	}

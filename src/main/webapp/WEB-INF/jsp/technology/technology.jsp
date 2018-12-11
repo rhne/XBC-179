@@ -6,7 +6,7 @@
 				<input type="text" id="txt-search" name="text" class="form-control pull-right" placeholder="Search by Name">
 				<div class="input-group-btn">
 					<button type="button" id="btn-search" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="search"><i class="fa fa-search"></i></button>
-					<button type="button" id="btn-add" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="add new"><i class="fa fa-plus"></i></button>
+					<button type="button" id="btn-add" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="add new"><i class="fa fa-plus"></i></button>
 				</div>
 			</div>
 		</div>
@@ -15,9 +15,9 @@
 		<table class="table table-striped table-hover" id="tech-table">
 			<thead>
 				<tr>
-					<td>NAME</td>
-					<td>CREATED BY</td>
-					<td>STATUS</td>
+					<td><b>NAME</b></td>
+					<td><b>CREATED BY</b></td>
+					<td><b>STATUS</b></td>
 					<td></td>
 				</tr>
 			</thead>
@@ -50,6 +50,15 @@
 	</div>
 	</div>
 
+<div class="modal fade" id = "modal-alert-add">
+	<div class="modal-dialog">
+		<div class="alert alert-success alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Added !
+       	</div>
+	</div>
+</div>
+
 <div class="modal fade" id = "modal-alert-deactivated">
 	<div class="modal-dialog">
 		<div class="alert alert-danger alert-dismissible">
@@ -58,6 +67,16 @@
        	</div>
 	</div>
 </div>
+
+<div class="modal fade" id = "modal-alert-update">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Updated !
+       	</div>
+	</div>
+</div>
+
 
 <script>
 	
@@ -77,6 +96,8 @@
 		});	
 	}
 
+	//ADD
+	
 	$("#btn-add").on("click", function() {
 		$.ajax({
 			url:"technology/addTechnology.html",
@@ -91,7 +112,7 @@
 	});
 		
 	$("#modal-input").on("submit", "#form-add-technology", function(){
-			alert(JSON.stringify(arrayTrainer));
+//			alert(JSON.stringify(arrayTrainer));
 			var addTech = $("#nameTech").val();
 			var addNote = $("#noteTech").val();
 			$.ajax({
@@ -100,13 +121,16 @@
 				dataType : "json",
 				data: {trainer : JSON.stringify(arrayTrainer), name : addTech, note : addNote},
 				success : function(result){
+					$("#modal-alert-add").find(".modal-title");  
+					$("#modal-alert-add").modal("show");
 					$("#modal-input").modal("hide");
-					alert("Data succesfully added!");
 					listDataTechnology();
 				}
 			});
 			return false;
 		});
+	
+	//SEARCH
 	
 	$("#btn-search").click(function(){
 		var search = $("#txt-search").val();
@@ -116,13 +140,14 @@
 			dataType : "html",
 			data : {text : search},
 			success : function(result){
-				alert("show");
-				$("list-data-technology").html(result);
+				$("#list-data-technology").html(result);
 			}
 		});
 		return false;
 	});
 
+	//ADD - DELETE TRAINER
+	
 	$("#modal-input").on("click", "#btn-add-trainer", function() {
 		$.ajax({
 			url:"technology/addTechTrainer.html",
@@ -165,8 +190,7 @@
 		
 		var newIdTrainer = $("#idTrainer").val();
 		arrayTrainer.push(JSON.parse(newIdTrainer));
-		alert(newIdTrainer);
-		
+//		alert(newIdTrainer);	
 		listTrainer();
 		$("#modal-input-trainer").modal("hide");
 		return false;
@@ -175,12 +199,14 @@
 		
 	$("#modal-input").on("click", ".btn-delete", function(){
 		var jsonId = JSON.parse($(this).prop('id'));
-		alert(jsonId);
+//		alert(jsonId);
 		var trainerId = jsonId;
-		alert(trainerId);
+//		alert(trainerId);
 		arrayTrainer.pop(trainerId);
 		listTrainer();
 	});
+	
+	//EDIT
 	
 	$("#list-data-technology").on("click", ".btn-edit", function(){
 		var idEdit = $(this).prop('id');
@@ -190,11 +216,34 @@
 			dataType : "html",
 			data : {idEdit : idEdit},
 			success : function(result){
+				$("#modal-input").find(".modal-title").html("Edit Technology");
 				$("#modal-input").find(".modal-body").html(result);
 				$("#modal-input").modal("show");
 			}
 		});
 	});
+	
+	$("#modal-input").on("submit", "#form-edit-technology", function(){
+//		alert(JSON.stringify(arrayTrainer));
+		var addTech = $("#nameTech").val();
+		var addNote = $("#noteTech").val();
+		var idTech = $("#id").val();
+		$.ajax({
+			url: "technology/editTechnology/save.json",
+			type : "get",
+			dataType : "json",
+			data: {trainer : JSON.stringify(arrayTrainer), name : addTech, note : addNote, id : idTech },
+			success : function(result){
+				$("#modal-alert-update").find(".modal-title");
+				$("#modal-alert-update").modal("show");
+				$("#modal-input").modal("hide");
+				listDataTechnology();
+			}
+		});
+		return false;
+	});
+	
+	//DEACTIVE
 	
 	$("#list-data-technology").on("click", ".btn-deactive", function(){
 		var idTech = $(this).prop('id');

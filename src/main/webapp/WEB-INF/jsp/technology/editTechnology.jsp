@@ -1,11 +1,13 @@
 <form action="#" method="get" id="form-edit-technology" class="form-horizontal">
 	<input type="hidden" id="id" name="idTechnology" value="${technologyModel.id}" />
 	<div class="form-group">
+		<label class="control-label col-md-3" for="nameTech">Name</label>
 		<div class="col-md-8">
 			<input type="text" id="nameTech" name="techName" class="form-control" value="${technologyModel.name}">
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="control-label col-md-3" for="noteTech">Notes</label>
 		<div class="col-md-8">
 			<input type="text" id="noteTech" name="techNote" class="form-control" value="${technologyModel.notes}">
 		</div>
@@ -69,7 +71,6 @@
 	var arrayTrainer = new Array;
 	
 	function listDataTrainer(){
-		alert("boo");
 		$.ajax({
 			url : "technology/listTechTrainer.html",
 			type : "get",
@@ -121,7 +122,7 @@
 		
 		var newIdTrainer = $("#idTrainer").val();
 		arrayTrainer.push(JSON.parse(newIdTrainer));
-		alert(newIdTrainer);
+		//alert(newIdTrainer);
 		listTrainer();
 		$("#modal-input-trainer").modal("hide");
 		return false;
@@ -131,57 +132,26 @@
 	$("#list-data-trainer").on("click", ".btn-delete-arr", function(){
 		var deletedId = $(this).prop('id');
 		var jsonId = JSON.parse(deletedId);
-		alert(deletedId);
+//		alert(deletedId);
 		arrayTrainer.pop(jsonId);
 		listDataTrainer();
 	});
 	
-	$("#modal-input").on("submit", "#form-edit-technology", function(){
-		alert(JSON.stringify(arrayTrainer));
-		var addTech = $("#nameTech").val();
-		var addNote = $("#noteTech").val();
-		var idTech = $("#id").val();
-		$.ajax({
-			url: "technology/editTechnology/save.json",
-			type : "get",
-			dataType : "json",
-			data: {trainer : JSON.stringify(arrayTrainer), name : addTech, note : addNote, id : idTech },
-			success : function(result){
-				$("#modal-input").modal("hide");
-				alert("Data succesfully edited!");
-				listDataTechnology();
-			}
-		});
-		return false;
-	});
 	
 	//delete data from list
 	 $("#modal-input").on("click", ".btn-delete-list", function(){
 			var idDelete = $(this).prop('id');
-			alert(idDelete);
+			//alert(idDelete);
 			$.ajax({
 				url : "technology/deleteTrainer/save.json",
 				type : "get",
 				dataType : "json",
 				data : {idTech : idDelete},
 				success : function(result){
-					alert("deleted");
+					//alert("deleted");
 					listDataTrainer();
 				}
 		}); return false;
 	 });
 	
-/* 	$("#modal-delete").on("click", "#form-delete-trainer", function(){
-		$.ajax({
-			url : "technology/deleteTrainer/save.json",
-			type : "get",
-			dataType : "json",
-			data : $(this).serialize(),
-			success : function(result){
-				$("#modal-delete").modal("hide");
-				listDataTrainer();
-			}
-		});
-		return false;
-	}); */
 </script>
