@@ -35,6 +35,7 @@
 			</div>
 		</div>
 	<button type="submit" id="button-tambah-room" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Create Room" onclick="return validasi_input();"><i class="fa fa-user-plus"></i>Tambah</button>
+	<button type="button" class="btn btn-normal btn-sm" data-dismiss="modal">Cancel</button>
 			
 </form>
 <script>

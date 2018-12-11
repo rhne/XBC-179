@@ -49,6 +49,7 @@
 	</div>
 		<div class="modal-footer">
 			<button type="submit" class="btn btn-primary btn-sm" onclick="return validasi_input();">Simpan</button>
+			<button type="button" class="btn btn-normal btn-sm" data-dismiss="modal">Cancel</button>
 		</div>
 </form>
 <script>
