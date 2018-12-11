@@ -183,8 +183,8 @@ public class TechnologyController extends BaseController {
 		
 		//get from form
 		Long idUser = this.getAkunModel().getId();
-		technologyModel.setCreatedBy(idUser);
-		technologyModel.setCreatedOn(new Date());
+		technologyModel.setModifiedBy(idUser);
+		technologyModel.setModifiedOn(new Date());
 		technologyModel.setName(request.getParameter("name"));
 		technologyModel.setNotes(request.getParameter("note"));
 		
@@ -205,7 +205,7 @@ public class TechnologyController extends BaseController {
 			
 			technologyTrainerModel = new TechnologyTrainerModel();
 			technologyTrainerModel.setTrainerModel(trainerModel);
-			technologyTrainerModel.setTechnologyModel(technologyModel);
+//			technologyTrainerModel.setTechnologyModel(technologyModel);
 			technologyTrainerModel.setIdTrainer(idTrainer);
 			technologyTrainerModel.setIdTech(technologyModel.getId());
 			technologyTrainerModel.setCreatedBy(idUser);

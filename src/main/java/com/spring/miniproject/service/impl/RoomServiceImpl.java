@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.miniproject.dao.RoomDao;
 import com.spring.miniproject.model.RoomModel;
+import com.spring.miniproject.model.TechnologyTrainerModel;
 import com.spring.miniproject.service.RoomService;
 
 
@@ -43,6 +44,18 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	public void delete(RoomModel roomModel) {
 		this.roomDao.delete(roomModel);
+	}
+	
+	@Override
+	public List<RoomModel> showAll() {
+		// TODO Auto-generated method stub
+		return this.roomDao.showAll();
+	}
+
+	@Override
+	public List<RoomModel> searchByIdOffice(Long id) {
+		// TODO Auto-generated method stub
+		return this.roomDao.searchByIdOffice(id);
 	}
 
 }

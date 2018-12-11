@@ -80,7 +80,7 @@ public class VersionController extends BaseController {
 		String questionJsonArrayString = request.getParameter("data");
 		JsonArray questionJsonArray = jsonParser.parse(questionJsonArrayString).getAsJsonArray();
 		questionModels = this.questionService.searchAll();
-		ArrayList selectedQuestionArray = gson.fromJson(questionJsonArrayString, ArrayList.class);
+		//ArrayList selectedQuestionArray = gson.fromJson(questionJsonArrayString, ArrayList.class);
 		
 		for (int i = 0; i < questionJsonArray.size(); i++) {
 			JsonObject jsonObject = questionJsonArray.get(i).getAsJsonObject();

@@ -12,9 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 @Entity
 @Table(name="M_TECH_TRAINER")
 public class TechnologyTrainerModel {
