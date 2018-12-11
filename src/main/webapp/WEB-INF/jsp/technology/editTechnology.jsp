@@ -51,12 +51,22 @@
 	</div>
 </div>
 
+<div class="modal fade" id="modal-alert-delete">
+	<div class="modal-dialog">
+		<div class="alert alert-warning alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
+            Are you sure you want to delete?
+            <div class="modal-body">
+			
+			</div>
+       	</div>
+	</div>
+</div>
 
 <script>
 	
-	var arrayTrainer = new Array;
-	var newIdTrainer;
 	listDataTrainer();
+	var arrayTrainer = new Array;
 
 	function listDataTrainer(){
 		$.ajax({
@@ -70,13 +80,13 @@
 		});
 	}
 	
-	$("#list-data-trainer").on("click", "#btn-add-trainer", function() {
+	$("#modal-input").on("click", "#btn-add-trainer", function() {
 		$.ajax({
 			url:"technology/addTechTrainer.html",
 			type: "get",
 			dataType: "html",
 			success: function(result){
-				$("#modal-input-trainer").find(".modal-title").html("Select Trainer")
+				$("#modal-input-trainer").find(".modal-title").html("Select Trainer");
 				$("#modal-input-trainer").find(".modal-body").html(result);
 				$("#modal-input-trainer").modal("show");
 			}
@@ -97,7 +107,7 @@
 			htmlSyntax = htmlSyntax + '<li><a id={"id":' + '"' + arrayTrainer[i]['id'] + '","name":'+ '"' + arrayTrainer[i]['name'] + '"}';
 			htmlSyntax = htmlSyntax + ' class="btn-edit">Edit</a></li>';
 			htmlSyntax = htmlSyntax + '<li><a id={"id":' + '"' + arrayTrainer[i]['id'] + '","name":'+ '"' + arrayTrainer[i]['name'] + '"}'; 
-			htmlSyntax = htmlSyntax + ' class="btn-delete">Delete</a></li>';
+			htmlSyntax = htmlSyntax + ' class="btn-delete-arr">Delete</a></li>';
 			htmlSyntax = htmlSyntax + '<li class="divider"></li></ul></div></td></tr>';
 			
 		}
@@ -116,7 +126,8 @@
 		return false;
 		});
 	
-	$("#list-data-trainer").on("click", ".btn-delete", function(){
+	//delete data from array
+	$("#list-data-trainer").on("click", ".btn-delete-arr", function(){
 		var deletedId = $(this).prop('id');
 		var jsonId = JSON.parse(deletedId);
 		alert(deletedId);
@@ -142,17 +153,32 @@
 		return false;
 	});
 	
- $("#list-data-trainer").on("click", ".btn-delete", function(){
-		var idDelete = $(this).prop('id');
+	//delete data from list
+	 $("#list-data-trainer").on("click", ".btn-delete", function(){
+			var idDelete = $(this).prop('id');
+			$.ajax({
+				url : "technology/deleteTrainer.html",
+				type : "get",
+				dataType : "html",
+				data : {idTech : idDelete},
+				sucess : function(result){
+					$("#modal-alert-delete").find("#modal-body").html(result);
+					$("#modal-alert-delete").modal("show");
+				}
+		});
+	 });
+	
+	$("#modal-alert-delete").on("click", "#form-delete-trainer", function(){
 		$.ajax({
 			url : "technology/deleteTrainer/save.json",
 			type : "get",
 			dataType : "json",
-			data : {idTech : idDelete},
-			sucess : function(result){
-				$("#modal-input").find("#list-data-trainer").html(result);
-				listDataTrainer;
+			data : $(this).serialize(),
+			success : function(result){
+				$("#modal-alert-delete").modal("hide");
+				listDataTrainer();
 			}
-		}); return false;
+		});
+		return false;
 	});
 </script>

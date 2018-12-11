@@ -33,6 +33,9 @@ public class TechnologyTrainerModel {
 	@Column(name="TECHNOLOGY_ID")
 	private Long idTech;
 	
+	@Column(name="IS_DELETED")
+	private Integer isDeleted;
+	
 	@ManyToOne
 //	@Cascade({CascadeType.ALL})
 	@JoinColumn(name="TECHNOLOGY_ID", insertable=false, updatable=false)
@@ -98,6 +101,16 @@ public class TechnologyTrainerModel {
 		this.trainerModel = trainerModel;
 	}
 	
+	public Integer getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Integer isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+
+
 	@ManyToOne
 	@JoinColumn(name="CREATED_BY", insertable=false, updatable=false)
 	private AkunModel akunModel;

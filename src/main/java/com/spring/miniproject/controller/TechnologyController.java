@@ -27,8 +27,6 @@ public class TechnologyController extends BaseController {
 	@Autowired
 	private TechnologyService technologyService;
 	
-//	@Autowired
-//	private SequenceService sequenceService;
 	
 	@Autowired
 	private TechnologyTrainerService technologyTrainerService;
@@ -99,6 +97,7 @@ public class TechnologyController extends BaseController {
 			technologyTrainerModel.setIdTech(technologyModel.getId());
 			technologyTrainerModel.setCreatedBy(idUser);
 			technologyTrainerModel.setCreatedOn(new Date());
+			technologyTrainerModel.setIsDeleted(0);
 			technologyTrainerModel = this.technologyTrainerService.create(technologyTrainerModel);
 			technologyTrainerModelList.add(technologyTrainerModel);
 		}
@@ -190,6 +189,8 @@ public class TechnologyController extends BaseController {
 		
 		this.technologyService.edit(technologyModel);
 		
+		Long idTech = technologyModel.getId();
+		
 		//TechTrainer instance
 		List<TrainerModel> trainerModelList = new ArrayList<TrainerModel>();
 		List<TechnologyTrainerModel> technologyTrainerModelList = new ArrayList<TechnologyTrainerModel>();
@@ -207,9 +208,10 @@ public class TechnologyController extends BaseController {
 			technologyTrainerModel.setTrainerModel(trainerModel);
 //			technologyTrainerModel.setTechnologyModel(technologyModel);
 			technologyTrainerModel.setIdTrainer(idTrainer);
-			technologyTrainerModel.setIdTech(technologyModel.getId());
+			technologyTrainerModel.setIdTech(idTech);
 			technologyTrainerModel.setCreatedBy(idUser);
 			technologyTrainerModel.setCreatedOn(new Date());
+			technologyTrainerModel.setIsDeleted(0);
 			technologyTrainerModel = this.technologyTrainerService.create(technologyTrainerModel);
 			technologyTrainerModelList.add(technologyTrainerModel);
 		}
@@ -218,4 +220,26 @@ public class TechnologyController extends BaseController {
 		return jsp;
 	}
 	
+	@RequestMapping(value="technology/deleteTrainer")
+	public String deleteTrainer(HttpServletRequest request, Model model) {
+		Long id = new Long (request.getParameter("idTech"));
+		TechnologyTrainerModel technologyTrainerModel = new TechnologyTrainerModel();
+		technologyTrainerModel = this.technologyTrainerService.deleteById(id);
+		model.addAttribute("technologyTrainerModel", technologyTrainerModel);
+		
+		String jsp = "technology/deleteTrainer";
+		return jsp;
+	}
+	
+	@RequestMapping(value="technology/deleteTrainer/save")
+	public String deleteSaveTrainer(HttpServletRequest request, Model model) {
+		Long id = new Long(request.getParameter("id"));
+		TechnologyTrainerModel technologyTrainerModel = new TechnologyTrainerModel();
+		technologyTrainerModel = this.technologyTrainerService.deleteById(id);
+		
+		this.technologyTrainerService.delete(technologyTrainerModel);
+		
+		String jsp = "technology/editTechnology";
+		return jsp;
+	}
 }

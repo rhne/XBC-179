@@ -93,7 +93,7 @@ public class RoomController extends BaseController{
 		roomModel = this.roomService.searchById(Long.parseLong(id));
 		this.roomService.delete(roomModel);
 		
-		String jsp = "office/tambah";
+		String jsp = "office/edit";
 		return jsp;
 	}
 	public String codeRoomGenerator() {
