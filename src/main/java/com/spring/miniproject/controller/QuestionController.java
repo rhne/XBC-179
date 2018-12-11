@@ -88,6 +88,7 @@ public class QuestionController extends BaseController {
 		AkunModel deletedBy = this.getAkunModel();
 		questionModel.setDeletedBy(deletedBy);
 		questionModel.setDeletedOn(new Date());
+		questionModel.setIsDelete(1);
 		this.questionService.delete(questionModel);
 		
 		String jsp = "question/home";

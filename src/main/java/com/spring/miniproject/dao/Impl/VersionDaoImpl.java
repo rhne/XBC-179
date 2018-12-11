@@ -22,14 +22,11 @@ public class VersionDaoImpl implements VersionDao {
 	@Override
 	public List<VersionModel> searchAll() {
 		Session session = this.sessionFactory.getCurrentSession();
-		return session.createQuery("from VersionModel").list();
+		return session.createQuery("from VersionModel where isDelete=0").list();
 	}
 
 	@Override
 	public VersionModel create(VersionModel versionModel) {
-		
-		//versionModel.setVersionDetails(new ArrayList<VersionDetailModel>());
-		
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(versionModel);
 		return versionModel;
@@ -68,8 +65,6 @@ public class VersionDaoImpl implements VersionDao {
 		catch (Exception e) {
 			return 0;
 		}
-		
-		
 	}
 
 	@Override

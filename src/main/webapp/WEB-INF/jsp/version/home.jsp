@@ -15,8 +15,6 @@
 			<tr>
 				<th>No.</th>
 				<th>Version</th>
-				<th>Created On</th>
-				<th>Is Delete</th>
 			</tr>
 			</thead>
 			<tbody id="list-data">
@@ -58,6 +56,15 @@
 		<div class="alert alert-success alert-dismissible">
         	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
             Data Successfully Added ...
+       	</div>
+	</div>
+</div>
+
+<div class="modal fade" id = "modal-alert2">
+	<div class="modal-dialog">
+		<div class="alert alert-success alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Deleted ...
        	</div>
 	</div>
 </div>
@@ -167,6 +174,7 @@
 				success: function (result) {
 					$("#modal-alert1").modal("show");
 					$("#modal-input").modal("hide");
+					listData();
 				}
 			});
 			return false;
@@ -203,6 +211,7 @@
 			},
 			success: function (result) {
 				$("#modal-alert-delete").modal("hide");
+				$("#modal-alert2").modal("show");
 				listData();
 			}
 		});
