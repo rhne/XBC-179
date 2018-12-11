@@ -29,4 +29,5 @@ public class TechnologyTrainerServiceImpl implements TechnologyTrainerService {
 		return this.technologyTrainerDao.showAll();
 	}
 
+
 }

@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,7 @@ import com.spring.miniproject.service.BiodataService;
 import com.spring.miniproject.service.ClazzService;
 
 @Controller
-public class ClazzController {
+public class ClazzController extends BaseController {
 	
 	@Autowired
 	private ClazzService clazzService;
@@ -66,11 +67,14 @@ public class ClazzController {
 		Long idClazz = new Long(request.getParameter("idClazz"));
 		Long idBatch = new Long(request.getParameter("batchId"));
 		Long idName = new Long (request.getParameter("biodataId"));
+		Long idUser = this.getAkunModel().getId();
 		
 		ClazzModel clazzModel = new ClazzModel();
 		clazzModel.setClazzId(idClazz);
 		clazzModel.setBatchId(idBatch);
 		clazzModel.setBiodataId(idName);
+		clazzModel.setCreatedBy(idUser);
+		clazzModel.setCreatedOn(new Date());
 		clazzModel.setIsDeleted(1);
 		
 		this.clazzService.delete(clazzModel);

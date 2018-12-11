@@ -1,6 +1,6 @@
 package com.spring.miniproject.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
-import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name="M_CLAZZ")
@@ -33,9 +32,8 @@ public class ClazzModel {
 	@Column(name="CREATED_BY")
 	private Long createdBy;
 	
-	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	private LocalDateTime createdOn;
+	private Date createdOn;
 	
 	@Column(name="IS_DELETED")
 	private  Integer isDeleted;
@@ -72,11 +70,11 @@ public class ClazzModel {
 		this.createdBy = createdBy;
 	}
 
-	public LocalDateTime getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
 
-	public void setCreatedOn(LocalDateTime createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 	

@@ -1,17 +1,16 @@
 package com.spring.miniproject.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="M_BOOTCAMP")
@@ -32,18 +31,16 @@ public class BootcampTypeModel {
 	private String notes;
 	
 	@Column(name="CREATED_BY")
-	private String createdBy;
+	private Long createdBy;
 	
 	@Column(name="CREATED_ON")
-	@CreationTimestamp
-	private LocalDateTime createdOn;
+	private Date createdOn;
 	
 	@Column(name="MODIFIED_BY")
-	private String modifiedBy;
+	private Long modifiedBy;
 	
 	@Column(name="MODIFIED_ON")
-	@UpdateTimestamp
-	private LocalDateTime modifiedOn;
+	private Date modifiedOn;
 	
 	@Column(name="ACTIVE")
 	private Integer active;
@@ -72,35 +69,35 @@ public class BootcampTypeModel {
 		this.notes = notes;
 	}
 
-	public String getCreatedBy() {
+	public Long getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(Long createdBy) {
 		this.createdBy = createdBy;
 	}
 
-	public LocalDateTime getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
 
-	public void setCreatedOn(LocalDateTime createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 
-	public String getModifiedBy() {
+	public Long getModifiedBy() {
 		return modifiedBy;
 	}
 
-	public void setModifiedBy(String modifiedBy) {
+	public void setModifiedBy(Long modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public LocalDateTime getModifiedOn() {
+	public Date getModifiedOn() {
 		return modifiedOn;
 	}
 
-	public void setModifiedOn(LocalDateTime modifiedOn) {
+	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
 
@@ -110,6 +107,18 @@ public class BootcampTypeModel {
 
 	public void setActive(Integer active) {
 		this.active = active;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="CREATED_BY", insertable=false, updatable=false)
+	private AkunModel akunModel;
+
+	public AkunModel getAkunModel() {
+		return akunModel;
+	}
+
+	public void setAkunModel(AkunModel akunModel) {
+		this.akunModel = akunModel;
 	}
 	
 	

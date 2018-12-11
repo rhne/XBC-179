@@ -4,7 +4,7 @@
 <tr>
 	<td>${bootcampTypeModel.name}</td>
 	<td>
-	<td>${bootcampTypeModel.createdBy}</td>
+	<td>${bootcampTypeModel.akunModel.name}</td>
 	<td>Active</td>
 	<td>
 		<div class="btn-group">

@@ -9,6 +9,6 @@ public interface TechnologyService {
 	public List<TechnologyModel> showAll();
 	public List<TechnologyModel> searchBy(String text);
 	public void edit(TechnologyModel technologyModel);
-	public TechnologyModel searchById(Long idTech);
+	public TechnologyModel searchById(Long id);
 	public TechnologyModel delete(TechnologyModel technologyModel);
 }

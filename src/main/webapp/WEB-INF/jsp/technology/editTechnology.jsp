@@ -1,5 +1,5 @@
 <form action="#" method="get" id="form-add-technology" class="form-horizontal">
-	<input type="hidden" id="id" name="idTechnology" value="${technologyModel.idTech}" />
+	<input type="hidden" id="id" name="idTechnology" value="${technologyModel.id}" />
 	<div class="form-group">
 		<div class="col-md-8">
 			<input type="text" id="nameTech" name="techName" class="form-control" value="${technologyModel.name}">
@@ -64,8 +64,6 @@
 
 
 <script>
-	
-	var arrayTrainer = new Array;
 	
 	listDataTrainer();
 	function listDataTrainer(){
