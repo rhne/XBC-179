@@ -83,7 +83,10 @@ public class BiodataController extends BaseController {
 	/* Popup Edit Biodata */
 	@RequestMapping(value = "biodata/edit")
 	public String biodataEdit(HttpServletRequest request, Model model) {
+		
+		/* Biodata ID */
 		Long id = Long.valueOf(request.getParameter("id"));
+		
 		BiodataModel biodataModel = new BiodataModel();
 		biodataModel = this.biodataService.searchById(id);
 		model.addAttribute("biodataModel", biodataModel);
@@ -110,8 +113,10 @@ public class BiodataController extends BaseController {
 		/* Logged ID */
 		Long modifiedBy = this.getAkunModel().getId();
 
-		/* biodataId */
+		/* Biodata  ID */
 		Long id = Long.valueOf(request.getParameter("id"));
+		
+		/* BootcampTestType ID */
 		Long bootcampTestType = Long.valueOf(request.getParameter("bootcampTestType"));
 
 		Integer iq = Integer.valueOf(request.getParameter("iq"));

@@ -108,7 +108,7 @@
 								dataType : "html",
 								success : function(result) {
 									$("#modal-input").find(".modal-title")
-											.html("Form Idle Monitoring");
+											.html("IDLE MONITORING");
 									$("#modal-input").find(".modal-body").html(
 											result);
 									$("#modal-input").modal("show");
@@ -163,7 +163,7 @@
 								},
 								success : function(result) {
 									$("#modal-input").find(".modal-title")
-											.html("Form Edit Monitoring");
+											.html("EDIT MONITORING");
 									$("#modal-input").find(".modal-body").html(
 											result);
 									$("#modal-input").modal("show");
@@ -202,7 +202,7 @@
 								},
 								success : function(result) {
 									$("#modal-input").find(".modal-title")
-											.html("Form Monitoring Placement");
+											.html("INPUT PLACEMENT");
 									$("#modal-input").find(".modal-body").html(
 											result);
 									$("#modal-input").modal("show");

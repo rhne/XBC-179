@@ -38,7 +38,7 @@ public class MonitoringModel {
 	// AuditTrail////////////////////
 	private Long createdBy;
 	private Date createdOn;
-	private Integer modifiedBy;
+	private Long modifiedBy;
 	private Date modifiedOn;
 	private Long deletedBy;
 	private Date deletedOn;
@@ -135,10 +135,10 @@ public class MonitoringModel {
 	/* User Login ID */
 	@LastModifiedBy
 	@Column(name = "MODIFIED_BY", length = 11)
-	public Integer getModifiedBy() {
+	public Long getModifiedBy() {
 		return modifiedBy;
 	}
-	public void setModifiedBy(Integer modifiedBy) {
+	public void setModifiedBy(Long modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 

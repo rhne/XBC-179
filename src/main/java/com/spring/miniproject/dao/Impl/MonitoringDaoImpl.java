@@ -1,7 +1,6 @@
 package com.spring.miniproject.dao.Impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -18,17 +17,14 @@ public class MonitoringDaoImpl implements MonitoringDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	/* Monitoring Add */
 	public void create(MonitoringModel monitoringModel) {
 		// TODO Auto-generated method stub
-		Long createdById = Long.valueOf(1);
-		
 		Session session = this.sessionFactory.getCurrentSession();
-		monitoringModel.setCreatedOn(new Date());
-		monitoringModel.setIsDelete(0);
-		monitoringModel.setCreatedBy(createdById);
 		session.save(monitoringModel);
 	}
 
+	/* Monitoring List */
 	@SuppressWarnings("unchecked")
 	public List<MonitoringModel> searchAll() {
 		// TODO Auto-generated method stub
@@ -38,6 +34,7 @@ public class MonitoringDaoImpl implements MonitoringDao {
 		return monitoringModelList;
 	}
 
+	/* Select Monitoring ID to Modify */
 	@Override
 	public MonitoringModel searchById(Long id) {
 		// TODO Auto-generated method stub
@@ -45,42 +42,38 @@ public class MonitoringDaoImpl implements MonitoringDao {
 		return (MonitoringModel) session.createQuery("from MonitoringModel where id=" + id).getSingleResult();
 	}
 
+	/* Monitoring Edit */
 	@Override
 	public void update(MonitoringModel monitoringModel) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		monitoringModel.setModifiedOn(new Date());
 		session.update(monitoringModel);
 	}
 
+	/* Monitoring Search */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MonitoringModel> searchByLikeName(String name) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		String query = " select m from MonitoringModel m where m.biodataModel.name like '%" + name + "%' ";
-
 		List<MonitoringModel> monitoringModelList = new ArrayList<MonitoringModel>();
 		monitoringModelList = session.createQuery(query).list();
-
 		return monitoringModelList;
 	}
 
+	/* Monitoring Delete */
 	@Override
 	public void delete(MonitoringModel monitoringModel) {
 		// TODO Auto-generated method stub
-		monitoringModel.setIsDelete(1);
-		monitoringModel.setDeletedOn(new Date());
-
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(monitoringModel);
 	}
 
+	/* Monitoring Placement */
 	@Override
 	public void placement(MonitoringModel monitoringModel) {
 		// TODO Auto-generated method stub
-		monitoringModel.setModifiedOn(new Date());
-
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(monitoringModel);
 	}
