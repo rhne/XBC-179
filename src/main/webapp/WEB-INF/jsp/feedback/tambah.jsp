@@ -23,6 +23,15 @@
 	</div>
 </form>
 
+<div class="modal fade" id = "modal-alert1">
+	<div class="modal-dialog">
+		<div class="alert alert-success alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Added ...
+       	</div>
+	</div>
+</div>
+
 <script type="text/javascript">
 	
 	$("#form-tambah-feedback").on("submit", function () {
@@ -33,22 +42,16 @@
 				questionId: $(this).prop('id'),
 				answer: $(this).val()
 			};
-			alert(object['questionId']);
 			questionArray.push(object);
 		});
-		//alert(JSON.stringify(questionArray));
 		
-		/* var dataObject = {
-			versionId: $("#versionId").val(),
-			testId: $("#testId").val(),
-			data: {
-				test: {
-					id: $("#testId").val(),
-				},
-				feedback: questionArray
-			}
-		};
-		alert(JSON.stringify(dataObject)); */
+		var dataObject = {
+			test: {
+				id: $("#testId").val(),
+			},
+			feedback: questionArray
+		}
+		alert(JSON.stringify(dataObject));
 		
 		$.ajax({
 			url: "feedback/create.json",
@@ -57,13 +60,14 @@
 			data: {
 				versionId: $("#versionId").val(),
 				testId: $("#testId").val(),
-				data: JSON.stringify(questionArray)
+				data: JSON.stringify(dataObject)
 			},
 			success: function () {
-				
+				$("#modal-alert1").find(".modal-title"); 
+				$("#modal-alert1").modal("show");
 			}
 		});
-		return false;
+		location.reload();
 	});
 
 </script>

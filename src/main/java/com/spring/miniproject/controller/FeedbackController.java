@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.miniproject.model.AkunModel;
 import com.spring.miniproject.model.FeedbackModel;
 import com.spring.miniproject.model.QuestionModel;
 import com.spring.miniproject.model.TestModel;
@@ -21,7 +23,7 @@ import com.spring.miniproject.service.VersionDetailService;
 import com.spring.miniproject.service.VersionService;
 
 @Controller
-public class FeedbackController {
+public class FeedbackController extends BaseController {
 
 	@Autowired
 	private QuestionService questionService;
@@ -54,13 +56,19 @@ public class FeedbackController {
 	
 	@RequestMapping(value="feedback/create")
 	public String create(HttpServletRequest request) {
+		AkunModel createdBy = this.getAkunModel();
 		Long versionId = Long.parseLong(request.getParameter("versionId"));
+		Long testId = Long.parseLong(request.getParameter("testId"));
 		String jsonFeedback = request.getParameter("data");
 		
 		FeedbackModel feedbackModel = new FeedbackModel();
+		feedbackModel.setTestId(testId);
 		feedbackModel.setVersionId(versionId);
 		feedbackModel.setJsonFeedback(jsonFeedback);
-		feedbackModel = this.feedbackService.create(feedbackModel);
+		feedbackModel.setCreatedBy(createdBy);
+		feedbackModel.setCreatedOn(new Date());
+		feedbackModel.setIsDelete(0);
+		this.feedbackService.create(feedbackModel);
 		
 		String jsp = "feedback/tambah";
 		return jsp;

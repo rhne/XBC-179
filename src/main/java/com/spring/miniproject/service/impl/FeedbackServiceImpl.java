@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.miniproject.dao.FeedbackDao;
 import com.spring.miniproject.model.FeedbackModel;
+import com.spring.miniproject.model.IdleNewsModel;
 import com.spring.miniproject.service.FeedbackService;
 
 @Service
@@ -16,8 +17,8 @@ public class FeedbackServiceImpl implements FeedbackService {
 	private FeedbackDao feedbackDao;
 	
 	@Override
-	public FeedbackModel create(FeedbackModel feedbackModel) {
-		return this.create(feedbackModel);
+	public void create(FeedbackModel feedbackModel) {
+		this.feedbackDao.create(feedbackModel);
 	}
 
 }

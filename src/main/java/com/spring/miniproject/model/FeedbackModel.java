@@ -35,7 +35,6 @@ public class FeedbackModel {
 	@Column(name="IS_DELETE")
 	private Integer isDelete;
 	
-	//Join Column
 	@ManyToOne
 	@JoinColumn(name="CREATED_BY")
 	private AkunModel createdBy;
@@ -97,6 +96,4 @@ public class FeedbackModel {
 	public void setDeletedBy(AkunModel deletedBy) {
 		this.deletedBy = deletedBy;
 	}
-	
-	
 }

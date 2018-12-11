@@ -131,7 +131,7 @@
 		
 		$("#modal-input").on("click", ".btn-delete-question", function() {
 			var questionId = JSON.parse($(this).prop('id'));
-			alert(questionId);
+			//alert(questionId);
 			questionArray.pop(questionId);
 			populateQuestionListTable();
 		});
@@ -150,17 +150,21 @@
 		//END REGION MODAL QUESTION
 		
 		$("#modal-input").on("submit", "#form-tambah-version", function () {
-			alert(JSON.stringify(questionArray));
-			$("#modal-input").modal("hide");
+			//alert(JSON.stringify(questionArray));
+			if(questionArray.length == 0) {
+				alert("Mohon isi");
+				return false;
+			}
 			$.ajax({
-				url: "version/create",
+				url: "version/create.json",
 				type: "get",
 				dataType: "json",
 				data: {
 					questions: JSON.stringify(questionArray)
 				},
 				success: function (result) {
-					
+					$("#modal-alert1").modal("show");
+					$("#modal-input").modal("hide");
 				}
 			});
 			return false;
