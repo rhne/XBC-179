@@ -36,6 +36,10 @@
 	
 	$("#form-tambah-feedback").on("submit", function () {
 		//alert(JSON.stringify($("#form-tambah-feedback").form));
+		if($("#testId").val() == null) {
+			alert("Test tidak boleh kosong!");
+			return false;
+		}
 		var questionArray = new Array;
 		$(".question").each(function (i) {
 			var object = {

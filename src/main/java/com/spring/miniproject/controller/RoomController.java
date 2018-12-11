@@ -61,6 +61,16 @@ public class RoomController extends BaseController{
 		String jsp = "office/room";
 		return jsp;
 	}	
+	
+	@RequestMapping(value="office/tambah_room")
+	public String tambahroombaru(HttpServletRequest request, Model model) {
+		String id = "";
+		id = request.getParameter("id");
+		model.addAttribute("id", id);
+		String jsp = "office/tambah_room";
+		return jsp;
+	}
+	
 	public void listRoom(Model model) {
 		List<RoomModel> roomModelList = new ArrayList<RoomModel>();
 		roomModelList = this.roomService.showAll();
@@ -102,7 +112,7 @@ public class RoomController extends BaseController{
 		roomModel = this.roomService.searchById(Long.parseLong(id));
 		this.roomService.delete(roomModel);
 		
-		String jsp = "office/edit";
+		String jsp = "office/office";
 		return jsp;
 	}
 	

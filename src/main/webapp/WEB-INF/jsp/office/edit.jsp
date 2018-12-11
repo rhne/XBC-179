@@ -33,7 +33,7 @@
 				<TextArea id="office-notes" name="office-notes" class="form-control">${officeModel.notes}</TextArea>
 			</div>
 		</div>
-	<button type="button" id="button-tambah-room" class="btn btn-primary btn-sm"><i class="fa fa-user-plus"></i>Room</button>
+	<button type="button" id="button-tambah2" class="btn btn-primary btn-sm"><i class="fa fa-user-plus"></i>Room</button>
 			<div class="box-body">
 		<table class="table" id="table-room">
 			<thead>
@@ -53,7 +53,7 @@
 		</div>
 </form>
 
-<div class="modal fade" id="modal-input-room-baru">
+<div class="modal fade" id="modal-room">
 	<div class="modal-dialog">
 		<div class = "modal-content">
 			<div class="modal-header" style="background-color:#3c8dbc;">
@@ -128,8 +128,9 @@ $("#modal-alert-delete-room").on("submit", "#form-confirm-delete-room", function
 		}
 });
 });
-/*  function newRoomListTable() {
-	var roomListTable = '<tr></tr>';
+
+  function newRoomListTable() {
+	var roomListTable = "<tr></tr>";
 	
 	for(i=0; i<roomArray.length; i++) {
 		roomListTable += '<tr><td>' + roomArray[i]['code'] + '</td>';
@@ -144,11 +145,11 @@ $("#modal-alert-delete-room").on("submit", "#form-confirm-delete-room", function
 		roomListTable += '</tr>';
 	}
 	
-	var html $("#modal-input").find("#list-data-room-edit").html();
+	var html= $("#modal-input").find("#list-data-room-edit").html();
 	html = $("#modal-input").find("#list-data-room-edit").html(html+roomListTable);
-} */
+} 
 
-$("#modal-input-room-baru").on("submit", "#form-tambah-room-baru", function(){
+$("#modal-room").on("submit", "#form-room-tambah", function(){
 	
 	var room = {
 			code: $("#code").val(),
@@ -160,10 +161,16 @@ $("#modal-input-room-baru").on("submit", "#form-tambah-room-baru", function(){
 		roomArray.push(room);
 		newRoomListTable();
 		$("#modal-alert1").modal("show");
-		$("#modal-input-room-baru").modal("hide");
+		$("#modal-room").modal("hide");
 		return false;
 	});
-
+	//delete
+$("#list-data-room-edit").on("click", ".btn-delete", function(){
+	var roomId = JSON.parse($(this).prop('id'));
+	roomArray.pop(roomId);
+	newRoomListTable();
+	$("#modal-alert-delete-room").modal("show");
+});
 /* $("#list-data-room-edit").on("click", ".btn-delete", function(){
 	var deletedId = $(this).prop('id');
 	var jsonId = JSON.parse(deletedId);
@@ -199,6 +206,20 @@ function validasi_input(){
 			}
 	return true;
 }
-
+/*  $("#button-tambah-room-baru").on("click", function(){
+		$.ajax({
+			url:"office/tambah_room.html",
+			type:"get",
+			dataType:"html",
+			data: {
+				id: id
+			},
+			success:function(result){
+				$("#modal-input-room-baru").find(".modal-title").html("Form Room");
+				$("#modal-input-room-baru").find(".modal-body").html(result);
+				$("#modal-input-room-baru").modal("show");
+			}
+		});
+	}); */
 	
 </script>
