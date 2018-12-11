@@ -14,12 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.spring.miniproject.model.AkunModel;
+import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.MenuModel;
 import com.spring.miniproject.model.OfficeModel;
-import com.spring.miniproject.model.QuestionModel;
 import com.spring.miniproject.model.RoomModel;
-import com.spring.miniproject.model.VersionDetailModel;
 import com.spring.miniproject.service.MenuService;
 import com.spring.miniproject.service.OfficeService;
 import com.spring.miniproject.service.RoomService;
@@ -70,20 +68,19 @@ public class OfficeController extends BaseController{
 		JsonObject jsonObject = new JsonObject();
 		
 		OfficeModel officeModel = new OfficeModel();
-		officeModel.setName(request.getParameter("office-name"));		
+		officeModel.setName(request.getParameter("name"));		
 		officeModel.setPhone(request.getParameter("phone"));
 		officeModel.setEmail(request.getParameter("email"));
 		officeModel.setAddress(request.getParameter("address"));
-		officeModel.setNotes(request.getParameter("office-notes"));
+		officeModel.setNotes(request.getParameter("notes"));
 		officeModel.setIsActive(1);
 		Long createdBy = this.getAkunModel().getId();
 		officeModel.setCreatedBy(createdBy);
+		officeModel.setCreatedOn(new Date());
 		
 		this.officeService.create(officeModel);
 		model.addAttribute("officeModel", officeModel);
-		
 		//create VersionDetail instances in table
-		List<RoomModel> roomModels = new ArrayList<RoomModel>();
 			RoomModel roomModel;
 			for(int i=0; i<roomArray.size(); i++) {
 				jsonObject = (JsonObject) roomArray.get(i);
@@ -93,7 +90,6 @@ public class OfficeController extends BaseController{
 				Integer capacity = jsonObject.get("capacity").getAsInt();
 				Integer projector = jsonObject.get("projector").getAsInt();
 				String notes = jsonObject.get("notes").getAsString();
-				roomModels.add(roomModel);
 					
 				roomModel = new RoomModel();
 				roomModel.setCode(code);
@@ -101,12 +97,10 @@ public class OfficeController extends BaseController{
 				roomModel.setCapacity(capacity);
 				roomModel.setProjector(projector);
 				roomModel.setNotes(notes);
-				roomModel.setOfficeModel(officeModel);
 				roomModel.setIdOffice(officeModel.getId());
 				roomModel.setCreatedBy(createdBy);
 				roomModel.setCreatedOn(new Date());
 				roomModel = this.roomService.create(roomModel);
-					roomModels.add(roomModel);
 					//versionModel.getVersionDetails().add(versionDetailModel);
 				}
 		
@@ -147,6 +141,37 @@ public class OfficeController extends BaseController{
 		OfficeModel officeModel = new OfficeModel();
 		officeModel = this.officeService.searchById(Long.parseLong(id));
 		this.officeService.delete(officeModel);
+		
+		String jsp = "office/office";
+		return jsp;
+	}
+	//edit
+	@RequestMapping(value="office/edit")
+	public String Edit(HttpServletRequest request, Model model) {
+		String id = (request.getParameter("id"));
+		OfficeModel officeModel = new OfficeModel();
+		officeModel = this.officeService.searchById(Long.parseLong(id));
+		model.addAttribute("officeModel", officeModel);
+		String jsp = "office/edit";
+		return jsp;
+	}
+	
+	
+	@RequestMapping(value="office/edit/save")
+	public String EditSave(HttpServletRequest request, Model model) throws Exception{
+		String id = request.getParameter("id");
+		OfficeModel officeModel = new OfficeModel();
+		officeModel = this.officeService.searchById(Long.parseLong(id));		
+		officeModel.setName(request.getParameter("office-name"));		
+		officeModel.setPhone(request.getParameter("phone"));
+		officeModel.setEmail(request.getParameter("email"));
+		officeModel.setAddress(request.getParameter("address"));
+		officeModel.setNotes(request.getParameter("office-notes"));
+		Long modifiedBy = this.getAkunModel().getId();
+		officeModel.setModifiedBy(modifiedBy);
+		
+		this.officeService.update(officeModel);
+		model.addAttribute("officeModel", officeModel);
 		
 		String jsp = "office/office";
 		return jsp;

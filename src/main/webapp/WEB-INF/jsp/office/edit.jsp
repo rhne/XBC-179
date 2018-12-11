@@ -1,35 +1,36 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
-<form action="#" method="get" id="form-office-tambah"
+<form action="#" method="get" id="form-office-edit"
 	class="form-horizontal">
+	<input type="hidden" id="id" name="id" value="${officeModel.id}" />
 		<div class="form-group">
-			<label class="control-label col-md-3" for="office-name">Office Name</label>
+			<label class="control-label col-md-3" for="name">Office Name</label>
 			<div class="col-md-8">
-				<input type="text" id="office-name" name="office-name" class="form-control">
+				<input type="text" id="office-name" name="office-name" class="form-control" value="${officeModel.name}">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-md-3" for="phone">Phone</label>
 			<div class="col-md-8">
-				<input type="text" id="phone" name="phone" class="form-control">
+				<input type="text" id="phone" name="phone" class="form-control" value="${officeModel.phone}">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-md-3" for="email">Email</label>
 			<div class="col-md-8">
-				<input type="text" id="email" name="email" class="form-control">
+				<input type="text" id="email" name="email" class="form-control" value="${officeModel.email}">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-md-3" for="address">Address</label>
 			<div class="col-md-8">
-				<TextArea id="address" name="address" class="form-control"></TextArea>
+				<TextArea id="address" name="address" class="form-control">${officeModel.address}</TextArea>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-md-3" for="office-notes">Notes</label>
+			<label class="control-label col-md-3" for="notes">Notes</label>
 			<div class="col-md-8">
-				<TextArea id="office-notes" name="office-notes" class="form-control"></TextArea>
+				<TextArea id="office-notes" name="office-notes" class="form-control">${officeModel.notes}</TextArea>
 			</div>
 		</div>
 	<button type="button" id="button-tambah2" class="btn btn-primary btn-sm"><i class="fa fa-user-plus"></i>Room</button>
@@ -48,11 +49,30 @@
 		</table>
 	</div>
 		<div class="modal-footer">
-			<button type="submit" class="btn btn-primary btn-sm" onclick="return validasi_input();">Simpan</button>
+			<button type="submit" class="btn btn-primary btn-sm">Simpan</button>
 		</div>
 </form>
 <script>
+listDataRoom();
+function listDataRoom() {
+	$.ajax({
+		url:"office/list_room.html",
+		type:"get",
+		dataType:"html",
+		success:function(result){
+			$("#list-data-room").html(result);
+		}
+	});
+}
 
+$("#list-data-room").on("click", ".btn-delete", function(){
+	var jsonId = JSON.parse($(this).prop('code'));
+	alert(jsonId);
+	var roomId = jsonId;
+	alert(roomId);
+	roomArray.pop(roomId);
+	listDataRoom();
+});
 
 
 function validasi_input(){
@@ -81,5 +101,6 @@ function validasi_input(){
 			}
 	return true;
 }
+
 	
 </script>

@@ -4,6 +4,6 @@ import com.spring.miniproject.model.FeedbackModel;
 
 public interface FeedbackDao {
 	
-	public FeedbackModel create(FeedbackModel feedbackModel);
+	public void create(FeedbackModel feedbackModel);
 	
 }

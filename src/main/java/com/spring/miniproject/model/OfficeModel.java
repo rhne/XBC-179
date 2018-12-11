@@ -33,12 +33,12 @@ public class OfficeModel {
 		private Integer isActive;
 			
 		private Long createdBy;
-		private OfficeModel createdByUser;
-		private LocalDateTime createdOn;
+		private AkunModel createdByUser;
+		private Date createdOn;
 				
 		private Long modifiedBy;
-		private OfficeModel modifiedByUser;
-		private LocalDateTime modifiedOn;
+		private AkunModel modifiedByUser;
+		private Date modifiedOn;
 	//AuditTrail/////////////////////
 	
 	@Id
@@ -108,19 +108,18 @@ public class OfficeModel {
 	
 	@ManyToOne
 	@JoinColumn(name="CREATED_BY",nullable=true, updatable=false, insertable=false)
-	public OfficeModel getCreatedByUser() {
+	public AkunModel getCreatedByUser() {
 		return createdByUser;
 	}
-	public void setCreatedByUser(OfficeModel createdByUser) {
+	public void setCreatedByUser(AkunModel createdByUser) {
 		this.createdByUser = createdByUser;
 	}
 	
-	@CreationTimestamp
 	@Column(name="CREATED_ON")
-	public LocalDateTime getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
-	public void setCreatedOn(LocalDateTime createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 	
@@ -134,19 +133,18 @@ public class OfficeModel {
 	
 	@ManyToOne
 	@JoinColumn(name="MODIFIED_BY",nullable=true, updatable=false, insertable=false)
-	public OfficeModel getModifiedByUser() {
+	public AkunModel getModifiedByUser() {
 		return modifiedByUser;
 	}
-	public void setModifiedByUser(OfficeModel modifiedByUser) {
+	public void setModifiedByUser(AkunModel modifiedByUser) {
 		this.modifiedByUser = modifiedByUser;
 	}
 	
-	@UpdateTimestamp
 	@Column(name="MODIFIED_ON")
-	public LocalDateTime getModifiedOn() {
+	public Date getModifiedOn() {
 		return modifiedOn;
 	}
-	public void setModifiedOn(LocalDateTime modifiedOn) {
+	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
 }
