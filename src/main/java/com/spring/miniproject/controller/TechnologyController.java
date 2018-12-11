@@ -168,7 +168,7 @@ public class TechnologyController extends BaseController {
 	}
 	
 	@RequestMapping(value="technology/editTechnology/save")
-	public String editSaveTechnology(HttpServletRequest request, Model model) {
+	public String editSaveTechnology(HttpServletRequest request) {
 		//parse json array
 		String trainerJsonArray = request.getParameter("trainer");
 		JsonParser jsonParser = new JsonParser();
@@ -176,9 +176,12 @@ public class TechnologyController extends BaseController {
 		JsonArray trainerArray = (JsonArray) obj;
 		JsonObject jsonObject = new JsonObject();
 		
+		Long idTech = new Long (request.getParameter("id"));
+		
 		//Technology model instance
 		TechnologyModel technologyModel = new TechnologyModel();
-		technologyModel.setTechnologyTrainer(new ArrayList<TechnologyTrainerModel>());
+//		technologyModel.setTechnologyTrainer(new ArrayList<TechnologyTrainerModel>());
+		technologyModel = this.technologyService.searchById(idTech);
 		
 		//get from form
 		Long idUser = this.getAkunModel().getId();
@@ -189,7 +192,7 @@ public class TechnologyController extends BaseController {
 		
 		this.technologyService.edit(technologyModel);
 		
-		Long idTech = technologyModel.getId();
+		
 		
 		//TechTrainer instance
 		List<TrainerModel> trainerModelList = new ArrayList<TrainerModel>();
@@ -220,20 +223,10 @@ public class TechnologyController extends BaseController {
 		return jsp;
 	}
 	
-	@RequestMapping(value="technology/deleteTrainer")
-	public String deleteTrainer(HttpServletRequest request, Model model) {
-		Long id = new Long (request.getParameter("idTech"));
-		TechnologyTrainerModel technologyTrainerModel = new TechnologyTrainerModel();
-		technologyTrainerModel = this.technologyTrainerService.deleteById(id);
-		model.addAttribute("technologyTrainerModel", technologyTrainerModel);
-		
-		String jsp = "technology/deleteTrainer";
-		return jsp;
-	}
 	
 	@RequestMapping(value="technology/deleteTrainer/save")
 	public String deleteSaveTrainer(HttpServletRequest request, Model model) {
-		Long id = new Long(request.getParameter("id"));
+		Long id = new Long(request.getParameter("idTech"));
 		TechnologyTrainerModel technologyTrainerModel = new TechnologyTrainerModel();
 		technologyTrainerModel = this.technologyTrainerService.deleteById(id);
 		

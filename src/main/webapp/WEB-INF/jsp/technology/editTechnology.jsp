@@ -51,7 +51,7 @@
 	</div>
 </div>
 
-<div class="modal fade" id="modal-alert-delete">
+<div class="modal fade" id="modal-delete">
 	<div class="modal-dialog">
 		<div class="alert alert-warning alert-dismissible">
         	<h4 class="modal-title"><i class="icon fa fa-question-circle"></i>Confirmation</h4>
@@ -67,10 +67,7 @@
 	
 	listDataTrainer();
 	var arrayTrainer = new Array;
-	listDataTrainer();
-	var arrayTrainer = new Array;
-	var newIdTrainer;
-
+	
 	function listDataTrainer(){
 		alert("boo");
 		$.ajax({
@@ -143,11 +140,12 @@
 		alert(JSON.stringify(arrayTrainer));
 		var addTech = $("#nameTech").val();
 		var addNote = $("#noteTech").val();
+		var idTech = $("#id").val();
 		$.ajax({
 			url: "technology/editTechnology/save.json",
 			type : "get",
 			dataType : "json",
-			data: {trainer : JSON.stringify(arrayTrainer), name : addTech, note : addNote},
+			data: {trainer : JSON.stringify(arrayTrainer), name : addTech, note : addNote, id : idTech },
 			success : function(result){
 				$("#modal-input").modal("hide");
 				alert("Data succesfully edited!");
@@ -158,31 +156,32 @@
 	});
 	
 	//delete data from list
-	 $("#list-data-trainer").on("click", ".btn-delete", function(){
+	 $("#modal-input").on("click", ".btn-delete-list", function(){
 			var idDelete = $(this).prop('id');
+			alert(idDelete);
 			$.ajax({
-				url : "technology/deleteTrainer.html",
+				url : "technology/deleteTrainer/save.json",
 				type : "get",
-				dataType : "html",
+				dataType : "json",
 				data : {idTech : idDelete},
-				sucess : function(result){
-					$("#modal-alert-delete").find("#modal-body").html(result);
-					$("#modal-alert-delete").modal("show");
+				success : function(result){
+					alert("deleted");
+					listDataTrainer();
 				}
-		});
+		}); return false;
 	 });
 	
-	$("#modal-alert-delete").on("click", "#form-delete-trainer", function(){
+/* 	$("#modal-delete").on("click", "#form-delete-trainer", function(){
 		$.ajax({
 			url : "technology/deleteTrainer/save.json",
 			type : "get",
 			dataType : "json",
 			data : $(this).serialize(),
 			success : function(result){
-				$("#modal-alert-delete").modal("hide");
+				$("#modal-delete").modal("hide");
 				listDataTrainer();
 			}
 		});
 		return false;
-	});
+	}); */
 </script>

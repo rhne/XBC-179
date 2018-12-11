@@ -109,13 +109,14 @@
 		});
 	
 	$("#btn-search").click(function(){
-		var text = document.getElementById("txt-search").val();
+		var search = $("#txt-search").val();
 		$.ajax({
 			url : "technology/searchTechnology/text.html",
 			type : "get",
 			dataType : "html",
-			data : {text:text},
+			data : {text : search},
 			success : function(result){
+				alert("show");
 				$("list-data-technology").html(result);
 			}
 		});

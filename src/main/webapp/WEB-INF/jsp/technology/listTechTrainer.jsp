@@ -13,7 +13,7 @@
 		  </button>
 		  <ul class="dropdown-menu" role="menu">
 		    <li><a id="${technologyTrainerModel.id}" class="btn-edit">Edit</a></li>
- 			<li><a id="${technologyTrainerModel.id}" class="btn-delete">Delete</a></li>
+ 			<li><a id="${technologyTrainerModel.id}" class="btn-delete-list">Delete</a></li>
 		    <li class="divider"></li>
 		  </ul>
 		</div>
