@@ -1,6 +1,7 @@
 package com.spring.miniproject.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import com.spring.miniproject.service.SequenceService;
 import com.spring.miniproject.service.TrainerService;
 
 @Controller
-public class TrainerController {
+public class TrainerController extends BaseController {
 
 	@Autowired
 	private TrainerService trainerService;
@@ -42,14 +43,15 @@ public class TrainerController {
 		
 		String name = request.getParameter("trainerName");
 		String notes = request.getParameter("trainerNote");	
-		String createdBy = request.getParameter("createdBy");
+		Long idUser = this.getAkunModel().getId();
 		Integer active = Integer.valueOf(request.getParameter("trainerStatus"));
 		
 		TrainerModel trainerModel = new TrainerModel();
-		trainerModel.setIdTrainer(idTrainer);
+		trainerModel.setId(idTrainer);
 		trainerModel.setName(name);
 		trainerModel.setNotes(notes);
-		trainerModel.setCreatedBy(createdBy);
+		trainerModel.setCreatedBy(idUser);
+		trainerModel.setCreatedOn(new Date());
 		trainerModel.setActive(active);
 		
 		this.trainerService.create(trainerModel);
@@ -102,14 +104,15 @@ public class TrainerController {
 		
 		String name = request.getParameter("trainerName");
 		String notes = request.getParameter("trainerNote");	
-		String modifiedBy = request.getParameter("modifiedBy");
+		Long idUser = this.getAkunModel().getId();
 		
 		TrainerModel trainerModel = new TrainerModel();
 		trainerModel = this.trainerService.searchById(idTrainer);
-		trainerModel.setIdTrainer(idTrainer);
+		trainerModel.setId(idTrainer);
 		trainerModel.setName(name);
 		trainerModel.setNotes(notes);
-		trainerModel.setModifiedBy(modifiedBy);
+		trainerModel.setModifiedBy(idUser);
+		trainerModel.setModifiedOn(new Date());
 		trainerModel.setActive(1);
 		
 		this.trainerService.edit(trainerModel);
@@ -140,9 +143,12 @@ public class TrainerController {
 		
 		String name = request.getParameter("trainerName");
 		String notes = request.getParameter("trainerNote");
+		Long idUser = this.getAkunModel().getId();
 		
 		trainerModel.setName(name);
 		trainerModel.setNotes(notes);
+		trainerModel.setModifiedBy(idUser);
+		trainerModel.setModifiedOn(new Date());
 		trainerModel.setActive(0);
 		
 		this.trainerService.edit(trainerModel);

@@ -50,7 +50,7 @@ public class TrainerDaoImpl implements TrainerDao{
 	public TrainerModel searchById(Long id) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		String query = " select t from TrainerModel t where t.idTrainer="+id+"";
+		String query = " select t from TrainerModel t where t.id="+id+"";
 		TrainerModel trainerModel = new TrainerModel();
 		trainerModel = (TrainerModel) session.createQuery(query).getSingleResult();
 	

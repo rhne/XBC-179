@@ -1,6 +1,5 @@
 package com.spring.miniproject.model;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,9 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 
 @Entity
@@ -47,17 +43,15 @@ public class BatchModel {
 	
 	@Column(name="CREATED_BY")
 	private Long createdBy;
-	
-	@CreationTimestamp
+
 	@Column(name="CREATED_ON")
-	private LocalDateTime createdOn;
+	private Date createdOn;
 	
 	@Column(name="MODIFIED_BY")
 	private Long modifiedBy;
 	
 	@Column(name="MODIFIED_ON")
-	@UpdateTimestamp
-	private LocalDateTime modifiedOn;
+	private Date modifiedOn;
 	
 	@Column(name="PERIOD_FROM")
 	private Date periodFrom;
@@ -65,7 +59,6 @@ public class BatchModel {
 	@Column(name="PERIOD_TO")
 	private Date periodTo;
 	
-
 	public Long getBatchId() {
 		return batchId;
 	}
@@ -130,11 +123,11 @@ public class BatchModel {
 		this.createdBy = createdBy;
 	}
 
-	public LocalDateTime getCreatedOn() {
+	public Date getCreatedOn() {
 		return createdOn;
 	}
 
-	public void setCreatedOn(LocalDateTime createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 
@@ -146,11 +139,11 @@ public class BatchModel {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public LocalDateTime getModifiedOn() {
+	public Date getModifiedOn() {
 		return modifiedOn;
 	}
 
-	public void setModifiedOn(LocalDateTime modifiedOn) {
+	public void setModifiedOn(Date modifiedOn) {
 		this.modifiedOn = modifiedOn;
 	}
 
@@ -187,6 +180,10 @@ public class BatchModel {
 	@ManyToOne
 	@JoinColumn(name="ID_BOOTCAMP", insertable=false, updatable=false)
 	private BootcampTypeModel bootcampTypeModel;
+	
+	@ManyToOne
+	@JoinColumn(name="CREATED_BY", insertable=false, updatable=false)
+	private AkunModel akunModel;
 
 	public TechnologyModel getTechnologyModel() {
 		return technologyModel;
@@ -218,6 +215,14 @@ public class BatchModel {
 
 	public void setBootcampTypeModel(BootcampTypeModel bootcampTypeModel) {
 		this.bootcampTypeModel = bootcampTypeModel;
+	}
+
+	public AkunModel getAkunModel() {
+		return akunModel;
+	}
+
+	public void setAkunModel(AkunModel akunModel) {
+		this.akunModel = akunModel;
 	}
 	
 	

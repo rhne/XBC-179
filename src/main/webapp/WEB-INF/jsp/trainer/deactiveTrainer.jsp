@@ -1,6 +1,6 @@
 <h4>Are you sure want to deactive this ?</h4>
 <form action="#" method="get" id="form-deactive-trainer" class="form-horizontal">
-	<input type="hidden" id="id" name="idTrainer" value="${trainerModel.idTrainer}" />
+	<input type="hidden" id="id" name="idTrainer" value="${trainerModel.id}" />
 	<input type="hidden" id="nameTrainer" name="trainerName" value="${trainerModel.name}"/>
 	<input type="hidden" id="noteTrainer" name="trainerNote" value="${trainerModel.notes}"/>
 	<div class="form-group">

@@ -11,8 +11,8 @@
 		    <span class="sr-only">Toggle Dropdown</span>
 		  </button>
 		  <ul class="dropdown-menu" role="menu">
-			    <li><a id="${trainerModel.idTrainer}" class="btn-edit">Edit</a></li>
-			     <li><a id="${trainerModel.idTrainer}" class="btn-deactive">Deactive</a></li>
+			    <li><a id="${trainerModel.id}" class="btn-edit">Edit</a></li>
+			     <li><a id="${trainerModel.id}" class="btn-deactive">Deactive</a></li>
 			    <li class="divider"></li>
 			</ul>
 		</div>
