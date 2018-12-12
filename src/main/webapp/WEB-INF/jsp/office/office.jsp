@@ -63,6 +63,14 @@
        	</div>
 	</div>
 </div>
+<div class="modal fade" id = "modal-alert-edit">
+	<div class="modal-dialog">
+		<div class="alert alert-success alert-dismissible">
+        	<h4 class="modal-title"><i class="icon fa fa-check"></i>Success!</h4>
+            Data Successfully Edited ...
+       	</div>
+	</div>
+</div>
 <div class="modal fade" id="modal-alert-delete">
 	<div class="modal-dialog">
 		<div class="alert alert-warning alert-dismissible">
@@ -170,7 +178,23 @@ var roomArray = new Array;
 				}
 			});
 		});
-
+		//edit room
+		$("#modal-input").on("submit","#form-room-edit",function() {
+			$.ajax({
+				url : "office/edit_room/save.json",
+				type : "get",
+				dataType : "json",
+				data : $(this).serialize(),
+				success : function(result) {
+					$("#modal-alert-edit").find(".modal-title");  
+					$("#modal-alert-edit").modal("show");
+					$("#modal-room").modal("hide");
+					listDataRoomDB();
+				}
+			});
+			return false;
+		});
+		//edit office
 		$("#modal-input").on("submit","#form-office-edit",function() {
 			$.ajax({
 				url:"office/edit/save.json",

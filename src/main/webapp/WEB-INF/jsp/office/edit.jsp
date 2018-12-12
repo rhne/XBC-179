@@ -81,7 +81,7 @@ function listDataRoomDB() {
 		}
 	});
 }
-
+//edit room
 $("#list-data-room-edit").on("click", ".btn-edit", function() {
 	
 	var Id = $(this).prop('id');
@@ -123,7 +123,7 @@ $("#modal-alert-delete-room").on("submit", "#form-confirm-delete-room", function
 		dataType: "json",
 		data: $(this).serialize(),
 		success: function (result) {
-			$("#modal-alert-delete-room").modal("hide");
+			$("#modal-alert-delete-room").modal("close");
 			listDataRoomDB();
 		}
 });

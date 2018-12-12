@@ -10,16 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.miniproject.model.BootcampTestTypeModel;
-import com.spring.miniproject.model.CategoryModel;
-import com.spring.miniproject.model.IdleNewsModel;
 import com.spring.miniproject.model.MenuModel;
 import com.spring.miniproject.model.OfficeModel;
 import com.spring.miniproject.model.RoomModel;
-import com.spring.miniproject.model.TechnologyTrainerModel;
-import com.spring.miniproject.model.TrainerModel;
-import com.spring.miniproject.service.CategoryService;
-import com.spring.miniproject.service.IdleNewsService;
 import com.spring.miniproject.service.MenuService;
 import com.spring.miniproject.service.OfficeService;
 import com.spring.miniproject.service.RoomService;
@@ -135,4 +128,34 @@ public class RoomController extends BaseController{
 		
 		return codeAuto;
 	}
+	//edit
+		@RequestMapping(value="office/edit_room")
+		public String Edit(HttpServletRequest request, Model model) {
+			String id = (request.getParameter("id"));
+			RoomModel roomModel = new RoomModel();
+			roomModel = this.roomService.searchById(Long.parseLong(id));
+			model.addAttribute("roomModel", roomModel);
+			String jsp = "office/edit_room";
+			return jsp;
+		}
+		
+		@RequestMapping(value="office/edit_room/save")
+		public String EditSave(HttpServletRequest request, Model model) throws Exception{
+			String id = request.getParameter("id");
+			RoomModel roomModel = new RoomModel();
+			roomModel = this.roomService.searchById(Long.parseLong(id));		
+			roomModel.setCode(request.getParameter("code"));
+			roomModel.setName(request.getParameter("name"));
+			roomModel.setCapacity(Integer.parseInt(request.getParameter("capacity")));
+			roomModel.setProjector(Integer.parseInt(request.getParameter("projector")));
+			roomModel.setNotes(request.getParameter("notes"));
+			Long modifiedBy = this.getAkunModel().getId();
+			roomModel.setModifiedBy(modifiedBy);
+			
+			this.roomService.update(roomModel);
+			model.addAttribute("roomModel", roomModel);
+			
+			String jsp = "office/edit";
+			return jsp;
+		}
 }
