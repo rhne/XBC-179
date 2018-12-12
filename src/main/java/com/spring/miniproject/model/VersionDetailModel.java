@@ -24,18 +24,18 @@ public class VersionDetailModel {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name="QUESTION_ID")
+	@JoinColumn(name="QUESTION_ID", nullable=false)
 	private QuestionModel question;
 	
 	@ManyToOne
-	@JoinColumn(name="VERSION_ID")
+	@JoinColumn(name="VERSION_ID", nullable=false)
 	private VersionModel version;
 	
-	@Column(name="CREATED_ON")
+	@Column(name="CREATED_ON", nullable=false)
 	private Date createdOn;
 
 	@ManyToOne
-	@JoinColumn(name="CREATED_BY")
+	@JoinColumn(name="CREATED_BY", nullable=false)
 	private AkunModel createdBy;
 	
 	public Long getId() {

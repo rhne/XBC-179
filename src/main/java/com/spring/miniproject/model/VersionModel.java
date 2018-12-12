@@ -24,6 +24,7 @@ public class VersionModel {
 			pkColumnName="SEQUENCE_NAME", pkColumnValue="T_VERSION_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize =1, initialValue=0)
 	private Long id;
+	@Column(name="VERSION", nullable=false)
 	private Integer version;
 	@Column(name="CREATED_ON", nullable=false)
 	private Date createdOn;
@@ -39,7 +40,7 @@ public class VersionModel {
 	
 	//Join Column
 	@ManyToOne
-	@JoinColumn(name="CREATED_BY")
+	@JoinColumn(name="CREATED_BY", nullable=false)
 	private AkunModel createdBy;
 	@ManyToOne
 	@JoinColumn(name="MODIFIED_BY")

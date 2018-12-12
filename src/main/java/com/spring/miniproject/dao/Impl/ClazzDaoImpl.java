@@ -37,7 +37,7 @@ public class ClazzDaoImpl implements ClazzDao{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		List<ClazzModel> clazzModelList = new ArrayList<ClazzModel>();
-		String query = " select c from ClazzModel c where c.isDeleted = 0 ";
+		String query = " select c from ClazzModel c where c.isDeleted=0 ";
 		clazzModelList = session.createQuery(query).list();
 		return clazzModelList;
 	}

@@ -22,21 +22,21 @@ public class FeedbackModel {
 			pkColumnName="SEQUENCE_NAME", pkColumnValue="T_FEEDBACK_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize =1, initialValue=0)
 	private Long id;
-	@Column(name="TEST_ID")
+	@Column(name="TEST_ID", nullable=false)
 	private Long testId;
-	@Column(name="VERSION_ID")
+	@Column(name="VERSION_ID", nullable=false)
 	private Long versionId;
 	@Column(name="JSON_FEEDBACK", length=5000)
 	private String jsonFeedback;
-	@Column(name="CREATED_ON")
+	@Column(name="CREATED_ON", nullable=false)
 	private Date createdOn;
 	@Column(name="DELETED_ON")
 	private Date deletedOn;
-	@Column(name="IS_DELETE")
+	@Column(name="IS_DELETE", nullable=false)
 	private Integer isDelete;
 	
 	@ManyToOne
-	@JoinColumn(name="CREATED_BY")
+	@JoinColumn(name="CREATED_BY", nullable=false)
 	private AkunModel createdBy;
 	@ManyToOne
 	@JoinColumn(name="DELETED_BY")

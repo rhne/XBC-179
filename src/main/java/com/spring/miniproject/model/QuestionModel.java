@@ -24,19 +24,20 @@ public class QuestionModel {
 			pkColumnName="SEQUENCE_NAME", pkColumnValue="T_QUESTION_ID",
 			valueColumnName="SEQUENCE_VALUE", allocationSize =1, initialValue=0)
 	private Long id;
+	@Column(name="QUESTION", nullable=false)
 	private String question;
-	@Column(name="CREATED_ON")
+	@Column(name="CREATED_ON", nullable=false)
 	private Date createdOn;
 	@Column(name="MODIFIED_ON")
 	private Date modifiedOn;
-	@Column(name="IS_DELETE")
+	@Column(name="IS_DELETE", nullable=false)
 	private Integer isDelete;
 	@Column(name="DELETED_ON")
 	private Date deletedOn;
 	
 	//Join Column
 	@ManyToOne
-	@JoinColumn(name="CREATED_BY")
+	@JoinColumn(name="CREATED_BY", nullable=false)
 	private AkunModel createdBy;
 	@ManyToOne
 	@JoinColumn(name="MODIFIED_BY")

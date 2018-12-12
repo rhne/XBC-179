@@ -55,7 +55,7 @@
 			},
 			feedback: questionArray
 		}
-		alert(JSON.stringify(dataObject));
+		//alert(JSON.stringify(dataObject));
 		
 		$.ajax({
 			url: "feedback/create.json",
@@ -69,6 +69,7 @@
 			success: function () {
 				$("#modal-alert1").find(".modal-title"); 
 				$("#modal-alert1").modal("show");
+				alert("Tersimpan");
 			}
 		});
 		location.reload();
