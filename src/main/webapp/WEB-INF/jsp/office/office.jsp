@@ -172,19 +172,26 @@ var roomArray = new Array;
 		});
 
 		$("#modal-input").on("submit","#form-office-edit",function() {
-					$.ajax({
-						url : "office/edit/save.json",
-						type : "get",
-						dataType : "json",
-						data : $(this).serialize(),
-						success : function(result) {
-							$("#modal-alert-edit").find(".modal-title");  
-							$("#modal-alert-edit").modal("show");
-							$("#modal-input").modal("hide");
-							listDataOffice();
-						}
-					});
-					return false;
+			$.ajax({
+				url:"office/edit/save.json",
+				type:"get",
+				dataType:"json",
+				data: {
+					id: $("#id").val(),
+					name: $("#office-name").val(),
+					phone: $("#phone").val(),
+					email: $("#email").val(),
+					address: $("#address").val(),
+					notes: $("#office-notes").val(),
+					rooms: JSON.stringify(roomArray)
+				},
+				success:function(result){
+					$("#modal-alert1").find(".modal-title");  
+					$("#modal-alert1").modal("show");
+					listDataOffice();
+				}
+			});
+			return false;
 				});
 	
 		$("#button-search").on("click", function(){

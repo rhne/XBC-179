@@ -161,20 +161,53 @@ public class OfficeController extends BaseController{
 	
 	@RequestMapping(value="office/edit/save")
 	public String EditSave(HttpServletRequest request, Model model) throws Exception{
+		String jsonRoomString = request.getParameter("rooms");
+		JsonParser jsonParser = new JsonParser();
+		Object obj = jsonParser.parse(jsonRoomString);
+		JsonArray roomArray = (JsonArray) obj;
+		JsonObject jsonObject = new JsonObject();
+		
 		String id = request.getParameter("id");
 		OfficeModel officeModel = new OfficeModel();
-		officeModel = this.officeService.searchById(Long.parseLong(id));		
-		officeModel.setName(request.getParameter("office-name"));		
+		officeModel = this.officeService.searchById((Long.parseLong(id)));
+		officeModel.setName(request.getParameter("name"));		
 		officeModel.setPhone(request.getParameter("phone"));
 		officeModel.setEmail(request.getParameter("email"));
 		officeModel.setAddress(request.getParameter("address"));
-		officeModel.setNotes(request.getParameter("office-notes"));
+		officeModel.setNotes(request.getParameter("notes"));
+		officeModel.setIsActive(1);
 		Long modifiedBy = this.getAkunModel().getId();
 		officeModel.setModifiedBy(modifiedBy);
+		officeModel.setModifiedOn(new Date());
 		
 		this.officeService.update(officeModel);
 		model.addAttribute("officeModel", officeModel);
-		
+		//create VersionDetail instances in table
+		RoomModel roomModel;
+		Long createdBy = this.getAkunModel().getId();
+		for(int i=0; i<roomArray.size(); i++) {
+			jsonObject = (JsonObject) roomArray.get(i);
+			roomModel = new RoomModel();
+			String code = jsonObject.get("code").getAsString();
+			String name = jsonObject.get("name").getAsString();
+			Integer capacity = jsonObject.get("capacity").getAsInt();
+			Integer projector = jsonObject.get("projector").getAsInt();
+			String notes = jsonObject.get("notes").getAsString();
+				
+			roomModel = new RoomModel();
+			roomModel.setCode(code);
+			roomModel.setName(name);
+			roomModel.setCapacity(capacity);
+			roomModel.setProjector(projector);
+			roomModel.setNotes(notes);
+			roomModel.setIdOffice((Long.parseLong(id)));
+			roomModel.setCreatedBy(createdBy);
+			roomModel.setCreatedOn(new Date());
+			roomModel.setIsActive(1);
+			roomModel = this.roomService.create(roomModel);
+			model.addAttribute("roomModel", roomModel);
+				//versionModel.getVersionDetails().add(versionDetailModel);
+			}
 		String jsp = "office/office";
 		return jsp;
 	}

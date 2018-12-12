@@ -66,7 +66,6 @@ public class OfficeDaoImpl implements OfficeDao{
 	@Override
 	public void update(OfficeModel officeModel) {
 		// TODO Auto-generated method stub
-		officeModel.setModifiedOn(new Date());
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(officeModel);
 	}
