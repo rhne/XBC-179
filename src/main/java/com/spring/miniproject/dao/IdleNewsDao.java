@@ -3,7 +3,6 @@ package com.spring.miniproject.dao;
 import java.util.List;
 
 import com.spring.miniproject.model.IdleNewsModel;
-import com.spring.miniproject.model.OfficeModel;
 
 public interface IdleNewsDao {
 	public void create(IdleNewsModel idlenewsModel);

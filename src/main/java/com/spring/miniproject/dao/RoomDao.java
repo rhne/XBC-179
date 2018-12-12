@@ -1,9 +1,7 @@
 package com.spring.miniproject.dao;
 
 import java.util.List;
-
 import com.spring.miniproject.model.RoomModel;
-import com.spring.miniproject.model.TechnologyTrainerModel;
 
 public interface RoomDao {
 	public RoomModel create(RoomModel roomModel);
@@ -13,4 +11,5 @@ public interface RoomDao {
 	public void delete(RoomModel roomModel);
 	public List<RoomModel> showAll();
 	public List<RoomModel> searchByIdOffice(Long id);
+	public void update(RoomModel roomModel);
 }

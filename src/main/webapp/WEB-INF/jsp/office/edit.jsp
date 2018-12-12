@@ -81,7 +81,7 @@ function listDataRoomDB() {
 		}
 	});
 }
-
+//edit room
 $("#list-data-room-edit").on("click", ".btn-edit", function() {
 	
 	var Id = $(this).prop('id');
@@ -123,7 +123,7 @@ $("#modal-alert-delete-room").on("submit", "#form-confirm-delete-room", function
 		dataType: "json",
 		data: $(this).serialize(),
 		success: function (result) {
-			$("#modal-alert-delete-room").modal("hide");
+			$("#modal-alert-delete-room").modal("close");
 			listDataRoomDB();
 		}
 });
@@ -138,10 +138,7 @@ $("#modal-alert-delete-room").on("submit", "#form-confirm-delete-room", function
 		roomListTable += '<td>' + roomArray[i]['capacity'] + '</td>';
 		roomListTable += '<td><div class="btn-group"> <button type="button" class="btn btn-normal dropdown-toggle" data-toggle="dropdown"> <span class="fa fa-bars"></span> <span class="sr-only">Toggle Dropdown</span> </button> <ul class="dropdown-menu" role="menu"> <li><a ';
 		roomListTable += 'id=' + JSON.stringify(roomArray[i]);
-		roomListTable += ' class="btn-delete">Delete</a></li>';
-		roomListTable += '<li><a ';
-		roomListTable += 'id=' + JSON.stringify(roomArray[i]);
-		roomListTable += ' class="btn-edit">Edit</a></li> </ul></div></td>';
+		roomListTable += ' class="btn-delete">Delete</a></li> </ul></div></td>';
 		roomListTable += '</tr>';
 	}
 	
@@ -168,6 +165,7 @@ $("#modal-room").on("submit", "#form-room-tambah", function(){
 $("#list-data-room-edit").on("click", ".btn-delete", function(){
 	var roomId = JSON.parse($(this).prop('id'));
 	roomArray.pop(roomId);
+	listDataRoomDB();
 	newRoomListTable();
 	$("#modal-alert-delete-room").modal("show");
 });

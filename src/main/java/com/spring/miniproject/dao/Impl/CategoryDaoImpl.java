@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.CategoryDao;
-import com.spring.miniproject.model.BootcampTestTypeModel;
 import com.spring.miniproject.model.CategoryModel;
 
 @Repository

@@ -1,23 +1,24 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
-<form action="#" method="get" id="form-room-tambah"
+<form action="#" method="get" id="form-room-edit"
 	class="form-horizontal">
+	<input type="hidden" id="id" name="id" class="form-control" value="${roomModel.id}" >
 		<div class="form-group">
 			<label class="control-label col-md-3" for="code">Code</label>
 			<div class="col-md-8">
-				<input type="text" id="code" name="code" class="form-control" <%-- value="${codeAuto}" --%> >
+				<input type="text" id="code" name="code" class="form-control" value="${roomModel.code}" >
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-md-3" for="name">Name</label>
 			<div class="col-md-8">
-				<input type="text" id="name" name="name" class="form-control">
+				<input type="text" id="name" name="name" class="form-control" value="${roomModel.name}">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-md-3" for="capacity">Capacity</label>
 			<div class="col-md-8">
-				<input type="text" id="capacity" name="capacity" class="form-control">
+				<input type="text" id="capacity" name="capacity" class="form-control" value="${roomModel.capacity}">
 			</div>
 		</div>
 			<div class="form-group">
@@ -30,7 +31,7 @@
 		<div class="form-group">
 			<label class="control-label col-md-3" for="notes">Notes</label>
 			<div class="col-md-8">
-				<TextArea id="notes" name="notes" class="form-control"></TextArea>
+				<TextArea id="notes" name="notes" class="form-control">${roomModel.notes}</TextArea>
 			</div>
 		</div>
 	<button type="submit" id="button-tambah-room" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Create Room" onclick="return validasi_input();"><i class="fa fa-user-plus"></i>Tambah</button>

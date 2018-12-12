@@ -1,6 +1,7 @@
 package com.spring.miniproject.dao.Impl;
 
-import java.util.ArrayList;  
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;  
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.miniproject.dao.RoomDao;
 import com.spring.miniproject.model.RoomModel;
-import com.spring.miniproject.model.TechnologyTrainerModel;
 @Repository
 public class RoomDaoImpl implements RoomDao{
 
@@ -78,5 +78,11 @@ public class RoomDaoImpl implements RoomDao{
 		roomModelList = session.createQuery(" select t from RoomModel t join OfficeModel c on c.id = t.idOffice where t.isActive=1 and t.idOffice ="+id+"").list();
 		return roomModelList;
 	}
-
+	@Override
+	public void update(RoomModel roomModel) {
+		// TODO Auto-generated method stub
+		roomModel.setModifiedOn(new Date());
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(roomModel);
+	}
 }

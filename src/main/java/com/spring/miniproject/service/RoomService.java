@@ -2,7 +2,6 @@ package com.spring.miniproject.service;
 
 import java.util.List;
 
-import com.spring.miniproject.model.CategoryModel;
 import com.spring.miniproject.model.RoomModel;
 
 public interface RoomService {
@@ -13,4 +12,5 @@ public interface RoomService {
 	public void delete(RoomModel roomModel);
 	public List<RoomModel> showAll();
 	public List<RoomModel> searchByIdOffice(Long id);
+	public void update(RoomModel roomModel);
 }
