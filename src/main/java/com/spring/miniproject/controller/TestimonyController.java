@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.miniproject.model.TestimonyModel;
-import com.spring.miniproject.service.SequenceService;
+//import com.spring.miniproject.service.SequenceService;
 import com.spring.miniproject.service.TestimonyService;
 
 @Controller
@@ -21,8 +21,8 @@ public class TestimonyController extends BaseController{
 	@Autowired
 	private TestimonyService testimonyService;
 	
-	@Autowired
-	private SequenceService sequenceService;
+//	@Autowired
+//	private SequenceService sequenceService;
 	
 	@RequestMapping(value="testimony")
 	public String homeTestimony() {
@@ -48,16 +48,12 @@ public class TestimonyController extends BaseController{
 	
 	@RequestMapping(value="testimony/addTestimony/save")
 	public String addSaveTestimony(HttpServletRequest request, Model model) {
-		Long idTestimony = new Long(this.sequenceService.nextIdTestimony());
-		model.addAttribute("idTestimony", idTestimony);
 		Long idUser = this.getAkunModel().getId();
-		
 		String title = request.getParameter("testimonyTitle");
 		String content = request.getParameter("testimonyContent");
 		Integer isDeleted = 0;
 		
 		TestimonyModel testimonyModel = new TestimonyModel();
-		testimonyModel.setIdTestimony(idTestimony);
 		testimonyModel.setCreatedBy(idUser);
 		testimonyModel.setCreatedOn(new Date());
 		testimonyModel.setTitle(title);

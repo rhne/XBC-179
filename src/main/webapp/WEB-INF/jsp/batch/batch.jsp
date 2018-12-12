@@ -1,6 +1,6 @@
 <div class="box box-danger">
 	<div class="box-header with-border">
-		<h3 class="box-title">BATCH</h3>
+		<h3 class="box-title" align="center">BATCH</h3>
 		<div class="box-tools">
 			<div class="input-group input-group-sm" style="width: 200px;'">
 				<input type="text" id="txt-search" name="search-box" class="form-control pull-right" placeholder="Search by Name">

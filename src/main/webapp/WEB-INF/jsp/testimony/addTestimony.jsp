@@ -2,7 +2,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="titleTestimony">Title</label>
 		<div class="col-md-8">
-			<input type="text" id="titleTestimony" name="testimonyTitle" class="form-control" placeholder="Title">
+			<input type="text" id="titleTestimony" name="testimonyTitle" class="form-control" placeholder="Title" required="required">
 		</div>
 	</div>
 	<div class="form-group">

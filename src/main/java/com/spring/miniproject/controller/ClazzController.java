@@ -42,6 +42,9 @@ public class ClazzController extends BaseController {
 		clazzModelList = this.clazzService.showAll();
 		model.addAttribute("clazzModelList", clazzModelList);
 		
+		this.listBatch(model);
+		this.listBiodata(model);
+		
 		String jsp = "clazz/listClazz";
 		return jsp;
 	}

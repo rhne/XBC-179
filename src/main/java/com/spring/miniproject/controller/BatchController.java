@@ -106,8 +106,9 @@ public class BatchController extends BaseController {
 		Long idTech = new Long(request.getParameter("idTechnology"));
 		Long idTrainer = new Long(request.getParameter("idTrainer"));
 		String name = request.getParameter("batchName");
-		Date from = new SimpleDateFormat("DD-MM-YY").parse(request.getParameter("batchStart"));
-		Date to = new SimpleDateFormat("DD-MM-YY").parse(request.getParameter("batchEnd"));
+		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-mm-dd");
+		Date from = dateformat.parse(request.getParameter("batchStart")); 
+		Date to = dateformat.parse(request.getParameter("batchEnd"));
 		Long idRoom = new Long(request.getParameter("idRoom"));
 		Long idBootcamp = new Long(request.getParameter("idBootcamp"));
 		String notes = request.getParameter("batchNotes");
@@ -135,18 +136,21 @@ public class BatchController extends BaseController {
 	@RequestMapping(value="batch/editBatch/save")
 	public String editSaveBatch(HttpServletRequest request, Model model) throws ParseException {
 		Long idBatch = new Long(request.getParameter("idBatch"));
-		model.addAttribute("idBatch", idBatch);
+		BatchModel batchModel = new BatchModel();
+		batchModel = this.batchService.searchById(idBatch);
+		model.addAttribute("batchModel", batchModel);
+		
 		Long idTech = new Long(request.getParameter("idTechnology"));
 		Long idTrainer = new Long(request.getParameter("idTrainer"));
 		String name = request.getParameter("batchName");
-		Date from = new SimpleDateFormat("DD/MM/YY").parse(request.getParameter("batchStart"));
-		Date to = new SimpleDateFormat("DD/MM/YY").parse(request.getParameter("batchEnd"));
+		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-mm-dd");
+		Date from = dateformat.parse(request.getParameter("batchStart")); 
+		Date to = dateformat.parse(request.getParameter("batchEnd"));
 		Long idRoom = new Long(request.getParameter("idRoom"));
 		Long idBootcamp = new Long(request.getParameter("idBootcamp"));
 		String notes = request.getParameter("batchNotes");
 		Long idUser = this.getAkunModel().getId();
 		
-		BatchModel batchModel = new BatchModel();
 		batchModel.setModifiedBy(idUser);
 		batchModel.setModifiedOn(new Date());
 		batchModel.setBatchId(idBatch);
@@ -196,12 +200,15 @@ public class BatchController extends BaseController {
 		model.addAttribute("idClazz", idClazz);
 		Long idBatch = new Long(request.getParameter("idBatch"));
 		Long idBiodata = new Long(request.getParameter("idParticipant"));
+		Long idUser = this.getAkunModel().getId();
 		
 		ClazzModel clazzModel = new ClazzModel();
 		clazzModel.setClazzId(idClazz);
 		clazzModel.setBatchId(idBatch);
 		clazzModel.setBiodataId(idBiodata);
 		clazzModel.setIsDeleted(0);
+		clazzModel.setCreatedBy(idUser);
+		clazzModel.setCreatedOn(new Date());
 		
 		this.clazzService.create(clazzModel);
 		

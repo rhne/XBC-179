@@ -101,7 +101,6 @@
 	});
 	
 	$("#modal-input").on("submit", "#form-add-testimony", function(){
-		validation();
 		$.ajax({
 			url : "testimony/addTestimony/save.json",
 			type : "get",

@@ -5,7 +5,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="idTechnology" style="color: white;">Technology</label>
 		<div class="col-md-8">
-			<select class="form-control" id="idTechnology" name="idTechnology">
+			<select class="form-control" id="idTechnology" name="idTechnology" required="required">
 				<list:forEach items="${technologyModelList}" var="technologyModel">
 					<option selected disabled hidden>-Select Technology-</option>
 					<option value="${technologyModel.id}">${technologyModel.name}</option>
@@ -16,7 +16,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="idTrainer" style="color: white;">Trainer</label>
 		<div class="col-md-8">
-			<select class="form-control" id="idTrainer" name="idTrainer">
+			<select class="form-control" id="idTrainer" name="idTrainer" required="required">
 				<list:forEach items="${trainerModelList}" var="trainerModel">
 					<option selected disabled hidden>-Select Trainer-</option>
 					<option value="${trainerModel.id}">${trainerModel.name}</option>
@@ -27,25 +27,25 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="nameBatch" style="color: white;">Name</label>
 		<div class="col-md-8">
-			<input type="text" name="batchName" id="nameBatch" class="form-control" placeholder="Name">
+			<input type="text" name="batchName" id="nameBatch" class="form-control" placeholder="Name" required="required">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-md-3" for="startBatch" style="color: white;">Period From</label>
 		<div class="col-md-8">
-			<input type="date" name="batchStart" id="startBatch" class="form-control" placeholder="Period from">
+			<input type="date" name="batchStart" id="startBatch" class="form-control"  required="required">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-md-3" for="endBatch" style="color: white;">Period To</label>
 		<div class="col-md-8">
-			<input type="date" name="batchEnd" id="endBatch" class="form-control" placeholder="Period to">
+			<input type="date" name="batchEnd" id="endBatch" class="form-control" required="required">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-md-3" for="idRoom" style="color: white;">Room</label>
 		<div class="col-md-8">
-			<select class="form-control" id="idRoom" name="idRoom">
+			<select class="form-control" id="idRoom" name="idRoom" required="required">
 				<list:forEach items="${roomModelList}" var="roomModel">
 					<option selected disabled hidden>-Select Room-</option>
 					<option value="${roomModel.id}">${roomModel.name}</option>
@@ -56,7 +56,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-3" for="idBootcamp" style="color: white;">Bootcamp</label>
 		<div class="col-md-8">
-			<select class="form-control" id="idBootcamp" name="idBootcamp">
+			<select class="form-control" id="idBootcamp" name="idBootcamp" required="required">
 				<list:forEach items="${bootcampTypeModelList}" var="bootcampTypeModel">
 					<option selected disabled hidden>-Select Bootcamp-</option>
 					<option value="${bootcampTypeModel.idBootcamp}">${bootcampTypeModel.name}</option>
